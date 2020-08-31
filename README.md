@@ -26,7 +26,6 @@ sudo apt install -y vlc
 ```
 
 ## 2. Install Python and dependencies
------------------------------
 
 ### 2.1 Install python 3.7
 

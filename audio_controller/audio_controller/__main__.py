@@ -29,7 +29,7 @@ def make_app():
     settings = dict(
         debug=True,
         autoreload=False,
-        cookie_secret="AbhdienB30HdjdorG41FFGifgD78DFfhojnosiRTR",
+        cookie_secret=utils.get_cookie_secret(),
         template_path=str(template_dir),
     )
     _handlers = [

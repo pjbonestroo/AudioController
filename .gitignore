@@ -1,0 +1,13 @@
+/.gitignore_backup
+/.vscode
+/README.md
+/audio_controller
+/audio_controller.html
+/audio_controller.service
+/docs
+/manage_env
+/node_modules
+/pyenv
+/start_browser.service
+/start_browser.sh
+/transcrypt

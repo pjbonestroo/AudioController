@@ -8,6 +8,7 @@ WorkingDirectory=/home/pi/AudioController
 StandardOutput=inherit
 StandardError=inherit
 Restart=always
+RestartSec=5
 User=root
 
 [Install]

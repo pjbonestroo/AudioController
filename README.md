@@ -106,5 +106,9 @@ Make sure to place user file and settings file in home of root, not in home or p
 
 TBD
 
+- development from Linux
+- install vlc, vscode, python3.7
+- etc
+
 
 

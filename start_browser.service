@@ -1,0 +1,16 @@
+[Unit]
+Description=Start browser
+After=network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/home/pi/AudioController/start_browser.sh
+WorkingDirectory=/home/pi/AudioController
+StandardOutput=inherit
+StandardError=inherit
+Restart=no
+User=pi
+
+[Install]
+WantedBy=multi-user.target

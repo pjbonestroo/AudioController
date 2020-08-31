@@ -1,0 +1,1475 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+setup.py	../setup.py	1;"	kind:file	line:1
+setuptools	../setup.py	/^import setuptools$/;"	kind:namespace	line:4
+long_description	../setup.py	/^    long_description = fh.read()$/;"	kind:variable	line:7
+name	../setup.py	/^    name="mbase",$/;"	kind:variable	line:10
+version	../setup.py	/^    version="1.0.0",$/;"	kind:variable	line:11
+author	../setup.py	/^    author="HUMS team",$/;"	kind:variable	line:12
+author_email	../setup.py	/^    author_email="pieterjan.bonestroo@nl.thalesgroup.com",$/;"	kind:variable	line:13
+description	../setup.py	/^    description="Data Analytics Workbench",$/;"	kind:variable	line:14
+long_description	../setup.py	/^    long_description=long_description,$/;"	kind:variable	line:15
+long_description_content_type	../setup.py	/^    long_description_content_type="text\/markdown",$/;"	kind:variable	line:16
+url	../setup.py	/^    url="",$/;"	kind:variable	line:17
+packages	../setup.py	/^    packages=['mbase'],$/;"	kind:variable	line:18
+classifiers	../setup.py	/^    classifiers=[$/;"	kind:variable	line:19
+database_store.py	../mbase/database_store.py	1;"	kind:file	line:1
+time	../mbase/database_store.py	/^import time$/;"	kind:namespace	line:5
+os	../mbase/database_store.py	/^import os$/;"	kind:namespace	line:6
+socket	../mbase/database_store.py	/^import socket$/;"	kind:namespace	line:7
+List	../mbase/database_store.py	/^from typing import List$/;"	kind:namespace	line:8
+dt	../mbase/database_store.py	/^import datetime as dt$/;"	kind:namespace	line:9
+random	../mbase/database_store.py	/^import random$/;"	kind:namespace	line:10
+contextmanager	../mbase/database_store.py	/^from contextlib import contextmanager$/;"	kind:namespace	line:11
+attrgetter	../mbase/database_store.py	/^from operator import attrgetter, itemgetter$/;"	kind:namespace	line:12
+itemgetter	../mbase/database_store.py	/^from operator import attrgetter, itemgetter$/;"	kind:namespace	line:12
+namedtuple	../mbase/database_store.py	/^from collections import namedtuple$/;"	kind:namespace	line:13
+copy	../mbase/database_store.py	/^import copy$/;"	kind:namespace	line:14
+traceback	../mbase/database_store.py	/^import traceback$/;"	kind:namespace	line:15
+pymongo	../mbase/database_store.py	/^import pymongo$/;"	kind:namespace	line:18
+MongoClient	../mbase/database_store.py	/^from pymongo import MongoClient$/;"	kind:namespace	line:19
+urllib	../mbase/database_store.py	/^import urllib$/;"	kind:namespace	line:20
+bson	../mbase/database_store.py	/^import bson$/;"	kind:namespace	line:21
+utils	../mbase/database_store.py	/^from . import utils$/;"	kind:namespace	line:24
+TsCollection	../mbase/database_store.py	/^from .timeseries import TsCollection, TimeSeries, Interpolation, ValueType$/;"	kind:namespace	line:25
+TimeSeries	../mbase/database_store.py	/^from .timeseries import TsCollection, TimeSeries, Interpolation, ValueType$/;"	kind:namespace	line:25
+Interpolation	../mbase/database_store.py	/^from .timeseries import TsCollection, TimeSeries, Interpolation, ValueType$/;"	kind:namespace	line:25
+ValueType	../mbase/database_store.py	/^from .timeseries import TsCollection, TimeSeries, Interpolation, ValueType$/;"	kind:namespace	line:25
+ProductType	../mbase/database_store.py	/^from .enums import ProductType, Location$/;"	kind:namespace	line:26
+Location	../mbase/database_store.py	/^from .enums import ProductType, Location$/;"	kind:namespace	line:26
+main_logger	../mbase/database_store.py	/^from .logging_setup import main_logger$/;"	kind:namespace	line:27
+_is_test_mode	../mbase/database_store.py	/^_is_test_mode = False$/;"	kind:variable	line:30
+MongoFilter	../mbase/database_store.py	/^class MongoFilter(dict):$/;"	kind:class	line:35
+__init__	../mbase/database_store.py	/^    def __init__(self, other: dict):$/;"	kind:member	line:38
+__and__	../mbase/database_store.py	/^    def __and__(self, other):$/;"	kind:member	line:41
+__or__	../mbase/database_store.py	/^    def __or__(self, other):$/;"	kind:member	line:46
+__add__	../mbase/database_store.py	/^    def __add__(self, other):$/;"	kind:member	line:51
+__sub__	../mbase/database_store.py	/^    def __sub__(self, other):$/;"	kind:member	line:55
+MongoLock	../mbase/database_store.py	/^class MongoLock():$/;"	kind:class	line:66
+__init__	../mbase/database_store.py	/^    def __init__(self, store: 'MongoStore', key, timeout, expire):$/;"	kind:member	line:73
+_update_db_time	../mbase/database_store.py	/^    def _update_db_time(self):$/;"	kind:member	line:85
+_create	../mbase/database_store.py	/^    def _create(self):$/;"	kind:member	line:88
+_add_fields	../mbase/database_store.py	/^    def _add_fields(self):$/;"	kind:member	line:100
+_remove_expired_lock	../mbase/database_store.py	/^    def _remove_expired_lock(self):$/;"	kind:member	line:109
+acquire	../mbase/database_store.py	/^    def acquire(self):$/;"	kind:member	line:123
+release	../mbase/database_store.py	/^    def release(self):$/;"	kind:member	line:142
+__call__	../mbase/database_store.py	/^    def __call__(self):$/;"	kind:member	line:148
+update	../mbase/database_store.py	/^    def update(self, expire=60):$/;"	kind:member	line:172
+cleanup_db	../mbase/database_store.py	/^    def cleanup_db(self):$/;"	kind:member	line:191
+MongoStore	../mbase/database_store.py	/^class MongoStore():$/;"	kind:class	line:209
+__init__	../mbase/database_store.py	/^    def __init__(self, host: str = "wpll1956", port: int = None, username: str = None, password: str = None):$/;"	kind:member	line:212
+init_collections	../mbase/database_store.py	/^    def init_collections(self):$/;"	kind:member	line:249
+create_users	../mbase/database_store.py	/^    def create_users(self, users):$/;"	kind:member	line:256
+_get_db_name	../mbase/database_store.py	/^    def _get_db_name(self):$/;"	kind:member	line:266
+get_db	../mbase/database_store.py	/^    def get_db(self):$/;"	kind:member	line:272
+get_db_time	../mbase/database_store.py	/^    def get_db_time(self):$/;"	kind:member	line:278
+check_time	../mbase/database_store.py	/^    def check_time(self):$/;"	kind:member	line:287
+document_size_mb	../mbase/database_store.py	/^    def document_size_mb(self, doc):$/;"	kind:member	line:297
+_log	../mbase/database_store.py	/^    def _log(self, type_: str, message: str, value, application: str = None):$/;"	kind:member	line:301
+log_critical	../mbase/database_store.py	/^    def log_critical(self, message: str):$/;"	kind:member	line:310
+log_error	../mbase/database_store.py	/^    def log_error(self, message: str):$/;"	kind:member	line:313
+log_warning	../mbase/database_store.py	/^    def log_warning(self, message: str):$/;"	kind:member	line:316
+log_info	../mbase/database_store.py	/^    def log_info(self, message: str):$/;"	kind:member	line:319
+log_debug	../mbase/database_store.py	/^    def log_debug(self, message: str):$/;"	kind:member	line:322
+log_performance	../mbase/database_store.py	/^    def log_performance(self, message: str, seconds: int):$/;"	kind:member	line:325
+lock	../mbase/database_store.py	/^    def lock(self, key: str, timeout=5, expire=10):$/;"	kind:member	line:328
+in_transaction	../mbase/database_store.py	/^    def in_transaction(self):$/;"	kind:member	line:355
+get_product_types	../mbase/database_store.py	/^    def get_product_types(self):$/;"	kind:member	line:369
+save_timeseries	../mbase/database_store.py	/^    def save_timeseries(self, ts_collection: TsCollection, start=None, end=None):$/;"	kind:member	line:375
+merge_update_insert	../mbase/database_store.py	/^                def merge_update_insert(t):$/;"	kind:function	line:407
+except_document_too_large	../mbase/database_store.py	/^    def except_document_too_large(self, t):$/;"	kind:member	line:448
+filter_time_series	../mbase/database_store.py	/^    def filter_time_series(self, *args, **kwargs):$/;"	kind:member	line:457
+get_time_series_info_str	../mbase/database_store.py	/^    def get_time_series_info_str(self, *args, **kwargs):$/;"	kind:member	line:546
+get_time_series_info	../mbase/database_store.py	/^    def get_time_series_info(self, *args, **kwargs):$/;"	kind:member	line:569
+get_time_series	../mbase/database_store.py	/^    def get_time_series(self, *args, **kwargs) -> List[TimeSeries]:$/;"	kind:member	line:605
+get_time_span	../mbase/database_store.py	/^    def get_time_span(self, *args, **kwargs):$/;"	kind:member	line:655
+drop_time_series	../mbase/database_store.py	/^    def drop_time_series(self):$/;"	kind:member	line:667
+get_labels	../mbase/database_store.py	/^    def get_labels(self, *args, **kwargs):$/;"	kind:member	line:670
+get_data_types	../mbase/database_store.py	/^    def get_data_types(self, *args, **kwargs):$/;"	kind:member	line:681
+drop_product_types	../mbase/database_store.py	/^    def drop_product_types(self):$/;"	kind:member	line:692
+init_time_series	../mbase/database_store.py	/^    def init_time_series(self):$/;"	kind:member	line:695
+init_locks	../mbase/database_store.py	/^    def init_locks(self):$/;"	kind:member	line:707
+init_events	../mbase/database_store.py	/^    def init_events(self):$/;"	kind:member	line:713
+init_tasks	../mbase/database_store.py	/^    def init_tasks(self):$/;"	kind:member	line:722
+sync_product_types	../mbase/database_store.py	/^    def sync_product_types(self):$/;"	kind:member	line:728
+drop_product_instances	../mbase/database_store.py	/^    def drop_product_instances(self):$/;"	kind:member	line:738
+add_product_instance	../mbase/database_store.py	/^    def add_product_instance(self, name: str, serialnumber: str, product_type: ProductType):$/;"	kind:member	line:741
+add_location_to_product_instance	../mbase/database_store.py	/^    def add_location_to_product_instance(self, serial_number: str, location: Location):$/;"	kind:member	line:767
+get_product_instances	../mbase/database_store.py	/^    def get_product_instances(self, product_type: ProductType = None) -> List[str]:$/;"	kind:member	line:786
+get_product_type_for_instance	../mbase/database_store.py	/^    def get_product_type_for_instance(self, product_instance: str) -> ProductType:$/;"	kind:member	line:797
+get_locations_of_products	../mbase/database_store.py	/^    def get_locations_of_products(self, product_instance: str = None) -> str:$/;"	kind:member	line:804
+get_system_serial_number_by_location	../mbase/database_store.py	/^    def get_system_serial_number_by_location(self, location: Location) -> str:$/;"	kind:member	line:822
+store	../mbase/database_store.py	/^store = MongoStore()$/;"	kind:variable	line:832
+__main__.py	../mbase/__main__.py	1;"	kind:file	line:1
+pprint	../mbase/__main__.py	/^import pprint$/;"	kind:namespace	line:3
+struct	../mbase/__main__.py	/^import struct$/;"	kind:namespace	line:4
+sys	../mbase/__main__.py	/^import sys$/;"	kind:namespace	line:5
+os	../mbase/__main__.py	/^import os$/;"	kind:namespace	line:6
+shutil	../mbase/__main__.py	/^import shutil$/;"	kind:namespace	line:7
+time	../mbase/__main__.py	/^import time$/;"	kind:namespace	line:8
+traceback	../mbase/__main__.py	/^import traceback$/;"	kind:namespace	line:9
+json	../mbase/__main__.py	/^import json$/;"	kind:namespace	line:10
+dt	../mbase/__main__.py	/^import datetime as dt$/;"	kind:namespace	line:11
+Path	../mbase/__main__.py	/^from pathlib import Path$/;"	kind:namespace	line:12
+itertools	../mbase/__main__.py	/^import itertools$/;"	kind:namespace	line:13
+argparse	../mbase/__main__.py	/^import argparse$/;"	kind:namespace	line:14
+json	../mbase/__main__.py	/^import json$/;"	kind:namespace	line:15
+contextmanager	../mbase/__main__.py	/^from contextlib import contextmanager$/;"	kind:namespace	line:16
+np	../mbase/__main__.py	/^import numpy as np$/;"	kind:namespace	line:19
+pd	../mbase/__main__.py	/^import pandas as pd$/;"	kind:namespace	line:20
+pymongo	../mbase/__main__.py	/^import pymongo$/;"	kind:namespace	line:21
+MongoClient	../mbase/__main__.py	/^from pymongo import MongoClient$/;"	kind:namespace	line:22
+dumps	../mbase/__main__.py	/^from bson.json_util import dumps, RELAXED_JSON_OPTIONS, DEFAULT_JSON_OPTIONS$/;"	kind:namespace	line:23
+RELAXED_JSON_OPTIONS	../mbase/__main__.py	/^from bson.json_util import dumps, RELAXED_JSON_OPTIONS, DEFAULT_JSON_OPTIONS$/;"	kind:namespace	line:23
+DEFAULT_JSON_OPTIONS	../mbase/__main__.py	/^from bson.json_util import dumps, RELAXED_JSON_OPTIONS, DEFAULT_JSON_OPTIONS$/;"	kind:namespace	line:23
+matplotlib	../mbase/__main__.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:24
+plt	../mbase/__main__.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:24
+utils	../mbase/__main__.py	/^from . import utils$/;"	kind:namespace	line:27
+ProductData	../mbase/__main__.py	/^from .product_data import ProductData$/;"	kind:namespace	line:28
+ProductType	../mbase/__main__.py	/^from .enums import ProductType, Location$/;"	kind:namespace	line:29
+Location	../mbase/__main__.py	/^from .enums import ProductType, Location$/;"	kind:namespace	line:29
+database_store	../mbase/__main__.py	/^from . import database_store$/;"	kind:namespace	line:30
+MongoStore	../mbase/__main__.py	/^from .database_store import MongoStore, MongoFilter$/;"	kind:namespace	line:31
+MongoFilter	../mbase/__main__.py	/^from .database_store import MongoStore, MongoFilter$/;"	kind:namespace	line:31
+Timer	../mbase/__main__.py	/^from .timer import Timer$/;"	kind:namespace	line:32
+logger	../mbase/__main__.py	/^from .logging_setup import main_logger as logger, log_folder$/;"	kind:namespace	line:33
+log_folder	../mbase/__main__.py	/^from .logging_setup import main_logger as logger, log_folder$/;"	kind:namespace	line:33
+processes	../mbase/__main__.py	/^from .processes import processes$/;"	kind:namespace	line:34
+data_import	../mbase/__main__.py	/^from .processes import data_import$/;"	kind:namespace	line:35
+read_o2bin	../mbase/__main__.py	/^from . import read_o2bin$/;"	kind:namespace	line:36
+pp	../mbase/__main__.py	/^pp = pprint.PrettyPrinter(indent=4, depth=4)$/;"	kind:variable	line:39
+pprint	../mbase/__main__.py	/^pprint = pp.pprint$/;"	kind:variable	line:40
+Dirs	../mbase/__main__.py	/^class Dirs():$/;"	kind:class	line:43
+here	../mbase/__main__.py	/^    here = Path(os.path.dirname(os.path.abspath(__file__)))$/;"	kind:variable	line:44
+plots	../mbase/__main__.py	/^    plots = here.parents[0] \/ "plots"$/;"	kind:variable	line:45
+data	../mbase/__main__.py	/^    data = here.parents[0] \/ "data_za_toren"$/;"	kind:variable	line:47
+data_temp	../mbase/__main__.py	/^    data_temp = here.parents[0] \/ "data_temp"$/;"	kind:variable	line:48
+p004_za	../mbase/__main__.py	/^    p004_za = Path('\/work') \/ 'p004ne_data02' \/ 'hums_data' \/ 'elr_za_toren_sv2' \/ 'o2bin'$/;"	kind:variable	line:49
+write_line_generator	../mbase/__main__.py	/^def write_line_generator(gen, file=None):$/;"	kind:function	line:52
+watch	../mbase/__main__.py	/^def watch(store: MongoStore):$/;"	kind:function	line:67
+run_tests_manual	../mbase/__main__.py	/^def run_tests_manual():$/;"	kind:function	line:85
+os	../mbase/__main__.py	/^    import os$/;"	kind:namespace	line:86
+test_application	../mbase/__main__.py	/^    from .test import test_application, test_database$/;"	kind:namespace	line:87
+test_database	../mbase/__main__.py	/^    from .test import test_application, test_database$/;"	kind:namespace	line:87
+read_annotations	../mbase/__main__.py	/^def read_annotations(store: MongoStore):$/;"	kind:function	line:95
+read_write_annotations	../mbase/__main__.py	/^def read_write_annotations(store: MongoStore):$/;"	kind:function	line:103
+create_product_instance_if_not_exists	../mbase/__main__.py	/^def create_product_instance_if_not_exists(store: MongoStore):$/;"	kind:function	line:109
+print_seconds	../mbase/__main__.py	/^def print_seconds(txt: str = ""):$/;"	kind:function	line:121
+setup_db_authentication	../mbase/__main__.py	/^def setup_db_authentication():$/;"	kind:function	line:127
+get_store_logged_in	../mbase/__main__.py	/^def get_store_logged_in():$/;"	kind:function	line:140
+check_memory_leakage	../mbase/__main__.py	/^def check_memory_leakage():$/;"	kind:function	line:145
+psutil	../mbase/__main__.py	/^    import psutil$/;"	kind:namespace	line:147
+gc	../mbase/__main__.py	/^    import gc$/;"	kind:namespace	line:148
+o2bin_serializer	../mbase/__main__.py	/^    import o2bin_serializer.o2bin_handle.o2bin_reader as o2bin_reader$/;"	kind:namespace	line:151
+o2bin_handle	../mbase/__main__.py	/^    import o2bin_serializer.o2bin_handle.o2bin_reader as o2bin_reader$/;"	kind:namespace	line:151
+o2bin_reader	../mbase/__main__.py	/^    import o2bin_serializer.o2bin_handle.o2bin_reader as o2bin_reader$/;"	kind:namespace	line:151
+megabytes	../mbase/__main__.py	/^    def megabytes():$/;"	kind:function	line:153
+test_plot	../mbase/__main__.py	/^def test_plot():$/;"	kind:function	line:184
+ts_collection_test_1	../mbase/__main__.py	/^    from .timeseries import ts_collection_test_1$/;"	kind:namespace	line:185
+main	../mbase/__main__.py	/^def main():$/;"	kind:function	line:191
+store	../mbase/__main__.py	/^    from .database_store import store$/;"	kind:namespace	line:195
+parse_args	../mbase/__main__.py	/^def parse_args():$/;"	kind:function	line:219
+adjust_data.py	../mbase/adjust_data.py	1;"	kind:file	line:1
+adjust_data_handlers	../mbase/adjust_data.py	/^adjust_data_handlers = {} # key = product-type, value = handle function$/;"	kind:variable	line:2
+read_o2bin.py	../mbase/read_o2bin.py	1;"	kind:file	line:1
+datetime	../mbase/read_o2bin.py	/^from datetime import datetime$/;"	kind:namespace	line:6
+re	../mbase/read_o2bin.py	/^import re$/;"	kind:namespace	line:7
+List	../mbase/read_o2bin.py	/^from typing import List, Callable$/;"	kind:namespace	line:8
+Callable	../mbase/read_o2bin.py	/^from typing import List, Callable$/;"	kind:namespace	line:8
+Enum	../mbase/read_o2bin.py	/^from enum import Enum$/;"	kind:namespace	line:9
+functools	../mbase/read_o2bin.py	/^import functools$/;"	kind:namespace	line:10
+o2bin_serializer	../mbase/read_o2bin.py	/^import o2bin_serializer.descriptor_parser.descriptor_parser as descriptor_parser$/;"	kind:namespace	line:13
+descriptor_parser	../mbase/read_o2bin.py	/^import o2bin_serializer.descriptor_parser.descriptor_parser as descriptor_parser$/;"	kind:namespace	line:13
+descriptor_parser	../mbase/read_o2bin.py	/^import o2bin_serializer.descriptor_parser.descriptor_parser as descriptor_parser$/;"	kind:namespace	line:13
+o2bin_serializer	../mbase/read_o2bin.py	/^import o2bin_serializer.o2bin_handle.o2bin_reader as o2bin_reader$/;"	kind:namespace	line:14
+o2bin_handle	../mbase/read_o2bin.py	/^import o2bin_serializer.o2bin_handle.o2bin_reader as o2bin_reader$/;"	kind:namespace	line:14
+o2bin_reader	../mbase/read_o2bin.py	/^import o2bin_serializer.o2bin_handle.o2bin_reader as o2bin_reader$/;"	kind:namespace	line:14
+O2Record	../mbase/read_o2bin.py	/^from o2bin_serializer.o2bin_handle.o2_record import O2Record$/;"	kind:namespace	line:15
+RecordingHeader	../mbase/read_o2bin.py	/^from o2bin_serializer.o2bin_handle.o2_recording_header import RecordingHeader$/;"	kind:namespace	line:16
+RecordingInfo	../mbase/read_o2bin.py	/^from o2bin_serializer.o2bin_handle.o2_recording_info import RecordingInfo$/;"	kind:namespace	line:17
+ProductType	../mbase/read_o2bin.py	/^from .enums import ProductType$/;"	kind:namespace	line:20
+Interpolation	../mbase/read_o2bin.py	/^from .timeseries import Interpolation, ValueType, TsCollection, TimeSeries$/;"	kind:namespace	line:21
+ValueType	../mbase/read_o2bin.py	/^from .timeseries import Interpolation, ValueType, TsCollection, TimeSeries$/;"	kind:namespace	line:21
+TsCollection	../mbase/read_o2bin.py	/^from .timeseries import Interpolation, ValueType, TsCollection, TimeSeries$/;"	kind:namespace	line:21
+TimeSeries	../mbase/read_o2bin.py	/^from .timeseries import Interpolation, ValueType, TsCollection, TimeSeries$/;"	kind:namespace	line:21
+ProductData	../mbase/read_o2bin.py	/^from .product_data import ProductData$/;"	kind:namespace	line:22
+general_handlers	../mbase/read_o2bin.py	/^general_handlers = {}  # key = subject, value = handle function$/;"	kind:variable	line:28
+product_type_handlers	../mbase/read_o2bin.py	/^product_type_handlers = {}  # key = product-type, value = { key = subject, value = handle function }$/;"	kind:variable	line:29
+get_handlers	../mbase/read_o2bin.py	/^def get_handlers(product_type: ProductType):$/;"	kind:function	line:32
+test	../mbase/read_o2bin.py	/^def test(d: ProductData, record: O2Record):$/;"	kind:function	line:44
+handle_subject	../mbase/read_o2bin.py	/^def handle_subject(subject: str, product_type: ProductType = None):$/;"	kind:function	line:50
+wrapper	../mbase/read_o2bin.py	/^    def wrapper(func):$/;"	kind:function	line:66
+newFunc	../mbase/read_o2bin.py	/^        def newFunc(*args):$/;"	kind:function	line:68
+iter_data_records	../mbase/read_o2bin.py	/^def iter_data_records(file, product_type: ProductType):$/;"	kind:function	line:82
+read_files	../mbase/read_o2bin.py	/^def read_files(files, product_type: ProductType, ts_collection: TsCollection):$/;"	kind:function	line:106
+decode_time	../mbase/read_o2bin.py	/^def decode_time(t: int):$/;"	kind:function	line:143
+file_header_to_date	../mbase/read_o2bin.py	/^def file_header_to_date(header: str):$/;"	kind:function	line:148
+get_software_versions_from_header	../mbase/read_o2bin.py	/^def get_software_versions_from_header(header: str):$/;"	kind:function	line:159
+get_parameter_from_O2_parameter_event	../mbase/read_o2bin.py	/^def get_parameter_from_O2_parameter_event(record: O2Record):$/;"	kind:function	line:186
+osi_subsystem_number_to_name	../mbase/read_o2bin.py	/^def osi_subsystem_number_to_name(number):$/;"	kind:function	line:202
+handleO2Alarm	../mbase/read_o2bin.py	/^def handleO2Alarm(d: ProductData, record: O2Record):$/;"	kind:function	line:238
+handleO2Notification	../mbase/read_o2bin.py	/^def handleO2Notification(d: ProductData, record: O2Record):$/;"	kind:function	line:262
+handleO2ParameterEvent	../mbase/read_o2bin.py	/^def handleO2ParameterEvent(d: ProductData, record: O2Record):$/;"	kind:function	line:282
+handleOsiTechnicalCommand	../mbase/read_o2bin.py	/^def handleOsiTechnicalCommand(d: ProductData, record: O2Record):$/;"	kind:function	line:308
+handleOsiTechnicalState	../mbase/read_o2bin.py	/^def handleOsiTechnicalState(d: ProductData, record: O2Record):$/;"	kind:function	line:325
+handleOsiOperationalCommand	../mbase/read_o2bin.py	/^def handleOsiOperationalCommand(d: ProductData, record: O2Record):$/;"	kind:function	line:341
+handleOsiOperationalState	../mbase/read_o2bin.py	/^def handleOsiOperationalState(d: ProductData, record: O2Record):$/;"	kind:function	line:355
+handleOsiRadarModeState	../mbase/read_o2bin.py	/^def handleOsiRadarModeState(d: ProductData, record: O2Record):$/;"	kind:function	line:368
+handleOsiActualRotationState	../mbase/read_o2bin.py	/^def handleOsiActualRotationState(d: ProductData, record: O2Record):$/;"	kind:function	line:379
+handleOsiRotationCommand	../mbase/read_o2bin.py	/^def handleOsiRotationCommand(d: ProductData, record: O2Record):$/;"	kind:function	line:391
+handleOsiTransmitterState	../mbase/read_o2bin.py	/^def handleOsiTransmitterState(d: ProductData, record: O2Record):$/;"	kind:function	line:405
+handleTxPowerLevelBackgroundState	../mbase/read_o2bin.py	/^def handleTxPowerLevelBackgroundState(d: ProductData, record: O2Record):$/;"	kind:function	line:421
+handleOsiRadarSilenceState	../mbase/read_o2bin.py	/^def handleOsiRadarSilenceState(d: ProductData, record: O2Record):$/;"	kind:function	line:436
+handleOsiBattleShort	../mbase/read_o2bin.py	/^def handleOsiBattleShort(d: ProductData, record: O2Record):$/;"	kind:function	line:448
+handleOsiBattleShortState	../mbase/read_o2bin.py	/^def handleOsiBattleShortState(d: ProductData, record: O2Record):$/;"	kind:function	line:460
+handleOsiBitReport	../mbase/read_o2bin.py	/^def handleOsiBitReport(d: ProductData, record: O2Record):$/;"	kind:function	line:472
+handleOsiDetailedConditionStatus	../mbase/read_o2bin.py	/^def handleOsiDetailedConditionStatus(d: ProductData, record: O2Record):$/;"	kind:function	line:484
+handleMasterShipState	../mbase/read_o2bin.py	/^def handleMasterShipState(d: ProductData, record: O2Record):$/;"	kind:function	line:497
+handleOsiTemperatureStatus	../mbase/read_o2bin.py	/^def handleOsiTemperatureStatus(d: ProductData, record: O2Record):$/;"	kind:function	line:509
+handleOsiHumidityStatus	../mbase/read_o2bin.py	/^def handleOsiHumidityStatus(d: ProductData, record: O2Record):$/;"	kind:function	line:516
+handleOsiFlowRateStatus	../mbase/read_o2bin.py	/^def handleOsiFlowRateStatus(d: ProductData, record: O2Record):$/;"	kind:function	line:523
+handleOsiPressureStatus	../mbase/read_o2bin.py	/^def handleOsiPressureStatus(d: ProductData, record: O2Record):$/;"	kind:function	line:530
+handleOsiBlowerStatus	../mbase/read_o2bin.py	/^def handleOsiBlowerStatus(d: ProductData, record: O2Record):$/;"	kind:function	line:537
+handleOsiDoorStatus	../mbase/read_o2bin.py	/^def handleOsiDoorStatus(d: ProductData, record: O2Record):$/;"	kind:function	line:544
+handleOsiValveStatus	../mbase/read_o2bin.py	/^def handleOsiValveStatus(d: ProductData, record: O2Record):$/;"	kind:function	line:555
+handleOsiFunctionalServiceAvailabilityState	../mbase/read_o2bin.py	/^def handleOsiFunctionalServiceAvailabilityState(d: ProductData, record: O2Record):$/;"	kind:function	line:567
+handleOsiFunctionalServiceCondition	../mbase/read_o2bin.py	/^def handleOsiFunctionalServiceCondition(d: ProductData, record: O2Record):$/;"	kind:function	line:578
+handleOsiInterfaceAvailabilityStatus	../mbase/read_o2bin.py	/^def handleOsiInterfaceAvailabilityStatus(d: ProductData, record: O2Record):$/;"	kind:function	line:593
+handleOsiInterfaceServiceAvailabilityState	../mbase/read_o2bin.py	/^def handleOsiInterfaceServiceAvailabilityState(d: ProductData, record: O2Record):$/;"	kind:function	line:604
+handleOsiUsageRecordStatus	../mbase/read_o2bin.py	/^def handleOsiUsageRecordStatus(d: ProductData, record: O2Record):$/;"	kind:function	line:615
+handleSvMtGenericData	../mbase/read_o2bin.py	/^def handleSvMtGenericData(d: ProductData, record: O2Record):$/;"	kind:function	line:625
+handleSvMtEicStatus	../mbase/read_o2bin.py	/^def handleSvMtEicStatus(d: ProductData, record: O2Record):$/;"	kind:function	line:677
+handleSvMtHispEicStatus	../mbase/read_o2bin.py	/^def handleSvMtHispEicStatus(d: ProductData, record: O2Record):$/;"	kind:function	line:691
+handleSvMtEventLogRequest	../mbase/read_o2bin.py	/^def handleSvMtEventLogRequest(d: ProductData, record: O2Record):$/;"	kind:function	line:697
+handleSvMtResetFailure	../mbase/read_o2bin.py	/^def handleSvMtResetFailure(d: ProductData, record: O2Record):$/;"	kind:function	line:704
+handleSvMtOperabilityTestState	../mbase/read_o2bin.py	/^def handleSvMtOperabilityTestState(d: ProductData, record: O2Record):$/;"	kind:function	line:710
+handleCsvSafetyStatus	../mbase/read_o2bin.py	/^def handleCsvSafetyStatus(d: ProductData, record: O2Record):$/;"	kind:function	line:720
+handleCsvPowerStatus	../mbase/read_o2bin.py	/^def handleCsvPowerStatus(d: ProductData, record: O2Record):$/;"	kind:function	line:726
+handleBitSetStatus	../mbase/read_o2bin.py	/^def handleBitSetStatus(d: ProductData, record: O2Record):$/;"	kind:function	line:736
+handleSupBBElc	../mbase/read_o2bin.py	/^def handleSupBBElc(d: ProductData, record: O2Record):$/;"	kind:function	line:746
+handleTrackStoreInformationReport	../mbase/read_o2bin.py	/^def handleTrackStoreInformationReport(d: ProductData, record: O2Record):$/;"	kind:function	line:756
+FunctionalServicesNumbers	../mbase/read_o2bin.py	/^class FunctionalServicesNumbers(Enum):$/;"	kind:class	line:765
+SERVICE_AIR_SURVEILLANCE	../mbase/read_o2bin.py	/^    SERVICE_AIR_SURVEILLANCE = 0$/;"	kind:variable	line:769
+SERVICE_SURF_SURVEILLANCE	../mbase/read_o2bin.py	/^    SERVICE_SURF_SURVEILLANCE = 1,$/;"	kind:variable	line:770
+SERVICE_JAMMER_SURVEILLANCE	../mbase/read_o2bin.py	/^    SERVICE_JAMMER_SURVEILLANCE = 2,$/;"	kind:variable	line:771
+SERVICE_SURVEILLANCE_VIDEO	../mbase/read_o2bin.py	/^    SERVICE_SURVEILLANCE_VIDEO = 3,$/;"	kind:variable	line:772
+SERVICE_EAS_SURVEILLANCE	../mbase/read_o2bin.py	/^    SERVICE_EAS_SURVEILLANCE = 4,$/;"	kind:variable	line:773
+SERVICE_EASS_CONTROL	../mbase/read_o2bin.py	/^    SERVICE_EASS_CONTROL = 5,$/;"	kind:variable	line:774
+SERVICE_LSPT_PROVISION	../mbase/read_o2bin.py	/^    SERVICE_LSPT_PROVISION = 6,$/;"	kind:variable	line:775
+SERVICE_PTT_PROVISION	../mbase/read_o2bin.py	/^    SERVICE_PTT_PROVISION = 7,$/;"	kind:variable	line:776
+handleDccAndDriveStatus	../mbase/read_o2bin.py	/^def handleDccAndDriveStatus(d: ProductData, record: O2Record):$/;"	kind:function	line:784
+handleElrFunctionalServiceAvailabilityState	../mbase/read_o2bin.py	/^def handleElrFunctionalServiceAvailabilityState(d: ProductData, record: O2Record):$/;"	kind:function	line:794
+handleElrFunctionalServiceCondition	../mbase/read_o2bin.py	/^def handleElrFunctionalServiceCondition(d: ProductData, record: O2Record):$/;"	kind:function	line:800
+product_data.py	../mbase/product_data.py	1;"	kind:file	line:1
+os	../mbase/product_data.py	/^import os$/;"	kind:namespace	line:5
+Enum	../mbase/product_data.py	/^from enum import Enum, auto$/;"	kind:namespace	line:6
+auto	../mbase/product_data.py	/^from enum import Enum, auto$/;"	kind:namespace	line:6
+List	../mbase/product_data.py	/^from typing import List$/;"	kind:namespace	line:7
+Path	../mbase/product_data.py	/^from pathlib import Path$/;"	kind:namespace	line:8
+o2bin_serializer	../mbase/product_data.py	/^import o2bin_serializer.descriptor_parser.descriptor_parser as descriptor_parser$/;"	kind:namespace	line:11
+descriptor_parser	../mbase/product_data.py	/^import o2bin_serializer.descriptor_parser.descriptor_parser as descriptor_parser$/;"	kind:namespace	line:11
+descriptor_parser	../mbase/product_data.py	/^import o2bin_serializer.descriptor_parser.descriptor_parser as descriptor_parser$/;"	kind:namespace	line:11
+o2bin_serializer	../mbase/product_data.py	/^import o2bin_serializer.o2bin_handle.o2bin_reader as o2bin_reader$/;"	kind:namespace	line:12
+o2bin_handle	../mbase/product_data.py	/^import o2bin_serializer.o2bin_handle.o2bin_reader as o2bin_reader$/;"	kind:namespace	line:12
+o2bin_reader	../mbase/product_data.py	/^import o2bin_serializer.o2bin_handle.o2bin_reader as o2bin_reader$/;"	kind:namespace	line:12
+utils	../mbase/product_data.py	/^from . import utils$/;"	kind:namespace	line:15
+MongoStore	../mbase/product_data.py	/^from .database_store import MongoStore, store$/;"	kind:namespace	line:16
+store	../mbase/product_data.py	/^from .database_store import MongoStore, store$/;"	kind:namespace	line:16
+ProductType	../mbase/product_data.py	/^from .enums import ProductType, Location$/;"	kind:namespace	line:17
+Location	../mbase/product_data.py	/^from .enums import ProductType, Location$/;"	kind:namespace	line:17
+TsCollection	../mbase/product_data.py	/^from .timeseries import TsCollection, TimeSeries, Interpolation, ValueType$/;"	kind:namespace	line:18
+TimeSeries	../mbase/product_data.py	/^from .timeseries import TsCollection, TimeSeries, Interpolation, ValueType$/;"	kind:namespace	line:18
+Interpolation	../mbase/product_data.py	/^from .timeseries import TsCollection, TimeSeries, Interpolation, ValueType$/;"	kind:namespace	line:18
+ValueType	../mbase/product_data.py	/^from .timeseries import TsCollection, TimeSeries, Interpolation, ValueType$/;"	kind:namespace	line:18
+read_o2bin	../mbase/product_data.py	/^from . import read_o2bin$/;"	kind:namespace	line:19
+adjust_data	../mbase/product_data.py	/^from . import adjust_data$/;"	kind:namespace	line:20
+ProductData	../mbase/product_data.py	/^class ProductData():$/;"	kind:class	line:23
+__init__	../mbase/product_data.py	/^    def __init__(self):$/;"	kind:member	line:34
+product_type	../mbase/product_data.py	/^    def product_type(self):$/;"	kind:member	line:40
+product_type	../mbase/product_data.py	/^    def product_type(self, value: ProductType):$/;"	kind:member	line:44
+product_instance	../mbase/product_data.py	/^    def product_instance(self):$/;"	kind:member	line:52
+product_instance	../mbase/product_data.py	/^    def product_instance(self, value: str):$/;"	kind:member	line:56
+get_product_instances	../mbase/product_data.py	/^    def get_product_instances(self) -> List[str]:$/;"	kind:member	line:62
+set_product_instance_by_location	../mbase/product_data.py	/^    def set_product_instance_by_location(self, location: Location):$/;"	kind:member	line:66
+get_time_series	../mbase/product_data.py	/^    def get_time_series(self, filter=None, **kwargs):$/;"	kind:member	line:77
+save_mat	../mbase/product_data.py	/^    def save_mat(self):$/;"	kind:member	line:82
+load_mat	../mbase/product_data.py	/^    def load_mat(self):$/;"	kind:member	line:86
+save_excel	../mbase/product_data.py	/^    def save_excel(self):$/;"	kind:member	line:90
+loadfiles	../mbase/product_data.py	/^    def loadfiles(self, files):$/;"	kind:member	line:94
+save_db	../mbase/product_data.py	/^    def save_db(self):$/;"	kind:member	line:112
+set_timeframe	../mbase/product_data.py	/^    def set_timeframe(self, timeFrom, timeTo):$/;"	kind:member	line:118
+select_label	../mbase/product_data.py	/^    def select_label(self, *args):$/;"	kind:member	line:122
+store_time_series	../mbase/product_data.py	/^    def store_time_series(self, **kwargs):$/;"	kind:member	line:125
+store_usage	../mbase/product_data.py	/^    def store_usage(self, time, resource_name, meter_name, value):$/;"	kind:member	line:137
+store_configuration	../mbase/product_data.py	/^    def store_configuration(self, time, resource_name, part_number, serial_number, version, details):$/;"	kind:member	line:150
+store_parameter	../mbase/product_data.py	/^    def store_parameter(self, time, name, value):$/;"	kind:member	line:154
+store_system_name	../mbase/product_data.py	/^    def store_system_name(self, value):$/;"	kind:member	line:158
+store_system_location	../mbase/product_data.py	/^    def store_system_location(self, value):$/;"	kind:member	line:162
+store_system_serial_number	../mbase/product_data.py	/^    def store_system_serial_number(self, value):$/;"	kind:member	line:166
+db_scheme.py	../mbase/db_scheme.py	1;"	kind:file	line:1
+databases	../mbase/db_scheme.py	/^databases = {$/;"	kind:variable	line:19
+timeseries.py	../mbase/timeseries.py	1;"	kind:file	line:1
+Enum	../mbase/timeseries.py	/^from enum import Enum, auto$/;"	kind:namespace	line:7
+auto	../mbase/timeseries.py	/^from enum import Enum, auto$/;"	kind:namespace	line:7
+dt	../mbase/timeseries.py	/^import datetime as dt$/;"	kind:namespace	line:8
+time	../mbase/timeseries.py	/^import time$/;"	kind:namespace	line:9
+Any	../mbase/timeseries.py	/^from typing import Any, List, Tuple$/;"	kind:namespace	line:10
+List	../mbase/timeseries.py	/^from typing import Any, List, Tuple$/;"	kind:namespace	line:10
+Tuple	../mbase/timeseries.py	/^from typing import Any, List, Tuple$/;"	kind:namespace	line:10
+itertools	../mbase/timeseries.py	/^import itertools$/;"	kind:namespace	line:11
+attrgetter	../mbase/timeseries.py	/^from operator import attrgetter, itemgetter$/;"	kind:namespace	line:12
+itemgetter	../mbase/timeseries.py	/^from operator import attrgetter, itemgetter$/;"	kind:namespace	line:12
+re	../mbase/timeseries.py	/^import re$/;"	kind:namespace	line:13
+math	../mbase/timeseries.py	/^import math$/;"	kind:namespace	line:14
+functools	../mbase/timeseries.py	/^import functools$/;"	kind:namespace	line:15
+np	../mbase/timeseries.py	/^import numpy as np$/;"	kind:namespace	line:18
+pd	../mbase/timeseries.py	/^import pandas as pd$/;"	kind:namespace	line:19
+matplotlib	../mbase/timeseries.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:20
+plt	../mbase/timeseries.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:20
+matplotlib	../mbase/timeseries.py	/^import matplotlib.ticker as ticker$/;"	kind:namespace	line:21
+ticker	../mbase/timeseries.py	/^import matplotlib.ticker as ticker$/;"	kind:namespace	line:21
+matplotlib	../mbase/timeseries.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:22
+dates	../mbase/timeseries.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:22
+mplcursors	../mbase/timeseries.py	/^import mplcursors$/;"	kind:namespace	line:23
+utils	../mbase/timeseries.py	/^from . import utils$/;"	kind:namespace	line:26
+ValueType	../mbase/timeseries.py	/^class ValueType(Enum):$/;"	kind:class	line:29
+Nothing	../mbase/timeseries.py	/^    Nothing = 0$/;"	kind:variable	line:41
+Category	../mbase/timeseries.py	/^    Category = 1$/;"	kind:variable	line:42
+Numeric	../mbase/timeseries.py	/^    Numeric = 2$/;"	kind:variable	line:43
+Interpolation	../mbase/timeseries.py	/^class Interpolation(Enum):$/;"	kind:class	line:46
+Nothing	../mbase/timeseries.py	/^    Nothing = 0$/;"	kind:variable	line:59
+Staircase	../mbase/timeseries.py	/^    Staircase = 1$/;"	kind:variable	line:60
+Continuous	../mbase/timeseries.py	/^    Continuous = 2$/;"	kind:variable	line:61
+TsCollection	../mbase/timeseries.py	/^class TsCollection():$/;"	kind:class	line:74
+__init__	../mbase/timeseries.py	/^    def __init__(self):$/;"	kind:member	line:76
+__and__	../mbase/timeseries.py	/^    def __and__(self, other):$/;"	kind:member	line:83
+__or__	../mbase/timeseries.py	/^    def __or__(self, other):$/;"	kind:member	line:94
+__add__	../mbase/timeseries.py	/^    def __add__(self, other):$/;"	kind:member	line:98
+__sub__	../mbase/timeseries.py	/^    def __sub__(self, other):$/;"	kind:member	line:115
+add_samples	../mbase/timeseries.py	/^    def add_samples(self, **kwargs):$/;"	kind:member	line:124
+add_series	../mbase/timeseries.py	/^    def add_series(self, timeseries: 'TimeSeries'):$/;"	kind:member	line:157
+to_pandas	../mbase/timeseries.py	/^    def to_pandas(self):$/;"	kind:member	line:160
+load	../mbase/timeseries.py	/^    def load(filter=None, **kwargs):$/;"	kind:member	line:165
+store	../mbase/timeseries.py	/^        from .database_store import store$/;"	kind:namespace	line:166
+select	../mbase/timeseries.py	/^    def select(self, *args, **kwargs):$/;"	kind:member	line:175
+get_labels	../mbase/timeseries.py	/^    def get_labels(self):$/;"	kind:member	line:206
+plot	../mbase/timeseries.py	/^    def plot(self):$/;"	kind:member	line:209
+get_axis	../mbase/timeseries.py	/^                def get_axis():$/;"	kind:function	line:260
+get_tick_label	../mbase/timeseries.py	/^                def get_tick_label(time_series, v, pos):$/;"	kind:function	line:270
+get_tick_label_zoh	../mbase/timeseries.py	/^                    def get_tick_label_zoh(ts, v):$/;"	kind:function	line:294
+__str__	../mbase/timeseries.py	/^    def __str__(self):$/;"	kind:member	line:340
+dispose	../mbase/timeseries.py	/^    def dispose(self):$/;"	kind:member	line:363
+key_for_value	../mbase/timeseries.py	/^def key_for_value(d: dict, value):$/;"	kind:function	line:369
+TimeSeries	../mbase/timeseries.py	/^class TimeSeries():$/;"	kind:class	line:377
+__init__	../mbase/timeseries.py	/^    def __init__(self, **kwargs):$/;"	kind:member	line:380
+dispose	../mbase/timeseries.py	/^    def dispose(self):$/;"	kind:member	line:420
+add_samples	../mbase/timeseries.py	/^    def add_samples(self, time, value, value2):$/;"	kind:member	line:425
+sort_time	../mbase/timeseries.py	/^    def sort_time(self):$/;"	kind:member	line:432
+determine_label	../mbase/timeseries.py	/^    def determine_label(data_type, resource_name):$/;"	kind:member	line:439
+append_object	../mbase/timeseries.py	/^    def append_object(self, object):$/;"	kind:member	line:443
+split_in_time	../mbase/timeseries.py	/^    def split_in_time(self, hours=3):$/;"	kind:member	line:446
+add_range	../mbase/timeseries.py	/^        def add_range(i_from, i_to):$/;"	kind:function	line:464
+merge_timeseries	../mbase/timeseries.py	/^    def merge_timeseries($/;"	kind:member	line:488
+skip_if_equal	../mbase/timeseries.py	/^    def skip_if_equal(times: List[Any], values: List[List[Any]], indices: List[int] = [0]) -> Tuple[List[Any], List[List[Any]]]:$/;"	kind:member	line:513
+ts_collection_test_1	../mbase/timeseries.py	/^def ts_collection_test_1():$/;"	kind:function	line:535
+get_times	../mbase/timeseries.py	/^    def get_times(start=start, end=end, mean=60.0, stdev=5.0):$/;"	kind:function	line:540
+add_linear	../mbase/timeseries.py	/^    def add_linear(label, data_type, mean, stdev):$/;"	kind:function	line:556
+add_zoh	../mbase/timeseries.py	/^    def add_zoh(label, data_type, names, values):$/;"	kind:function	line:575
+both_nan	../mbase/timeseries.py	/^                def both_nan(): return nxt is np.nan and vs[-1] is np.nan$/;"	kind:function	line:594
+not_equal	../mbase/timeseries.py	/^                def not_equal(): return nxt != vs[-1] and not both_nan()$/;"	kind:function	line:596
+add_none	../mbase/timeseries.py	/^    def add_none(label, data_type):$/;"	kind:function	line:609
+add_alarm	../mbase/timeseries.py	/^    def add_alarm(label, data_type):$/;"	kind:function	line:628
+logging_setup.py	../mbase/logging_setup.py	1;"	kind:file	line:1
+os	../mbase/logging_setup.py	/^import os$/;"	kind:namespace	line:6
+logging	../mbase/logging_setup.py	/^import logging$/;"	kind:namespace	line:7
+logging	../mbase/logging_setup.py	/^import logging.handlers$/;"	kind:namespace	line:8
+handlers	../mbase/logging_setup.py	/^import logging.handlers$/;"	kind:namespace	line:8
+Path	../mbase/logging_setup.py	/^from pathlib import Path$/;"	kind:namespace	line:9
+here	../mbase/logging_setup.py	/^here = Path(os.path.dirname(os.path.realpath(__file__)))$/;"	kind:variable	line:11
+log_folder	../mbase/logging_setup.py	/^log_folder = here \/ 'logs'$/;"	kind:variable	line:13
+allLoggers	../mbase/logging_setup.py	/^allLoggers = ['mbase']$/;"	kind:variable	line:15
+main_logger	../mbase/logging_setup.py	/^main_logger = logging.getLogger('mbase')$/;"	kind:variable	line:17
+setupLogging	../mbase/logging_setup.py	/^def setupLogging():$/;"	kind:function	line:20
+utils.py	../mbase/utils.py	1;"	kind:file	line:1
+os	../mbase/utils.py	/^import os$/;"	kind:namespace	line:2
+socket	../mbase/utils.py	/^import socket$/;"	kind:namespace	line:3
+json	../mbase/utils.py	/^import json$/;"	kind:namespace	line:4
+dt	../mbase/utils.py	/^import datetime as dt$/;"	kind:namespace	line:5
+Path	../mbase/utils.py	/^from pathlib import Path$/;"	kind:namespace	line:6
+functools	../mbase/utils.py	/^import functools$/;"	kind:namespace	line:7
+configparser	../mbase/utils.py	/^import configparser$/;"	kind:namespace	line:8
+namedtuple	../mbase/utils.py	/^from collections import namedtuple$/;"	kind:namespace	line:9
+secrets	../mbase/utils.py	/^import secrets$/;"	kind:namespace	line:10
+string	../mbase/utils.py	/^import string$/;"	kind:namespace	line:11
+List	../mbase/utils.py	/^from typing import List$/;"	kind:namespace	line:12
+here	../mbase/utils.py	/^here = Path(os.path.dirname(os.path.abspath(__file__)))$/;"	kind:variable	line:19
+begin_of_hour	../mbase/utils.py	/^def begin_of_hour(t):$/;"	kind:function	line:22
+begin_of_hours	../mbase/utils.py	/^def begin_of_hours(t, hours=2):$/;"	kind:function	line:27
+begin_of_day	../mbase/utils.py	/^def begin_of_day(t):$/;"	kind:function	line:33
+string_to_datetime	../mbase/utils.py	/^def string_to_datetime(txt: str):$/;"	kind:function	line:38
+listOfFiles	../mbase/utils.py	/^def listOfFiles(files, fileExt: str = ".o2_bin"):$/;"	kind:function	line:54
+cache	../mbase/utils.py	/^def cache(func):$/;"	kind:function	line:66
+func_wrapper	../mbase/utils.py	/^    def func_wrapper():$/;"	kind:function	line:71
+hostname	../mbase/utils.py	/^def hostname():$/;"	kind:function	line:80
+getpid	../mbase/utils.py	/^def getpid():$/;"	kind:function	line:85
+process_id	../mbase/utils.py	/^def process_id():$/;"	kind:function	line:90
+ParameterParser	../mbase/utils.py	/^class ParameterParser():$/;"	kind:class	line:95
+__init__	../mbase/utils.py	/^    def __init__(self, kwargs: dict, mandatory=False):$/;"	kind:member	line:106
+__call__	../mbase/utils.py	/^    def __call__(self, name, mandatory=False):$/;"	kind:member	line:114
+unused	../mbase/utils.py	/^    def unused(self):$/;"	kind:member	line:129
+check_all_used	../mbase/utils.py	/^    def check_all_used(self):$/;"	kind:member	line:133
+generate_password	../mbase/utils.py	/^def generate_password():$/;"	kind:function	line:143
+generate_users_config	../mbase/utils.py	/^def generate_users_config():$/;"	kind:function	line:149
+read_users_config	../mbase/utils.py	/^def read_users_config(file):$/;"	kind:function	line:176
+filter_filenames	../mbase/utils.py	/^def filter_filenames(filenames: List[str], start=None, end=None, format=r'%Y%m%d_%H%M%S') -> List[str]:$/;"	kind:function	line:186
+in_range	../mbase/utils.py	/^    def in_range(name, start, end):$/;"	kind:function	line:191
+datawarehouse.py	../mbase/datawarehouse.py	1;"	kind:file	line:1
+begin_of_hour	../mbase/datawarehouse.py	/^from .utils import begin_of_hour$/;"	kind:namespace	line:11
+read_o2bin	../mbase/datawarehouse.py	/^from . import read_o2bin$/;"	kind:namespace	line:12
+adjust_data	../mbase/datawarehouse.py	/^from . import adjust_data$/;"	kind:namespace	line:13
+ProductType	../mbase/datawarehouse.py	/^from .enums import ProductType$/;"	kind:namespace	line:14
+Interpolation	../mbase/datawarehouse.py	/^from .timeseries import Interpolation, TsCollection$/;"	kind:namespace	line:16
+TsCollection	../mbase/datawarehouse.py	/^from .timeseries import Interpolation, TsCollection$/;"	kind:namespace	line:16
+DataWarehouse	../mbase/datawarehouse.py	/^class DataWarehouse():$/;"	kind:class	line:19
+__init__	../mbase/datawarehouse.py	/^    def __init__(self):$/;"	kind:member	line:21
+dispose	../mbase/datawarehouse.py	/^    def dispose(self):$/;"	kind:member	line:25
+loadfiles	../mbase/datawarehouse.py	/^    def loadfiles(self, files, product_type: ProductType, product_instance: str):$/;"	kind:member	line:30
+__str__	../mbase/datawarehouse.py	/^    def __str__(self):$/;"	kind:member	line:41
+enums.py	../mbase/enums.py	1;"	kind:file	line:1
+Enum	../mbase/enums.py	/^from enum import Enum, auto$/;"	kind:namespace	line:1
+auto	../mbase/enums.py	/^from enum import Enum, auto$/;"	kind:namespace	line:1
+ProductType	../mbase/enums.py	/^class ProductType(Enum):$/;"	kind:class	line:3
+cwitx	../mbase/enums.py	/^    cwitx = auto()$/;"	kind:variable	line:9
+flycatcherMk2	../mbase/enums.py	/^    flycatcherMk2 = auto()$/;"	kind:variable	line:10
+nsxx	../mbase/enums.py	/^    nsxx = auto()$/;"	kind:variable	line:11
+scoutMk3	../mbase/enums.py	/^    scoutMk3 = auto()$/;"	kind:variable	line:12
+smartlmm	../mbase/enums.py	/^    smartlmm = auto()$/;"	kind:variable	line:13
+smileseastar	../mbase/enums.py	/^    smileseastar = auto()$/;"	kind:variable	line:14
+Location	../mbase/enums.py	/^class Location(Enum):$/;"	kind:class	line:16
+za_toren	../mbase/enums.py	/^    za_toren = (52.247077, 6.769467)$/;"	kind:variable	line:22
+hal_z	../mbase/enums.py	/^    hal_z = (52.248368, 6.774578)$/;"	kind:variable	line:23
+toren_zuid	../mbase/enums.py	/^    toren_zuid = (52.247218, 6.775538)$/;"	kind:variable	line:24
+__init__.py	../mbase/__init__.py	1;"	kind:file	line:1
+name	../mbase/__init__.py	/^name = "mbase"$/;"	kind:variable	line:15
+dt	../mbase/__init__.py	/^import datetime as dt$/;"	kind:namespace	line:24
+time	../mbase/__init__.py	/^import time$/;"	kind:namespace	line:25
+re	../mbase/__init__.py	/^import re$/;"	kind:namespace	line:26
+collections	../mbase/__init__.py	/^import collections$/;"	kind:namespace	line:27
+pprint	../mbase/__init__.py	/^import pprint$/;"	kind:namespace	line:28
+pp	../mbase/__init__.py	/^pp = pprint.PrettyPrinter(indent=4, depth=6)$/;"	kind:variable	line:29
+pprint	../mbase/__init__.py	/^pprint = pp.pprint$/;"	kind:variable	line:30
+np	../mbase/__init__.py	/^import numpy as np$/;"	kind:namespace	line:33
+pd	../mbase/__init__.py	/^import pandas as pd$/;"	kind:namespace	line:34
+register_matplotlib_converters	../mbase/__init__.py	/^from pandas.plotting import register_matplotlib_converters$/;"	kind:namespace	line:39
+os	../mbase/__init__.py	/^import os$/;"	kind:namespace	line:42
+matplotlib	../mbase/__init__.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:48
+plt	../mbase/__init__.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:48
+mplcursors	../mbase/__init__.py	/^import mplcursors$/;"	kind:namespace	line:49
+mbase	../mbase/__init__.py	/^import mbase$/;"	kind:namespace	line:52
+MongoStore	../mbase/__init__.py	/^from .database_store import MongoStore, MongoFilter$/;"	kind:namespace	line:53
+MongoFilter	../mbase/__init__.py	/^from .database_store import MongoStore, MongoFilter$/;"	kind:namespace	line:53
+ProductData	../mbase/__init__.py	/^from .product_data import ProductData$/;"	kind:namespace	line:54
+app	../mbase/__init__.py	/^app = ProductData()$/;"	kind:variable	line:55
+get_time_series	../mbase/__init__.py	/^get_time_series = app.get_time_series$/;"	kind:variable	line:56
+ts_filter	../mbase/__init__.py	/^ts_filter = app.store.filter_time_series$/;"	kind:variable	line:57
+ts_info	../mbase/__init__.py	/^ts_info = app.store.get_time_series_info_str$/;"	kind:variable	line:58
+ts_labels	../mbase/__init__.py	/^ts_labels = app.store.get_labels$/;"	kind:variable	line:59
+TimeSeries	../mbase/__init__.py	/^from .timeseries import TimeSeries, TsCollection, Interpolation$/;"	kind:namespace	line:60
+TsCollection	../mbase/__init__.py	/^from .timeseries import TimeSeries, TsCollection, Interpolation$/;"	kind:namespace	line:60
+Interpolation	../mbase/__init__.py	/^from .timeseries import TimeSeries, TsCollection, Interpolation$/;"	kind:namespace	line:60
+ts_load	../mbase/__init__.py	/^ts_load = TsCollection.load$/;"	kind:variable	line:61
+enums	../mbase/__init__.py	/^from . import enums$/;"	kind:namespace	line:62
+test_database.py	../mbase/test/test_database.py	1;"	kind:file	line:1
+sys	../mbase/test/test_database.py	/^import sys$/;"	kind:namespace	line:8
+os	../mbase/test/test_database.py	/^import os$/;"	kind:namespace	line:9
+dt	../mbase/test/test_database.py	/^import datetime as dt$/;"	kind:namespace	line:10
+time	../mbase/test/test_database.py	/^import time$/;"	kind:namespace	line:11
+random	../mbase/test/test_database.py	/^import random$/;"	kind:namespace	line:12
+Path	../mbase/test/test_database.py	/^from pathlib import Path$/;"	kind:namespace	line:13
+List	../mbase/test/test_database.py	/^from typing import List, Tuple, Any$/;"	kind:namespace	line:14
+Tuple	../mbase/test/test_database.py	/^from typing import List, Tuple, Any$/;"	kind:namespace	line:14
+Any	../mbase/test/test_database.py	/^from typing import List, Tuple, Any$/;"	kind:namespace	line:14
+pytest	../mbase/test/test_database.py	/^import pytest$/;"	kind:namespace	line:17
+database_store	../mbase/test/test_database.py	/^from .. import database_store$/;"	kind:namespace	line:20
+MongoStore	../mbase/test/test_database.py	/^from ..database_store import MongoStore$/;"	kind:namespace	line:21
+processes	../mbase/test/test_database.py	/^from ..processes import processes$/;"	kind:namespace	line:22
+ProductType	../mbase/test/test_database.py	/^from ..enums import ProductType, Location$/;"	kind:namespace	line:23
+Location	../mbase/test/test_database.py	/^from ..enums import ProductType, Location$/;"	kind:namespace	line:23
+mbase_app	../mbase/test/test_database.py	/^from .. import mbase_app$/;"	kind:namespace	line:24
+TsCollection	../mbase/test/test_database.py	/^from ..timeseries import TsCollection, TimeSeries, Interpolation, ValueType$/;"	kind:namespace	line:25
+TimeSeries	../mbase/test/test_database.py	/^from ..timeseries import TsCollection, TimeSeries, Interpolation, ValueType$/;"	kind:namespace	line:25
+Interpolation	../mbase/test/test_database.py	/^from ..timeseries import TsCollection, TimeSeries, Interpolation, ValueType$/;"	kind:namespace	line:25
+ValueType	../mbase/test/test_database.py	/^from ..timeseries import TsCollection, TimeSeries, Interpolation, ValueType$/;"	kind:namespace	line:25
+mongo_store	../mbase/test/test_database.py	/^def mongo_store() -> MongoStore:$/;"	kind:function	line:32
+test_check_time	../mbase/test/test_database.py	/^def test_check_time(mongo_store: MongoStore):$/;"	kind:function	line:51
+test_locking_performance	../mbase/test/test_database.py	/^def test_locking_performance(mongo_store: MongoStore):$/;"	kind:function	line:56
+test_start_process	../mbase/test/test_database.py	/^def test_start_process(mongo_store: MongoStore):$/;"	kind:function	line:73
+process_for_my_task	../mbase/test/test_database.py	/^    def process_for_my_task(store: MongoStore, process, _task):$/;"	kind:function	line:102
+test_add_product_instance	../mbase/test/test_database.py	/^def test_add_product_instance(mongo_store: MongoStore):$/;"	kind:function	line:122
+test_filter_timeseries	../mbase/test/test_database.py	/^def test_filter_timeseries(mongo_store: MongoStore):$/;"	kind:function	line:139
+test_application.py	../mbase/test/test_application.py	1;"	kind:file	line:1
+sys	../mbase/test/test_application.py	/^import sys$/;"	kind:namespace	line:6
+os	../mbase/test/test_application.py	/^import os$/;"	kind:namespace	line:7
+dt	../mbase/test/test_application.py	/^import datetime as dt$/;"	kind:namespace	line:8
+random	../mbase/test/test_application.py	/^import random$/;"	kind:namespace	line:9
+Path	../mbase/test/test_application.py	/^from pathlib import Path$/;"	kind:namespace	line:10
+List	../mbase/test/test_application.py	/^from typing import List, Tuple, Any$/;"	kind:namespace	line:11
+Tuple	../mbase/test/test_application.py	/^from typing import List, Tuple, Any$/;"	kind:namespace	line:11
+Any	../mbase/test/test_application.py	/^from typing import List, Tuple, Any$/;"	kind:namespace	line:11
+pytest	../mbase/test/test_application.py	/^import pytest$/;"	kind:namespace	line:14
+pd	../mbase/test/test_application.py	/^import pandas as pd$/;"	kind:namespace	line:17
+utils	../mbase/test/test_application.py	/^from .. import utils$/;"	kind:namespace	line:20
+database_store	../mbase/test/test_application.py	/^from .. import database_store$/;"	kind:namespace	line:21
+enums	../mbase/test/test_application.py	/^from .. import enums$/;"	kind:namespace	line:22
+read_o2bin	../mbase/test/test_application.py	/^from .. import read_o2bin$/;"	kind:namespace	line:23
+processes	../mbase/test/test_application.py	/^from ..processes import processes$/;"	kind:namespace	line:24
+TimeSeries	../mbase/test/test_application.py	/^from ..timeseries import TimeSeries, ValueType, Interpolation, TsCollection$/;"	kind:namespace	line:25
+ValueType	../mbase/test/test_application.py	/^from ..timeseries import TimeSeries, ValueType, Interpolation, TsCollection$/;"	kind:namespace	line:25
+Interpolation	../mbase/test/test_application.py	/^from ..timeseries import TimeSeries, ValueType, Interpolation, TsCollection$/;"	kind:namespace	line:25
+TsCollection	../mbase/test/test_application.py	/^from ..timeseries import TimeSeries, ValueType, Interpolation, TsCollection$/;"	kind:namespace	line:25
+here	../mbase/test/test_application.py	/^here = Path(os.path.dirname(__file__)).resolve()$/;"	kind:variable	line:31
+test_filename_to_time	../mbase/test/test_application.py	/^def test_filename_to_time():$/;"	kind:function	line:34
+in_range	../mbase/test/test_application.py	/^    def in_range(name, start, end):$/;"	kind:function	line:38
+test_utils	../mbase/test/test_application.py	/^def test_utils():$/;"	kind:function	line:51
+test_timeserie_split_hours	../mbase/test/test_application.py	/^def test_timeserie_split_hours():$/;"	kind:function	line:85
+get_ts	../mbase/test/test_application.py	/^    def get_ts():$/;"	kind:function	line:88
+test_merge_timeserie	../mbase/test/test_application.py	/^def test_merge_timeserie():$/;"	kind:function	line:132
+test_timeserie_sort_time	../mbase/test/test_application.py	/^def test_timeserie_sort_time():$/;"	kind:function	line:156
+test_skip_values_if_equal	../mbase/test/test_application.py	/^def test_skip_values_if_equal():$/;"	kind:function	line:181
+test_add_task	../mbase/test/test_application.py	/^def test_add_task():$/;"	kind:function	line:210
+test_read_o2bin	../mbase/test/test_application.py	/^def test_read_o2bin():$/;"	kind:function	line:218
+test_string_to_datetime	../mbase/test/test_application.py	/^def test_string_to_datetime():$/;"	kind:function	line:227
+test_ts_collection_operators	../mbase/test/test_application.py	/^def test_ts_collection_operators():$/;"	kind:function	line:241
+get_ts	../mbase/test/test_application.py	/^    def get_ts(label):$/;"	kind:function	line:243
+__init__.py	../mbase/test/__init__.py	1;"	kind:file	line:1
+test_data.py	../mbase/test/test_data.py	1;"	kind:file	line:1
+timer.py	../mbase/timer.py	1;"	kind:file	line:1
+contextmanager	../mbase/timer.py	/^from contextlib import contextmanager$/;"	kind:namespace	line:6
+time	../mbase/timer.py	/^import time$/;"	kind:namespace	line:7
+Timer	../mbase/timer.py	/^class Timer():$/;"	kind:class	line:10
+__init__	../mbase/timer.py	/^    def __init__(self):$/;"	kind:member	line:11
+clear	../mbase/timer.py	/^    def clear(self):$/;"	kind:member	line:17
+add_tag	../mbase/timer.py	/^    def add_tag(self, tag):$/;"	kind:member	line:23
+start	../mbase/timer.py	/^    def start(self, tag: str):$/;"	kind:member	line:30
+end	../mbase/timer.py	/^    def end(self, tag: str):$/;"	kind:member	line:37
+sort_time_desc	../mbase/timer.py	/^    def sort_time_desc(self):$/;"	kind:member	line:43
+avg_time	../mbase/timer.py	/^    def avg_time(self):$/;"	kind:member	line:50
+total_time	../mbase/timer.py	/^    def total_time(self):$/;"	kind:member	line:56
+time_it	../mbase/timer.py	/^    def time_it(self, tag: str):$/;"	kind:member	line:63
+processes.py	../mbase/processes/processes.py	1;"	kind:file	line:1
+time	../mbase/processes/processes.py	/^import time$/;"	kind:namespace	line:7
+os	../mbase/processes/processes.py	/^import os$/;"	kind:namespace	line:8
+sys	../mbase/processes/processes.py	/^import sys$/;"	kind:namespace	line:9
+dt	../mbase/processes/processes.py	/^import datetime as dt$/;"	kind:namespace	line:10
+Path	../mbase/processes/processes.py	/^from pathlib import Path$/;"	kind:namespace	line:11
+Popen	../mbase/processes/processes.py	/^from subprocess import Popen$/;"	kind:namespace	line:12
+threading	../mbase/processes/processes.py	/^import threading$/;"	kind:namespace	line:13
+functools	../mbase/processes/processes.py	/^import functools$/;"	kind:namespace	line:14
+traceback	../mbase/processes/processes.py	/^import traceback$/;"	kind:namespace	line:15
+np	../mbase/processes/processes.py	/^import numpy as np$/;"	kind:namespace	line:18
+pd	../mbase/processes/processes.py	/^import pandas as pd$/;"	kind:namespace	line:19
+MongoStore	../mbase/processes/processes.py	/^from ..database_store import MongoStore$/;"	kind:namespace	line:22
+utils	../mbase/processes/processes.py	/^from .. import utils$/;"	kind:namespace	line:23
+DataWarehouse	../mbase/processes/processes.py	/^from ..datawarehouse import DataWarehouse$/;"	kind:namespace	line:24
+ProductType	../mbase/processes/processes.py	/^from ..enums import ProductType$/;"	kind:namespace	line:25
+_process_timeout	../mbase/processes/processes.py	/^_process_timeout = dt.timedelta(seconds=120)$/;"	kind:variable	line:29
+_process_update_interval	../mbase/processes/processes.py	/^_process_update_interval = dt.timedelta(seconds=10)$/;"	kind:variable	line:31
+_find_task_timeout	../mbase/processes/processes.py	/^_find_task_timeout = dt.timedelta(seconds=30)$/;"	kind:variable	line:32
+_tasks_mapping	../mbase/processes/processes.py	/^_tasks_mapping = {}  # key = name, value = function to create task$/;"	kind:variable	line:34
+_processes_mapping	../mbase/processes/processes.py	/^_processes_mapping = {}  # key = name, value = function to execute process$/;"	kind:variable	line:35
+add_process	../mbase/processes/processes.py	/^def add_process(name: str):$/;"	kind:function	line:38
+deco	../mbase/processes/processes.py	/^    def deco(func):$/;"	kind:function	line:43
+add_task	../mbase/processes/processes.py	/^def add_task(name: str):$/;"	kind:function	line:51
+deco	../mbase/processes/processes.py	/^    def deco(func):$/;"	kind:function	line:59
+try_set_process_name	../mbase/processes/processes.py	/^def try_set_process_name(name: str):$/;"	kind:function	line:70
+setproctitle	../mbase/processes/processes.py	/^        import setproctitle$/;"	kind:namespace	line:74
+finish_expired_processes	../mbase/processes/processes.py	/^def finish_expired_processes(store: MongoStore):$/;"	kind:function	line:80
+spawn_processes	../mbase/processes/processes.py	/^def spawn_processes(store: MongoStore, nr: int = 1):$/;"	kind:function	line:99
+preexec_fn	../mbase/processes/processes.py	/^    def preexec_fn():$/;"	kind:function	line:105
+start_process	../mbase/processes/processes.py	/^def start_process(store: MongoStore = None):$/;"	kind:function	line:115
+update_process	../mbase/processes/processes.py	/^    def update_process(process_id):$/;"	kind:function	line:124
+get_task	../mbase/processes/processes.py	/^                def get_task():$/;"	kind:function	line:156
+data_import.py	../mbase/processes/data_import.py	1;"	kind:file	line:1
+pprint	../mbase/processes/data_import.py	/^import pprint$/;"	kind:namespace	line:5
+struct	../mbase/processes/data_import.py	/^import struct$/;"	kind:namespace	line:6
+sys	../mbase/processes/data_import.py	/^import sys$/;"	kind:namespace	line:7
+os	../mbase/processes/data_import.py	/^import os$/;"	kind:namespace	line:8
+time	../mbase/processes/data_import.py	/^import time$/;"	kind:namespace	line:9
+traceback	../mbase/processes/data_import.py	/^import traceback$/;"	kind:namespace	line:10
+json	../mbase/processes/data_import.py	/^import json$/;"	kind:namespace	line:11
+dt	../mbase/processes/data_import.py	/^import datetime as dt$/;"	kind:namespace	line:12
+Path	../mbase/processes/data_import.py	/^from pathlib import Path$/;"	kind:namespace	line:13
+itertools	../mbase/processes/data_import.py	/^import itertools$/;"	kind:namespace	line:14
+argparse	../mbase/processes/data_import.py	/^import argparse$/;"	kind:namespace	line:15
+json	../mbase/processes/data_import.py	/^import json$/;"	kind:namespace	line:16
+traceback	../mbase/processes/data_import.py	/^import traceback$/;"	kind:namespace	line:17
+gc	../mbase/processes/data_import.py	/^import gc$/;"	kind:namespace	line:18
+np	../mbase/processes/data_import.py	/^import numpy as np$/;"	kind:namespace	line:21
+pd	../mbase/processes/data_import.py	/^import pandas as pd$/;"	kind:namespace	line:22
+pymongo	../mbase/processes/data_import.py	/^import pymongo$/;"	kind:namespace	line:23
+MongoClient	../mbase/processes/data_import.py	/^from pymongo import MongoClient$/;"	kind:namespace	line:24
+dumps	../mbase/processes/data_import.py	/^from bson.json_util import dumps, RELAXED_JSON_OPTIONS, DEFAULT_JSON_OPTIONS$/;"	kind:namespace	line:25
+RELAXED_JSON_OPTIONS	../mbase/processes/data_import.py	/^from bson.json_util import dumps, RELAXED_JSON_OPTIONS, DEFAULT_JSON_OPTIONS$/;"	kind:namespace	line:25
+DEFAULT_JSON_OPTIONS	../mbase/processes/data_import.py	/^from bson.json_util import dumps, RELAXED_JSON_OPTIONS, DEFAULT_JSON_OPTIONS$/;"	kind:namespace	line:25
+ProductData	../mbase/processes/data_import.py	/^from ..product_data import ProductData$/;"	kind:namespace	line:28
+ProductType	../mbase/processes/data_import.py	/^from ..enums import ProductType, Location$/;"	kind:namespace	line:29
+Location	../mbase/processes/data_import.py	/^from ..enums import ProductType, Location$/;"	kind:namespace	line:29
+database_store	../mbase/processes/data_import.py	/^from .. import database_store$/;"	kind:namespace	line:30
+MongoStore	../mbase/processes/data_import.py	/^from ..database_store import MongoStore$/;"	kind:namespace	line:31
+logger	../mbase/processes/data_import.py	/^from ..logging_setup import main_logger as logger, log_folder$/;"	kind:namespace	line:32
+log_folder	../mbase/processes/data_import.py	/^from ..logging_setup import main_logger as logger, log_folder$/;"	kind:namespace	line:32
+processes	../mbase/processes/data_import.py	/^from . import processes$/;"	kind:namespace	line:33
+start_process	../mbase/processes/data_import.py	/^from .processes import start_process, spawn_processes, add_process, add_task$/;"	kind:namespace	line:34
+spawn_processes	../mbase/processes/data_import.py	/^from .processes import start_process, spawn_processes, add_process, add_task$/;"	kind:namespace	line:34
+add_process	../mbase/processes/data_import.py	/^from .processes import start_process, spawn_processes, add_process, add_task$/;"	kind:namespace	line:34
+add_task	../mbase/processes/data_import.py	/^from .processes import start_process, spawn_processes, add_process, add_task$/;"	kind:namespace	line:34
+run_process_read_o2bin_dir	../mbase/processes/data_import.py	/^def run_process_read_o2bin_dir(store: MongoStore, process, task):$/;"	kind:function	line:38
+isfile	../mbase/processes/data_import.py	/^        def isfile(filename):$/;"	kind:function	line:50
+create_task_read_o2bin_dir	../mbase/processes/data_import.py	/^def create_task_read_o2bin_dir(store: MongoStore, product_instance_id: str, path: str, filenames=[]):$/;"	kind:function	line:98
+run_process_watch_o2bin_dir	../mbase/processes/data_import.py	/^def run_process_watch_o2bin_dir(store: MongoStore, process, task):$/;"	kind:function	line:124
+isfile	../mbase/processes/data_import.py	/^        def isfile(filename):$/;"	kind:function	line:131
+create_task_watch_o2bin_dir	../mbase/processes/data_import.py	/^def create_task_watch_o2bin_dir(store: MongoStore, product_instance_id: str, path: str):$/;"	kind:function	line:157
+process_o2bin_files	../mbase/processes/data_import.py	/^def process_o2bin_files(store: MongoStore, path, filenames, product_instance_id):$/;"	kind:function	line:183
+test_spawn_processes	../mbase/processes/data_import.py	/^def test_spawn_processes(store: MongoStore, process, task):$/;"	kind:function	line:228
+create_task_test_spawn_processes	../mbase/processes/data_import.py	/^def create_task_test_spawn_processes(store: MongoStore):$/;"	kind:function	line:238
+__init__.py	../mbase/processes/__init__.py	1;"	kind:file	line:1
+import_mbase.py	../import_mbase.py	1;"	kind:file	line:1
+mbase	../import_mbase.py	/^import mbase$/;"	kind:namespace	line:4
+conf.py	../docs/sphinx/source/conf.py	1;"	kind:file	line:1
+os	../docs/sphinx/source/conf.py	/^import os$/;"	kind:namespace	line:15
+sys	../docs/sphinx/source/conf.py	/^import sys$/;"	kind:namespace	line:16
+Path	../docs/sphinx/source/conf.py	/^from pathlib import Path$/;"	kind:namespace	line:17
+mbase_dir	../docs/sphinx/source/conf.py	/^def mbase_dir():$/;"	kind:function	line:20
+project	../docs/sphinx/source/conf.py	/^project = 'MBase'$/;"	kind:variable	line:31
+copyright	../docs/sphinx/source/conf.py	/^copyright = '2019, Thales MBase team'$/;"	kind:variable	line:32
+author	../docs/sphinx/source/conf.py	/^author = 'Thales MBase team'$/;"	kind:variable	line:33
+version	../docs/sphinx/source/conf.py	/^version = ''$/;"	kind:variable	line:36
+release	../docs/sphinx/source/conf.py	/^release = ''$/;"	kind:variable	line:38
+extensions	../docs/sphinx/source/conf.py	/^extensions = [$/;"	kind:variable	line:50
+templates_path	../docs/sphinx/source/conf.py	/^templates_path = ['_templates']$/;"	kind:variable	line:56
+source_suffix	../docs/sphinx/source/conf.py	/^source_suffix = ['.rst', '.py']$/;"	kind:variable	line:62
+master_doc	../docs/sphinx/source/conf.py	/^master_doc = 'index'$/;"	kind:variable	line:65
+language	../docs/sphinx/source/conf.py	/^language = None$/;"	kind:variable	line:72
+exclude_patterns	../docs/sphinx/source/conf.py	/^exclude_patterns = []$/;"	kind:variable	line:77
+pygments_style	../docs/sphinx/source/conf.py	/^pygments_style = None$/;"	kind:variable	line:80
+html_theme	../docs/sphinx/source/conf.py	/^html_theme = 'alabaster'$/;"	kind:variable	line:88
+html_static_path	../docs/sphinx/source/conf.py	/^html_static_path = ['_static']$/;"	kind:variable	line:99
+htmlhelp_basename	../docs/sphinx/source/conf.py	/^htmlhelp_basename = 'MBasedoc'$/;"	kind:variable	line:115
+latex_elements	../docs/sphinx/source/conf.py	/^latex_elements = {$/;"	kind:variable	line:120
+latex_documents	../docs/sphinx/source/conf.py	/^latex_documents = [$/;"	kind:variable	line:141
+man_pages	../docs/sphinx/source/conf.py	/^man_pages = [$/;"	kind:variable	line:151
+texinfo_documents	../docs/sphinx/source/conf.py	/^texinfo_documents = [$/;"	kind:variable	line:162
+epub_title	../docs/sphinx/source/conf.py	/^epub_title = project$/;"	kind:variable	line:172
+epub_exclude_files	../docs/sphinx/source/conf.py	/^epub_exclude_files = ['search.html']$/;"	kind:variable	line:184
+database.py	../mbase_web/mbase_web/database/database.py	1;"	kind:file	line:1
+os	../mbase_web/mbase_web/database/database.py	/^import os, sys$/;"	kind:namespace	line:1
+sys	../mbase_web/mbase_web/database/database.py	/^import os, sys$/;"	kind:namespace	line:1
+Path	../mbase_web/mbase_web/database/database.py	/^from pathlib import Path$/;"	kind:namespace	line:2
+sqlite3	../mbase_web/mbase_web/database/database.py	/^import sqlite3$/;"	kind:namespace	line:3
+contextmanager	../mbase_web/mbase_web/database/database.py	/^from contextlib import contextmanager$/;"	kind:namespace	line:4
+logging	../mbase_web/mbase_web/database/database.py	/^import logging$/;"	kind:namespace	line:5
+pymongo	../mbase_web/mbase_web/database/database.py	/^import pymongo$/;"	kind:namespace	line:8
+MongoClient	../mbase_web/mbase_web/database/database.py	/^from pymongo import MongoClient$/;"	kind:namespace	line:9
+models	../mbase_web/mbase_web/database/database.py	/^from . import models$/;"	kind:namespace	line:11
+_is_test_mode	../mbase_web/mbase_web/database/database.py	/^_is_test_mode = False$/;"	kind:variable	line:14
+_client	../mbase_web/mbase_web/database/database.py	/^_client = None$/;"	kind:variable	line:18
+getClient	../mbase_web/mbase_web/database/database.py	/^def getClient(host: str = "wpll1956", port: int = None):$/;"	kind:function	line:21
+get_db	../mbase_web/mbase_web/database/database.py	/^def get_db():$/;"	kind:function	line:28
+initialize	../mbase_web/mbase_web/database/database.py	/^def initialize():$/;"	kind:function	line:35
+upgrade	../mbase_web/mbase_web/database/database.py	/^def upgrade(version: int):$/;"	kind:function	line:50
+upgrade_01	../mbase_web/mbase_web/database/database.py	/^def upgrade_01():$/;"	kind:function	line:65
+models.py	../mbase_web/mbase_web/database/models.py	1;"	kind:file	line:1
+DbInfo	../mbase_web/mbase_web/database/models.py	/^class DbInfo():$/;"	kind:class	line:3
+__col_name__	../mbase_web/mbase_web/database/models.py	/^    __col_name__ = 'dbInfo'$/;"	kind:variable	line:5
+name	../mbase_web/mbase_web/database/models.py	/^    name = "name"$/;"	kind:variable	line:6
+value	../mbase_web/mbase_web/database/models.py	/^    value = "value"$/;"	kind:variable	line:7
+Annotation_general	../mbase_web/mbase_web/database/models.py	/^class Annotation_general():$/;"	kind:class	line:10
+__col_name__	../mbase_web/mbase_web/database/models.py	/^    __col_name__ = 'annotation_general'$/;"	kind:variable	line:11
+Annotation_anomaly	../mbase_web/mbase_web/database/models.py	/^class Annotation_anomaly():$/;"	kind:class	line:14
+__col_name__	../mbase_web/mbase_web/database/models.py	/^    __col_name__ = 'annotation_anomaly'$/;"	kind:variable	line:15
+Annotation_calarm	../mbase_web/mbase_web/database/models.py	/^class Annotation_calarm():$/;"	kind:class	line:18
+__col_name__	../mbase_web/mbase_web/database/models.py	/^    __col_name__ = 'annotation_calarm'$/;"	kind:variable	line:19
+handlers.py	../mbase_web/mbase_web/handlers/handlers.py	1;"	kind:file	line:1
+os	../mbase_web/mbase_web/handlers/handlers.py	/^import os$/;"	kind:namespace	line:1
+sys	../mbase_web/mbase_web/handlers/handlers.py	/^import sys$/;"	kind:namespace	line:2
+signal	../mbase_web/mbase_web/handlers/handlers.py	/^import signal$/;"	kind:namespace	line:3
+logging	../mbase_web/mbase_web/handlers/handlers.py	/^import logging$/;"	kind:namespace	line:4
+math	../mbase_web/mbase_web/handlers/handlers.py	/^import math$/;"	kind:namespace	line:5
+dt	../mbase_web/mbase_web/handlers/handlers.py	/^import datetime as dt$/;"	kind:namespace	line:6
+json	../mbase_web/mbase_web/handlers/handlers.py	/^import json$/;"	kind:namespace	line:7
+database	../mbase_web/mbase_web/handlers/handlers.py	/^from ..database import database$/;"	kind:namespace	line:9
+models	../mbase_web/mbase_web/handlers/handlers.py	/^from ..database import models$/;"	kind:namespace	line:10
+get_db	../mbase_web/mbase_web/handlers/handlers.py	/^from ..database.database import get_db$/;"	kind:namespace	line:11
+pymongo	../mbase_web/mbase_web/handlers/handlers.py	/^import pymongo$/;"	kind:namespace	line:13
+MongoClient	../mbase_web/mbase_web/handlers/handlers.py	/^from pymongo import MongoClient$/;"	kind:namespace	line:14
+ObjectId	../mbase_web/mbase_web/handlers/handlers.py	/^from bson.objectid import ObjectId$/;"	kind:namespace	line:15
+bson_dumps	../mbase_web/mbase_web/handlers/handlers.py	/^from bson.json_util import dumps as bson_dumps$/;"	kind:namespace	line:16
+RELAXED_JSON_OPTIONS	../mbase_web/mbase_web/handlers/handlers.py	/^from bson.json_util import RELAXED_JSON_OPTIONS, DEFAULT_JSON_OPTIONS$/;"	kind:namespace	line:17
+DEFAULT_JSON_OPTIONS	../mbase_web/mbase_web/handlers/handlers.py	/^from bson.json_util import RELAXED_JSON_OPTIONS, DEFAULT_JSON_OPTIONS$/;"	kind:namespace	line:17
+tornado	../mbase_web/mbase_web/handlers/handlers.py	/^import tornado$/;"	kind:namespace	line:19
+tornado	../mbase_web/mbase_web/handlers/handlers.py	/^import tornado.web$/;"	kind:namespace	line:20
+web	../mbase_web/mbase_web/handlers/handlers.py	/^import tornado.web$/;"	kind:namespace	line:20
+dumps	../mbase_web/mbase_web/handlers/handlers.py	/^def dumps(obj):$/;"	kind:function	line:35
+BaseHandler	../mbase_web/mbase_web/handlers/handlers.py	/^class BaseHandler(tornado.web.RequestHandler):$/;"	kind:class	line:39
+set_default_headers	../mbase_web/mbase_web/handlers/handlers.py	/^    def set_default_headers(self):$/;"	kind:member	line:41
+paged_list	../mbase_web/mbase_web/handlers/handlers.py	/^    def paged_list(self, collection, has_time=True, on_items=None):$/;"	kind:member	line:46
+Main	../mbase_web/mbase_web/handlers/handlers.py	/^class Main(BaseHandler):$/;"	kind:class	line:79
+get	../mbase_web/mbase_web/handlers/handlers.py	/^    def get(self):$/;"	kind:member	line:81
+post	../mbase_web/mbase_web/handlers/handlers.py	/^    def post(self):$/;"	kind:member	line:85
+get_action	../mbase_web/mbase_web/handlers/handlers.py	/^def get_action(path: str):$/;"	kind:function	line:89
+Anomaly	../mbase_web/mbase_web/handlers/handlers.py	/^class Anomaly(BaseHandler):$/;"	kind:class	line:97
+create_annotation	../mbase_web/mbase_web/handlers/handlers.py	/^    def create_annotation(self):$/;"	kind:member	line:99
+post	../mbase_web/mbase_web/handlers/handlers.py	/^    def post(self):$/;"	kind:member	line:117
+Diagnosis	../mbase_web/mbase_web/handlers/handlers.py	/^class Diagnosis(BaseHandler):$/;"	kind:class	line:151
+create_annotation	../mbase_web/mbase_web/handlers/handlers.py	/^    def create_annotation(self):$/;"	kind:member	line:153
+post	../mbase_web/mbase_web/handlers/handlers.py	/^    def post(self):$/;"	kind:member	line:174
+General	../mbase_web/mbase_web/handlers/handlers.py	/^class General(BaseHandler):$/;"	kind:class	line:213
+get	../mbase_web/mbase_web/handlers/handlers.py	/^    def get(self):$/;"	kind:member	line:215
+post	../mbase_web/mbase_web/handlers/handlers.py	/^    def post(self):$/;"	kind:member	line:218
+Events	../mbase_web/mbase_web/handlers/handlers.py	/^class Events(BaseHandler):$/;"	kind:class	line:222
+post	../mbase_web/mbase_web/handlers/handlers.py	/^    def post(self):$/;"	kind:member	line:224
+Products	../mbase_web/mbase_web/handlers/handlers.py	/^class Products(BaseHandler):$/;"	kind:class	line:230
+post	../mbase_web/mbase_web/handlers/handlers.py	/^    def post(self):$/;"	kind:member	line:232
+Tasks	../mbase_web/mbase_web/handlers/handlers.py	/^class Tasks(BaseHandler):$/;"	kind:class	line:238
+post	../mbase_web/mbase_web/handlers/handlers.py	/^    def post(self):$/;"	kind:member	line:240
+on_items	../mbase_web/mbase_web/handlers/handlers.py	/^            def on_items(items):$/;"	kind:function	line:245
+__init__.py	../mbase_web/mbase_web/__init__.py	1;"	kind:file	line:1
+__main__.py	../mbase_web/mbase_web/__main__.py	1;"	kind:file	line:1
+os	../mbase_web/mbase_web/__main__.py	/^import os$/;"	kind:namespace	line:2
+logging	../mbase_web/mbase_web/__main__.py	/^import logging$/;"	kind:namespace	line:3
+Path	../mbase_web/mbase_web/__main__.py	/^from pathlib import Path$/;"	kind:namespace	line:4
+traceback	../mbase_web/mbase_web/__main__.py	/^import traceback$/;"	kind:namespace	line:5
+argparse	../mbase_web/mbase_web/__main__.py	/^import argparse$/;"	kind:namespace	line:6
+tornado	../mbase_web/mbase_web/__main__.py	/^import tornado.ioloop$/;"	kind:namespace	line:8
+ioloop	../mbase_web/mbase_web/__main__.py	/^import tornado.ioloop$/;"	kind:namespace	line:8
+tornado	../mbase_web/mbase_web/__main__.py	/^import tornado.web$/;"	kind:namespace	line:9
+web	../mbase_web/mbase_web/__main__.py	/^import tornado.web$/;"	kind:namespace	line:9
+database	../mbase_web/mbase_web/__main__.py	/^from .database import database$/;"	kind:namespace	line:11
+models	../mbase_web/mbase_web/__main__.py	/^from .database import models$/;"	kind:namespace	line:12
+handlers	../mbase_web/mbase_web/__main__.py	/^from .handlers import handlers$/;"	kind:namespace	line:13
+here	../mbase_web/mbase_web/__main__.py	/^here = Path(os.path.dirname(__file__)).resolve()$/;"	kind:variable	line:15
+main_logger	../mbase_web/mbase_web/__main__.py	/^main_logger = logging.getLogger('mbase_web')$/;"	kind:variable	line:17
+setupLogging	../mbase_web/mbase_web/__main__.py	/^def setupLogging():$/;"	kind:function	line:20
+make_app	../mbase_web/mbase_web/__main__.py	/^def make_app():$/;"	kind:function	line:33
+main	../mbase_web/mbase_web/__main__.py	/^def main():$/;"	kind:function	line:56
+deploy.py	../mbase_web/deploy.py	1;"	kind:file	line:1
+os	../mbase_web/deploy.py	/^import os, sys$/;"	kind:namespace	line:2
+sys	../mbase_web/deploy.py	/^import os, sys$/;"	kind:namespace	line:2
+Path	../mbase_web/deploy.py	/^from pathlib import Path$/;"	kind:namespace	line:3
+Dirs	../mbase_web/deploy.py	/^class Dirs():$/;"	kind:class	line:5
+here	../mbase_web/deploy.py	/^    here = Path(os.path.abspath(os.path.dirname(__file__)))$/;"	kind:variable	line:6
+deploy	../mbase_web/deploy.py	/^    deploy = here.parents[2] \/ "Desktop"$/;"	kind:variable	line:7
+p	../mbase_web/deploy.py	/^        p = Dirs.deploy \/ "dataAnalytics"$/;"	kind:variable	line:11
+p2	../mbase_web/deploy.py	/^        p2 = Dirs.here \/ "dataAnalytics"$/;"	kind:variable	line:13
+compile_on_save.py	../mbase_web/compile_on_save.py	1;"	kind:file	line:1
+logging	../mbase_web/compile_on_save.py	/^import logging$/;"	kind:namespace	line:1
+os	../mbase_web/compile_on_save.py	/^import os$/;"	kind:namespace	line:2
+shutil	../mbase_web/compile_on_save.py	/^import shutil$/;"	kind:namespace	line:3
+subprocess	../mbase_web/compile_on_save.py	/^import subprocess$/;"	kind:namespace	line:4
+sys	../mbase_web/compile_on_save.py	/^import sys$/;"	kind:namespace	line:5
+time	../mbase_web/compile_on_save.py	/^import time$/;"	kind:namespace	line:6
+Path	../mbase_web/compile_on_save.py	/^from pathlib import Path$/;"	kind:namespace	line:7
+FileSystemEventHandler	../mbase_web/compile_on_save.py	/^from watchdog.events import FileSystemEventHandler$/;"	kind:namespace	line:9
+Observer	../mbase_web/compile_on_save.py	/^from watchdog.observers import Observer$/;"	kind:namespace	line:10
+moduleName	../mbase_web/compile_on_save.py	/^moduleName = 'index'$/;"	kind:variable	line:13
+here	../mbase_web/compile_on_save.py	/^here = os.path.abspath(os.path.dirname(__file__))$/;"	kind:variable	line:14
+path_to_python	../mbase_web/compile_on_save.py	/^path_to_python = os.path.join(here, 'transcrypt', 'python')$/;"	kind:variable	line:15
+user_path	../mbase_web/compile_on_save.py	/^user_path = os.path.join(here, 'mbase_web', 'static', 'js')$/;"	kind:variable	line:16
+print_time	../mbase_web/compile_on_save.py	/^def print_time(txt):$/;"	kind:function	line:19
+copy_to_webserver	../mbase_web/compile_on_save.py	/^def copy_to_webserver():$/;"	kind:function	line:23
+bundle	../mbase_web/compile_on_save.py	/^def bundle():$/;"	kind:function	line:28
+compile	../mbase_web/compile_on_save.py	/^def compile():$/;"	kind:function	line:44
+CompileEventHandler	../mbase_web/compile_on_save.py	/^class CompileEventHandler(FileSystemEventHandler):$/;"	kind:class	line:62
+__init__	../mbase_web/compile_on_save.py	/^    def __init__(self):$/;"	kind:member	line:63
+on_any_event	../mbase_web/compile_on_save.py	/^    def on_any_event(self, event):$/;"	kind:member	line:67
+event_handler	../mbase_web/compile_on_save.py	/^    event_handler = CompileEventHandler()$/;"	kind:variable	line:76
+observer	../mbase_web/compile_on_save.py	/^    observer = Observer()$/;"	kind:variable	line:80
+__main__.py	../mbase_web/exploreMongo/__main__.py	1;"	kind:file	line:1
+os	../mbase_web/exploreMongo/__main__.py	/^import os, sys, json, tempfile, datetime, time$/;"	kind:namespace	line:1
+sys	../mbase_web/exploreMongo/__main__.py	/^import os, sys, json, tempfile, datetime, time$/;"	kind:namespace	line:1
+json	../mbase_web/exploreMongo/__main__.py	/^import os, sys, json, tempfile, datetime, time$/;"	kind:namespace	line:1
+tempfile	../mbase_web/exploreMongo/__main__.py	/^import os, sys, json, tempfile, datetime, time$/;"	kind:namespace	line:1
+datetime	../mbase_web/exploreMongo/__main__.py	/^import os, sys, json, tempfile, datetime, time$/;"	kind:namespace	line:1
+time	../mbase_web/exploreMongo/__main__.py	/^import os, sys, json, tempfile, datetime, time$/;"	kind:namespace	line:1
+Path	../mbase_web/exploreMongo/__main__.py	/^from pathlib import Path$/;"	kind:namespace	line:2
+pymongo	../mbase_web/exploreMongo/__main__.py	/^import pymongo$/;"	kind:namespace	line:4
+MongoClient	../mbase_web/exploreMongo/__main__.py	/^from pymongo import MongoClient$/;"	kind:namespace	line:5
+ObjectId	../mbase_web/exploreMongo/__main__.py	/^from bson.objectid import ObjectId$/;"	kind:namespace	line:6
+get_db	../mbase_web/exploreMongo/__main__.py	/^from dataAnalytics.database.database import get_db, getClient$/;"	kind:namespace	line:8
+getClient	../mbase_web/exploreMongo/__main__.py	/^from dataAnalytics.database.database import get_db, getClient$/;"	kind:namespace	line:8
+Annotation_anomaly	../mbase_web/exploreMongo/__main__.py	/^from dataAnalytics.database.models import Annotation_anomaly, Annotation_calarm$/;"	kind:namespace	line:9
+Annotation_calarm	../mbase_web/exploreMongo/__main__.py	/^from dataAnalytics.database.models import Annotation_anomaly, Annotation_calarm$/;"	kind:namespace	line:9
+here	../mbase_web/exploreMongo/__main__.py	/^here = Path(os.path.dirname(os.path.realpath(__file__)))$/;"	kind:variable	line:11
+dataDir	../mbase_web/exploreMongo/__main__.py	/^dataDir = here \/ "tempData"$/;"	kind:variable	line:12
+JSONEncoder	../mbase_web/exploreMongo/__main__.py	/^class JSONEncoder(json.JSONEncoder):$/;"	kind:class	line:14
+default	../mbase_web/exploreMongo/__main__.py	/^    def default(self, obj):$/;"	kind:member	line:16
+newDataFile	../mbase_web/exploreMongo/__main__.py	/^def newDataFile(extension: str = ".json", prefix: str = ""):$/;"	kind:function	line:23
+getName	../mbase_web/exploreMongo/__main__.py	/^    def getName(number: int):$/;"	kind:function	line:26
+saveJson	../mbase_web/exploreMongo/__main__.py	/^def saveJson(obj: object, filename: str = ""):$/;"	kind:function	line:34
+openFile	../mbase_web/exploreMongo/__main__.py	/^def openFile(file):$/;"	kind:function	line:40
+showJson	../mbase_web/exploreMongo/__main__.py	/^def showJson(obj: object, filename: str = ""):$/;"	kind:function	line:43
+showText	../mbase_web/exploreMongo/__main__.py	/^def showText(txt: str):$/;"	kind:function	line:48
+testAggregate	../mbase_web/exploreMongo/__main__.py	/^def testAggregate():$/;"	kind:function	line:54
+addTestData	../mbase_web/exploreMongo/__main__.py	/^def addTestData():$/;"	kind:function	line:60
+saveData	../mbase_web/exploreMongo/__main__.py	/^def saveData(collections = None, maxCount = 0, show: bool = True):$/;"	kind:function	line:70
+dropDatabase	../mbase_web/exploreMongo/__main__.py	/^def dropDatabase():$/;"	kind:function	line:92
+findById	../mbase_web/exploreMongo/__main__.py	/^def findById():$/;"	kind:function	line:97
+updateRecords	../mbase_web/exploreMongo/__main__.py	/^def updateRecords():$/;"	kind:function	line:102
+summarize	../mbase_web/exploreMongo/__main__.py	/^def summarize(data: object, array_length: int = 2):$/;"	kind:function	line:112
+exploreJson	../mbase_web/exploreMongo/__main__.py	/^def exploreJson():$/;"	kind:function	line:125
+removeIncorrectAnnotation	../mbase_web/exploreMongo/__main__.py	/^def removeIncorrectAnnotation():$/;"	kind:function	line:133
+getLastAnnotations	../mbase_web/exploreMongo/__main__.py	/^def getLastAnnotations(showFile: bool = False):$/;"	kind:function	line:140
+saveAnnotationsPeriodically	../mbase_web/exploreMongo/__main__.py	/^def saveAnnotationsPeriodically():$/;"	kind:function	line:149
+main	../mbase_web/exploreMongo/__main__.py	/^def main():$/;"	kind:function	line:159
+org.transcrypt.__runtime__.py	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	1;"	kind:file	line:1
+BaseException	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^class BaseException:$/;"	kind:class	line:15
+Exception	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^class Exception (BaseException):$/;"	kind:class	line:18
+__init__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __init__ (self, *args, **kwargs):$/;"	kind:member	line:20
+__repr__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __repr__ (self):$/;"	kind:member	line:28
+__str__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __str__ (self):$/;"	kind:member	line:36
+IterableError	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^class IterableError (Exception):$/;"	kind:class	line:44
+__init__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __init__ (self, error):$/;"	kind:member	line:45
+StopIteration	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^class StopIteration (Exception):$/;"	kind:class	line:48
+__init__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __init__ (self, error):$/;"	kind:member	line:49
+ValueError	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^class ValueError (Exception):$/;"	kind:class	line:52
+__init__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __init__ (self, message, error):$/;"	kind:member	line:53
+KeyError	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^class KeyError (Exception):$/;"	kind:class	line:56
+__init__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __init__ (self, message, error):$/;"	kind:member	line:57
+AssertionError	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^class AssertionError (Exception):$/;"	kind:class	line:60
+__init__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __init__ (self, message, error):$/;"	kind:member	line:61
+NotImplementedError	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^class NotImplementedError (Exception):$/;"	kind:class	line:67
+__init__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __init__(self, message, error):$/;"	kind:member	line:68
+IndexError	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^class IndexError (Exception):$/;"	kind:class	line:71
+__init__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __init__(self, message, error):$/;"	kind:member	line:72
+AttributeError	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^class AttributeError (Exception):$/;"	kind:class	line:75
+__init__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __init__(self, message, error):$/;"	kind:member	line:76
+TypeError	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^class TypeError (Exception):$/;"	kind:class	line:79
+__init__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __init__(self, message, error):$/;"	kind:member	line:80
+Warning	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^class Warning (Exception):$/;"	kind:class	line:87
+UserWarning	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^class UserWarning (Warning):$/;"	kind:class	line:92
+DeprecationWarning	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^class DeprecationWarning (Warning):$/;"	kind:class	line:95
+RuntimeWarning	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^class RuntimeWarning (Warning):$/;"	kind:class	line:98
+__sort__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^def __sort__ (iterable, key = None, reverse = False):               # Used by py_sort, can deal with kwargs$/;"	kind:function	line:103
+sorted	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^def sorted (iterable, key = None, reverse = False):$/;"	kind:function	line:112
+map	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^def map (func, iterable):$/;"	kind:function	line:123
+filter	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^def filter (func, iterable):$/;"	kind:function	line:127
+divmod	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^def divmod (n, d):$/;"	kind:function	line:132
+complex	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^class complex:$/;"	kind:class	line:137
+__init__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __init__ (self, real, imag = None):$/;"	kind:member	line:138
+__neg__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __neg__ (self):$/;"	kind:member	line:150
+__exp__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __exp__ (self):$/;"	kind:member	line:153
+__log__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __log__ (self):$/;"	kind:member	line:157
+__pow__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __pow__ (self, other):  # a ** b = exp (b log a)$/;"	kind:member	line:160
+__rpow__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __rpow__ (self, real):  # real ** comp -> comp.__rpow__ (real)$/;"	kind:member	line:163
+__mul__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __mul__ (self, other):$/;"	kind:member	line:166
+__rmul__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __rmul__ (self, real):  # real + comp -> comp.__rmul__ (real)$/;"	kind:member	line:172
+__div__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __div__ (self, other):$/;"	kind:member	line:175
+__rdiv__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __rdiv__ (self, real):  # real \/ comp -> comp.__rdiv__ (real)$/;"	kind:member	line:185
+__add__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __add__ (self, other):$/;"	kind:member	line:192
+__radd__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __radd__ (self, real):  # real + comp -> comp.__radd__ (real)$/;"	kind:member	line:198
+__sub__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __sub__ (self, other):$/;"	kind:member	line:201
+__rsub__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __rsub__ (self, real):  # real - comp -> comp.__rsub__ (real)$/;"	kind:member	line:207
+__repr__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __repr__ (self):$/;"	kind:member	line:210
+__str__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __str__ (self):$/;"	kind:member	line:213
+__eq__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __eq__ (self, other):$/;"	kind:member	line:216
+__ne__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __ne__ (self, other):$/;"	kind:member	line:222
+conjugate	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def conjugate (self):$/;"	kind:member	line:228
+__conj__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^def __conj__ (aNumber):$/;"	kind:function	line:231
+__Terminal__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^class __Terminal__:$/;"	kind:class	line:239
+__init__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def __init__ (self):$/;"	kind:member	line:249
+print	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def print (self, *args, sep = ' ', end = '\\n'):$/;"	kind:member	line:265
+input	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^    def input (self, question):$/;"	kind:member	line:274
+__terminal__	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^__terminal__ = __Terminal__ ()$/;"	kind:variable	line:282
+print	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^print = __terminal__.print$/;"	kind:variable	line:284
+input	../mbase_web/transcrypt/python/__target__/org.transcrypt.__runtime__.py	/^input = __terminal__.input$/;"	kind:variable	line:285
+utils.py	../mbase_web/transcrypt/python/__target__/utils.py	1;"	kind:file	line:1
+sleep	../mbase_web/transcrypt/python/__target__/utils.py	/^async def sleep(time):$/;"	kind:function	line:5
+get_url	../mbase_web/transcrypt/python/__target__/utils.py	/^def get_url(path: str = ""):$/;"	kind:function	line:12
+time_to_html	../mbase_web/transcrypt/python/__target__/utils.py	/^def time_to_html(date: str):$/;"	kind:function	line:18
+post	../mbase_web/transcrypt/python/__target__/utils.py	/^async def post(url, data):$/;"	kind:function	line:27
+success	../mbase_web/transcrypt/python/__target__/utils.py	/^    def success(result):$/;"	kind:function	line:30
+error	../mbase_web/transcrypt/python/__target__/utils.py	/^    def error(result):$/;"	kind:function	line:33
+save_file	../mbase_web/transcrypt/python/__target__/utils.py	/^def save_file(txt: str, filename: str):$/;"	kind:function	line:48
+elements.py	../mbase_web/transcrypt/python/__target__/elements.py	1;"	kind:file	line:1
+get_element	../mbase_web/transcrypt/python/__target__/elements.py	/^def get_element(css_selectors):$/;"	kind:function	line:4
+get_elements	../mbase_web/transcrypt/python/__target__/elements.py	/^def get_elements(css_selectors):$/;"	kind:function	line:7
+element	../mbase_web/transcrypt/python/__target__/elements.py	/^def element(name):$/;"	kind:function	line:10
+Element	../mbase_web/transcrypt/python/__target__/elements.py	/^def Element(name):$/;"	kind:function	line:13
+ElementWrapper	../mbase_web/transcrypt/python/__target__/elements.py	/^class ElementWrapper():$/;"	kind:class	line:16
+__init__	../mbase_web/transcrypt/python/__target__/elements.py	/^    def __init__(self, element):$/;"	kind:member	line:17
+append	../mbase_web/transcrypt/python/__target__/elements.py	/^    def append(self, *others):$/;"	kind:member	line:22
+attr	../mbase_web/transcrypt/python/__target__/elements.py	/^    def attr(self, name, value):$/;"	kind:member	line:27
+refresh	../mbase_web/transcrypt/python/__target__/elements.py	/^    def refresh(self):$/;"	kind:member	line:31
+remove_childs	../mbase_web/transcrypt/python/__target__/elements.py	/^    def remove_childs(self):$/;"	kind:member	line:34
+remove_from_parent	../mbase_web/transcrypt/python/__target__/elements.py	/^    def remove_from_parent(self):$/;"	kind:member	line:38
+children	../mbase_web/transcrypt/python/__target__/elements.py	/^    def children(self):$/;"	kind:member	line:41
+index_in_parent	../mbase_web/transcrypt/python/__target__/elements.py	/^    def index_in_parent(self):$/;"	kind:member	line:44
+insert_before	../mbase_web/transcrypt/python/__target__/elements.py	/^    def insert_before(self, newnode: 'ElementWrapper', existingnode: 'ElementWrapper'):$/;"	kind:member	line:47
+inner_html	../mbase_web/transcrypt/python/__target__/elements.py	/^    def inner_html(self, txt):$/;"	kind:member	line:50
+dialogs.py	../mbase_web/transcrypt/python/__target__/dialogs.py	1;"	kind:file	line:1
+utils	../mbase_web/transcrypt/python/__target__/dialogs.py	/^import utils$/;"	kind:namespace	line:1
+get_element	../mbase_web/transcrypt/python/__target__/dialogs.py	/^from elements import get_element, get_elements, element, Element, ElementWrapper$/;"	kind:namespace	line:2
+get_elements	../mbase_web/transcrypt/python/__target__/dialogs.py	/^from elements import get_element, get_elements, element, Element, ElementWrapper$/;"	kind:namespace	line:2
+element	../mbase_web/transcrypt/python/__target__/dialogs.py	/^from elements import get_element, get_elements, element, Element, ElementWrapper$/;"	kind:namespace	line:2
+Element	../mbase_web/transcrypt/python/__target__/dialogs.py	/^from elements import get_element, get_elements, element, Element, ElementWrapper$/;"	kind:namespace	line:2
+ElementWrapper	../mbase_web/transcrypt/python/__target__/dialogs.py	/^from elements import get_element, get_elements, element, Element, ElementWrapper$/;"	kind:namespace	line:2
+Dialog	../mbase_web/transcrypt/python/__target__/dialogs.py	/^class Dialog(ElementWrapper):$/;"	kind:class	line:7
+__init__	../mbase_web/transcrypt/python/__target__/dialogs.py	/^    def __init__(self, title: str):$/;"	kind:member	line:9
+show	../mbase_web/transcrypt/python/__target__/dialogs.py	/^    def show(self):$/;"	kind:member	line:33
+hide	../mbase_web/transcrypt/python/__target__/dialogs.py	/^    def hide(self):$/;"	kind:member	line:36
+toggle	../mbase_web/transcrypt/python/__target__/dialogs.py	/^    def toggle(self):$/;"	kind:member	line:39
+dispose	../mbase_web/transcrypt/python/__target__/dialogs.py	/^    def dispose(self):$/;"	kind:member	line:42
+set_title	../mbase_web/transcrypt/python/__target__/dialogs.py	/^    def set_title(self, title: str):$/;"	kind:member	line:46
+add_button	../mbase_web/transcrypt/python/__target__/dialogs.py	/^    def add_button(self, style_classes: str, text: str):$/;"	kind:member	line:49
+add_button_close	../mbase_web/transcrypt/python/__target__/dialogs.py	/^    def add_button_close(self):$/;"	kind:member	line:55
+add_button_save	../mbase_web/transcrypt/python/__target__/dialogs.py	/^    def add_button_save(self):$/;"	kind:member	line:58
+Dialog_Confirm	../mbase_web/transcrypt/python/__target__/dialogs.py	/^class Dialog_Confirm(Dialog):$/;"	kind:class	line:62
+__init__	../mbase_web/transcrypt/python/__target__/dialogs.py	/^    def __init__(self, title="Confirm dialog", on_confirm=None):$/;"	kind:member	line:64
+show	../mbase_web/transcrypt/python/__target__/dialogs.py	/^    def show(self, txt, on_confirm=None):$/;"	kind:member	line:72
+test_dialog	../mbase_web/transcrypt/python/__target__/dialogs.py	/^async def test_dialog():$/;"	kind:function	line:82
+delayer.py	../mbase_web/transcrypt/python/__target__/delayer.py	1;"	kind:file	line:1
+Delayer	../mbase_web/transcrypt/python/__target__/delayer.py	/^class Delayer():$/;"	kind:class	line:1
+__init__	../mbase_web/transcrypt/python/__target__/delayer.py	/^    def __init__(self, timespan):$/;"	kind:member	line:4
+now	../mbase_web/transcrypt/python/__target__/delayer.py	/^    def now(self):$/;"	kind:member	line:9
+execute	../mbase_web/transcrypt/python/__target__/delayer.py	/^    def execute(self, func):$/;"	kind:member	line:12
+executeLater	../mbase_web/transcrypt/python/__target__/delayer.py	/^                    def executeLater():$/;"	kind:function	line:28
+executeNow	../mbase_web/transcrypt/python/__target__/delayer.py	/^    def executeNow(self, func):$/;"	kind:member	line:37
+Delayer2	../mbase_web/transcrypt/python/__target__/delayer.py	/^class Delayer2():$/;"	kind:class	line:42
+__init__	../mbase_web/transcrypt/python/__target__/delayer.py	/^    def __init__(self, timespan, resetDelay = False):$/;"	kind:member	line:45
+now	../mbase_web/transcrypt/python/__target__/delayer.py	/^    def now(self):$/;"	kind:member	line:51
+execute	../mbase_web/transcrypt/python/__target__/delayer.py	/^    def execute(self, func):$/;"	kind:member	line:54
+execute_	../mbase_web/transcrypt/python/__target__/delayer.py	/^        def execute_(f):$/;"	kind:function	line:61
+paged_list.py	../mbase_web/transcrypt/python/__target__/paged_list.py	1;"	kind:file	line:1
+Delayer	../mbase_web/transcrypt/python/__target__/paged_list.py	/^from delayer import Delayer$/;"	kind:namespace	line:1
+ElementWrapper	../mbase_web/transcrypt/python/__target__/paged_list.py	/^from elements import ElementWrapper$/;"	kind:namespace	line:2
+findIndex	../mbase_web/transcrypt/python/__target__/paged_list.py	/^def findIndex(array, func):  # for IE$/;"	kind:function	line:9
+ScrollPosition	../mbase_web/transcrypt/python/__target__/paged_list.py	/^class ScrollPosition():$/;"	kind:class	line:17
+left	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def left(self):$/;"	kind:member	line:19
+top	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def top(self):$/;"	kind:member	line:23
+save	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def save(self):$/;"	kind:member	line:27
+restore	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def restore(self):$/;"	kind:member	line:31
+scrollPosition	../mbase_web/transcrypt/python/__target__/paged_list.py	/^scrollPosition = ScrollPosition()$/;"	kind:variable	line:34
+element	../mbase_web/transcrypt/python/__target__/paged_list.py	/^def element(name):$/;"	kind:function	line:38
+Element	../mbase_web/transcrypt/python/__target__/paged_list.py	/^def Element(name):$/;"	kind:function	line:41
+named_tuple	../mbase_web/transcrypt/python/__target__/paged_list.py	/^def named_tuple(fields, values=None):$/;"	kind:function	line:47
+contains_all	../mbase_web/transcrypt/python/__target__/paged_list.py	/^def contains_all(object, fields):$/;"	kind:function	line:56
+contains_more	../mbase_web/transcrypt/python/__target__/paged_list.py	/^def contains_more(object, fields):$/;"	kind:function	line:62
+_default_buttons	../mbase_web/transcrypt/python/__target__/paged_list.py	/^_default_buttons = []$/;"	kind:variable	line:68
+add_default_button	../mbase_web/transcrypt/python/__target__/paged_list.py	/^def add_default_button(id, name, style_class):$/;"	kind:function	line:70
+_default_text	../mbase_web/transcrypt/python/__target__/paged_list.py	/^_default_text = { 'text_total': "Total", 'text_filter': 'Filter' }$/;"	kind:variable	line:75
+PagedList	../mbase_web/transcrypt/python/__target__/paged_list.py	/^class PagedList(ElementWrapper):$/;"	kind:class	line:77
+_send_data	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    _send_data = { 'page', 'pageSize', 'filterColumns', 'filterValues', 'sortOn', 'sortAsc' }$/;"	kind:variable	line:79
+_receive_data	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    _receive_data = { 'Items', 'CurrentPage', 'PageCount', 'TotalCount' }$/;"	kind:variable	line:80
+__init__	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def __init__(self, container: str, url: str):$/;"	kind:member	line:82
+get_styling	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def get_styling(self):$/;"	kind:member	line:118
+add_column	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def add_column(self, id: str, header: str = id):$/;"	kind:member	line:121
+set_url	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def set_url(self, url: str):$/;"	kind:member	line:126
+get_url	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def get_url(self):$/;"	kind:member	line:130
+on_page_refreshed	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def on_page_refreshed(self, func = None):$/;"	kind:member	line:135
+on_page_refreshing	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def on_page_refreshing(self, func = None):$/;"	kind:member	line:144
+add_button	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def add_button(self, id, name, style_class):$/;"	kind:member	line:153
+get_top_pager	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def get_top_pager(self):$/;"	kind:member	line:162
+get_bottom_pager	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def get_bottom_pager(self):$/;"	kind:member	line:165
+hide_count	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def hide_count(self):  # to hide the counter (Total: ...)$/;"	kind:member	line:168
+disable_pagination	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def disable_pagination(self):$/;"	kind:member	line:173
+add_default_buttons	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def add_default_buttons(self, *ids):$/;"	kind:member	line:178
+render_header	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def render_header(self):$/;"	kind:member	line:191
+toggle_sort	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def toggle_sort(self, columnIndex):$/;"	kind:member	line:214
+render	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def render(self, data, fullPage):$/;"	kind:member	line:235
+get_data	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def get_data(self, page, fullPage = False):$/;"	kind:member	line:299
+onSucces	../mbase_web/transcrypt/python/__target__/paged_list.py	/^        def onSucces(data):$/;"	kind:function	line:311
+get_data_error	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def get_data_error(self, data, errorText):$/;"	kind:member	line:316
+refresh	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def refresh(self, fullPage = False):$/;"	kind:member	line:319
+refresh_item	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def refresh_item(self, item, newItem = None):$/;"	kind:member	line:325
+get_row	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def get_row(self, item):$/;"	kind:member	line:330
+get_server	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def get_server(self):$/;"	kind:member	line:337
+fake_server	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def fake_server(self):$/;"	kind:member	line:340
+ajax_server	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def ajax_server(self, url):$/;"	kind:member	line:344
+add_row_listener	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def add_row_listener(self, event, func, useCapture: bool = False):$/;"	kind:member	line:348
+newFunction	../mbase_web/transcrypt/python/__target__/paged_list.py	/^        def newFunction(ev):$/;"	kind:function	line:349
+remove_row_listener	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def remove_row_listener(self, event, func, useCapture: bool = False):$/;"	kind:member	line:361
+PagedListStyling	../mbase_web/transcrypt/python/__target__/paged_list.py	/^class PagedListStyling():$/;"	kind:class	line:365
+__init__	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def __init__(self, pagedList):$/;"	kind:member	line:367
+row_styles	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def row_styles(self, func):$/;"	kind:member	line:377
+row_classes	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def row_classes(self, func):$/;"	kind:member	line:386
+table_class	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def table_class(self, style_class):$/;"	kind:member	line:395
+table_style	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def table_style(self, style):$/;"	kind:member	line:399
+set_class_expanded	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def set_class_expanded(self, style_class):$/;"	kind:member	line:403
+set_class_collapsed	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def set_class_collapsed(self, style_class):$/;"	kind:member	line:407
+set_class_ascending	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def set_class_ascending(self, style_class):$/;"	kind:member	line:411
+set_class_descending	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def set_class_descending(self, style_class):$/;"	kind:member	line:415
+set_class_button_column	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def set_class_button_column(self, style_class):$/;"	kind:member	line:419
+PagedListRow	../mbase_web/transcrypt/python/__target__/paged_list.py	/^class PagedListRow(ElementWrapper):$/;"	kind:class	line:423
+__init__	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def __init__(self, pagedList: 'PagedList', item):$/;"	kind:member	line:425
+add_to_paged_list	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def add_to_paged_list(self):$/;"	kind:member	line:437
+remove	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def remove(self):$/;"	kind:member	line:441
+lengthInRows	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def lengthInRows(self):$/;"	kind:member	line:448
+positionInRows	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def positionInRows(self):$/;"	kind:member	line:451
+positionInParent	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def positionInParent(self):$/;"	kind:member	line:461
+render	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def render(self):$/;"	kind:member	line:464
+clsName	../mbase_web/transcrypt/python/__target__/paged_list.py	/^                def clsName(isExpanded):$/;"	kind:function	line:475
+toggleExpand	../mbase_web/transcrypt/python/__target__/paged_list.py	/^                def toggleExpand(buttonExpand, expandFunction, rowBefore: 'PagedListRow', event):$/;"	kind:function	line:478
+refreshFunction	../mbase_web/transcrypt/python/__target__/paged_list.py	/^                def refreshFunction(buttonExpand, toggleExpand, column, item):$/;"	kind:function	line:489
+refreshFunction	../mbase_web/transcrypt/python/__target__/paged_list.py	/^                def refreshFunction(span, column, item):$/;"	kind:function	line:494
+refreshFunction	../mbase_web/transcrypt/python/__target__/paged_list.py	/^                def refreshFunction(td, column, item):$/;"	kind:function	line:498
+renderButtons	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def renderButtons(self, item):$/;"	kind:member	line:505
+refresh	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def refresh(self, item):$/;"	kind:member	line:519
+refreshPosition	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def refreshPosition(self):$/;"	kind:member	line:539
+PagedListSubRow	../mbase_web/transcrypt/python/__target__/paged_list.py	/^class PagedListSubRow(ElementWrapper):$/;"	kind:class	line:556
+__init__	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def __init__(self, pagedList: 'PagedList', rowBefore: 'PagedListRow', elementToShow):$/;"	kind:member	line:558
+render	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def render(self):$/;"	kind:member	line:565
+remove	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def remove(self):$/;"	kind:member	line:576
+PagedListButton	../mbase_web/transcrypt/python/__target__/paged_list.py	/^class PagedListButton():$/;"	kind:class	line:585
+__init__	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def __init__(self, id, name, style_class=""):$/;"	kind:member	line:587
+onclick	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def onclick(self, functionOnclick):$/;"	kind:member	line:594
+onClick	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def onClick(self, functionOnclick):$/;"	kind:member	line:602
+showIf	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def showIf(self, function_show_if):$/;"	kind:member	line:605
+showif	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def showif(self, function_show_if):$/;"	kind:member	line:608
+show_if	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def show_if(self, function_show_if):$/;"	kind:member	line:611
+getElement	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def getElement(self, item):$/;"	kind:member	line:620
+copy	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def copy(self):$/;"	kind:member	line:628
+PagedListColumn	../mbase_web/transcrypt/python/__target__/paged_list.py	/^class PagedListColumn():$/;"	kind:class	line:634
+FilterItem	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    FilterItem = { 'Text', 'Value' }$/;"	kind:variable	line:636
+__init__	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def __init__(self, id, header):$/;"	kind:member	line:638
+add_class_header	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def add_class_header(self, style_class):$/;"	kind:member	line:658
+add_style_header	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def add_style_header(self, style):$/;"	kind:member	line:662
+add_class_header_span	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def add_class_header_span(self, style_class):$/;"	kind:member	line:666
+add_style_header_span	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def add_style_header_span(self, style):$/;"	kind:member	line:670
+add_class_rows	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def add_class_rows(self, style_class):$/;"	kind:member	line:674
+add_style_rows	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def add_style_rows(self, style):$/;"	kind:member	line:678
+add_style	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def add_style(self, style):$/;"	kind:member	line:682
+add_class	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def add_class(self, style_class):$/;"	kind:member	line:687
+enable_sort	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def enable_sort(self):$/;"	kind:member	line:692
+enable_filter	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def enable_filter(self, items=None):$/;"	kind:member	line:696
+item_to_html	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def item_to_html(self, item_to_html_function):$/;"	kind:member	line:707
+item_to_element	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def item_to_element(self, item_to_element_function):$/;"	kind:member	line:713
+on_expand_item	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def on_expand_item(self, on_expand_item):$/;"	kind:member	line:719
+get_elements	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def get_elements(self, pagedList):$/;"	kind:member	line:725
+getValue	../mbase_web/transcrypt/python/__target__/paged_list.py	/^                def getValue(element):$/;"	kind:function	line:740
+filterItemToOption	../mbase_web/transcrypt/python/__target__/paged_list.py	/^                    def filterItemToOption(filterItem):$/;"	kind:function	line:752
+Pager	../mbase_web/transcrypt/python/__target__/paged_list.py	/^class Pager(ElementWrapper):$/;"	kind:class	line:767
+__init__	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def __init__(self, container, pagedList):$/;"	kind:member	line:769
+getTable	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def getTable(self):$/;"	kind:member	line:791
+set_pagination_class	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def set_pagination_class(self, style_class):$/;"	kind:member	line:794
+set_active_class	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def set_active_class(self, style_class):$/;"	kind:member	line:798
+set_count_class	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def set_count_class(self, style_class):$/;"	kind:member	line:802
+hide_count	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def hide_count(self): # to hide the counter (Total: ...)$/;"	kind:member	line:806
+disable	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def disable(self):$/;"	kind:member	line:812
+enable	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def enable(self):$/;"	kind:member	line:817
+refresh	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def refresh(self, currentPage, pageCount, itemCount):$/;"	kind:member	line:823
+add_number	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def add_number(self, number, text=None):$/;"	kind:member	line:855
+DataServer	../mbase_web/transcrypt/python/__target__/paged_list.py	/^class DataServer():$/;"	kind:class	line:865
+__init__	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def __init__(self):$/;"	kind:member	line:867
+get_page_data	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def get_page_data(self, data, onSucces, onFailure): # data format: _send_data = { 'page', 'pageSize', 'filterColumns', 'filterValues', 'sortOn', 'sortAsc' }$/;"	kind:member	line:870
+AjaxServer	../mbase_web/transcrypt/python/__target__/paged_list.py	/^class AjaxServer(DataServer):$/;"	kind:class	line:873
+__init__	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def __init__(self, url):$/;"	kind:member	line:875
+get_page_data	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def get_page_data(self, data, onSucces, onFailure):$/;"	kind:member	line:879
+FakeServer	../mbase_web/transcrypt/python/__target__/paged_list.py	/^class FakeServer(DataServer):$/;"	kind:class	line:890
+__init__	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def __init__(self):$/;"	kind:member	line:892
+getMaxId	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def getMaxId(self):$/;"	kind:member	line:897
+addData	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def addData(self, *items):$/;"	kind:member	line:903
+get_data	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def get_data(self):$/;"	kind:member	line:907
+clear_data	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def clear_data(self):$/;"	kind:member	line:910
+get_item	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def get_item(self, id):$/;"	kind:member	line:913
+delete_item	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def delete_item(self, id):$/;"	kind:member	line:919
+get_nested_value	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def get_nested_value(obj, fields):$/;"	kind:member	line:928
+get_filters	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def get_filters(self, filterColumns, filterValues): # returns list of functions which accepts an data item and returns true\/false.$/;"	kind:member	line:933
+passFilter	../mbase_web/transcrypt/python/__target__/paged_list.py	/^        def passFilter(field, value, item):$/;"	kind:function	line:935
+get_page_data	../mbase_web/transcrypt/python/__target__/paged_list.py	/^    def get_page_data(self, data, onSucces, onFailure): # format: _send_data = { 'page', 'pageSize', 'filterColumns', 'filterValues', 'sortOn', 'sortAsc' }$/;"	kind:member	line:952
+compare	../mbase_web/transcrypt/python/__target__/paged_list.py	/^        def compare(a, b):$/;"	kind:function	line:961
+isNumber	../mbase_web/transcrypt/python/__target__/paged_list.py	/^                def isNumber(v):$/;"	kind:function	line:965
+layout.py	../mbase_web/transcrypt/python/__target__/layout.py	1;"	kind:file	line:1
+List	../mbase_web/transcrypt/python/__target__/layout.py	/^from typing import List$/;"	kind:namespace	line:3
+paged_list	../mbase_web/transcrypt/python/__target__/layout.py	/^import paged_list$/;"	kind:namespace	line:6
+ElementWrapper	../mbase_web/transcrypt/python/__target__/layout.py	/^from elements import ElementWrapper, Element, element, get_element, get_elements$/;"	kind:namespace	line:7
+Element	../mbase_web/transcrypt/python/__target__/layout.py	/^from elements import ElementWrapper, Element, element, get_element, get_elements$/;"	kind:namespace	line:7
+element	../mbase_web/transcrypt/python/__target__/layout.py	/^from elements import ElementWrapper, Element, element, get_element, get_elements$/;"	kind:namespace	line:7
+get_element	../mbase_web/transcrypt/python/__target__/layout.py	/^from elements import ElementWrapper, Element, element, get_element, get_elements$/;"	kind:namespace	line:7
+get_elements	../mbase_web/transcrypt/python/__target__/layout.py	/^from elements import ElementWrapper, Element, element, get_element, get_elements$/;"	kind:namespace	line:7
+dialogs	../mbase_web/transcrypt/python/__target__/layout.py	/^import dialogs$/;"	kind:namespace	line:8
+utils	../mbase_web/transcrypt/python/__target__/layout.py	/^import utils$/;"	kind:namespace	line:9
+main_menu	../mbase_web/transcrypt/python/__target__/layout.py	/^main_menu = ElementWrapper(get_element("#main_menu"))$/;"	kind:variable	line:14
+main_menu_container	../mbase_web/transcrypt/python/__target__/layout.py	/^main_menu_container = ElementWrapper(get_element("#main_menu_container"))$/;"	kind:variable	line:15
+set_home	../mbase_web/transcrypt/python/__target__/layout.py	/^def set_home():$/;"	kind:function	line:18
+PageContent	../mbase_web/transcrypt/python/__target__/layout.py	/^class PageContent(ElementWrapper):$/;"	kind:class	line:38
+__init__	../mbase_web/transcrypt/python/__target__/layout.py	/^    def __init__(self, title: str, element_, on_view=None):$/;"	kind:member	line:40
+on_view	../mbase_web/transcrypt/python/__target__/layout.py	/^    def on_view(self):$/;"	kind:member	line:49
+dispose	../mbase_web/transcrypt/python/__target__/layout.py	/^    def dispose(self):$/;"	kind:member	line:57
+MainMenuItem	../mbase_web/transcrypt/python/__target__/layout.py	/^class MainMenuItem(ElementWrapper):$/;"	kind:class	line:63
+__init__	../mbase_web/transcrypt/python/__target__/layout.py	/^    def __init__(self, title: str, content: PageContent):$/;"	kind:member	line:65
+onclick	../mbase_web/transcrypt/python/__target__/layout.py	/^    def onclick(self, evt):$/;"	kind:member	line:74
+show_content	../mbase_web/transcrypt/python/__target__/layout.py	/^    def show_content(self):$/;"	kind:member	line:88
+DropdownItem	../mbase_web/transcrypt/python/__target__/layout.py	/^class DropdownItem(ElementWrapper):$/;"	kind:class	line:94
+__init__	../mbase_web/transcrypt/python/__target__/layout.py	/^    def __init__(self, title: str, content: PageContent):$/;"	kind:member	line:96
+onclick	../mbase_web/transcrypt/python/__target__/layout.py	/^    def onclick(self, evt):$/;"	kind:member	line:102
+DropdownMenu	../mbase_web/transcrypt/python/__target__/layout.py	/^class DropdownMenu(ElementWrapper):$/;"	kind:class	line:111
+__init__	../mbase_web/transcrypt/python/__target__/layout.py	/^    def __init__(self, title: str, subtitles: List[str], contents: List[PageContent]):$/;"	kind:member	line:113
+update_list_in_page	../mbase_web/transcrypt/python/__target__/layout.py	/^async def update_list_in_page(page: PageContent, _list: PagedList):$/;"	kind:function	line:130
+events_list	../mbase_web/transcrypt/python/__target__/layout.py	/^def events_list():$/;"	kind:function	line:137
+time_to_html	../mbase_web/transcrypt/python/__target__/layout.py	/^    def time_to_html(obj):$/;"	kind:function	line:143
+anomaly_list	../mbase_web/transcrypt/python/__target__/layout.py	/^def anomaly_list():$/;"	kind:function	line:158
+download	../mbase_web/transcrypt/python/__target__/layout.py	/^    async def download(evt):$/;"	kind:function	line:163
+diagnosis_list	../mbase_web/transcrypt/python/__target__/layout.py	/^def diagnosis_list():$/;"	kind:function	line:198
+download	../mbase_web/transcrypt/python/__target__/layout.py	/^    async def download(evt):$/;"	kind:function	line:203
+time_to_html	../mbase_web/transcrypt/python/__target__/layout.py	/^    def time_to_html(obj):$/;"	kind:function	line:233
+products_list	../mbase_web/transcrypt/python/__target__/layout.py	/^def products_list():$/;"	kind:function	line:248
+tasks_list	../mbase_web/transcrypt/python/__target__/layout.py	/^def tasks_list():$/;"	kind:function	line:259
+time_to_html	../mbase_web/transcrypt/python/__target__/layout.py	/^    def time_to_html(obj):$/;"	kind:function	line:265
+finish_task	../mbase_web/transcrypt/python/__target__/layout.py	/^    async def finish_task(task):$/;"	kind:function	line:276
+process_sublist	../mbase_web/transcrypt/python/__target__/layout.py	/^    def process_sublist():$/;"	kind:function	line:287
+kill_process	../mbase_web/transcrypt/python/__target__/layout.py	/^        async def kill_process(process):$/;"	kind:function	line:299
+on_expand_name	../mbase_web/transcrypt/python/__target__/layout.py	/^    def on_expand_name(item):$/;"	kind:function	line:315
+update	../mbase_web/transcrypt/python/__target__/layout.py	/^        async def update():$/;"	kind:function	line:319
+index.py	../mbase_web/transcrypt/python/__target__/index.py	1;"	kind:file	line:1
+layout	../mbase_web/transcrypt/python/__target__/index.py	/^import layout$/;"	kind:namespace	line:2
+utils	../mbase_web/transcrypt/python/__target__/index.py	/^import utils$/;"	kind:namespace	line:3
+dialogs.py	../mbase_web/transcrypt/python/dialogs.py	1;"	kind:file	line:1
+utils	../mbase_web/transcrypt/python/dialogs.py	/^import utils$/;"	kind:namespace	line:1
+get_element	../mbase_web/transcrypt/python/dialogs.py	/^from elements import get_element, get_elements, element, Element, ElementWrapper$/;"	kind:namespace	line:2
+get_elements	../mbase_web/transcrypt/python/dialogs.py	/^from elements import get_element, get_elements, element, Element, ElementWrapper$/;"	kind:namespace	line:2
+element	../mbase_web/transcrypt/python/dialogs.py	/^from elements import get_element, get_elements, element, Element, ElementWrapper$/;"	kind:namespace	line:2
+Element	../mbase_web/transcrypt/python/dialogs.py	/^from elements import get_element, get_elements, element, Element, ElementWrapper$/;"	kind:namespace	line:2
+ElementWrapper	../mbase_web/transcrypt/python/dialogs.py	/^from elements import get_element, get_elements, element, Element, ElementWrapper$/;"	kind:namespace	line:2
+Dialog	../mbase_web/transcrypt/python/dialogs.py	/^class Dialog(ElementWrapper):$/;"	kind:class	line:7
+__init__	../mbase_web/transcrypt/python/dialogs.py	/^    def __init__(self, title: str):$/;"	kind:member	line:9
+show	../mbase_web/transcrypt/python/dialogs.py	/^    def show(self):$/;"	kind:member	line:33
+hide	../mbase_web/transcrypt/python/dialogs.py	/^    def hide(self):$/;"	kind:member	line:36
+toggle	../mbase_web/transcrypt/python/dialogs.py	/^    def toggle(self):$/;"	kind:member	line:39
+dispose	../mbase_web/transcrypt/python/dialogs.py	/^    def dispose(self):$/;"	kind:member	line:42
+set_title	../mbase_web/transcrypt/python/dialogs.py	/^    def set_title(self, title: str):$/;"	kind:member	line:46
+add_button	../mbase_web/transcrypt/python/dialogs.py	/^    def add_button(self, style_classes: str, text: str):$/;"	kind:member	line:49
+add_button_close	../mbase_web/transcrypt/python/dialogs.py	/^    def add_button_close(self):$/;"	kind:member	line:55
+add_button_save	../mbase_web/transcrypt/python/dialogs.py	/^    def add_button_save(self):$/;"	kind:member	line:58
+Dialog_Confirm	../mbase_web/transcrypt/python/dialogs.py	/^class Dialog_Confirm(Dialog):$/;"	kind:class	line:62
+__init__	../mbase_web/transcrypt/python/dialogs.py	/^    def __init__(self, title="Confirm dialog", on_confirm=None):$/;"	kind:member	line:64
+show	../mbase_web/transcrypt/python/dialogs.py	/^    def show(self, txt, on_confirm=None):$/;"	kind:member	line:72
+test_dialog	../mbase_web/transcrypt/python/dialogs.py	/^async def test_dialog():$/;"	kind:function	line:82
+index.py	../mbase_web/transcrypt/python/index.py	1;"	kind:file	line:1
+layout	../mbase_web/transcrypt/python/index.py	/^import layout$/;"	kind:namespace	line:2
+utils	../mbase_web/transcrypt/python/index.py	/^import utils$/;"	kind:namespace	line:3
+delayer.py	../mbase_web/transcrypt/python/delayer.py	1;"	kind:file	line:1
+Delayer	../mbase_web/transcrypt/python/delayer.py	/^class Delayer():$/;"	kind:class	line:1
+__init__	../mbase_web/transcrypt/python/delayer.py	/^    def __init__(self, timespan):$/;"	kind:member	line:4
+now	../mbase_web/transcrypt/python/delayer.py	/^    def now(self):$/;"	kind:member	line:9
+execute	../mbase_web/transcrypt/python/delayer.py	/^    def execute(self, func):$/;"	kind:member	line:12
+executeLater	../mbase_web/transcrypt/python/delayer.py	/^                    def executeLater():$/;"	kind:function	line:28
+executeNow	../mbase_web/transcrypt/python/delayer.py	/^    def executeNow(self, func):$/;"	kind:member	line:37
+Delayer2	../mbase_web/transcrypt/python/delayer.py	/^class Delayer2():$/;"	kind:class	line:42
+__init__	../mbase_web/transcrypt/python/delayer.py	/^    def __init__(self, timespan, resetDelay = False):$/;"	kind:member	line:45
+now	../mbase_web/transcrypt/python/delayer.py	/^    def now(self):$/;"	kind:member	line:51
+execute	../mbase_web/transcrypt/python/delayer.py	/^    def execute(self, func):$/;"	kind:member	line:54
+execute_	../mbase_web/transcrypt/python/delayer.py	/^        def execute_(f):$/;"	kind:function	line:61
+elements.py	../mbase_web/transcrypt/python/elements.py	1;"	kind:file	line:1
+get_element	../mbase_web/transcrypt/python/elements.py	/^def get_element(css_selectors):$/;"	kind:function	line:4
+get_elements	../mbase_web/transcrypt/python/elements.py	/^def get_elements(css_selectors):$/;"	kind:function	line:7
+element	../mbase_web/transcrypt/python/elements.py	/^def element(name):$/;"	kind:function	line:10
+Element	../mbase_web/transcrypt/python/elements.py	/^def Element(name):$/;"	kind:function	line:13
+ElementWrapper	../mbase_web/transcrypt/python/elements.py	/^class ElementWrapper():$/;"	kind:class	line:16
+__init__	../mbase_web/transcrypt/python/elements.py	/^    def __init__(self, element):$/;"	kind:member	line:17
+append	../mbase_web/transcrypt/python/elements.py	/^    def append(self, *others):$/;"	kind:member	line:22
+attr	../mbase_web/transcrypt/python/elements.py	/^    def attr(self, name, value):$/;"	kind:member	line:27
+refresh	../mbase_web/transcrypt/python/elements.py	/^    def refresh(self):$/;"	kind:member	line:31
+remove_childs	../mbase_web/transcrypt/python/elements.py	/^    def remove_childs(self):$/;"	kind:member	line:34
+remove_from_parent	../mbase_web/transcrypt/python/elements.py	/^    def remove_from_parent(self):$/;"	kind:member	line:38
+children	../mbase_web/transcrypt/python/elements.py	/^    def children(self):$/;"	kind:member	line:41
+index_in_parent	../mbase_web/transcrypt/python/elements.py	/^    def index_in_parent(self):$/;"	kind:member	line:44
+insert_before	../mbase_web/transcrypt/python/elements.py	/^    def insert_before(self, newnode: 'ElementWrapper', existingnode: 'ElementWrapper'):$/;"	kind:member	line:47
+inner_html	../mbase_web/transcrypt/python/elements.py	/^    def inner_html(self, txt):$/;"	kind:member	line:50
+layout.py	../mbase_web/transcrypt/python/layout.py	1;"	kind:file	line:1
+List	../mbase_web/transcrypt/python/layout.py	/^from typing import List$/;"	kind:namespace	line:3
+paged_list	../mbase_web/transcrypt/python/layout.py	/^import paged_list$/;"	kind:namespace	line:6
+ElementWrapper	../mbase_web/transcrypt/python/layout.py	/^from elements import ElementWrapper, Element, element, get_element, get_elements$/;"	kind:namespace	line:7
+Element	../mbase_web/transcrypt/python/layout.py	/^from elements import ElementWrapper, Element, element, get_element, get_elements$/;"	kind:namespace	line:7
+element	../mbase_web/transcrypt/python/layout.py	/^from elements import ElementWrapper, Element, element, get_element, get_elements$/;"	kind:namespace	line:7
+get_element	../mbase_web/transcrypt/python/layout.py	/^from elements import ElementWrapper, Element, element, get_element, get_elements$/;"	kind:namespace	line:7
+get_elements	../mbase_web/transcrypt/python/layout.py	/^from elements import ElementWrapper, Element, element, get_element, get_elements$/;"	kind:namespace	line:7
+dialogs	../mbase_web/transcrypt/python/layout.py	/^import dialogs$/;"	kind:namespace	line:8
+utils	../mbase_web/transcrypt/python/layout.py	/^import utils$/;"	kind:namespace	line:9
+main_menu	../mbase_web/transcrypt/python/layout.py	/^main_menu = ElementWrapper(get_element("#main_menu"))$/;"	kind:variable	line:14
+main_menu_container	../mbase_web/transcrypt/python/layout.py	/^main_menu_container = ElementWrapper(get_element("#main_menu_container"))$/;"	kind:variable	line:15
+set_home	../mbase_web/transcrypt/python/layout.py	/^def set_home():$/;"	kind:function	line:18
+PageContent	../mbase_web/transcrypt/python/layout.py	/^class PageContent(ElementWrapper):$/;"	kind:class	line:38
+__init__	../mbase_web/transcrypt/python/layout.py	/^    def __init__(self, title: str, element_, on_view=None):$/;"	kind:member	line:40
+on_view	../mbase_web/transcrypt/python/layout.py	/^    def on_view(self):$/;"	kind:member	line:49
+dispose	../mbase_web/transcrypt/python/layout.py	/^    def dispose(self):$/;"	kind:member	line:57
+MainMenuItem	../mbase_web/transcrypt/python/layout.py	/^class MainMenuItem(ElementWrapper):$/;"	kind:class	line:63
+__init__	../mbase_web/transcrypt/python/layout.py	/^    def __init__(self, title: str, content: PageContent):$/;"	kind:member	line:65
+onclick	../mbase_web/transcrypt/python/layout.py	/^    def onclick(self, evt):$/;"	kind:member	line:74
+show_content	../mbase_web/transcrypt/python/layout.py	/^    def show_content(self):$/;"	kind:member	line:88
+DropdownItem	../mbase_web/transcrypt/python/layout.py	/^class DropdownItem(ElementWrapper):$/;"	kind:class	line:94
+__init__	../mbase_web/transcrypt/python/layout.py	/^    def __init__(self, title: str, content: PageContent):$/;"	kind:member	line:96
+onclick	../mbase_web/transcrypt/python/layout.py	/^    def onclick(self, evt):$/;"	kind:member	line:102
+DropdownMenu	../mbase_web/transcrypt/python/layout.py	/^class DropdownMenu(ElementWrapper):$/;"	kind:class	line:111
+__init__	../mbase_web/transcrypt/python/layout.py	/^    def __init__(self, title: str, subtitles: List[str], contents: List[PageContent]):$/;"	kind:member	line:113
+update_list_in_page	../mbase_web/transcrypt/python/layout.py	/^async def update_list_in_page(page: PageContent, _list: PagedList):$/;"	kind:function	line:130
+events_list	../mbase_web/transcrypt/python/layout.py	/^def events_list():$/;"	kind:function	line:137
+time_to_html	../mbase_web/transcrypt/python/layout.py	/^    def time_to_html(obj):$/;"	kind:function	line:143
+anomaly_list	../mbase_web/transcrypt/python/layout.py	/^def anomaly_list():$/;"	kind:function	line:158
+download	../mbase_web/transcrypt/python/layout.py	/^    async def download(evt):$/;"	kind:function	line:163
+diagnosis_list	../mbase_web/transcrypt/python/layout.py	/^def diagnosis_list():$/;"	kind:function	line:198
+download	../mbase_web/transcrypt/python/layout.py	/^    async def download(evt):$/;"	kind:function	line:203
+time_to_html	../mbase_web/transcrypt/python/layout.py	/^    def time_to_html(obj):$/;"	kind:function	line:233
+products_list	../mbase_web/transcrypt/python/layout.py	/^def products_list():$/;"	kind:function	line:248
+tasks_list	../mbase_web/transcrypt/python/layout.py	/^def tasks_list():$/;"	kind:function	line:259
+time_to_html	../mbase_web/transcrypt/python/layout.py	/^    def time_to_html(obj):$/;"	kind:function	line:265
+finish_task	../mbase_web/transcrypt/python/layout.py	/^    async def finish_task(task):$/;"	kind:function	line:276
+process_sublist	../mbase_web/transcrypt/python/layout.py	/^    def process_sublist():$/;"	kind:function	line:287
+kill_process	../mbase_web/transcrypt/python/layout.py	/^        async def kill_process(process):$/;"	kind:function	line:299
+on_expand_name	../mbase_web/transcrypt/python/layout.py	/^    def on_expand_name(item):$/;"	kind:function	line:315
+update	../mbase_web/transcrypt/python/layout.py	/^        async def update():$/;"	kind:function	line:319
+paged_list.py	../mbase_web/transcrypt/python/paged_list.py	1;"	kind:file	line:1
+Delayer	../mbase_web/transcrypt/python/paged_list.py	/^from delayer import Delayer$/;"	kind:namespace	line:1
+ElementWrapper	../mbase_web/transcrypt/python/paged_list.py	/^from elements import ElementWrapper$/;"	kind:namespace	line:2
+findIndex	../mbase_web/transcrypt/python/paged_list.py	/^def findIndex(array, func):  # for IE$/;"	kind:function	line:9
+ScrollPosition	../mbase_web/transcrypt/python/paged_list.py	/^class ScrollPosition():$/;"	kind:class	line:17
+left	../mbase_web/transcrypt/python/paged_list.py	/^    def left(self):$/;"	kind:member	line:19
+top	../mbase_web/transcrypt/python/paged_list.py	/^    def top(self):$/;"	kind:member	line:23
+save	../mbase_web/transcrypt/python/paged_list.py	/^    def save(self):$/;"	kind:member	line:27
+restore	../mbase_web/transcrypt/python/paged_list.py	/^    def restore(self):$/;"	kind:member	line:31
+scrollPosition	../mbase_web/transcrypt/python/paged_list.py	/^scrollPosition = ScrollPosition()$/;"	kind:variable	line:34
+element	../mbase_web/transcrypt/python/paged_list.py	/^def element(name):$/;"	kind:function	line:38
+Element	../mbase_web/transcrypt/python/paged_list.py	/^def Element(name):$/;"	kind:function	line:41
+named_tuple	../mbase_web/transcrypt/python/paged_list.py	/^def named_tuple(fields, values=None):$/;"	kind:function	line:47
+contains_all	../mbase_web/transcrypt/python/paged_list.py	/^def contains_all(object, fields):$/;"	kind:function	line:56
+contains_more	../mbase_web/transcrypt/python/paged_list.py	/^def contains_more(object, fields):$/;"	kind:function	line:62
+_default_buttons	../mbase_web/transcrypt/python/paged_list.py	/^_default_buttons = []$/;"	kind:variable	line:68
+add_default_button	../mbase_web/transcrypt/python/paged_list.py	/^def add_default_button(id, name, style_class):$/;"	kind:function	line:70
+_default_text	../mbase_web/transcrypt/python/paged_list.py	/^_default_text = { 'text_total': "Total", 'text_filter': 'Filter' }$/;"	kind:variable	line:75
+PagedList	../mbase_web/transcrypt/python/paged_list.py	/^class PagedList(ElementWrapper):$/;"	kind:class	line:77
+_send_data	../mbase_web/transcrypt/python/paged_list.py	/^    _send_data = { 'page', 'pageSize', 'filterColumns', 'filterValues', 'sortOn', 'sortAsc' }$/;"	kind:variable	line:79
+_receive_data	../mbase_web/transcrypt/python/paged_list.py	/^    _receive_data = { 'Items', 'CurrentPage', 'PageCount', 'TotalCount' }$/;"	kind:variable	line:80
+__init__	../mbase_web/transcrypt/python/paged_list.py	/^    def __init__(self, container: str, url: str):$/;"	kind:member	line:82
+get_styling	../mbase_web/transcrypt/python/paged_list.py	/^    def get_styling(self):$/;"	kind:member	line:118
+add_column	../mbase_web/transcrypt/python/paged_list.py	/^    def add_column(self, id: str, header: str = id):$/;"	kind:member	line:121
+set_url	../mbase_web/transcrypt/python/paged_list.py	/^    def set_url(self, url: str):$/;"	kind:member	line:126
+get_url	../mbase_web/transcrypt/python/paged_list.py	/^    def get_url(self):$/;"	kind:member	line:130
+on_page_refreshed	../mbase_web/transcrypt/python/paged_list.py	/^    def on_page_refreshed(self, func = None):$/;"	kind:member	line:135
+on_page_refreshing	../mbase_web/transcrypt/python/paged_list.py	/^    def on_page_refreshing(self, func = None):$/;"	kind:member	line:144
+add_button	../mbase_web/transcrypt/python/paged_list.py	/^    def add_button(self, id, name, style_class):$/;"	kind:member	line:153
+get_top_pager	../mbase_web/transcrypt/python/paged_list.py	/^    def get_top_pager(self):$/;"	kind:member	line:162
+get_bottom_pager	../mbase_web/transcrypt/python/paged_list.py	/^    def get_bottom_pager(self):$/;"	kind:member	line:165
+hide_count	../mbase_web/transcrypt/python/paged_list.py	/^    def hide_count(self):  # to hide the counter (Total: ...)$/;"	kind:member	line:168
+disable_pagination	../mbase_web/transcrypt/python/paged_list.py	/^    def disable_pagination(self):$/;"	kind:member	line:173
+add_default_buttons	../mbase_web/transcrypt/python/paged_list.py	/^    def add_default_buttons(self, *ids):$/;"	kind:member	line:178
+render_header	../mbase_web/transcrypt/python/paged_list.py	/^    def render_header(self):$/;"	kind:member	line:191
+toggle_sort	../mbase_web/transcrypt/python/paged_list.py	/^    def toggle_sort(self, columnIndex):$/;"	kind:member	line:214
+render	../mbase_web/transcrypt/python/paged_list.py	/^    def render(self, data, fullPage):$/;"	kind:member	line:235
+get_data	../mbase_web/transcrypt/python/paged_list.py	/^    def get_data(self, page, fullPage = False):$/;"	kind:member	line:299
+onSucces	../mbase_web/transcrypt/python/paged_list.py	/^        def onSucces(data):$/;"	kind:function	line:311
+get_data_error	../mbase_web/transcrypt/python/paged_list.py	/^    def get_data_error(self, data, errorText):$/;"	kind:member	line:316
+refresh	../mbase_web/transcrypt/python/paged_list.py	/^    def refresh(self, fullPage = False):$/;"	kind:member	line:319
+refresh_item	../mbase_web/transcrypt/python/paged_list.py	/^    def refresh_item(self, item, newItem = None):$/;"	kind:member	line:325
+get_row	../mbase_web/transcrypt/python/paged_list.py	/^    def get_row(self, item):$/;"	kind:member	line:330
+get_server	../mbase_web/transcrypt/python/paged_list.py	/^    def get_server(self):$/;"	kind:member	line:337
+fake_server	../mbase_web/transcrypt/python/paged_list.py	/^    def fake_server(self):$/;"	kind:member	line:340
+ajax_server	../mbase_web/transcrypt/python/paged_list.py	/^    def ajax_server(self, url):$/;"	kind:member	line:344
+add_row_listener	../mbase_web/transcrypt/python/paged_list.py	/^    def add_row_listener(self, event, func, useCapture: bool = False):$/;"	kind:member	line:348
+newFunction	../mbase_web/transcrypt/python/paged_list.py	/^        def newFunction(ev):$/;"	kind:function	line:349
+remove_row_listener	../mbase_web/transcrypt/python/paged_list.py	/^    def remove_row_listener(self, event, func, useCapture: bool = False):$/;"	kind:member	line:361
+PagedListStyling	../mbase_web/transcrypt/python/paged_list.py	/^class PagedListStyling():$/;"	kind:class	line:365
+__init__	../mbase_web/transcrypt/python/paged_list.py	/^    def __init__(self, pagedList):$/;"	kind:member	line:367
+row_styles	../mbase_web/transcrypt/python/paged_list.py	/^    def row_styles(self, func):$/;"	kind:member	line:377
+row_classes	../mbase_web/transcrypt/python/paged_list.py	/^    def row_classes(self, func):$/;"	kind:member	line:386
+table_class	../mbase_web/transcrypt/python/paged_list.py	/^    def table_class(self, style_class):$/;"	kind:member	line:395
+table_style	../mbase_web/transcrypt/python/paged_list.py	/^    def table_style(self, style):$/;"	kind:member	line:399
+set_class_expanded	../mbase_web/transcrypt/python/paged_list.py	/^    def set_class_expanded(self, style_class):$/;"	kind:member	line:403
+set_class_collapsed	../mbase_web/transcrypt/python/paged_list.py	/^    def set_class_collapsed(self, style_class):$/;"	kind:member	line:407
+set_class_ascending	../mbase_web/transcrypt/python/paged_list.py	/^    def set_class_ascending(self, style_class):$/;"	kind:member	line:411
+set_class_descending	../mbase_web/transcrypt/python/paged_list.py	/^    def set_class_descending(self, style_class):$/;"	kind:member	line:415
+set_class_button_column	../mbase_web/transcrypt/python/paged_list.py	/^    def set_class_button_column(self, style_class):$/;"	kind:member	line:419
+PagedListRow	../mbase_web/transcrypt/python/paged_list.py	/^class PagedListRow(ElementWrapper):$/;"	kind:class	line:423
+__init__	../mbase_web/transcrypt/python/paged_list.py	/^    def __init__(self, pagedList: 'PagedList', item):$/;"	kind:member	line:425
+add_to_paged_list	../mbase_web/transcrypt/python/paged_list.py	/^    def add_to_paged_list(self):$/;"	kind:member	line:437
+remove	../mbase_web/transcrypt/python/paged_list.py	/^    def remove(self):$/;"	kind:member	line:441
+lengthInRows	../mbase_web/transcrypt/python/paged_list.py	/^    def lengthInRows(self):$/;"	kind:member	line:448
+positionInRows	../mbase_web/transcrypt/python/paged_list.py	/^    def positionInRows(self):$/;"	kind:member	line:451
+positionInParent	../mbase_web/transcrypt/python/paged_list.py	/^    def positionInParent(self):$/;"	kind:member	line:461
+render	../mbase_web/transcrypt/python/paged_list.py	/^    def render(self):$/;"	kind:member	line:464
+clsName	../mbase_web/transcrypt/python/paged_list.py	/^                def clsName(isExpanded):$/;"	kind:function	line:475
+toggleExpand	../mbase_web/transcrypt/python/paged_list.py	/^                def toggleExpand(buttonExpand, expandFunction, rowBefore: 'PagedListRow', event):$/;"	kind:function	line:478
+refreshFunction	../mbase_web/transcrypt/python/paged_list.py	/^                def refreshFunction(buttonExpand, toggleExpand, column, item):$/;"	kind:function	line:489
+refreshFunction	../mbase_web/transcrypt/python/paged_list.py	/^                def refreshFunction(span, column, item):$/;"	kind:function	line:494
+refreshFunction	../mbase_web/transcrypt/python/paged_list.py	/^                def refreshFunction(td, column, item):$/;"	kind:function	line:498
+renderButtons	../mbase_web/transcrypt/python/paged_list.py	/^    def renderButtons(self, item):$/;"	kind:member	line:505
+refresh	../mbase_web/transcrypt/python/paged_list.py	/^    def refresh(self, item):$/;"	kind:member	line:519
+refreshPosition	../mbase_web/transcrypt/python/paged_list.py	/^    def refreshPosition(self):$/;"	kind:member	line:539
+PagedListSubRow	../mbase_web/transcrypt/python/paged_list.py	/^class PagedListSubRow(ElementWrapper):$/;"	kind:class	line:556
+__init__	../mbase_web/transcrypt/python/paged_list.py	/^    def __init__(self, pagedList: 'PagedList', rowBefore: 'PagedListRow', elementToShow):$/;"	kind:member	line:558
+render	../mbase_web/transcrypt/python/paged_list.py	/^    def render(self):$/;"	kind:member	line:565
+remove	../mbase_web/transcrypt/python/paged_list.py	/^    def remove(self):$/;"	kind:member	line:576
+PagedListButton	../mbase_web/transcrypt/python/paged_list.py	/^class PagedListButton():$/;"	kind:class	line:585
+__init__	../mbase_web/transcrypt/python/paged_list.py	/^    def __init__(self, id, name, style_class=""):$/;"	kind:member	line:587
+onclick	../mbase_web/transcrypt/python/paged_list.py	/^    def onclick(self, functionOnclick):$/;"	kind:member	line:594
+onClick	../mbase_web/transcrypt/python/paged_list.py	/^    def onClick(self, functionOnclick):$/;"	kind:member	line:602
+showIf	../mbase_web/transcrypt/python/paged_list.py	/^    def showIf(self, function_show_if):$/;"	kind:member	line:605
+showif	../mbase_web/transcrypt/python/paged_list.py	/^    def showif(self, function_show_if):$/;"	kind:member	line:608
+show_if	../mbase_web/transcrypt/python/paged_list.py	/^    def show_if(self, function_show_if):$/;"	kind:member	line:611
+getElement	../mbase_web/transcrypt/python/paged_list.py	/^    def getElement(self, item):$/;"	kind:member	line:620
+copy	../mbase_web/transcrypt/python/paged_list.py	/^    def copy(self):$/;"	kind:member	line:628
+PagedListColumn	../mbase_web/transcrypt/python/paged_list.py	/^class PagedListColumn():$/;"	kind:class	line:634
+FilterItem	../mbase_web/transcrypt/python/paged_list.py	/^    FilterItem = { 'Text', 'Value' }$/;"	kind:variable	line:636
+__init__	../mbase_web/transcrypt/python/paged_list.py	/^    def __init__(self, id, header):$/;"	kind:member	line:638
+add_class_header	../mbase_web/transcrypt/python/paged_list.py	/^    def add_class_header(self, style_class):$/;"	kind:member	line:658
+add_style_header	../mbase_web/transcrypt/python/paged_list.py	/^    def add_style_header(self, style):$/;"	kind:member	line:662
+add_class_header_span	../mbase_web/transcrypt/python/paged_list.py	/^    def add_class_header_span(self, style_class):$/;"	kind:member	line:666
+add_style_header_span	../mbase_web/transcrypt/python/paged_list.py	/^    def add_style_header_span(self, style):$/;"	kind:member	line:670
+add_class_rows	../mbase_web/transcrypt/python/paged_list.py	/^    def add_class_rows(self, style_class):$/;"	kind:member	line:674
+add_style_rows	../mbase_web/transcrypt/python/paged_list.py	/^    def add_style_rows(self, style):$/;"	kind:member	line:678
+add_style	../mbase_web/transcrypt/python/paged_list.py	/^    def add_style(self, style):$/;"	kind:member	line:682
+add_class	../mbase_web/transcrypt/python/paged_list.py	/^    def add_class(self, style_class):$/;"	kind:member	line:687
+enable_sort	../mbase_web/transcrypt/python/paged_list.py	/^    def enable_sort(self):$/;"	kind:member	line:692
+enable_filter	../mbase_web/transcrypt/python/paged_list.py	/^    def enable_filter(self, items=None):$/;"	kind:member	line:696
+item_to_html	../mbase_web/transcrypt/python/paged_list.py	/^    def item_to_html(self, item_to_html_function):$/;"	kind:member	line:707
+item_to_element	../mbase_web/transcrypt/python/paged_list.py	/^    def item_to_element(self, item_to_element_function):$/;"	kind:member	line:713
+on_expand_item	../mbase_web/transcrypt/python/paged_list.py	/^    def on_expand_item(self, on_expand_item):$/;"	kind:member	line:719
+get_elements	../mbase_web/transcrypt/python/paged_list.py	/^    def get_elements(self, pagedList):$/;"	kind:member	line:725
+getValue	../mbase_web/transcrypt/python/paged_list.py	/^                def getValue(element):$/;"	kind:function	line:740
+filterItemToOption	../mbase_web/transcrypt/python/paged_list.py	/^                    def filterItemToOption(filterItem):$/;"	kind:function	line:752
+Pager	../mbase_web/transcrypt/python/paged_list.py	/^class Pager(ElementWrapper):$/;"	kind:class	line:767
+__init__	../mbase_web/transcrypt/python/paged_list.py	/^    def __init__(self, container, pagedList):$/;"	kind:member	line:769
+getTable	../mbase_web/transcrypt/python/paged_list.py	/^    def getTable(self):$/;"	kind:member	line:791
+set_pagination_class	../mbase_web/transcrypt/python/paged_list.py	/^    def set_pagination_class(self, style_class):$/;"	kind:member	line:794
+set_active_class	../mbase_web/transcrypt/python/paged_list.py	/^    def set_active_class(self, style_class):$/;"	kind:member	line:798
+set_count_class	../mbase_web/transcrypt/python/paged_list.py	/^    def set_count_class(self, style_class):$/;"	kind:member	line:802
+hide_count	../mbase_web/transcrypt/python/paged_list.py	/^    def hide_count(self): # to hide the counter (Total: ...)$/;"	kind:member	line:806
+disable	../mbase_web/transcrypt/python/paged_list.py	/^    def disable(self):$/;"	kind:member	line:812
+enable	../mbase_web/transcrypt/python/paged_list.py	/^    def enable(self):$/;"	kind:member	line:817
+refresh	../mbase_web/transcrypt/python/paged_list.py	/^    def refresh(self, currentPage, pageCount, itemCount):$/;"	kind:member	line:823
+add_number	../mbase_web/transcrypt/python/paged_list.py	/^    def add_number(self, number, text=None):$/;"	kind:member	line:855
+DataServer	../mbase_web/transcrypt/python/paged_list.py	/^class DataServer():$/;"	kind:class	line:865
+__init__	../mbase_web/transcrypt/python/paged_list.py	/^    def __init__(self):$/;"	kind:member	line:867
+get_page_data	../mbase_web/transcrypt/python/paged_list.py	/^    def get_page_data(self, data, onSucces, onFailure): # data format: _send_data = { 'page', 'pageSize', 'filterColumns', 'filterValues', 'sortOn', 'sortAsc' }$/;"	kind:member	line:870
+AjaxServer	../mbase_web/transcrypt/python/paged_list.py	/^class AjaxServer(DataServer):$/;"	kind:class	line:873
+__init__	../mbase_web/transcrypt/python/paged_list.py	/^    def __init__(self, url):$/;"	kind:member	line:875
+get_page_data	../mbase_web/transcrypt/python/paged_list.py	/^    def get_page_data(self, data, onSucces, onFailure):$/;"	kind:member	line:879
+FakeServer	../mbase_web/transcrypt/python/paged_list.py	/^class FakeServer(DataServer):$/;"	kind:class	line:890
+__init__	../mbase_web/transcrypt/python/paged_list.py	/^    def __init__(self):$/;"	kind:member	line:892
+getMaxId	../mbase_web/transcrypt/python/paged_list.py	/^    def getMaxId(self):$/;"	kind:member	line:897
+addData	../mbase_web/transcrypt/python/paged_list.py	/^    def addData(self, *items):$/;"	kind:member	line:903
+get_data	../mbase_web/transcrypt/python/paged_list.py	/^    def get_data(self):$/;"	kind:member	line:907
+clear_data	../mbase_web/transcrypt/python/paged_list.py	/^    def clear_data(self):$/;"	kind:member	line:910
+get_item	../mbase_web/transcrypt/python/paged_list.py	/^    def get_item(self, id):$/;"	kind:member	line:913
+delete_item	../mbase_web/transcrypt/python/paged_list.py	/^    def delete_item(self, id):$/;"	kind:member	line:919
+get_nested_value	../mbase_web/transcrypt/python/paged_list.py	/^    def get_nested_value(obj, fields):$/;"	kind:member	line:928
+get_filters	../mbase_web/transcrypt/python/paged_list.py	/^    def get_filters(self, filterColumns, filterValues): # returns list of functions which accepts an data item and returns true\/false.$/;"	kind:member	line:933
+passFilter	../mbase_web/transcrypt/python/paged_list.py	/^        def passFilter(field, value, item):$/;"	kind:function	line:935
+get_page_data	../mbase_web/transcrypt/python/paged_list.py	/^    def get_page_data(self, data, onSucces, onFailure): # format: _send_data = { 'page', 'pageSize', 'filterColumns', 'filterValues', 'sortOn', 'sortAsc' }$/;"	kind:member	line:952
+compare	../mbase_web/transcrypt/python/paged_list.py	/^        def compare(a, b):$/;"	kind:function	line:961
+isNumber	../mbase_web/transcrypt/python/paged_list.py	/^                def isNumber(v):$/;"	kind:function	line:965
+utils.py	../mbase_web/transcrypt/python/utils.py	1;"	kind:file	line:1
+sleep	../mbase_web/transcrypt/python/utils.py	/^async def sleep(time):$/;"	kind:function	line:5
+get_url	../mbase_web/transcrypt/python/utils.py	/^def get_url(path: str = ""):$/;"	kind:function	line:12
+time_to_html	../mbase_web/transcrypt/python/utils.py	/^def time_to_html(date: str):$/;"	kind:function	line:18
+post	../mbase_web/transcrypt/python/utils.py	/^async def post(url, data):$/;"	kind:function	line:27
+success	../mbase_web/transcrypt/python/utils.py	/^    def success(result):$/;"	kind:function	line:30
+error	../mbase_web/transcrypt/python/utils.py	/^    def error(result):$/;"	kind:function	line:33
+save_file	../mbase_web/transcrypt/python/utils.py	/^def save_file(txt: str, filename: str):$/;"	kind:function	line:48
+setup.py	../mbase_web/setup.py	1;"	kind:file	line:1
+setuptools	../mbase_web/setup.py	/^import setuptools$/;"	kind:namespace	line:4
+os	../mbase_web/setup.py	/^import os$/;"	kind:namespace	line:5
+Path	../mbase_web/setup.py	/^from pathlib import Path$/;"	kind:namespace	line:6
+long_description	../mbase_web/setup.py	/^    long_description = fh.read()$/;"	kind:variable	line:9
+package_data	../mbase_web/setup.py	/^def package_data():$/;"	kind:function	line:12
+name	../mbase_web/setup.py	/^    name="mbase_web",$/;"	kind:variable	line:38
+version	../mbase_web/setup.py	/^    version="1.0.0",$/;"	kind:variable	line:39
+author	../mbase_web/setup.py	/^    author="HUMS team",$/;"	kind:variable	line:40
+author_email	../mbase_web/setup.py	/^    author_email="pieterjan.bonestroo@nl.thalesgroup.com",$/;"	kind:variable	line:41
+description	../mbase_web/setup.py	/^    description="Data Analytics Workbench Web",$/;"	kind:variable	line:42
+long_description	../mbase_web/setup.py	/^    long_description=long_description,$/;"	kind:variable	line:43
+long_description_content_type	../mbase_web/setup.py	/^    long_description_content_type="text\/markdown",$/;"	kind:variable	line:44
+url	../mbase_web/setup.py	/^    url="",$/;"	kind:variable	line:45
+packages	../mbase_web/setup.py	/^    packages=['mbase_web'],$/;"	kind:variable	line:46
+classifiers	../mbase_web/setup.py	/^    classifiers=[$/;"	kind:variable	line:47
+package_data	../mbase_web/setup.py	/^    package_data={'mbase_web': package_data()},$/;"	kind:variable	line:52
+bash_process.py	../manage_envs/bash_process.py	1;"	kind:file	line:1
+time	../manage_envs/bash_process.py	/^import time$/;"	kind:namespace	line:3
+sys	../manage_envs/bash_process.py	/^import sys$/;"	kind:namespace	line:4
+os	../manage_envs/bash_process.py	/^import os$/;"	kind:namespace	line:5
+signal	../manage_envs/bash_process.py	/^import signal$/;"	kind:namespace	line:6
+subprocess	../manage_envs/bash_process.py	/^import subprocess$/;"	kind:namespace	line:7
+Popen	../manage_envs/bash_process.py	/^from subprocess import Popen, PIPE$/;"	kind:namespace	line:8
+PIPE	../manage_envs/bash_process.py	/^from subprocess import Popen, PIPE$/;"	kind:namespace	line:8
+trd	../manage_envs/bash_process.py	/^import threading as trd$/;"	kind:namespace	line:9
+Queue	../manage_envs/bash_process.py	/^from multiprocessing import Queue$/;"	kind:namespace	line:10
+queue	../manage_envs/bash_process.py	/^import queue$/;"	kind:namespace	line:11
+contextmanager	../manage_envs/bash_process.py	/^from contextlib import contextmanager$/;"	kind:namespace	line:12
+_only_print	../manage_envs/bash_process.py	/^_only_print = False$/;"	kind:variable	line:14
+_pause	../manage_envs/bash_process.py	/^_pause = True$/;"	kind:variable	line:18
+_bash	../manage_envs/bash_process.py	/^_bash = 'bash'  # command to run bash (e.g. \/bin\/bash)$/;"	kind:variable	line:22
+BashProcess	../manage_envs/bash_process.py	/^class BashProcess():$/;"	kind:class	line:25
+__init__	../manage_envs/bash_process.py	/^    def __init__(self):$/;"	kind:member	line:27
+_read_stdout	../manage_envs/bash_process.py	/^    def _read_stdout(self):$/;"	kind:member	line:39
+_read_stderr	../manage_envs/bash_process.py	/^    def _read_stderr(self):$/;"	kind:member	line:47
+stop	../manage_envs/bash_process.py	/^    def stop(self):$/;"	kind:member	line:55
+__call__	../manage_envs/bash_process.py	/^    def __call__(self, stop_on_exception=False, show_time_elapsed=False):$/;"	kind:member	line:64
+execute	../manage_envs/bash_process.py	/^    def execute(self, cmd: str, allow_error=False, silent=False):$/;"	kind:member	line:89
+print_line	../manage_envs/bash_process.py	/^        def print_line(line, is_error):$/;"	kind:function	line:112
+_read_line	../manage_envs/bash_process.py	/^    def _read_line(self, timeout):$/;"	kind:member	line:143
+_read_queue	../manage_envs/bash_process.py	/^def _read_queue(queue_):$/;"	kind:function	line:159
+in_bash	../manage_envs/bash_process.py	/^def in_bash(stop_on_exception=False, show_time_elapsed=False):$/;"	kind:function	line:171
+global_bash	../manage_envs/bash_process.py	/^def global_bash():$/;"	kind:function	line:181
+execute	../manage_envs/bash_process.py	/^def execute(cmd: str, allow_error=False, silent=False):$/;"	kind:function	line:195
+in_dir	../manage_envs/bash_process.py	/^def in_dir(path: str, p: BashProcess = _bash_process):$/;"	kind:function	line:202
+manage_env.py	../manage_envs/manage_env.py	1;"	kind:file	line:1
+time	../manage_envs/manage_env.py	/^import time$/;"	kind:namespace	line:7
+sys	../manage_envs/manage_env.py	/^import sys$/;"	kind:namespace	line:8
+dt	../manage_envs/manage_env.py	/^import datetime as dt$/;"	kind:namespace	line:9
+os	../manage_envs/manage_env.py	/^import os$/;"	kind:namespace	line:10
+Path	../manage_envs/manage_env.py	/^from pathlib import Path$/;"	kind:namespace	line:11
+contextmanager	../manage_envs/manage_env.py	/^from contextlib import contextmanager$/;"	kind:namespace	line:12
+in_bash	../manage_envs/manage_env.py	/^from bash_process import in_bash, execute, BashProcess, in_dir$/;"	kind:namespace	line:14
+execute	../manage_envs/manage_env.py	/^from bash_process import in_bash, execute, BashProcess, in_dir$/;"	kind:namespace	line:14
+BashProcess	../manage_envs/manage_env.py	/^from bash_process import in_bash, execute, BashProcess, in_dir$/;"	kind:namespace	line:14
+in_dir	../manage_envs/manage_env.py	/^from bash_process import in_bash, execute, BashProcess, in_dir$/;"	kind:namespace	line:14
+anaconda_dir	../manage_envs/manage_env.py	/^anaconda_dir = "\/opt\/orchestra\/anaconda3\/2018.12"$/;"	kind:variable	line:17
+use_anaconda	../manage_envs/manage_env.py	/^def use_anaconda():$/;"	kind:function	line:20
+activate_env	../manage_envs/manage_env.py	/^def activate_env(name):$/;"	kind:function	line:25
+deactivate_env	../manage_envs/manage_env.py	/^def deactivate_env():$/;"	kind:function	line:30
+active_env	../manage_envs/manage_env.py	/^def active_env(name):$/;"	kind:function	line:36
+envir_exists	../manage_envs/manage_env.py	/^def envir_exists(name):$/;"	kind:function	line:44
+get_environments	../manage_envs/manage_env.py	/^def get_environments(silent=False):$/;"	kind:function	line:55
+get_installed_packages	../manage_envs/manage_env.py	/^def get_installed_packages():$/;"	kind:function	line:74
+add_lines	../manage_envs/manage_env.py	/^    def add_lines():$/;"	kind:function	line:82
+mbase_env.py	../manage_envs/mbase_env.py	1;"	kind:file	line:1
+time	../manage_envs/mbase_env.py	/^import time$/;"	kind:namespace	line:10
+sys	../manage_envs/mbase_env.py	/^import sys$/;"	kind:namespace	line:11
+dt	../manage_envs/mbase_env.py	/^import datetime as dt$/;"	kind:namespace	line:12
+time	../manage_envs/mbase_env.py	/^import time$/;"	kind:namespace	line:13
+os	../manage_envs/mbase_env.py	/^import os$/;"	kind:namespace	line:14
+Path	../manage_envs/mbase_env.py	/^from pathlib import Path$/;"	kind:namespace	line:15
+contextmanager	../manage_envs/mbase_env.py	/^from contextlib import contextmanager$/;"	kind:namespace	line:16
+use_anaconda	../manage_envs/mbase_env.py	/^from manage_env import use_anaconda, active_env, envir_exists, get_environments, get_installed_packages, in_bash, in_dir, execute$/;"	kind:namespace	line:18
+active_env	../manage_envs/mbase_env.py	/^from manage_env import use_anaconda, active_env, envir_exists, get_environments, get_installed_packages, in_bash, in_dir, execute$/;"	kind:namespace	line:18
+envir_exists	../manage_envs/mbase_env.py	/^from manage_env import use_anaconda, active_env, envir_exists, get_environments, get_installed_packages, in_bash, in_dir, execute$/;"	kind:namespace	line:18
+get_environments	../manage_envs/mbase_env.py	/^from manage_env import use_anaconda, active_env, envir_exists, get_environments, get_installed_packages, in_bash, in_dir, execute$/;"	kind:namespace	line:18
+get_installed_packages	../manage_envs/mbase_env.py	/^from manage_env import use_anaconda, active_env, envir_exists, get_environments, get_installed_packages, in_bash, in_dir, execute$/;"	kind:namespace	line:18
+in_bash	../manage_envs/mbase_env.py	/^from manage_env import use_anaconda, active_env, envir_exists, get_environments, get_installed_packages, in_bash, in_dir, execute$/;"	kind:namespace	line:18
+in_dir	../manage_envs/mbase_env.py	/^from manage_env import use_anaconda, active_env, envir_exists, get_environments, get_installed_packages, in_bash, in_dir, execute$/;"	kind:namespace	line:18
+execute	../manage_envs/mbase_env.py	/^from manage_env import use_anaconda, active_env, envir_exists, get_environments, get_installed_packages, in_bash, in_dir, execute$/;"	kind:namespace	line:18
+global_bash	../manage_envs/mbase_env.py	/^from bash_process import global_bash$/;"	kind:namespace	line:19
+dev_name	../manage_envs/mbase_env.py	/^dev_name = 'mbase_dev'$/;"	kind:variable	line:22
+deploy_name	../manage_envs/mbase_env.py	/^deploy_name = 'mbase_deploy'$/;"	kind:variable	line:23
+package_dir	../manage_envs/mbase_env.py	/^package_dir = str(Path("\/work") \/ 'da' \/ 'top' \/ 'tools' \/ 'mbase' \/ 'python packages')$/;"	kind:variable	line:27
+this_dir	../manage_envs/mbase_env.py	/^this_dir = Path(os.path.dirname(os.path.abspath(__file__)))$/;"	kind:variable	line:30
+mbase_dir	../manage_envs/mbase_env.py	/^mbase_dir = str(this_dir.parent)$/;"	kind:variable	line:33
+mbase_web_dir	../manage_envs/mbase_env.py	/^mbase_web_dir = str(this_dir.parent \/ "mbase_web")$/;"	kind:variable	line:34
+apps	../manage_envs/mbase_env.py	/^apps = [('mbase', mbase_dir), ('mbase_web', mbase_web_dir)]$/;"	kind:variable	line:35
+help_lines	../manage_envs/mbase_env.py	/^help_lines = [$/;"	kind:variable	line:38
+print_help	../manage_envs/mbase_env.py	/^def print_help():$/;"	kind:function	line:51
+is_dev	../manage_envs/mbase_env.py	/^def is_dev(args):$/;"	kind:function	line:59
+get_env_name	../manage_envs/mbase_env.py	/^def get_env_name(args):$/;"	kind:function	line:64
+generate_docs	../manage_envs/mbase_env.py	/^def generate_docs():$/;"	kind:function	line:68
+deploy	../manage_envs/mbase_env.py	/^def deploy():$/;"	kind:function	line:76
+remove	../manage_envs/mbase_env.py	/^def remove(environments: list):$/;"	kind:function	line:89
+auto	../manage_envs/mbase_env.py	/^def auto(environments: list, override: bool):$/;"	kind:function	line:99
+exe	../manage_envs/mbase_env.py	/^    def exe(cmd: str):$/;"	kind:function	line:139
+already_installed	../manage_envs/mbase_env.py	/^    def already_installed(name: str):$/;"	kind:function	line:143
+conda_install	../manage_envs/mbase_env.py	/^            def conda_install(name: str):$/;"	kind:function	line:154
+pip_install	../manage_envs/mbase_env.py	/^            def pip_install(name: str, relative_path: str, upgrade=False):$/;"	kind:function	line:161
+custom	../manage_envs/mbase_env.py	/^def custom():$/;"	kind:function	line:232
+main	../manage_envs/mbase_env.py	/^def main(args):$/;"	kind:function	line:241
+args	../manage_envs/mbase_env.py	/^    args = sys.argv[1:]  # skip first argument (filename)$/;"	kind:variable	line:291

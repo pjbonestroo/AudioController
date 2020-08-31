@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title> Audio regelaar </title>
+  <link rel='stylesheet' href="/static/js/flatpickr.min.css">
+  <link rel='stylesheet' href="/static/js/jquery-ui.min.css">
+  <link rel='stylesheet' href="/static/js/bootstrap-4.3.1-dist/css/bootstrap.css">
+  <link rel='stylesheet' href="/static/js/fontawesome-free-5.13.1-web/css/all.css">
+  <link rel='stylesheet' href="/static/css/index.css">
+
+  <script src="/static/js/flatpickr.min.js"></script>
+  <script src="/static/js/moment-with-locales.min.js"></script>
+  <script src="/static/js/jquery-3.3.1.min.js"></script>
+  <script src="/static/js/jquery-ui.min.js"></script>
+  <script src="/static/js/bootstrap-4.3.1-dist/js/bootstrap.bundle.js"></script>
+  <script src="/static/js/bootstrap-toggle.min.js"></script>
+  <script src="/static/js/FileSaver.js"></script>
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#" id="home">Title</a>
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_menu_div" aria-controls=""
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button> -->
+
+    <div class="collapse navbar-collapse" id="main_menu_div">
+      <ul class="navbar-nav mr-auto" id="main_menu">
+      </ul>
+    </div>
+
+  </nav>
+
+
+  <main role="main" class="mx-auto" id="main_container" style="width: 90%;">
+
+  </main>
+
+  <!-- A div before footer which has overlap with it, so that footer takes no space-->
+  <div style="width: 100%; height: 30px;"></div>
+  <footer class="footer" style="height:30px; line-height:30px;">
+    <span class="text-muted"><a id='a_fullscreen' style="color:darkgray;">Volledig
+        scherm</a></span>
+    <!-- <span class="text-muted"><a target="_black" href="https://www.google.nl/" style="color:darkgray;">Help</a></span> -->
+  </footer>
+
+  <!-- Make variable 'page' global to use in in 'index.js'  -->
+  <script>
+    window.name_of_page = "{{page}}";
+  </script>
+  <script src="/static/js/{{js_filename}}"></script>
+
+
+</body>
+
+</html>

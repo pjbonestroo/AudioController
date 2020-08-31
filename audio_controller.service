@@ -1,0 +1,14 @@
+[Unit]
+Description=Audio Controller
+After=network.target
+
+[Service]
+ExecStart=/home/pi/AudioController/run_audio_controller.sh
+WorkingDirectory=/home/pi/AudioController
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target

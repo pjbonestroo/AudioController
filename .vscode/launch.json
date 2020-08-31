@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Application",
+            "type": "python",
+            "request": "launch",
+            "module": "audio_controller",
+            "cwd": "${workspaceFolder}/audio_controller",
+            "console": "integratedTerminal",
+            "args": [],
+            "justMyCode": false, // to include all python code during debugging (also installed packages)
+        },
+        {
+            "name": "Manage env",
+            "type": "python",
+            "request": "launch",
+            "module": "manage_env",
+            "console": "integratedTerminal"
+        },
+    ]
+}

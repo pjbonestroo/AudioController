@@ -6,12 +6,13 @@ Further, it can read audio from an url, and send it to a configurable input of t
 
 The userinferface is created in the Dutch language. It consists of 2 pages; Control and Settings:
 
+## Control screen
 <img src="docs/pictures/screenshot_1.png" alt="drawing" width="700"/>
 <p>
+
+## Settings screen
 <img src="docs/pictures/screenshot_2.png" alt="drawing" width="700"/>
 <p>
-
-
 
 # Howto deploy on raspberry pi
 

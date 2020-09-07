@@ -152,30 +152,58 @@ __webpack_require__.d(dialogs_namespaceObject, "dialog_login", function() { retu
 __webpack_require__.d(dialogs_namespaceObject, "DialogListSelect", function() { return DialogListSelect; });
 __webpack_require__.d(dialogs_namespaceObject, "DialogSelect", function() { return DialogSelect; });
 
-// NAMESPACE OBJECT: ./python/__target__/pages.page_overview.js
-var pages_page_overview_namespaceObject = {};
-__webpack_require__.r(pages_page_overview_namespaceObject);
-__webpack_require__.d(pages_page_overview_namespaceObject, "E", function() { return pages_page_overview_E; });
-__webpack_require__.d(pages_page_overview_namespaceObject, "ButtonsSettings", function() { return ButtonsSettings; });
-__webpack_require__.d(pages_page_overview_namespaceObject, "SourcesDestinations", function() { return SourcesDestinations; });
-__webpack_require__.d(pages_page_overview_namespaceObject, "show", function() { return show; });
+// NAMESPACE OBJECT: ./python/__target__/math.js
+var math_namespaceObject = {};
+__webpack_require__.r(math_namespaceObject);
+__webpack_require__.d(math_namespaceObject, "pi", function() { return pi; });
+__webpack_require__.d(math_namespaceObject, "e", function() { return e; });
+__webpack_require__.d(math_namespaceObject, "exp", function() { return exp; });
+__webpack_require__.d(math_namespaceObject, "expm1", function() { return expm1; });
+__webpack_require__.d(math_namespaceObject, "log", function() { return log; });
+__webpack_require__.d(math_namespaceObject, "log1p", function() { return log1p; });
+__webpack_require__.d(math_namespaceObject, "log2", function() { return log2; });
+__webpack_require__.d(math_namespaceObject, "log10", function() { return log10; });
+__webpack_require__.d(math_namespaceObject, "pow", function() { return math_pow; });
+__webpack_require__.d(math_namespaceObject, "sqrt", function() { return sqrt; });
+__webpack_require__.d(math_namespaceObject, "sin", function() { return sin; });
+__webpack_require__.d(math_namespaceObject, "cos", function() { return cos; });
+__webpack_require__.d(math_namespaceObject, "tan", function() { return tan; });
+__webpack_require__.d(math_namespaceObject, "asin", function() { return asin; });
+__webpack_require__.d(math_namespaceObject, "acos", function() { return acos; });
+__webpack_require__.d(math_namespaceObject, "atan", function() { return atan; });
+__webpack_require__.d(math_namespaceObject, "atan2", function() { return atan2; });
+__webpack_require__.d(math_namespaceObject, "hypot", function() { return hypot; });
+__webpack_require__.d(math_namespaceObject, "degrees", function() { return degrees; });
+__webpack_require__.d(math_namespaceObject, "radians", function() { return radians; });
+__webpack_require__.d(math_namespaceObject, "sinh", function() { return sinh; });
+__webpack_require__.d(math_namespaceObject, "cosh", function() { return cosh; });
+__webpack_require__.d(math_namespaceObject, "tanh", function() { return tanh; });
+__webpack_require__.d(math_namespaceObject, "asinh", function() { return asinh; });
+__webpack_require__.d(math_namespaceObject, "acosh", function() { return acosh; });
+__webpack_require__.d(math_namespaceObject, "atanh", function() { return atanh; });
+__webpack_require__.d(math_namespaceObject, "floor", function() { return floor; });
+__webpack_require__.d(math_namespaceObject, "ceil", function() { return ceil; });
+__webpack_require__.d(math_namespaceObject, "trunc", function() { return trunc; });
+__webpack_require__.d(math_namespaceObject, "isnan", function() { return isnan; });
+__webpack_require__.d(math_namespaceObject, "inf", function() { return inf; });
+__webpack_require__.d(math_namespaceObject, "nan", function() { return nan; });
+__webpack_require__.d(math_namespaceObject, "modf", function() { return modf; });
 
-// NAMESPACE OBJECT: ./python/__target__/pages.page_admin.js
-var pages_page_admin_namespaceObject = {};
-__webpack_require__.r(pages_page_admin_namespaceObject);
-__webpack_require__.d(pages_page_admin_namespaceObject, "E", function() { return pages_page_admin_E; });
-__webpack_require__.d(pages_page_admin_namespaceObject, "AccordionItem", function() { return AccordionItem; });
-__webpack_require__.d(pages_page_admin_namespaceObject, "Settings", function() { return Settings; });
-__webpack_require__.d(pages_page_admin_namespaceObject, "source", function() { return pages_page_admin_source; });
-__webpack_require__.d(pages_page_admin_namespaceObject, "Sources", function() { return Sources; });
-__webpack_require__.d(pages_page_admin_namespaceObject, "destination", function() { return pages_page_admin_destination; });
-__webpack_require__.d(pages_page_admin_namespaceObject, "Destinations", function() { return Destinations; });
-__webpack_require__.d(pages_page_admin_namespaceObject, "TestDebug", function() { return TestDebug; });
-__webpack_require__.d(pages_page_admin_namespaceObject, "restore_settings", function() { return restore_settings; });
-__webpack_require__.d(pages_page_admin_namespaceObject, "button_restore", function() { return button_restore; });
-__webpack_require__.d(pages_page_admin_namespaceObject, "main_div", function() { return main_div; });
-__webpack_require__.d(pages_page_admin_namespaceObject, "get_main_div", function() { return get_main_div; });
-__webpack_require__.d(pages_page_admin_namespaceObject, "show", function() { return pages_page_admin_show; });
+// NAMESPACE OBJECT: ./python/__target__/random.js
+var random_namespaceObject = {};
+__webpack_require__.r(random_namespaceObject);
+__webpack_require__.d(random_namespaceObject, "_array", function() { return _array; });
+__webpack_require__.d(random_namespaceObject, "_index", function() { return _index; });
+__webpack_require__.d(random_namespaceObject, "_bitmask1", function() { return _bitmask1; });
+__webpack_require__.d(random_namespaceObject, "_bitmask2", function() { return _bitmask2; });
+__webpack_require__.d(random_namespaceObject, "_bitmask3", function() { return _bitmask3; });
+__webpack_require__.d(random_namespaceObject, "_fill_array", function() { return _fill_array; });
+__webpack_require__.d(random_namespaceObject, "_random_integer", function() { return _random_integer; });
+__webpack_require__.d(random_namespaceObject, "seed", function() { return seed; });
+__webpack_require__.d(random_namespaceObject, "randint", function() { return randint; });
+__webpack_require__.d(random_namespaceObject, "choice", function() { return choice; });
+__webpack_require__.d(random_namespaceObject, "random", function() { return random; });
+__webpack_require__.d(random_namespaceObject, "shuffle", function() { return shuffle; });
 
 // NAMESPACE OBJECT: ./python/__target__/layout.js
 var layout_namespaceObject = {};
@@ -191,6 +219,7 @@ __webpack_require__.d(layout_namespaceObject, "main", function() { return main; 
 __webpack_require__.d(layout_namespaceObject, "menu_items", function() { return menu_items; });
 __webpack_require__.d(layout_namespaceObject, "MenuItem", function() { return MenuItem; });
 __webpack_require__.d(layout_namespaceObject, "logged_in", function() { return logged_in; });
+__webpack_require__.d(layout_namespaceObject, "setup_websocket", function() { return setup_websocket; });
 __webpack_require__.d(layout_namespaceObject, "login_and_view", function() { return login_and_view; });
 __webpack_require__.d(layout_namespaceObject, "check_logged_in", function() { return check_logged_in; });
 __webpack_require__.d(layout_namespaceObject, "login", function() { return login; });
@@ -198,7 +227,7 @@ __webpack_require__.d(layout_namespaceObject, "logout", function() { return logo
 __webpack_require__.d(layout_namespaceObject, "logout_button", function() { return logout_button; });
 
 // CONCATENATED MODULE: ./python/__target__/org.transcrypt.__runtime__.js
-// Transcrypt'ed from Python, 2020-08-06 13:56:18
+// Transcrypt'ed from Python, 2020-09-07 19:07:52
 var __name__ = 'org.transcrypt.__runtime__';
 var __envir__ = {};
 __envir__.interpreter_name = 'python';
@@ -2321,7 +2350,7 @@ var input = __terminal__.input;
 
 //# sourceMappingURL=org.transcrypt.__runtime__.map
 // CONCATENATED MODULE: ./python/__target__/elements.js
-// Transcrypt'ed from Python, 2020-08-06 13:56:20
+// Transcrypt'ed from Python, 2020-09-07 19:07:54
 
 var elements_name_ = 'elements';
 var get_element = function (css_selectors) {
@@ -2386,11 +2415,6 @@ var ElementWrapper =  __class__ ('ElementWrapper', [object], {
 	get is_enabled () {return __get__ (this, function (self) {
 		return !(self.element.hasAttribute ('disabled'));
 	});},
-	get refresh () {return __get__ (this, function (self) {
-		var __except0__ = Exception ('Needs to be implemented by sub-classes');
-		__except0__.__cause__ = null;
-		throw __except0__;
-	});},
 	get remove_childs () {return __get__ (this, function (self) {
 		while (self.element.hasChildNodes ()) {
 			self.element.removeChild (self.element.firstChild);
@@ -2416,7 +2440,7 @@ var ElementWrapper =  __class__ ('ElementWrapper', [object], {
 
 //# sourceMappingURL=elements.map
 // CONCATENATED MODULE: ./python/__target__/delayer.js
-// Transcrypt'ed from Python, 2020-08-06 13:56:20
+// Transcrypt'ed from Python, 2020-09-07 19:07:54
 
 var delayer_name_ = 'delayer';
 var Delayer =  __class__ ('Delayer', [object], {
@@ -2529,7 +2553,7 @@ var Delayer2 =  __class__ ('Delayer2', [object], {
 
 //# sourceMappingURL=delayer.map
 // CONCATENATED MODULE: ./python/__target__/paged_list.js
-// Transcrypt'ed from Python, 2020-08-06 13:56:19
+// Transcrypt'ed from Python, 2020-09-07 19:07:53
 
 
 
@@ -3754,7 +3778,7 @@ var FakeServer =  __class__ ('FakeServer', [DataServer], {
 
 //# sourceMappingURL=paged_list.map
 // CONCATENATED MODULE: ./python/__target__/utils.js
-// Transcrypt'ed from Python, 2020-08-06 13:56:20
+// Transcrypt'ed from Python, 2020-09-07 19:07:54
 
 var utils_name_ = 'utils';
 var sleep = async function (time) {
@@ -3840,7 +3864,7 @@ var save_file = function (txt, filename) {
 
 //# sourceMappingURL=utils.map
 // CONCATENATED MODULE: ./python/__target__/dialogs.js
-// Transcrypt'ed from Python, 2020-08-06 13:56:19
+// Transcrypt'ed from Python, 2020-09-07 19:07:53
 var paged_list = {};
 var utils = {};
 
@@ -4035,7 +4059,7 @@ var DialogSelect =  __class__ ('DialogSelect', [Dialog], {
 
 //# sourceMappingURL=dialogs.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_overview.js
-// Transcrypt'ed from Python, 2020-08-06 13:56:20
+// Transcrypt'ed from Python, 2020-09-07 19:07:54
 var pages_page_overview_utils = {};
 
 
@@ -4074,7 +4098,7 @@ var ButtonsSettings =  __class__ ('ButtonsSettings', [ElementWrapper], {
 			set_inputs (r);
 			set_title (r ['title']);
 		};
-		initialize ();
+		self.refresh = initialize;
 	});}
 });
 var SourcesDestinations =  __class__ ('SourcesDestinations', [ElementWrapper], {
@@ -4165,17 +4189,34 @@ var SourcesDestinations =  __class__ ('SourcesDestinations', [ElementWrapper], {
 			show_destinations ();
 			await update_volume_level ();
 		};
-		initialize ();
+		self.refresh = initialize;
 	});}
 });
-var show = function () {
-	main.remove_childs ();
-	main.append (pages_page_overview_E ('div').attr ('style', 'max-width: 1000px;').append (ButtonsSettings (), SourcesDestinations ()));
-};
+var Page =  __class__ ('Page', [ElementWrapper], {
+	__module__: pages_page_overview_name_,
+	get __init__ () {return __get__ (this, function (self) {
+		__super__ (Page, '__init__') (self, elements_element ('div'));
+		self.py_items = [ButtonsSettings (), SourcesDestinations ()];
+		self.attr ('style', 'max-width: 1000px;');
+		for (var item of self.py_items) {
+			self.append (item);
+		}
+	});},
+	get show () {return __get__ (this, function (self) {
+		main.remove_childs ();
+		main.append (self);
+		self.refresh ();
+	});},
+	get refresh () {return __get__ (this, function (self) {
+		for (var item of self.py_items) {
+			item.refresh ();
+		}
+	});}
+});
 
 //# sourceMappingURL=pages.page_overview.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_admin.js
-// Transcrypt'ed from Python, 2020-08-06 13:56:20
+// Transcrypt'ed from Python, 2020-09-07 19:07:54
 var pages_page_admin_utils = {};
 
 
@@ -4199,6 +4240,9 @@ var AccordionItem =  __class__ ('AccordionItem', [ElementWrapper], {
 		self.body.element.style.display = 'none';
 		self.append (self.heading, self.body);
 		self.heading.element.onclick = self.show_hide;
+		self.refresh = (function __lambda__ () {
+			return null;
+		});
 	});},
 	get show_hide () {return __get__ (this, function (self, evt) {
 		$ (self.arrow_up.element).toggle (0);
@@ -4235,7 +4279,6 @@ var Settings =  __class__ ('Settings', [AccordionItem], {
 			set_inputs (self.settings);
 			set_title (self.settings ['title']);
 		};
-		initialize ();
 		var onchange = async function (evt) {
 			var settings = get_inputs ();
 			self.settings = await pages_page_admin_utils.post (pages_page_admin_utils.get_url ('general/setSettings'), settings);
@@ -4247,6 +4290,7 @@ var Settings =  __class__ ('Settings', [AccordionItem], {
 		input_port_in_stream.element.onchange = onchange;
 		input_auto_switch.element.onchange = onchange;
 		input_timeout.element.onchange = onchange;
+		self.refresh = initialize;
 	});}
 });
 var pages_page_admin_source = function (py_name, enabled, port_url, scan_prio, db_level, selected) {
@@ -4330,7 +4374,7 @@ var Sources =  __class__ ('Sources', [AccordionItem], {
 			plist.get_server ().data = self.sources;
 			plist.refresh ();
 		};
-		initialize ();
+		self.refresh = initialize;
 	});}
 });
 var pages_page_admin_destination = function (py_name, enabled, port_url_file, selected) {
@@ -4411,7 +4455,7 @@ var Destinations =  __class__ ('Destinations', [AccordionItem], {
 			plist.get_server ().data = self.destinations;
 			plist.refresh ();
 		};
-		initialize ();
+		self.refresh = initialize;
 	});}
 });
 var TestDebug =  __class__ ('TestDebug', [AccordionItem], {
@@ -4429,28 +4473,167 @@ var TestDebug =  __class__ ('TestDebug', [AccordionItem], {
 		self.body.append (pages_page_admin_E ('div').append (...buttons));
 	});}
 });
-var restore_settings = async function (evt) {
-	await pages_page_admin_utils.post (pages_page_admin_utils.get_url ('general/restoreSettings'), dict ({}));
-	pages_page_admin_show ();
-};
-var button_restore = pages_page_admin_E ('button').attr ('class', 'btn btn-secondary btn-sm').inner_html ('Terug naar fabrieksinstellingen');
-button_restore.element.onclick = restore_settings;
-var main_div = null;
-var get_main_div = function () {
-	if (main_div === null) {
-		main_div = pages_page_admin_E ('div').attr ('style', 'max-width: 1000px;').append (Settings (), Sources (), Destinations (), TestDebug (), pages_page_admin_E ('div').attr ('style', 'margin-top: 15px;').append (button_restore));
-	}
-	return main_div;
-};
-var pages_page_admin_show = function () {
-	main.remove_childs ();
-	main.append (get_main_div ());
-};
+var pages_page_admin_Page =  __class__ ('Page', [ElementWrapper], {
+	__module__: pages_page_admin_name_,
+	get __init__ () {return __get__ (this, function (self) {
+		__super__ (pages_page_admin_Page, '__init__') (self, elements_element ('div'));
+		var button_restore = pages_page_admin_E ('button').attr ('class', 'btn btn-secondary btn-sm').inner_html ('Terug naar fabrieksinstellingen');
+		button_restore.element.onclick = self.restore_settings;
+		self.py_items = [Settings (), Sources (), Destinations (), TestDebug ()];
+		self.attr ('style', 'max-width: 1000px;');
+		for (var i of self.py_items) {
+			self.append (i);
+		}
+		self.append (pages_page_admin_E ('div').attr ('style', 'margin-top: 15px;').append (button_restore));
+	});},
+	get restore_settings () {return __get__ (this, async function (self, evt) {
+		await pages_page_admin_utils.post (pages_page_admin_utils.get_url ('general/restoreSettings'), dict ({}));
+		self.refresh ();
+	});},
+	get refresh () {return __get__ (this, function (self) {
+		for (var item of self.py_items) {
+			item.refresh ();
+		}
+	});},
+	get show () {return __get__ (this, function (self) {
+		main.remove_childs ();
+		main.append (self);
+		self.refresh ();
+	});}
+});
 
 //# sourceMappingURL=pages.page_admin.map
+// CONCATENATED MODULE: ./python/__target__/math.js
+// Transcrypt'ed from Python, 2020-09-07 19:07:55
+
+var math_name_ = 'math';
+var pi = Math.PI;
+var e = Math.E;
+var exp = Math.exp;
+var expm1 = function (x) {
+	return Math.exp (x) - 1;
+};
+var log = function (x, base) {
+	return (base === undefined ? Math.log (x) : Math.log (x) / Math.log (base));
+};
+var log1p = function (x) {
+	return Math.log (x + 1);
+};
+var log2 = function (x) {
+	return Math.log (x) / Math.LN2;
+};
+var log10 = function (x) {
+	return Math.log (x) / Math.LN10;
+};
+var math_pow = Math.pow;
+var sqrt = Math.sqrt;
+var sin = Math.sin;
+var cos = Math.cos;
+var tan = Math.tan;
+var asin = Math.asin;
+var acos = Math.acos;
+var atan = Math.atan;
+var atan2 = Math.atan2;
+var hypot = Math.hypot;
+var degrees = function (x) {
+	return (x * 180) / Math.PI;
+};
+var radians = function (x) {
+	return (x * Math.PI) / 180;
+};
+var sinh = Math.sinh;
+var cosh = Math.cosh;
+var tanh = Math.tanh;
+var asinh = Math.asinh;
+var acosh = Math.acosh;
+var atanh = Math.atanh;
+var floor = Math.floor;
+var ceil = Math.ceil;
+var trunc = Math.trunc;
+var isnan = isNaN;
+var inf = Infinity;
+var nan = NaN;
+var modf = function (n) {
+	var sign = (n >= 0 ? 1 : -(1));
+	var __left0__ = divmod (abs (n), 1);
+	var f = __left0__ [0];
+	var mod = __left0__ [1];
+	return tuple ([mod * sign, f * sign]);
+};
+
+//# sourceMappingURL=math.map
+// CONCATENATED MODULE: ./python/__target__/random.js
+// Transcrypt'ed from Python, 2020-09-07 19:07:55
+var math = {};
+
+
+__nest__ (math, '', math_namespaceObject);
+var random_name_ = 'random';
+var _array = (function () {
+	var __accu0__ = [];
+	for (var i = 0; i < 624; i++) {
+		__accu0__.append (0);
+	}
+	return __accu0__;
+}) ();
+var _index = 0;
+var _bitmask1 = Math.pow (2, 32) - 1;
+var _bitmask2 = Math.pow (2, 31);
+var _bitmask3 = Math.pow (2, 31) - 1;
+var _fill_array = function () {
+	for (var i = 0; i < 624; i++) {
+		var y = (_array [i] & _bitmask2) + (_array [__mod__ (i + 1, 624)] & _bitmask3);
+		_array [i] = _array [__mod__ (i + 397, 624)] ^ y >> 1;
+		if (__mod__ (y, 2) != 0) {
+			_array [i] ^= 2567483615;
+		}
+	}
+};
+var _random_integer = function () {
+	if (_index == 0) {
+		_fill_array ();
+	}
+	var y = _array [_index];
+	y ^= y >> 11;
+	y ^= y << 7 & 2636928640;
+	y ^= y << 15 & 4022730752;
+	y ^= y >> 18;
+	_index = __mod__ (_index + 1, 624);
+	return y;
+};
+var seed = function (x) {
+	if (typeof x == 'undefined' || (x != null && x.hasOwnProperty ("__kwargtrans__"))) {;
+		var x = org_transcrypt_runtime_int (_bitmask3 * Math.random ());
+	};
+	_array [0] = x;
+	for (var i = 1; i < 624; i++) {
+		_array [i] = (1812433253 * _array [i - 1] ^ (_array [i - 1] >> 30) + i) & _bitmask1;
+	}
+};
+var randint = function (a, b) {
+	return a + __mod__ (_random_integer (), (b - a) + 1);
+};
+var choice = function (seq) {
+	return seq [randint (0, len (seq) - 1)];
+};
+var random = function () {
+	return _random_integer () / _bitmask3;
+};
+var shuffle = function (x) {
+	for (var i of range (len (x) - 1, 0, -(1))) {
+		var j = math.floor (random () * (i + 1));
+		var temp = x [i];
+		x [i] = x [j];
+		x [j] = temp;
+	}
+};
+seed ();
+
+//# sourceMappingURL=random.map
 // CONCATENATED MODULE: ./python/__target__/layout.js
-// Transcrypt'ed from Python, 2020-08-06 13:56:19
+// Transcrypt'ed from Python, 2020-09-07 19:07:52
 var dialogs = {};
+var layout_random = {};
 var layout_utils = {};
 
 
@@ -4460,6 +4643,8 @@ __nest__ (dialogs, '', dialogs_namespaceObject);
 
 
 __nest__ (layout_utils, '', utils_namespaceObject);
+
+__nest__ (layout_random, '', random_namespaceObject);
 var layout_name_ = 'layout';
 var layout_E = Element;
 var home = ElementWrapper (get_element ('#home'));
@@ -4503,12 +4688,14 @@ var MenuItem =  __class__ ('MenuItem', [ElementWrapper], {
 		self.title = layout_E ('a').attr ('class', 'nav-link').attr ('href', '#');
 		self.attr ('class', 'nav-item').append (self.title);
 		menu_items.append (self);
+		self.active = false;
 	});},
 	get set_title () {return __get__ (this, function (self, title) {
 		self.title.inner_html (title);
 		return self;
 	});},
 	get activate () {return __get__ (this, function (self, active) {
+		self.active = active;
 		if (active) {
 			self.element.classList.add ('active');
 		}
@@ -4530,14 +4717,34 @@ var MenuItem =  __class__ ('MenuItem', [ElementWrapper], {
 		return self;
 	});}
 });
-main_menu.append (MenuItem ().set_title ('Bediening').set_page (pages_page_overview_namespaceObject), MenuItem ().set_title ('Instellingen').set_page (pages_page_admin_namespaceObject));
+main_menu.append (MenuItem ().set_title ('Bediening').set_page (Page ()), MenuItem ().set_title ('Instellingen').set_page (pages_page_admin_Page ()));
 var logged_in = false;
+var setup_websocket = function () {
+	var loc = window.location;
+	var url = 'ws://{}/websocket'.format (loc.host);
+	var ws = new WebSocket (url);
+	var on_open = function () {
+		// pass;
+	};
+	ws.onopen = on_open;
+	var on_message = function (evt) {
+		if (evt.data == 'change') {
+			for (var mi of menu_items) {
+				if (mi.active) {
+					mi.page.refresh ();
+				}
+			}
+		}
+	};
+	ws.onmessage = on_message;
+};
 var login_and_view = async function () {
 	var login_required = await layout_utils.post (layout_utils.get_url ('login/login_required'));
 	var login_required = login_required ['login_required'];
 	if (login_required) {
 		await login ();
 	}
+	setup_websocket ();
 	menu_items [0].onclick ();
 };
 login_and_view ();
@@ -4588,7 +4795,7 @@ main_menu.append (logout_button ());
 
 //# sourceMappingURL=layout.map
 // CONCATENATED MODULE: ./python/__target__/main.js
-// Transcrypt'ed from Python, 2020-08-06 13:56:19
+// Transcrypt'ed from Python, 2020-09-07 19:07:52
 var main_elements = {};
 var layout = {};
 var main_utils = {};

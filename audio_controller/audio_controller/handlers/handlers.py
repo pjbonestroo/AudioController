@@ -15,6 +15,7 @@ from dataclasses import asdict
 # external libs
 import tornado
 import tornado.web
+import tornado.websocket
 
 # internals
 from .. import settings
@@ -169,6 +170,7 @@ class General(BaseHandler):
             settings.update_settings(args)
             controller.set_routes()
             write_settings()
+            notify_change()
             return
 
         elif action == 'getSources':
@@ -181,9 +183,8 @@ class General(BaseHandler):
             settings.update_sources(sources)
             controller.set_routes()
             write_sources()
+            notify_change()
             return
-
-        # TODO (optional) add url selectSource, to update sources without saving
 
         elif action == 'getDestinations':
             write_destinations()
@@ -195,9 +196,39 @@ class General(BaseHandler):
             settings.update_destinations(destinations)
             controller.set_routes()
             write_destinations()
+            notify_change()
             return
 
         elif action == 'getInputLevels':
             levels = controller.config.current_levels
             self.write(dumps(levels))
             return
+
+
+websocket_connections = []
+
+
+class WebSocket(tornado.websocket.WebSocketHandler, BaseHandler):
+
+    def open(self):
+        if self.login_required() and not self.logged_in():
+            print("Unauthorized websocket usage, websocket closed.")
+            self.close()
+            return
+        websocket_connections.append(self)
+
+    def on_message(self, message):
+        # messages from client are not handled
+        return
+
+    def on_close(self):
+        websocket_connections.remove(self)
+
+
+def notify_change():
+    for con in list(websocket_connections):
+        try:
+            #print("write change")
+            con.write_message("change")
+        except:
+            websocket_connections.remove(con)

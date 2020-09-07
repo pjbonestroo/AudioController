@@ -35,6 +35,7 @@ def make_app():
     _handlers = [
         ("/", handlers.Main),
         ("/login/.*", handlers.Login),
+        ("/websocket", handlers.WebSocket),
         ("/general/.*", handlers.General),
         ("/(favicon.ico)", tornado.web.StaticFileHandler, {'path': str(static_dir)}),
         ("/static/(.*)", tornado.web.StaticFileHandler, {'path': str(static_dir)}),

@@ -17,6 +17,7 @@ The userinferface is created in the Dutch language. It consists of 2 pages; Cont
 # Howto deploy on raspberry pi
 
 This is tested on Raspberry Pi version 3.
+OS: Raspberry Pi OS version 2020-08-20.
 
 ## 1. Install vlc player
 
@@ -30,7 +31,7 @@ sudo apt install -y vlc
 
 ### 2.1 Install python 3.7
 
-Python 3.7 is preinstalled on the newest Raspbian OS.
+Python 3.7 is preinstalled on the OS.
 
 
 ### 2.2 Create a virtual environment

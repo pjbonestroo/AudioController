@@ -148,6 +148,10 @@ class General(BaseHandler):
             self.write(dumps({'success': False}))
             return
 
+        if action == 'ping':
+            self.write(dumps({'success': True}))
+            return
+
         def write_sources():
             self.write(dumps([asdict(obj) for obj in settings.sources]))
 

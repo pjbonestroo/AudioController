@@ -21,6 +21,7 @@ import tornado.websocket
 from .. import settings
 from .. import controller
 from .. import utils
+from .. import loggers
 
 here = Path(os.path.dirname(__file__)).resolve()
 main_logger = logging.getLogger("main")
@@ -202,6 +203,10 @@ class General(BaseHandler):
         elif action == 'getInputLevels':
             levels = controller.config.current_levels
             self.write(dumps(levels))
+            return
+
+        elif action == 'downloadLog':
+            self.write(loggers.get_targz_data())
             return
 
 

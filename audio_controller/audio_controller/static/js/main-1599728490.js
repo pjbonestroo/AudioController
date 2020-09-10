@@ -135,11 +135,13 @@ __webpack_require__.d(utils_namespaceObject, "sleep", function() { return sleep;
 __webpack_require__.d(utils_namespaceObject, "get_url", function() { return get_url; });
 __webpack_require__.d(utils_namespaceObject, "redirect_relative", function() { return redirect_relative; });
 __webpack_require__.d(utils_namespaceObject, "redirect", function() { return redirect; });
-__webpack_require__.d(utils_namespaceObject, "format_date", function() { return format_date; });
-__webpack_require__.d(utils_namespaceObject, "parse_date", function() { return parse_date; });
-__webpack_require__.d(utils_namespaceObject, "check_exception", function() { return check_exception; });
 __webpack_require__.d(utils_namespaceObject, "post", function() { return post; });
+__webpack_require__.d(utils_namespaceObject, "example_handle_progress", function() { return example_handle_progress; });
+__webpack_require__.d(utils_namespaceObject, "handle_progress", function() { return utils_handle_progress; });
+__webpack_require__.d(utils_namespaceObject, "post_upload_file", function() { return post_upload_file; });
+__webpack_require__.d(utils_namespaceObject, "post_download_file", function() { return post_download_file; });
 __webpack_require__.d(utils_namespaceObject, "save_file", function() { return save_file; });
+__webpack_require__.d(utils_namespaceObject, "save_blob_to_file", function() { return save_blob_to_file; });
 
 // NAMESPACE OBJECT: ./python/__target__/dialogs.js
 var dialogs_namespaceObject = {};
@@ -227,7 +229,7 @@ __webpack_require__.d(layout_namespaceObject, "logout", function() { return logo
 __webpack_require__.d(layout_namespaceObject, "logout_button", function() { return logout_button; });
 
 // CONCATENATED MODULE: ./python/__target__/org.transcrypt.__runtime__.js
-// Transcrypt'ed from Python, 2020-09-07 19:07:52
+// Transcrypt'ed from Python, 2020-09-10 11:01:25
 var __name__ = 'org.transcrypt.__runtime__';
 var __envir__ = {};
 __envir__.interpreter_name = 'python';
@@ -2350,7 +2352,7 @@ var input = __terminal__.input;
 
 //# sourceMappingURL=org.transcrypt.__runtime__.map
 // CONCATENATED MODULE: ./python/__target__/elements.js
-// Transcrypt'ed from Python, 2020-09-07 19:07:54
+// Transcrypt'ed from Python, 2020-09-10 11:01:27
 
 var elements_name_ = 'elements';
 var get_element = function (css_selectors) {
@@ -2440,7 +2442,7 @@ var ElementWrapper =  __class__ ('ElementWrapper', [object], {
 
 //# sourceMappingURL=elements.map
 // CONCATENATED MODULE: ./python/__target__/delayer.js
-// Transcrypt'ed from Python, 2020-09-07 19:07:54
+// Transcrypt'ed from Python, 2020-09-10 11:01:27
 
 var delayer_name_ = 'delayer';
 var Delayer =  __class__ ('Delayer', [object], {
@@ -2553,7 +2555,7 @@ var Delayer2 =  __class__ ('Delayer2', [object], {
 
 //# sourceMappingURL=delayer.map
 // CONCATENATED MODULE: ./python/__target__/paged_list.js
-// Transcrypt'ed from Python, 2020-09-07 19:07:53
+// Transcrypt'ed from Python, 2020-09-10 11:01:26
 
 
 
@@ -3778,7 +3780,7 @@ var FakeServer =  __class__ ('FakeServer', [DataServer], {
 
 //# sourceMappingURL=paged_list.map
 // CONCATENATED MODULE: ./python/__target__/utils.js
-// Transcrypt'ed from Python, 2020-09-07 19:07:54
+// Transcrypt'ed from Python, 2020-09-10 11:01:27
 
 var utils_name_ = 'utils';
 var sleep = async function (time) {
@@ -3812,29 +3814,12 @@ var redirect = function (url) {
 	};
 	window.location.href = url;
 };
-var format_date = function (date, format) {
-	if (typeof format == 'undefined' || (format != null && format.hasOwnProperty ("__kwargtrans__"))) {;
-		var format = 'YYYY-MM-DD HH:mm:ss';
-	};
-	if (date === null) {
-		return '';
-	}
-	return moment (date).format (format);
-};
-var parse_date = function (txt) {
-	if (txt === null || txt == '') {
-		return null;
-	}
-	else {
-		return moment (txt)._d;
-	}
-};
-var check_exception = function () {
-	// pass;
-};
-var post = async function (url, data, json_parse) {
+var post = async function (url, data, json_parse, content_type) {
 	if (typeof json_parse == 'undefined' || (json_parse != null && json_parse.hasOwnProperty ("__kwargtrans__"))) {;
 		var json_parse = true;
+	};
+	if (typeof content_type == 'undefined' || (content_type != null && content_type.hasOwnProperty ("__kwargtrans__"))) {;
+		var content_type = null;
 	};
 	var deferred = $.Deferred ();
 	var success = function (result) {
@@ -3855,16 +3840,92 @@ var post = async function (url, data, json_parse) {
 	if (json_parse) {
 		var data = JSON.stringify (data);
 	}
-	$.ajax (dict ([['type', 'POST'], ['url', url], ['data', data], ['success', success], ['error', error], ['contentType', 'application/json; charset=utf-8']]));
+	if (content_type === null) {
+		var content_type = 'application/json; charset=utf-8';
+	}
+	$.ajax (dict ([['type', 'POST'], ['url', url], ['data', data], ['success', success], ['error', error], ['contentType', content_type]]));
+	return deferred.promise ();
+};
+var example_handle_progress = function (event) {
+	var percent = 0;
+	var position = event.loaded || event.position;
+	var total = event.total;
+	if (event.lengthComputable) {
+		var percent = Math.ceil ((position / total) * 100);
+		console.log (percent);
+	}
+};
+var utils_handle_progress = function (func) {
+	var percent = 0;
+	var position = event.loaded || event.position;
+	var total = event.total;
+	if (event.lengthComputable) {
+		var percent = Math.ceil ((position / total) * 100);
+		func (percent);
+	}
+};
+var post_upload_file = async function (url, file, handle_progress) {
+	if (typeof handle_progress == 'undefined' || (handle_progress != null && handle_progress.hasOwnProperty ("__kwargtrans__"))) {;
+		var handle_progress = null;
+	};
+	var deferred = $.Deferred ();
+	var success = function (result) {
+		deferred.resolve (JSON.parse (result));
+	};
+	var error = function (result) {
+		deferred.reject (result);
+	};
+	var form_data = new FormData ();
+	form_data.append ('file', file, file ['name']);
+	form_data.append ('upload_file', true);
+	var xhr = function () {
+		var r = $.ajaxSettings.xhr ();
+		if (r.upload && handle_progress !== null) {
+			r.upload.addEventListener ('progress', handle_progress, false);
+		}
+		return r;
+	};
+	$.ajax (dict ([['type', 'POST'], ['url', url], ['xhr', xhr], ['success', success], ['error', error], ['async', true], ['data', form_data], ['cache', false], ['contentType', false], ['processData', false], ['timeout', 60000]]));
+	return deferred.promise ();
+};
+var post_download_file = async function (url, data, filename, handle_progress) {
+	if (typeof handle_progress == 'undefined' || (handle_progress != null && handle_progress.hasOwnProperty ("__kwargtrans__"))) {;
+		var handle_progress = null;
+	};
+	var deferred = $.Deferred ();
+	var xhr = new XMLHttpRequest ();
+	xhr.open ('POST', url);
+	xhr.responseType = 'blob';
+	if (handle_progress !== null) {
+		xhr.onprogress = handle_progress;
+	}
+	xhr.send (JSON.stringify (data));
+	var onload = function (evt) {
+		if (evt.currentTarget.status == 200) {
+			save_blob_to_file (evt.target.response, filename);
+		}
+		deferred.resolve ();
+	};
+	xhr.onload = onload;
 	return deferred.promise ();
 };
 var save_file = function (txt, filename) {
-	saveAs (new Blob ([txt], dict ([[py_metatype, 'text/plain;charset=utf-8']])), filename);
+	saveAs (new Blob ([txt], dict ([['type', 'text/plain;charset=utf-8']])), filename);
+};
+var save_blob_to_file = function (blob, filename) {
+	var a = document.createElement ('a');
+	a.style = 'display: none';
+	document.body.appendChild (a);
+	var url = window.URL.createObjectURL (blob);
+	a.href = url;
+	a.download = filename;
+	a.click ();
+	window.URL.revokeObjectURL (url);
 };
 
 //# sourceMappingURL=utils.map
 // CONCATENATED MODULE: ./python/__target__/dialogs.js
-// Transcrypt'ed from Python, 2020-09-07 19:07:53
+// Transcrypt'ed from Python, 2020-09-10 11:01:25
 var paged_list = {};
 var utils = {};
 
@@ -4059,7 +4120,7 @@ var DialogSelect =  __class__ ('DialogSelect', [Dialog], {
 
 //# sourceMappingURL=dialogs.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_overview.js
-// Transcrypt'ed from Python, 2020-09-07 19:07:54
+// Transcrypt'ed from Python, 2020-09-10 11:01:27
 var pages_page_overview_utils = {};
 
 
@@ -4216,7 +4277,7 @@ var Page =  __class__ ('Page', [ElementWrapper], {
 
 //# sourceMappingURL=pages.page_overview.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_admin.js
-// Transcrypt'ed from Python, 2020-09-07 19:07:54
+// Transcrypt'ed from Python, 2020-09-10 11:01:27
 var pages_page_admin_utils = {};
 
 
@@ -4471,6 +4532,12 @@ var TestDebug =  __class__ ('TestDebug', [AccordionItem], {
 			b.attr ('style', 'margin-right: 5px;');
 		}
 		self.body.append (pages_page_admin_E ('div').append (...buttons));
+		button_download_log.element.onclick = self.download_log;
+	});},
+	get download_log () {return __get__ (this, async function (self, evt) {
+		var datetime = luxon.DateTime.local ().toFormat ('yyyyMMdd_HHmm');
+		var filename = '{}_logs.tar.gz'.format (datetime);
+		await pages_page_admin_utils.post_download_file (pages_page_admin_utils.get_url ('general/downloadLog'), dict ({}), filename);
 	});}
 });
 var pages_page_admin_Page =  __class__ ('Page', [ElementWrapper], {
@@ -4504,7 +4571,7 @@ var pages_page_admin_Page =  __class__ ('Page', [ElementWrapper], {
 
 //# sourceMappingURL=pages.page_admin.map
 // CONCATENATED MODULE: ./python/__target__/math.js
-// Transcrypt'ed from Python, 2020-09-07 19:07:55
+// Transcrypt'ed from Python, 2020-09-10 11:01:28
 
 var math_name_ = 'math';
 var pi = Math.PI;
@@ -4563,7 +4630,7 @@ var modf = function (n) {
 
 //# sourceMappingURL=math.map
 // CONCATENATED MODULE: ./python/__target__/random.js
-// Transcrypt'ed from Python, 2020-09-07 19:07:55
+// Transcrypt'ed from Python, 2020-09-10 11:01:27
 var math = {};
 
 
@@ -4631,7 +4698,7 @@ seed ();
 
 //# sourceMappingURL=random.map
 // CONCATENATED MODULE: ./python/__target__/layout.js
-// Transcrypt'ed from Python, 2020-09-07 19:07:52
+// Transcrypt'ed from Python, 2020-09-10 11:01:25
 var dialogs = {};
 var layout_random = {};
 var layout_utils = {};
@@ -4795,7 +4862,7 @@ main_menu.append (logout_button ());
 
 //# sourceMappingURL=layout.map
 // CONCATENATED MODULE: ./python/__target__/main.js
-// Transcrypt'ed from Python, 2020-09-07 19:07:52
+// Transcrypt'ed from Python, 2020-09-10 11:01:25
 var main_elements = {};
 var layout = {};
 var main_utils = {};

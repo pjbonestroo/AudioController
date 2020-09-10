@@ -1,11 +1,39 @@
 from pathlib import Path
 import logging
+import os
+import tarfile
+import tempfile
 
 log_dir = Path.home() / "audio_controller_logs"
 
-
 if not log_dir.exists():
     log_dir.mkdir()
+
+
+def get_files():
+    return [log_dir / name for name in os.listdir(log_dir)]
+
+
+def get_targz_data():
+    """ Get content of all log files, compressed as tar.gz, as binary object """
+    try:
+        data = None
+        log_files = get_files()
+        tar_file = tempfile.TemporaryFile('w+b')
+        with tar_file as tf:
+            with tarfile.open(mode="w:gz", fileobj=tf) as tar_handle:
+                for log_file in log_files:
+                    tar_handle.add(str(log_file))
+            tf.seek(0)
+            data = tf.read()
+
+        # to test creation of correct tar.gz file (at least server side):
+        # with open(log_dir.parent / 'audio_controller_logs.tar.gz', 'wb') as f:
+        #    f.write(data)
+
+        return data
+    except:
+        return data
 
 
 main_logger = logging.getLogger("main")

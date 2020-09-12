@@ -42,7 +42,7 @@ def get_serial(port="/dev/ttyUSB0"):
     result.parity = serial.PARITY_NONE
     result.stopbits = serial.STOPBITS_ONE
     result.port = port
-    result.timeout = 0.5  # seconds
+    result.timeout = 0.05  # seconds
     try:
         result.open()
     except:

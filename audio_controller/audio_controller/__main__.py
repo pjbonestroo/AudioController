@@ -53,7 +53,12 @@ def init_system():
     """ initialize system  """
     import getpass
     # set the output volume level to a fixed percentage
-    os.system("amixer sset 'Master' 80%")
+    cmd = "amixer sset 'Master' 80%"
+    print(cmd)
+    msg = os.popen(cmd).read()
+    print(msg)
+    main_logger.info(msg)
+
     # log user
     msg = f"Init system - user: {getpass.getuser()}"
     print(msg)

@@ -1,1 +1,1 @@
-chromium-browser ~/Desktop/audio_controller.html
+chromium --kiosk http://localhost:5000

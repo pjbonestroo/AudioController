@@ -213,7 +213,6 @@ __webpack_require__.r(layout_namespaceObject);
 __webpack_require__.d(layout_namespaceObject, "E", function() { return layout_E; });
 __webpack_require__.d(layout_namespaceObject, "home", function() { return home; });
 __webpack_require__.d(layout_namespaceObject, "set_title", function() { return set_title; });
-__webpack_require__.d(layout_namespaceObject, "fullscreen", function() { return fullscreen; });
 __webpack_require__.d(layout_namespaceObject, "is_fullscreen", function() { return is_fullscreen; });
 __webpack_require__.d(layout_namespaceObject, "click_fullscreen", function() { return click_fullscreen; });
 __webpack_require__.d(layout_namespaceObject, "main_menu", function() { return main_menu; });
@@ -229,7 +228,7 @@ __webpack_require__.d(layout_namespaceObject, "logout", function() { return logo
 __webpack_require__.d(layout_namespaceObject, "logout_button", function() { return logout_button; });
 
 // CONCATENATED MODULE: ./python/__target__/org.transcrypt.__runtime__.js
-// Transcrypt'ed from Python, 2020-09-11 16:38:38
+// Transcrypt'ed from Python, 2020-09-14 16:40:23
 var __name__ = 'org.transcrypt.__runtime__';
 var __envir__ = {};
 __envir__.interpreter_name = 'python';
@@ -2352,7 +2351,7 @@ var input = __terminal__.input;
 
 //# sourceMappingURL=org.transcrypt.__runtime__.map
 // CONCATENATED MODULE: ./python/__target__/elements.js
-// Transcrypt'ed from Python, 2020-09-11 16:38:40
+// Transcrypt'ed from Python, 2020-09-14 16:40:25
 
 var elements_name_ = 'elements';
 var get_element = function (css_selectors) {
@@ -2442,7 +2441,7 @@ var ElementWrapper =  __class__ ('ElementWrapper', [object], {
 
 //# sourceMappingURL=elements.map
 // CONCATENATED MODULE: ./python/__target__/delayer.js
-// Transcrypt'ed from Python, 2020-09-11 16:38:40
+// Transcrypt'ed from Python, 2020-09-14 16:40:25
 
 var delayer_name_ = 'delayer';
 var Delayer =  __class__ ('Delayer', [object], {
@@ -2555,7 +2554,7 @@ var Delayer2 =  __class__ ('Delayer2', [object], {
 
 //# sourceMappingURL=delayer.map
 // CONCATENATED MODULE: ./python/__target__/paged_list.js
-// Transcrypt'ed from Python, 2020-09-11 16:38:39
+// Transcrypt'ed from Python, 2020-09-14 16:40:24
 
 
 
@@ -3780,7 +3779,7 @@ var FakeServer =  __class__ ('FakeServer', [DataServer], {
 
 //# sourceMappingURL=paged_list.map
 // CONCATENATED MODULE: ./python/__target__/utils.js
-// Transcrypt'ed from Python, 2020-09-11 16:38:40
+// Transcrypt'ed from Python, 2020-09-14 16:40:25
 
 var utils_name_ = 'utils';
 var sleep = async function (time) {
@@ -3925,7 +3924,7 @@ var save_blob_to_file = function (blob, filename) {
 
 //# sourceMappingURL=utils.map
 // CONCATENATED MODULE: ./python/__target__/dialogs.js
-// Transcrypt'ed from Python, 2020-09-11 16:38:39
+// Transcrypt'ed from Python, 2020-09-14 16:40:24
 var paged_list = {};
 var utils = {};
 
@@ -3987,7 +3986,7 @@ var DialogConfirm =  __class__ ('DialogConfirm', [Dialog], {
 	__module__: dialogs_name_,
 	get __init__ () {return __get__ (this, function (self, title) {
 		if (typeof title == 'undefined' || (title != null && title.hasOwnProperty ("__kwargtrans__"))) {;
-			var title = 'Please confirm';
+			var title = 'Bevestigen a.u.b.';
 		};
 		__super__ (DialogConfirm, '__init__') (self, title);
 		var button_confirm = self.add_button ('btn btn-primary', 'Confirm').attr ('data-dismiss', 'modal');
@@ -4120,7 +4119,7 @@ var DialogSelect =  __class__ ('DialogSelect', [Dialog], {
 
 //# sourceMappingURL=dialogs.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_overview.js
-// Transcrypt'ed from Python, 2020-09-11 16:38:41
+// Transcrypt'ed from Python, 2020-09-14 16:40:25
 var pages_page_overview_utils = {};
 
 
@@ -4277,8 +4276,9 @@ var Page =  __class__ ('Page', [ElementWrapper], {
 
 //# sourceMappingURL=pages.page_overview.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_admin.js
-// Transcrypt'ed from Python, 2020-09-11 16:38:40
+// Transcrypt'ed from Python, 2020-09-14 16:40:25
 var pages_page_admin_utils = {};
+
 
 
 
@@ -4523,21 +4523,45 @@ var TestDebug =  __class__ ('TestDebug', [AccordionItem], {
 	__module__: pages_page_admin_name_,
 	get __init__ () {return __get__ (this, function (self) {
 		__super__ (TestDebug, '__init__') (self, 'Test and debug');
-		var button_run_tests = pages_page_admin_E ('button').attr ('class', 'btn btn-primary btn-sm').inner_html ('Run tests');
-		var button_download_log = pages_page_admin_E ('button').attr ('class', 'btn btn-primary btn-sm').inner_html ('Download log');
-		var button_reboot = pages_page_admin_E ('button').attr ('class', 'btn btn-primary btn-sm').inner_html ('Herstarten');
-		var button_shutdown = pages_page_admin_E ('button').attr ('class', 'btn btn-primary btn-sm').inner_html ('Afsluiten');
-		var buttons = [button_run_tests, button_download_log, button_reboot, button_shutdown];
+		self.button_show_ip = pages_page_admin_E ('button').attr ('class', 'btn btn-primary btn-sm').inner_html ('Show IP address');
+		self.button_download_log = pages_page_admin_E ('button').attr ('class', 'btn btn-primary btn-sm').inner_html ('Download log');
+		self.button_reboot = pages_page_admin_E ('button').attr ('class', 'btn btn-primary btn-sm').inner_html ('Herstarten');
+		self.button_shutdown = pages_page_admin_E ('button').attr ('class', 'btn btn-primary btn-sm').inner_html ('Afsluiten');
+		var buttons = [self.button_show_ip, self.button_download_log, self.button_reboot, self.button_shutdown];
 		for (var b of buttons) {
 			b.attr ('style', 'margin-right: 5px;');
 		}
+		self.button_show_ip.element.onclick = self.show_ip;
+		self.button_download_log.element.onclick = self.download_log;
+		self.button_reboot.element.onclick = self.reboot;
+		self.button_shutdown.element.onclick = self.shutdown;
 		self.body.append (pages_page_admin_E ('div').append (...buttons));
-		button_download_log.element.onclick = self.download_log;
+		self.div_info = pages_page_admin_E ('div').attr ('style', 'white-space: pre-wrap;');
+		self.body.append (self.div_info);
 	});},
 	get download_log () {return __get__ (this, async function (self, evt) {
+		self.button_download_log.disable ();
 		var datetime = luxon.DateTime.local ().toFormat ('yyyyMMdd_HHmm');
 		var filename = '{}_logs.tar.gz'.format (datetime);
 		await pages_page_admin_utils.post_download_file (pages_page_admin_utils.get_url ('general/downloadLog'), dict ({}), filename);
+		self.button_download_log.enable ();
+	});},
+	get show_ip () {return __get__ (this, async function (self, evt) {
+		self.button_show_ip.disable ();
+		var txt = await pages_page_admin_utils.post (pages_page_admin_utils.get_url ('general/ifconfig'), dict ({}), false);
+		console.log (txt);
+		self.div_info.inner_html (txt);
+		self.button_show_ip.enable ();
+	});},
+	get reboot () {return __get__ (this, async function (self, evt) {
+		var sure = await dialog_confirm.get_confirm ('Systeem zal worden herstart. Weet u het zeker?');
+		console.log ('reboot');
+		console.log (sure);
+	});},
+	get shutdown () {return __get__ (this, async function (self, evt) {
+		var sure = await dialog_confirm.get_confirm ('Systeem zal worden uitgeschakeld. Weet u het zeker?');
+		console.log ('shutdown');
+		console.log (sure);
 	});}
 });
 var pages_page_admin_Page =  __class__ ('Page', [ElementWrapper], {
@@ -4571,7 +4595,7 @@ var pages_page_admin_Page =  __class__ ('Page', [ElementWrapper], {
 
 //# sourceMappingURL=pages.page_admin.map
 // CONCATENATED MODULE: ./python/__target__/math.js
-// Transcrypt'ed from Python, 2020-09-11 16:38:41
+// Transcrypt'ed from Python, 2020-09-14 16:40:25
 
 var math_name_ = 'math';
 var pi = Math.PI;
@@ -4630,7 +4654,7 @@ var modf = function (n) {
 
 //# sourceMappingURL=math.map
 // CONCATENATED MODULE: ./python/__target__/random.js
-// Transcrypt'ed from Python, 2020-09-11 16:38:41
+// Transcrypt'ed from Python, 2020-09-14 16:40:25
 var math = {};
 
 
@@ -4698,7 +4722,7 @@ seed ();
 
 //# sourceMappingURL=random.map
 // CONCATENATED MODULE: ./python/__target__/layout.js
-// Transcrypt'ed from Python, 2020-09-11 16:38:38
+// Transcrypt'ed from Python, 2020-09-14 16:40:24
 var dialogs = {};
 var layout_random = {};
 var layout_utils = {};
@@ -4723,10 +4747,6 @@ var set_title = function (title) {
 	home.inner_html (title);
 	window.document.title = title;
 };
-var fullscreen = ElementWrapper (get_element ('#a_fullscreen'));
-fullscreen.element.onclick = (function __lambda__ (evt) {
-	return click_fullscreen ();
-});
 var is_fullscreen = false;
 var click_fullscreen = function () {
 	if (is_fullscreen) {
@@ -4877,7 +4897,7 @@ main_menu.append (logout_button ());
 
 //# sourceMappingURL=layout.map
 // CONCATENATED MODULE: ./python/__target__/main.js
-// Transcrypt'ed from Python, 2020-09-11 16:38:38
+// Transcrypt'ed from Python, 2020-09-14 16:40:24
 var main_elements = {};
 var layout = {};
 var main_utils = {};

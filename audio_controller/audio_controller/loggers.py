@@ -21,7 +21,8 @@ def get_targz_data():
         log_files = get_files()
         tar_file = tempfile.TemporaryFile('w+b')
         with tar_file as tf:
-            with tarfile.open(mode="w:gz", fileobj=tf) as tar_handle:
+            mode = "w:"  # "w:gz" gz seems to do not work properly on pi
+            with tarfile.open(mode=mode, fileobj=tf) as tar_handle:
                 for log_file in log_files:
                     tar_handle.add(str(log_file))
             tf.seek(0)

@@ -27,7 +27,7 @@ def make_app():
     template_dir = here / 'views'
     static_dir = here / 'static'
     settings = dict(
-        debug=True,
+        debug=False,
         autoreload=False,
         cookie_secret=utils.get_cookie_secret(),
         template_path=str(template_dir),
@@ -49,8 +49,20 @@ def schedule_tasks(loop: asyncio.BaseEventLoop):
     loop.create_task(controller.auto_switch())
 
 
+def init_system():
+    """ initialize system  """
+    import getpass
+    # set the output volume level to a fixed percentage
+    os.system("amixer sset 'Master' 80%")
+    # log user
+    msg = f"Init system - user: {getpass.getuser()}"
+    print(msg)
+    main_logger.info(msg)
+
+
 def main():
     try:
+        init_system()
         # listen on 2 ports, 5000 for localhost and 8080 for external usage (external usage requires login)
         port_address = [(5000, '127.0.0.1'), (8080, '0.0.0.0')]
         for (port, address) in port_address:

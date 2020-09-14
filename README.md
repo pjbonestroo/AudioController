@@ -31,12 +31,15 @@ sudo apt install -y vlc
 
 ### 2.1 Install python 3.7
 
-Python 3.7 is preinstalled on the OS.
-
+Python 3.7+ is preinstalled on the OS. Check this by running:
+```
+python3 --version
+```
 
 ### 2.2 Create a virtual environment
 
 ```
+mkdir ~/AudioController
 cd ~/AudioController
 python3 -m venv pyenv
 ```
@@ -54,15 +57,18 @@ python -m pip install python-vlc
 
 ## 3. Copy audio_controller project/package to pi
 
+### 3.1 Enable ssh
+
+### 3.2 Copy from local to pi
+
 Copy from local to pi (use correct ip-address):
 
 ```
-scp -r ./audio_controller pi@192.168.1.96:~/AudioController
-scp ./run_audio_controller.sh pi@192.168.1.96:~/AudioController
-scp ./audio_controller.service pi@192.168.1.96:~/AudioController
-scp ./audio_controller.html pi@192.168.1.96:~/Desktop
-scp ./start_browser.sh pi@192.168.1.96:~/AudioController
-scp ./start_browser.service pi@192.168.1.96:~/AudioController
+PI_IP=192.168.1.110
+scp -r ./audio_controller pi@${PI_IP}:~/AudioController
+scp ./run_audio_controller.sh pi@${PI_IP}:~/AudioController
+scp ./audio_controller.service pi@${PI_IP}:~/AudioController
+scp ./audio_controller.html pi@${PI_IP}:~/Desktop
 ```
 
 To install an update of the software it is usually enough to run the first command from above.
@@ -70,13 +76,12 @@ To install an update of the software it is usually enough to run the first comma
 
 ## 4. Create auto startup
 
-Copy on pi, from from home dir to /etc/systemd/system/
+Copy on pi, from home dir to /etc/systemd/system/
 
 ```
-sudo cp ~/AudioController/audio_controller.service /etc/systemd/system/audio_controller.service
-sudo chmod 777 ~/AudioController/run_audio_controller.sh
-sudo cp ~/AudioController/start_browser.service /etc/systemd/system/start_browser.service
-sudo chmod 777 ~/AudioController/start_browser.sh
+cd /home/pi/
+sudo cp ./AudioController/audio_controller.service /etc/systemd/system/audio_controller.service
+sudo chmod 777 ./AudioController/run_audio_controller.sh
 ```
 
 Some commands to start and stop service:
@@ -90,6 +95,48 @@ sudo systemctl enable audio_controller.service
 sudo systemctl disable audio_controller.service
 ```
 
+To start the browser in kiosk mode, add the following lines to `/etc/xdg/lxsession/LXDE-pi/autostart`:
+```
+@xset s off
+@xset -dpms
+@xset s noblank
+@chromium --kiosk http://localhost:5000/
+```
+
+For example the full file content becomes:
+```
+@lxpanel --profile LXDE-pi
+@pcmanfm --desktop --profile LXDE-pi
+@xscreensaver -no-splash
+@xset s off
+@xset -dpms
+@xset s noblank
+@chromium --kiosk http://localhost:5000/
+```
+
+## 5. Enable remote login
+
+### 5.1 Create file with usernames and passwords
+
+From directory audio_controller/audio_controller:
+```
+python3
+import utils
+utils.add_user("<username>", "<password>")
+assert utils.check_user("<username>", "<password>"), "Configuration failed"
+exit()
+```
+
+### 5.2 Copy file to root home directory
+
+```
+scp ~/.audio_controller_users.txt pi@${PI_IP}:~/
+```
+And then on the raspberry pi:
+```
+sudo mv /home/pi/.audio_controller_users.txt /home/root/
+```
+
 ## Extras
 
 Disable updates
@@ -99,14 +146,14 @@ Enable NTP to have time updated
 timedatectl status
 sudo timedatectl set-ntp True
 ```
-
 ## Remarks
 
 Make sure to place user file and settings file in home of root, not in home or pi user. AudioController runs as root user.
 
 # How to contribute
 
-TBD
+User Linux as host. Windows is also possible, but not covered by this manual.
+Install vlc 
 
 - development from Linux
 - install vlc, vscode, python3.7

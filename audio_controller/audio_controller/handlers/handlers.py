@@ -213,6 +213,18 @@ class General(BaseHandler):
             self.write(loggers.get_targz_data())
             return
 
+        elif action == 'ifconfig':
+            self.write(os.popen('ifconfig').read())
+            return
+
+        elif action == 'reboot':
+            os.system("shutdown -r now")
+            return
+
+        elif action == 'shutdown':
+            os.system("shutdown now")
+            return
+
 
 websocket_connections = []
 

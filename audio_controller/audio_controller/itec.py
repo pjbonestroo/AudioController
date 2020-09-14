@@ -25,7 +25,19 @@ _last_time_get_serial = None
 main_logger = logging.getLogger("main")
 
 
-def get_serial(port="/dev/ttyUSB0"):
+def get_usb_port():
+    ports = os.popen("ls /dev/ | grep ttyUSB").read()
+    ports = ports.strip().split("\n")
+    ports = [p for p in ports if bool(p)]
+    msg = f"Found {len(ports)} serial usb connections: {ports}"
+    print(msg)
+    main_logger.info(msg)
+    if not ports:
+        return "/dev/ttyUSB0"
+    return f"/dev/{ports[0]}"
+
+
+def get_serial():
     """ seriele poort confguratie """
     # only try to open the port every ... seconds
     retry_time = 5  # seconds
@@ -35,6 +47,7 @@ def get_serial(port="/dev/ttyUSB0"):
 
     _last_time_get_serial = dt.datetime.utcnow()
 
+    port = get_usb_port()
     result = serial.Serial()
     # see manual Software Multimix
     result.baudrate = 19200
@@ -217,5 +230,7 @@ def test():
 
     for i in [1, 2, 3, 4, 5, 6, 7, 8]:
         print(i, itec.get_route(i))
+
+    # get_usb_port()
 
     sys.exit(0)

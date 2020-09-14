@@ -8,6 +8,7 @@ import logging
 # externals
 
 # internals
+from . import itec as itec_module
 from .itec import itec
 from . import settings
 from .settings import Source, Destination
@@ -15,6 +16,14 @@ from . import stream
 
 
 main_logger = logging.getLogger("main")
+
+
+def get_IN_port(source: Source) -> int:
+    """ Get ITEC IN port nr, also if it is an url. """
+    result = settings.get_IN_port(source.port_url)
+    if result is None:
+        result = settings.get_IN_port(settings.settings.port_IN_for_streams)
+    return result
 
 
 class Config:
@@ -30,13 +39,6 @@ class Config:
         Set routes on ITEC to route audio from selected sources to selected destinations.
         Sources and destinations must all be enabled.
         """
-
-        def get_IN_port(source: Source):
-            """ Get ITEC IN port nr, also if it is an url. """
-            result = settings.get_IN_port(source.port_url)
-            if result is None:
-                result = settings.get_IN_port(settings.settings.port_IN_for_streams)
-            return result
 
         def route_all_to_null():
             #print("route all to null")
@@ -109,6 +111,20 @@ def set_routes():
     enabled_destinations = [d for d in settings.destinations if d.enabled]
     config.set_routes(enabled_sources, enabled_destinations)
     config.current_levels.clear()
+
+
+def get_routes():
+    """ Return the routes of the enabled IN ports as text """
+    result = f"Looking at usb port {itec_module.get_usb_port()}\n"
+    if itec.serial is None:
+        result += f"ITEC is not connected.\n"
+        return result
+    enabled_sources = [s for s in settings.sources if s.enabled]
+    ports = list(set([get_IN_port(s) for s in enabled_sources]))
+    result += "IN -> OUT\n"
+    for p in ports:
+        result += f"{p} -> {itec.get_route(p)}\n"
+    return result
 
 
 async def scan_ports():

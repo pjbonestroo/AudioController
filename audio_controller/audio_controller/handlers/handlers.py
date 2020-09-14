@@ -225,6 +225,10 @@ class General(BaseHandler):
             os.system("shutdown now")
             return
 
+        elif action == 'getRoutes':
+            self.write(controller.get_routes())
+            return
+
 
 websocket_connections = []
 

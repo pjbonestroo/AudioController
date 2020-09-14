@@ -102,6 +102,10 @@ To start the browser in kiosk mode, add the following lines to `/etc/xdg/lxsessi
 @xset s noblank
 @chromium --kiosk http://localhost:5000/
 ```
+If it does not work, the last line should (maybe) be:
+```
+@chromium-browser --kiosk http://localhost:5000/
+```
 
 For example the full file content becomes:
 ```

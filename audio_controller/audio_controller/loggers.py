@@ -14,8 +14,8 @@ def get_files():
     return [log_dir / name for name in os.listdir(log_dir)]
 
 
-def get_targz_data():
-    """ Get content of all log files, compressed as tar.gz, as binary object """
+def get_logs_as_binary():
+    """ Get content of all log files, as in a .tar file, as binary object """
     try:
         data = None
         log_files = get_files()

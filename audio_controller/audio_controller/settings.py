@@ -135,6 +135,12 @@ def init_settings():
 
 init_settings()
 
+
+def get_binary():
+    """ Get content of settings file as binary object """
+    with open(file, 'rb') as f:
+        return f.read()
+
 #
 # Validation of values
 #

@@ -228,7 +228,7 @@ __webpack_require__.d(layout_namespaceObject, "logout", function() { return logo
 __webpack_require__.d(layout_namespaceObject, "logout_button", function() { return logout_button; });
 
 // CONCATENATED MODULE: ./python/__target__/org.transcrypt.__runtime__.js
-// Transcrypt'ed from Python, 2020-09-15 00:42:59
+// Transcrypt'ed from Python, 2020-09-17 20:54:24
 var __name__ = 'org.transcrypt.__runtime__';
 var __envir__ = {};
 __envir__.interpreter_name = 'python';
@@ -2351,7 +2351,7 @@ var input = __terminal__.input;
 
 //# sourceMappingURL=org.transcrypt.__runtime__.map
 // CONCATENATED MODULE: ./python/__target__/elements.js
-// Transcrypt'ed from Python, 2020-09-15 00:43:00
+// Transcrypt'ed from Python, 2020-09-17 20:54:25
 
 var elements_name_ = 'elements';
 var get_element = function (css_selectors) {
@@ -2441,7 +2441,7 @@ var ElementWrapper =  __class__ ('ElementWrapper', [object], {
 
 //# sourceMappingURL=elements.map
 // CONCATENATED MODULE: ./python/__target__/delayer.js
-// Transcrypt'ed from Python, 2020-09-15 00:43:00
+// Transcrypt'ed from Python, 2020-09-17 20:54:25
 
 var delayer_name_ = 'delayer';
 var Delayer =  __class__ ('Delayer', [object], {
@@ -2554,7 +2554,7 @@ var Delayer2 =  __class__ ('Delayer2', [object], {
 
 //# sourceMappingURL=delayer.map
 // CONCATENATED MODULE: ./python/__target__/paged_list.js
-// Transcrypt'ed from Python, 2020-09-15 00:42:59
+// Transcrypt'ed from Python, 2020-09-17 20:54:24
 
 
 
@@ -3779,7 +3779,7 @@ var FakeServer =  __class__ ('FakeServer', [DataServer], {
 
 //# sourceMappingURL=paged_list.map
 // CONCATENATED MODULE: ./python/__target__/utils.js
-// Transcrypt'ed from Python, 2020-09-15 00:43:00
+// Transcrypt'ed from Python, 2020-09-17 20:54:25
 
 var utils_name_ = 'utils';
 var sleep = async function (time) {
@@ -3924,7 +3924,7 @@ var save_blob_to_file = function (blob, filename) {
 
 //# sourceMappingURL=utils.map
 // CONCATENATED MODULE: ./python/__target__/dialogs.js
-// Transcrypt'ed from Python, 2020-09-15 00:42:59
+// Transcrypt'ed from Python, 2020-09-17 20:54:24
 var paged_list = {};
 var utils = {};
 
@@ -4119,7 +4119,7 @@ var DialogSelect =  __class__ ('DialogSelect', [Dialog], {
 
 //# sourceMappingURL=dialogs.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_overview.js
-// Transcrypt'ed from Python, 2020-09-15 00:43:01
+// Transcrypt'ed from Python, 2020-09-17 20:54:26
 var pages_page_overview_utils = {};
 
 
@@ -4276,7 +4276,7 @@ var Page =  __class__ ('Page', [ElementWrapper], {
 
 //# sourceMappingURL=pages.page_overview.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_admin.js
-// Transcrypt'ed from Python, 2020-09-15 00:43:00
+// Transcrypt'ed from Python, 2020-09-17 20:54:25
 var pages_page_admin_utils = {};
 
 
@@ -4579,14 +4579,21 @@ var pages_page_admin_Page =  __class__ ('Page', [ElementWrapper], {
 	__module__: pages_page_admin_name_,
 	get __init__ () {return __get__ (this, function (self) {
 		__super__ (pages_page_admin_Page, '__init__') (self, elements_element ('div'));
-		var button_restore = pages_page_admin_E ('button').attr ('class', 'btn btn-secondary btn-sm').inner_html ('Terug naar fabrieksinstellingen');
-		button_restore.element.onclick = self.restore_settings;
-		self.py_items = [Settings (), Sources (), Destinations (), TestDebug ()];
 		self.attr ('style', 'max-width: 1000px;');
+		self.py_items = [Settings (), Sources (), Destinations (), TestDebug ()];
 		for (var i of self.py_items) {
 			self.append (i);
 		}
-		self.append (pages_page_admin_E ('div').attr ('style', 'margin-top: 15px;').append (button_restore));
+		self.button_download = pages_page_admin_E ('button').attr ('class', 'btn btn-primary btn-sm').inner_html ('Download');
+		self.button_download.element.onclick = self.download_settings;
+		self.button_upload = pages_page_admin_E ('button').attr ('class', 'btn btn-primary btn-sm').inner_html ('Upload');
+		self.button_upload.element.onclick = self.upload_settings;
+		var button_restore = pages_page_admin_E ('button').attr ('class', 'btn btn-secondary btn-sm').inner_html ('Terug naar fabrieksinstellingen');
+		button_restore.element.onclick = self.restore_settings;
+		var space = function () {
+			return pages_page_admin_E ('span').inner_html (' ');
+		};
+		self.append (pages_page_admin_E ('div').attr ('style', 'margin-top: 15px;').append (self.button_download, space (), self.button_upload, space (), button_restore));
 	});},
 	get restore_settings () {return __get__ (this, async function (self, evt) {
 		var sure = await dialog_confirm.get_confirm ('Terug naar fabrieksinstellingen. Weet u het zeker?');
@@ -4594,6 +4601,16 @@ var pages_page_admin_Page =  __class__ ('Page', [ElementWrapper], {
 			await pages_page_admin_utils.post (pages_page_admin_utils.get_url ('general/restoreSettings'), dict ({}));
 			self.refresh ();
 		}
+	});},
+	get download_settings () {return __get__ (this, async function (self, evt) {
+		self.button_download.disable ();
+		var datetime = luxon.DateTime.local ().toFormat ('yyyyMMdd_HHmm');
+		var filename = '{}_audio_controller_settings.pickle'.format (datetime);
+		await pages_page_admin_utils.post_download_file (pages_page_admin_utils.get_url ('general/downloadSettings'), dict ({}), filename);
+		self.button_download.enable ();
+	});},
+	get upload_settings () {return __get__ (this, async function (self, evt) {
+		// pass;
 	});},
 	get refresh () {return __get__ (this, function (self) {
 		for (var item of self.py_items) {
@@ -4609,7 +4626,7 @@ var pages_page_admin_Page =  __class__ ('Page', [ElementWrapper], {
 
 //# sourceMappingURL=pages.page_admin.map
 // CONCATENATED MODULE: ./python/__target__/math.js
-// Transcrypt'ed from Python, 2020-09-15 00:43:01
+// Transcrypt'ed from Python, 2020-09-17 20:54:26
 
 var math_name_ = 'math';
 var pi = Math.PI;
@@ -4668,7 +4685,7 @@ var modf = function (n) {
 
 //# sourceMappingURL=math.map
 // CONCATENATED MODULE: ./python/__target__/random.js
-// Transcrypt'ed from Python, 2020-09-15 00:43:01
+// Transcrypt'ed from Python, 2020-09-17 20:54:26
 var math = {};
 
 
@@ -4736,7 +4753,7 @@ seed ();
 
 //# sourceMappingURL=random.map
 // CONCATENATED MODULE: ./python/__target__/layout.js
-// Transcrypt'ed from Python, 2020-09-15 00:42:59
+// Transcrypt'ed from Python, 2020-09-17 20:54:24
 var dialogs = {};
 var layout_random = {};
 var layout_utils = {};
@@ -4912,7 +4929,7 @@ main_menu.append (logout_button ());
 
 //# sourceMappingURL=layout.map
 // CONCATENATED MODULE: ./python/__target__/main.js
-// Transcrypt'ed from Python, 2020-09-15 00:42:59
+// Transcrypt'ed from Python, 2020-09-17 20:54:24
 var main_elements = {};
 var layout = {};
 var main_utils = {};

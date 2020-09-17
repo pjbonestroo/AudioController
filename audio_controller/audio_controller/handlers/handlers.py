@@ -210,7 +210,7 @@ class General(BaseHandler):
             return
 
         elif action == 'downloadLog':
-            self.write(loggers.get_targz_data())
+            self.write(loggers.get_logs_as_binary())
             return
 
         elif action == 'ifconfig':
@@ -227,6 +227,10 @@ class General(BaseHandler):
 
         elif action == 'getRoutes':
             self.write(controller.get_routes())
+            return
+
+        elif action == 'downloadSettings':
+            self.write(settings.get_binary())
             return
 
 

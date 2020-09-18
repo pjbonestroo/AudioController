@@ -20,41 +20,43 @@ class Settings:
     connect_source_destination: bool = False  # on/off switch: when False, no IN port is routed to OUT port
     enable_option_auto_switch: bool = False  # to be set by administrator, to enable/disable the option to enable auto scan and switch
     enable_auto_switch: bool = False  # when True, the IN ports belonging to all enabled sources are scanned, and when there is a signal, the source is automatically selected
-    timeout_auto_switch: int = 15  # minutes to wait after signal is awa
+    timeout_auto_switch: int = 15  # minutes to wait after signal is away, before switching to other
+    version: int = 1  # version of settings, used for upgrades
 
 
 @dataclass
 class Source:
-    id: int = field(init=False)
     name: str
     enabled: bool
     port_url: str
     scan_prio: int
     db_level: int
     selected: bool
+    id: int = 0
 
 
 @dataclass
 class Destination:
-    id: int = field(init=False)
     name: str
     enabled: bool
     port_url_file: str
     selected: bool
+    id: int = 0
 
 
 def default_sources():
     """ Default sources, used as initial and factory defaults """
     result = [
-        Source('Kerkzaal', True, 'IN1', 1, -60, False),
-        Source('Trouwzaal', True, 'IN2', 0, -60, False),
-        Source('Zaal 3', True, 'IN3', 0, -60, False),
-        Source('Microfoon', False, 'IN5', 0, -60, False),
-        Source('Zuiderkerk', True, 'http://meeluisteren.gergemrijssen.nl:8000/zuid', 0, -60, False),
-        Source('De Tabernakel', True, 'http://meeluisteren.gergemrijssen.nl:8000/west', 0, -60, False),
-        Source('Ref. Omroep 1', False, 'http://ro1.reformatorischeomroep.nl:8003/live', 2, -60, False),
-        Source('Ref. Omroep 2', False, 'http://ro2.reformatorischeomroep.nl:8020/live', 3, -60, False),
-        Source('Ref. Omroep 3', False, 'http://ro3.reformatorischeomroep.nl:8072/live', 4, -60, False),
+        Source('Kerkzaal', True, 'IN1', 1, -50, False),
+        Source('Trouwzaal', True, 'IN2', 0, -50, False),
+        Source('Zaal 3', True, 'IN3', 0, -50, False),
+        Source('Microfoon', False, 'IN5', 0, -50, False),
+        Source('Noorderkerk', True, 'http://meeluisteren.gergemrijssen.nl:8000/noord', 0, -50, False),
+        Source('Zuiderkerk', True, 'http://meeluisteren.gergemrijssen.nl:8000/zuid', 0, -50, False),
+        Source('De Tabernakel', True, 'http://meeluisteren.gergemrijssen.nl:8000/west', 0, -50, False),
+        Source('Ref. Omroep 1', False, 'http://ro1.reformatorischeomroep.nl:8003/live', 0, -50, False),
+        Source('Ref. Omroep 2', False, 'http://ro2.reformatorischeomroep.nl:8020/live', 0, -50, False),
+        Source('Ref. Omroep 3', False, 'http://ro3.reformatorischeomroep.nl:8072/live', 0, -50, False),
     ]
     for i, obj in enumerate(result):
         obj.id = i
@@ -89,15 +91,35 @@ destinations: List[Destination] = []
 # Save and load
 #
 
-def clear_and_update(store: dict):
+def upgrade(store: dict):
+    """ upgrade settings, for example after software is updated on a running application/device """
+    if not 'version' in store['settings']:
+        store['settings']['version'] = 1
+    #
+    # future upgrades will be placed here
+    #
+
+
+def use_from_store(store: dict):
     """ Clear current settings and update it with values in store. """
-    global settings
-    for obj in [sources, destinations]:
-        obj.clear()
-    settings = store['settings']
-    # settings.__init__(**asdict(store['settings']))  # alternative to do not replace object
-    for obj in store['sources']: sources.append(obj)
-    for obj in store['destinations']: destinations.append(obj)
+    # make sure everything is of type dict, because database(file) contains pure dicts, not dataclasses objects
+    # this code can be removed after all running devices are at version 1
+    if not isinstance(store['settings'], dict):
+        store['settings'] = asdict(store['settings'])
+    if store['sources'] and not isinstance(store['sources'][0], dict):
+        store['sources'] = [asdict(obj) for obj in store['sources']]
+    if store['destinations'] and not isinstance(store['destinations'][0], dict):
+        store['destinations'] = [asdict(obj) for obj in store['destinations']]
+
+    upgrade(store)  # this line can be placed in ':func:load', after upper code is removed
+    # (no upgrade needed when restoring, since defaults are always latest version)
+
+    # create / update dataclass objects from store
+    settings.__init__(**store['settings'])
+    sources.clear()
+    destinations.clear()
+    for obj in store['sources']: sources.append(Source(**obj))
+    for obj in store['destinations']: destinations.append(Destination(**obj))
 
 
 def load():
@@ -105,8 +127,8 @@ def load():
     if file.exists():
         try:
             with open(file, 'rb') as f:
-                store = pickle.loads(f.read())
-                clear_and_update(store)
+                store: dict = pickle.loads(f.read())
+                use_from_store(store)
                 return True
         except:
             return False
@@ -116,14 +138,22 @@ def load():
 def save():
     """ Save all settings to file """
     with open(file, 'wb') as f:
-        store = {'settings': settings, 'sources': sources, 'destinations': destinations}
+        store = {
+            'settings': asdict(settings),
+            'sources': [asdict(obj) for obj in sources],
+            'destinations': [asdict(obj) for obj in destinations]
+        }
         f.write(pickle.dumps(store))
 
 
 def restore():
     """ Restore settings and use all defaults. Save to file """
-    store = {'settings': Settings(), 'sources': default_sources(), 'destinations': default_destinations()}
-    clear_and_update(store)
+    store = {
+        'settings': asdict(Settings()),
+        'sources': [asdict(obj) for obj in default_sources()],
+        'destinations': [asdict(obj) for obj in default_destinations()]
+    }
+    use_from_store(store)
     save()
 
 

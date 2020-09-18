@@ -171,6 +171,19 @@ def get_binary():
     with open(file, 'rb') as f:
         return f.read()
 
+
+def set_binary(obj):
+    """ Set content of settings file from binary object """
+    store = pickle.loads(obj)
+    if not isinstance(store, dict):
+        return
+    if not all([field in store for field in 'settings sources destinations'.split()]):
+        return
+    use_from_store(store)
+    with open(file, 'wb') as f:
+        f.write(obj)
+
+
 #
 # Validation of values
 #

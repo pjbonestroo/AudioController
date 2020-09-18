@@ -233,6 +233,12 @@ class General(BaseHandler):
             self.write(settings.get_binary())
             return
 
+        elif action == 'uploadSettings':
+            file_content = self.request.files['file'][0]['body']
+            settings.set_binary(file_content)
+            self.write(dumps({'success': True}))
+            return
+
 
 websocket_connections = []
 

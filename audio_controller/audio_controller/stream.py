@@ -116,7 +116,7 @@ def test_recording():
 
 
 def test():
-    # return
+    return
     # test_url()
     test_recording()
     sys.exit(0)

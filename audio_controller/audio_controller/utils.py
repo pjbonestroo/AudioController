@@ -58,7 +58,5 @@ def get_cookie_secret():
 
 
 def test():
-
     return
-
     sys.exit(0)

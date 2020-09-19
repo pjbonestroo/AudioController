@@ -358,3 +358,8 @@ def update_destinations(new_destinations: List[dict]):
         save()
     except:
         pass
+
+
+def test():
+    return
+    sys.exit(0)

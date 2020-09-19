@@ -91,7 +91,7 @@ class TestUrl():
     west = "http://meeluisteren.gergemrijssen.nl:8000/west"
 
 
-def test():
+def test_url():
     print("Play")
     play(TestUrl.ro1)
     time.sleep(5)
@@ -99,4 +99,24 @@ def test():
     stop()
     print("Stopped")
 
+
+def test_recording():
+    import sounddevice as sd
+
+    def callback(indata, outdata, frames, time, status):
+        if status:
+            print(status)
+        outdata[:] = indata
+
+    with sd.RawStream(channels=2, dtype='int24', callback=callback):
+        while True:
+            sd.sleep(1000)
+
+    print('done')
+
+
+def test():
+    # return
+    # test_url()
+    test_recording()
     sys.exit(0)

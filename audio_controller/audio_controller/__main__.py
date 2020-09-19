@@ -90,8 +90,8 @@ def main():
 
 
 if __name__ == '__main__':
-    # stream.test()
+    stream.test()
     itec.test()
-    # settings.test()
+    settings.test()
     utils.test()
     main()

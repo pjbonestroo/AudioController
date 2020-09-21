@@ -8,7 +8,10 @@
             "module": "audio_controller",
             "cwd": "${workspaceFolder}/audio_controller",
             "console": "integratedTerminal",
-            "args": [],
+            "args": [
+                "--volume",
+                "50%"
+            ],
             "justMyCode": false, // to include all python code during debugging (also installed packages)
         },
         {

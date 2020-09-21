@@ -49,11 +49,19 @@ def schedule_tasks(loop: asyncio.BaseEventLoop):
     loop.create_task(controller.auto_switch())
 
 
-def init_system():
+def init_system(args):
     """ initialize system  """
     import getpass
+    volume = "80%"
+    try:
+        if '--volume' in args:
+            v = args[args.index('--volume') + 1]
+            if "%" in v:
+                volume = v
+    except:
+        pass
     # set the output volume level to a fixed percentage
-    cmd = "amixer sset 'Master' 80%"
+    cmd = f"amixer sset 'Master' {volume}"
     print(cmd)
     msg = os.popen(cmd).read()
     print(msg)
@@ -66,8 +74,9 @@ def init_system():
 
 
 def main():
+    args = sys.argv[1:]
     try:
-        init_system()
+        init_system(args)
         # listen on 2 ports, 5000 for localhost and 8080 for external usage (external usage requires login)
         port_address = [(5000, '127.0.0.1'), (8080, '0.0.0.0')]
         for (port, address) in port_address:

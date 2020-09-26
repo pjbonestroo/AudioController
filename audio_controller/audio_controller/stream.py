@@ -3,15 +3,10 @@
 import sys
 import os
 import time
-import signal
-import traceback
-import io
-import tempfile
-from contextlib import contextmanager
+from typing import List
 import ctypes
 from subprocess import Popen, PIPE
 from multiprocessing import Process, Queue
-import threading
 import logging
 
 # externals
@@ -86,21 +81,22 @@ class FfmpegProcess():
         self.stop()
 
 
-process_play_url = None  # process to send audio
-process_send = None
+def play_process(url):
+    """ Create and return process to read audio from url and send to analog output"""
+    return FfmpegProcess(f'ffmpeg -i {url} -f alsa default')
 
 
-def play(url):
-    global process_play_url
-    if process_play_url is None:
-        process_play_url = FfmpegProcess(f'ffmpeg -i {url} -f alsa default')
-
-
-def stop():
-    global process_play_url
-    if process_play_url is not None:
-        process_play_url.stop()
-        process_play_url = None
+def send_process(urls: List[str]):
+    """ Create and return process to read audio from analog input and send to (icecast?) urls """
+    input = "-f alsa -i hw:0"
+    outputs = []
+    for url in urls:
+        content_type = "-content_type audio/mpeg -f mp3"
+        bitrate = "-b:a 128K -minrate 128K -maxrate 128K -bufsize 128K"
+        outputs.append(f'{content_type} {bitrate} "{url}"')
+    outputs = " ".join(outputs)
+    cmd = f'ffmpeg {input} {outputs}'
+    return FfmpegProcess(cmd)
 
 
 class TestUrl():
@@ -111,26 +107,13 @@ class TestUrl():
     noord = "http://meeluisteren.gergemrijssen.nl:8000/noord"
     zuid = "http://meeluisteren.gergemrijssen.nl:8000/zuid"
     west = "http://meeluisteren.gergemrijssen.nl:8000/west"
-    krabbendijke = "https://kerkdienstgemist.nl/streams/1403680.mp3?access_key=Z4Ohin9t2A5xhQ"
-
-
-def test_sounddevice():
-    import sounddevice as sd
-
-    def callback(indata, outdata, frames, time, status):
-        if status:
-            print(status)
-        outdata[:] = indata
-    with sd.RawStream(channels=2, dtype='int24', callback=callback):
-        while True:
-            sd.sleep(1000)
-    print('done')
 
 
 def test_ffmpeg():
     """ stream to icecast """
     input_url = TestUrl.ro1
-    icecast_url = "icecast://source:gnMwrfdvbPy54hjk@173.249.6.236:8000/babyfoon"
+    password = input("Icecast password: ")
+    icecast_url = f"icecast://source:{password}@173.249.6.236:8000/babyfoon"
     content_type = "-content_type audio/mpeg -f mp3"
     bitrate = "-b:a 64K -minrate 64K -maxrate 64K -bufsize 64K"
     # play on standard out:
@@ -146,14 +129,14 @@ def test_ffmpeg():
 
 def test():
     return
-    test_url()
+    test_ffmpeg()
     # test_sounddevice()
     # test_ffmpeg()
     sys.exit(0)
 
 
 if __name__ == '__main__':
-    test_url()
+    test_ffmpeg()
 
 
 #
@@ -202,3 +185,16 @@ if __name__ == '__main__':
 
 #     # wait until other process puts something in queue
 #     queue.get(block=True)
+
+
+# def test_sounddevice():
+#     import sounddevice as sd
+
+#     def callback(indata, outdata, frames, time, status):
+#         if status:
+#             print(status)
+#         outdata[:] = indata
+#     with sd.RawStream(channels=2, dtype='int24', callback=callback):
+#         while True:
+#             sd.sleep(1000)
+#     print('done')

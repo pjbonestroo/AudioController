@@ -16,7 +16,8 @@ class Settings:
     title: str = "Noorderkerk"
     nr_IN_ports: int = 8  # nr of IN ports on ITEC
     nr_OUT_ports: int = 4  # nr of OUT ports on ITEC
-    port_IN_for_streams: str = 'IN4'  # IN port which is used by this device (raspberry pi) to put audio from stream on
+    port_IN_for_streams: str = 'IN4'  # IN port of ITEC, connected to output of this device (raspberry pi) to put audio from stream on
+    port_OUT_to_stream: str = ''  # OUT port of ITEC, connected to input of this device (raspberry pi) to forward audio to url
     connect_source_destination: bool = False  # on/off switch: when False, no IN port is routed to OUT port
     enable_option_auto_switch: bool = False  # to be set by administrator, to enable/disable the option to enable auto scan and switch
     enable_auto_switch: bool = False  # when True, the IN ports belonging to all enabled sources are scanned, and when there is a signal, the source is automatically selected
@@ -95,6 +96,10 @@ def upgrade(store: dict):
     """ upgrade settings, for example after software is updated on a running application/device """
     if not 'version' in store['settings']:
         store['settings']['version'] = 1
+
+    if store['settings']['version'] == 1:
+        store['settings']['version'] = 2
+        store['settings']['port_OUT_to_stream'] = ''
     #
     # future upgrades will be placed here
     #
@@ -102,18 +107,7 @@ def upgrade(store: dict):
 
 def use_from_store(store: dict):
     """ Clear current settings and update it with values in store. """
-    # make sure everything is of type dict, because database(file) contains pure dicts, not dataclasses objects
-    # this code can be removed after all running devices are at version 1
-    if not isinstance(store['settings'], dict):
-        store['settings'] = asdict(store['settings'])
-    if store['sources'] and not isinstance(store['sources'][0], dict):
-        store['sources'] = [asdict(obj) for obj in store['sources']]
-    if store['destinations'] and not isinstance(store['destinations'][0], dict):
-        store['destinations'] = [asdict(obj) for obj in store['destinations']]
-
-    upgrade(store)  # this line can be placed in ':func:load', after upper code is removed
-    # (no upgrade needed when restoring, since defaults are always latest version)
-
+    upgrade(store)
     # create / update dataclass objects from store
     settings.__init__(**store['settings'])
     sources.clear()
@@ -129,6 +123,7 @@ def load():
             with open(file, 'rb') as f:
                 store: dict = pickle.loads(f.read())
                 use_from_store(store)
+                save()  # save possible upgrades immediately
                 return True
         except:
             return False
@@ -224,7 +219,7 @@ def is_OUT_port(port: str):
 
 def is_url(value: str):
     """ Return True if value is an url. False otherwise. """
-    return value.startswith("http")
+    return value.startswith("http") or value.startswith("icecast")
 
 
 def is_file(value: str):
@@ -237,6 +232,10 @@ def validate_settings(obj: Settings):
     obj.nr_IN_ports = max(1, min(100, obj.nr_IN_ports))
     obj.nr_OUT_ports = max(1, min(8, obj.nr_OUT_ports))  # cannot be more than 8 (length of byte...)
     if not is_IN_port(obj.port_IN_for_streams):
+        # IN port is mandatory, which enables the Pi to send audio to ITEC
+        return False
+    if not is_OUT_port(obj.port_OUT_to_stream) and not obj.port_OUT_to_stream == "":
+        # OUT port is NOT mandatory, but the Pi will not send audio to external url (e.g. icecast) in this case
         return False
     # turn auto-switch off, if option is disabled
     if obj.enable_auto_switch and not obj.enable_option_auto_switch:
@@ -290,7 +289,8 @@ def update_settings(obj: dict):
     """ Update both cached and saved settings with values from 'obj'. """
     # dictonary with key, value = attribute-name, type
     annot = Settings.__annotations__
-    backup = Settings().__init__(**asdict(settings))
+    backup = Settings()
+    backup.__init__(**asdict(settings))
     for attr in annot.keys():
         if attr in obj:
             try:

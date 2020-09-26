@@ -79,6 +79,7 @@ To install an update of the software it is usually enough to run the first comma
 Copy on pi, from home dir to /etc/systemd/system/
 
 ```
+ssh pi@${PI_IP}
 cd /home/pi/
 sudo cp ./AudioController/audio_controller.service /etc/systemd/system/audio_controller.service
 sudo chmod 777 ./AudioController/run_audio_controller.sh

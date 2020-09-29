@@ -92,9 +92,15 @@ def send_process(urls: List[str]):
     input = "-f alsa -i hw:CARD=CODEC,DEV=0"  # usb-sound-card input: run command 'arecord -L' to see a full list of possibilities
     outputs = []
     for url in urls:
+        url_splitted = url.split(";")
+        url = url_splitted[0]
+        if len(url_splitted) > 1 and len(url_splitted[1]) > 0:
+            bitrate = url_splitted[1]
+        else:
+            bitrate = '128K'
         content_type = "-content_type audio/mpeg -f mp3"
-        bitrate = "-b:a 128K -minrate 128K -maxrate 128K -bufsize 128K"
-        outputs.append(f'{content_type} {bitrate} "{url}"')
+        bitrate_ = f"-b:a {bitrate} -minrate {bitrate} -maxrate {bitrate} -bufsize {bitrate}"
+        outputs.append(f'{content_type} {bitrate_} "{url}"')
     outputs = " ".join(outputs)
     cmd = f'ffmpeg {input} {outputs}'
     return FfmpegProcess(cmd)

@@ -61,7 +61,8 @@ def init_system(args):
     except:
         pass
     # set the output volume level to a fixed percentage
-    cmd = f"amixer sset 'Master' {volume}"
+    # cmd = f"amixer sset 'Master' {volume}" # without external sound card
+    cmd = f"amixer sset 'PCM' {volume}"  # with external sound card
     print(cmd)
     msg = os.popen(cmd).read()
     print(msg)

@@ -19,12 +19,13 @@ The userinferface is created in the Dutch language. It consists of 2 pages; Cont
 This is tested on Raspberry Pi version 3.
 OS: Raspberry Pi OS version 2020-08-20.
 
-## 1. Install vlc player
+## 1. Update OS and packages
 
 ```
+PI_IP=192.168.1.110
+ssh pi@${PI_IP}
 sudo apt update
 sudo apt upgrade
-sudo apt install -y vlc
 ```
 
 ## 2. Install Python and dependencies
@@ -58,13 +59,14 @@ python -m pip install python-vlc (not needed anymore)
 ## 3. Copy audio_controller project/package to pi
 
 ### 3.1 Enable ssh
+Option 1: Before inserting the sd card to the Pi, add a file named 'ssh' to the boot partition.
+Option 2: Use Desktop environment to enable ssh
 
 ### 3.2 Copy from local to pi
 
 Copy from local to pi (use correct ip-address):
 
 ```
-PI_IP=192.168.1.110
 scp -r ./audio_controller pi@${PI_IP}:~/AudioController
 scp ./run_audio_controller.sh pi@${PI_IP}:~/AudioController
 scp ./audio_controller.service pi@${PI_IP}:~/AudioController
@@ -101,11 +103,11 @@ To start the browser in kiosk mode, add the following lines to `/etc/xdg/lxsessi
 @xset s off
 @xset -dpms
 @xset s noblank
-@chromium --kiosk http://localhost:5000/
+@chromium-browser --kiosk http://localhost:5000/
 ```
 If it does not work, the last line should (maybe) be:
 ```
-@chromium-browser --kiosk http://localhost:5000/
+@chromium --kiosk http://localhost:5000/
 ```
 
 For example the full file content becomes:
@@ -119,9 +121,25 @@ For example the full file content becomes:
 @chromium --kiosk http://localhost:5000/
 ```
 
-## 5. Enable remote login
+## 5. Use external USB sound card
 
-### 5.1 Create file with usernames and passwords
+Change number of default card from 0 to 1 in also.conf:
+```
+sudo nano /usr/share/alsa/alsa.conf
+```
+Change lines to match:
+```
+defaults.ctl.card 1
+defaults.pcm.card 1
+```
+And play test sound (connect headphone to external device):
+```
+speaker-test -c2
+```
+
+## 6. Enable remote login
+
+### 6.1 Create file with usernames and passwords
 
 From directory audio_controller/audio_controller:
 ```
@@ -132,14 +150,14 @@ assert utils.check_user("<username>", "<password>"), "Configuration failed"
 exit()
 ```
 
-### 5.2 Copy file to root home directory
+### 6.2 Copy file to root home directory
 
 ```
 scp ~/.audio_controller_users.txt pi@${PI_IP}:~/
 ```
 And then on the raspberry pi:
 ```
-sudo mv /home/pi/.audio_controller_users.txt /home/root/
+sudo mv /home/pi/.audio_controller_users.txt /root/
 ```
 
 ## Extras
@@ -151,6 +169,7 @@ Enable NTP to have time updated
 timedatectl status
 sudo timedatectl set-ntp True
 ```
+
 ## Remarks
 
 Make sure to place user file and settings file in home of root, not in home or pi user. AudioController runs as root user.

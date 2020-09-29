@@ -48,16 +48,16 @@ class Destination:
 def default_sources():
     """ Default sources, used as initial and factory defaults """
     result = [
-        Source('Kerkzaal', True, 'IN1', 1, -50, False),
-        Source('Trouwzaal', True, 'IN2', 0, -50, False),
-        Source('Zaal 3', True, 'IN3', 0, -50, False),
-        Source('Microfoon', False, 'IN5', 0, -50, False),
-        Source('Noorderkerk', True, 'http://meeluisteren.gergemrijssen.nl:8000/noord', 0, -50, False),
-        Source('Zuiderkerk', True, 'http://meeluisteren.gergemrijssen.nl:8000/zuid', 0, -50, False),
-        Source('De Tabernakel', True, 'http://meeluisteren.gergemrijssen.nl:8000/west', 0, -50, False),
-        Source('Ref. Omroep 1', False, 'http://ro1.reformatorischeomroep.nl:8003/live', 0, -50, False),
-        Source('Ref. Omroep 2', False, 'http://ro2.reformatorischeomroep.nl:8020/live', 0, -50, False),
-        Source('Ref. Omroep 3', False, 'http://ro3.reformatorischeomroep.nl:8072/live', 0, -50, False),
+        Source('Kerkzaal', True, 'IN1', 1, -45, False),
+        Source('Trouwzaal', True, 'IN2', 0, -45, False),
+        Source('Zaal 3', True, 'IN3', 0, -45, False),
+        Source('Microfoon', False, 'IN5', 0, -45, False),
+        Source('Noorderkerk', True, 'http://meeluisteren.gergemrijssen.nl:8000/noord', 0, -45, False),
+        Source('Zuiderkerk', True, 'http://meeluisteren.gergemrijssen.nl:8000/zuid', 0, -45, False),
+        Source('De Tabernakel', True, 'http://meeluisteren.gergemrijssen.nl:8000/west', 0, -45, False),
+        Source('Ref. Omroep 1', False, 'http://ro1.reformatorischeomroep.nl:8003/live', 0, -45, False),
+        Source('Ref. Omroep 2', False, 'http://ro2.reformatorischeomroep.nl:8020/live', 0, -45, False),
+        Source('Ref. Omroep 3', False, 'http://ro3.reformatorischeomroep.nl:8072/live', 0, -45, False),
     ]
     for i, obj in enumerate(result):
         obj.id = i
@@ -69,6 +69,7 @@ def default_destinations():
     result = [
         Destination('Internet', True, 'OUT1', True),
         Destination('HF scanners', True, 'OUT2', True),
+        Destination('Icecast', False, 'icecast://<user>:<pw>@<ip>:<port>/mountpoint', False),
         Destination('Opslaan', False, 'file://', False),
     ]
     for i, obj in enumerate(result):

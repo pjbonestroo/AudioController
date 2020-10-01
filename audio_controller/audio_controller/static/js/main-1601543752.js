@@ -228,7 +228,7 @@ __webpack_require__.d(layout_namespaceObject, "logout", function() { return logo
 __webpack_require__.d(layout_namespaceObject, "logout_button", function() { return logout_button; });
 
 // CONCATENATED MODULE: ./python/__target__/org.transcrypt.__runtime__.js
-// Transcrypt'ed from Python, 2020-09-26 11:43:24
+// Transcrypt'ed from Python, 2020-10-01 11:15:43
 var __name__ = 'org.transcrypt.__runtime__';
 var __envir__ = {};
 __envir__.interpreter_name = 'python';
@@ -2351,7 +2351,7 @@ var input = __terminal__.input;
 
 //# sourceMappingURL=org.transcrypt.__runtime__.map
 // CONCATENATED MODULE: ./python/__target__/elements.js
-// Transcrypt'ed from Python, 2020-09-26 11:43:25
+// Transcrypt'ed from Python, 2020-10-01 11:15:45
 
 var elements_name_ = 'elements';
 var get_element = function (css_selectors) {
@@ -2441,7 +2441,7 @@ var ElementWrapper =  __class__ ('ElementWrapper', [object], {
 
 //# sourceMappingURL=elements.map
 // CONCATENATED MODULE: ./python/__target__/delayer.js
-// Transcrypt'ed from Python, 2020-09-26 11:43:25
+// Transcrypt'ed from Python, 2020-10-01 11:15:45
 
 var delayer_name_ = 'delayer';
 var Delayer =  __class__ ('Delayer', [object], {
@@ -2554,7 +2554,7 @@ var Delayer2 =  __class__ ('Delayer2', [object], {
 
 //# sourceMappingURL=delayer.map
 // CONCATENATED MODULE: ./python/__target__/paged_list.js
-// Transcrypt'ed from Python, 2020-09-26 11:43:25
+// Transcrypt'ed from Python, 2020-10-01 11:15:44
 
 
 
@@ -3779,7 +3779,7 @@ var FakeServer =  __class__ ('FakeServer', [DataServer], {
 
 //# sourceMappingURL=paged_list.map
 // CONCATENATED MODULE: ./python/__target__/utils.js
-// Transcrypt'ed from Python, 2020-09-26 11:43:26
+// Transcrypt'ed from Python, 2020-10-01 11:15:45
 
 var utils_name_ = 'utils';
 var sleep = async function (time) {
@@ -3924,7 +3924,7 @@ var save_blob_to_file = function (blob, filename) {
 
 //# sourceMappingURL=utils.map
 // CONCATENATED MODULE: ./python/__target__/dialogs.js
-// Transcrypt'ed from Python, 2020-09-26 11:43:24
+// Transcrypt'ed from Python, 2020-10-01 11:15:44
 var paged_list = {};
 var utils = {};
 
@@ -4119,7 +4119,7 @@ var DialogSelect =  __class__ ('DialogSelect', [Dialog], {
 
 //# sourceMappingURL=dialogs.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_overview.js
-// Transcrypt'ed from Python, 2020-09-26 11:43:26
+// Transcrypt'ed from Python, 2020-10-01 11:15:45
 var pages_page_overview_utils = {};
 
 
@@ -4134,7 +4134,9 @@ var ButtonsSettings =  __class__ ('ButtonsSettings', [ElementWrapper], {
 	__module__: pages_page_overview_name_,
 	get __init__ () {return __get__ (this, function (self) {
 		__super__ (ButtonsSettings, '__init__') (self, elements_element ('table'));
+		self.sources_destinations = null;
 		var checkbox_connect = pages_page_overview_E ('input').attr ('type', 'checkbox');
+		self.checkbox_connect = checkbox_connect;
 		var checkbox_auto_switch = pages_page_overview_E ('input').attr ('type', 'checkbox');
 		var tr_auto_switch = pages_page_overview_E ('tr').append (pages_page_overview_E ('td').append (pages_page_overview_E ('span').inner_html ('Automatisch bron kiezen')), pages_page_overview_E ('td').attr ('style', 'padding: 10px 0px 0px 10px;').append (pages_page_overview_E ('label').attr ('class', 'switch').append (checkbox_auto_switch, pages_page_overview_E ('span').attr ('class', 'slider round'))));
 		self.append (pages_page_overview_E ('tbody').append (pages_page_overview_E ('tr').append (pages_page_overview_E ('td').append (pages_page_overview_E ('span').inner_html ('Bron en bestemming(en) verbinden')), pages_page_overview_E ('td').attr ('style', 'padding: 10px 0px 0px 10px;').append (pages_page_overview_E ('label').attr ('class', 'switch').append (checkbox_connect, pages_page_overview_E ('span').attr ('class', 'slider round')))), tr_auto_switch));
@@ -4145,6 +4147,7 @@ var ButtonsSettings =  __class__ ('ButtonsSettings', [ElementWrapper], {
 			if (settings ['enable_option_auto_switch']) {
 				tr_auto_switch.element.style.display = '';
 			}
+			self.sources_destinations.refresh ();
 		};
 		var onchange = async function (evt) {
 			var settings = dict ([['connect_source_destination', checkbox_connect.element.checked], ['enable_auto_switch', checkbox_auto_switch.element.checked]]);
@@ -4165,6 +4168,7 @@ var SourcesDestinations =  __class__ ('SourcesDestinations', [ElementWrapper], {
 	__module__: pages_page_overview_name_,
 	get __init__ () {return __get__ (this, function (self) {
 		__super__ (SourcesDestinations, '__init__') (self, elements_element ('table'));
+		self.buttons_settings = null;
 		self.attr ('class', 'table borderless');
 		self.td_sources = pages_page_overview_E ('td');
 		self.td_destinations = pages_page_overview_E ('td');
@@ -4243,11 +4247,18 @@ var SourcesDestinations =  __class__ ('SourcesDestinations', [ElementWrapper], {
 			}
 		};
 		var initialize = async function () {
-			await get_sources ();
-			await get_destinations ();
-			show_sources ();
-			show_destinations ();
-			await update_volume_level ();
+			var connected = (self.buttons_settings !== null ? self.buttons_settings.checkbox_connect.element.checked : true);
+			if (connected) {
+				self.element.style.display = 'block';
+				await get_sources ();
+				await get_destinations ();
+				show_sources ();
+				show_destinations ();
+				await update_volume_level ();
+			}
+			else {
+				self.element.style.display = 'none';
+			}
 		};
 		self.refresh = initialize;
 	});}
@@ -4256,27 +4267,26 @@ var Page =  __class__ ('Page', [ElementWrapper], {
 	__module__: pages_page_overview_name_,
 	get __init__ () {return __get__ (this, function (self) {
 		__super__ (Page, '__init__') (self, elements_element ('div'));
-		self.py_items = [ButtonsSettings (), SourcesDestinations ()];
 		self.attr ('style', 'max-width: 1000px;');
-		for (var item of self.py_items) {
-			self.append (item);
-		}
+		var buttons_settings = ButtonsSettings ();
+		var sources_destinations = SourcesDestinations ();
+		buttons_settings.sources_destinations = sources_destinations;
+		sources_destinations.buttons_settings = buttons_settings;
+		self.append (buttons_settings, sources_destinations);
+		self.refresh = (function __lambda__ () {
+			return buttons_settings.refresh ();
+		});
 	});},
 	get show () {return __get__ (this, function (self) {
 		main.remove_childs ();
 		main.append (self);
 		self.refresh ();
-	});},
-	get refresh () {return __get__ (this, function (self) {
-		for (var item of self.py_items) {
-			item.refresh ();
-		}
 	});}
 });
 
 //# sourceMappingURL=pages.page_overview.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_admin.js
-// Transcrypt'ed from Python, 2020-09-26 11:43:26
+// Transcrypt'ed from Python, 2020-10-01 11:15:45
 var pages_page_admin_utils = {};
 
 
@@ -4637,7 +4647,7 @@ var pages_page_admin_Page =  __class__ ('Page', [ElementWrapper], {
 
 //# sourceMappingURL=pages.page_admin.map
 // CONCATENATED MODULE: ./python/__target__/math.js
-// Transcrypt'ed from Python, 2020-09-26 11:43:26
+// Transcrypt'ed from Python, 2020-10-01 11:15:45
 
 var math_name_ = 'math';
 var pi = Math.PI;
@@ -4696,7 +4706,7 @@ var modf = function (n) {
 
 //# sourceMappingURL=math.map
 // CONCATENATED MODULE: ./python/__target__/random.js
-// Transcrypt'ed from Python, 2020-09-26 11:43:26
+// Transcrypt'ed from Python, 2020-10-01 11:15:45
 var math = {};
 
 
@@ -4764,7 +4774,7 @@ seed ();
 
 //# sourceMappingURL=random.map
 // CONCATENATED MODULE: ./python/__target__/layout.js
-// Transcrypt'ed from Python, 2020-09-26 11:43:24
+// Transcrypt'ed from Python, 2020-10-01 11:15:43
 var dialogs = {};
 var layout_random = {};
 var layout_utils = {};
@@ -4940,7 +4950,7 @@ main_menu.append (logout_button ());
 
 //# sourceMappingURL=layout.map
 // CONCATENATED MODULE: ./python/__target__/main.js
-// Transcrypt'ed from Python, 2020-09-26 11:43:24
+// Transcrypt'ed from Python, 2020-10-01 11:15:43
 var main_elements = {};
 var layout = {};
 var main_utils = {};

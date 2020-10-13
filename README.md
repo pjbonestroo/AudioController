@@ -52,8 +52,12 @@ source ./pyenv/bin/activate
 python -m pip install --upgrade pip
 python -m pip install pyserial
 python -m pip install tornado
-python -m pip install urllib3  (not needed anymore)
-python -m pip install python-vlc (not needed anymore)
+```
+
+Optionally, only on Raspberry Pi (and still to be tested in virtual environment):
+
+```
+python -m pip install gpiozero
 ```
 
 ## 3. Copy audio_controller project/package to pi

@@ -219,6 +219,7 @@ __webpack_require__.d(layout_namespaceObject, "main_menu", function() { return m
 __webpack_require__.d(layout_namespaceObject, "main", function() { return main; });
 __webpack_require__.d(layout_namespaceObject, "menu_items", function() { return menu_items; });
 __webpack_require__.d(layout_namespaceObject, "MenuItem", function() { return MenuItem; });
+__webpack_require__.d(layout_namespaceObject, "iframes", function() { return iframes; });
 __webpack_require__.d(layout_namespaceObject, "logged_in", function() { return logged_in; });
 __webpack_require__.d(layout_namespaceObject, "setup_websocket", function() { return setup_websocket; });
 __webpack_require__.d(layout_namespaceObject, "login_and_view", function() { return login_and_view; });
@@ -228,7 +229,7 @@ __webpack_require__.d(layout_namespaceObject, "logout", function() { return logo
 __webpack_require__.d(layout_namespaceObject, "logout_button", function() { return logout_button; });
 
 // CONCATENATED MODULE: ./python/__target__/org.transcrypt.__runtime__.js
-// Transcrypt'ed from Python, 2020-10-01 11:15:43
+// Transcrypt'ed from Python, 2020-11-02 11:17:11
 var __name__ = 'org.transcrypt.__runtime__';
 var __envir__ = {};
 __envir__.interpreter_name = 'python';
@@ -2351,7 +2352,7 @@ var input = __terminal__.input;
 
 //# sourceMappingURL=org.transcrypt.__runtime__.map
 // CONCATENATED MODULE: ./python/__target__/elements.js
-// Transcrypt'ed from Python, 2020-10-01 11:15:45
+// Transcrypt'ed from Python, 2020-11-02 11:17:12
 
 var elements_name_ = 'elements';
 var get_element = function (css_selectors) {
@@ -2441,7 +2442,7 @@ var ElementWrapper =  __class__ ('ElementWrapper', [object], {
 
 //# sourceMappingURL=elements.map
 // CONCATENATED MODULE: ./python/__target__/delayer.js
-// Transcrypt'ed from Python, 2020-10-01 11:15:45
+// Transcrypt'ed from Python, 2020-11-02 11:17:12
 
 var delayer_name_ = 'delayer';
 var Delayer =  __class__ ('Delayer', [object], {
@@ -2554,7 +2555,7 @@ var Delayer2 =  __class__ ('Delayer2', [object], {
 
 //# sourceMappingURL=delayer.map
 // CONCATENATED MODULE: ./python/__target__/paged_list.js
-// Transcrypt'ed from Python, 2020-10-01 11:15:44
+// Transcrypt'ed from Python, 2020-11-02 11:17:11
 
 
 
@@ -3779,7 +3780,7 @@ var FakeServer =  __class__ ('FakeServer', [DataServer], {
 
 //# sourceMappingURL=paged_list.map
 // CONCATENATED MODULE: ./python/__target__/utils.js
-// Transcrypt'ed from Python, 2020-10-01 11:15:45
+// Transcrypt'ed from Python, 2020-11-02 11:17:12
 
 var utils_name_ = 'utils';
 var sleep = async function (time) {
@@ -3924,7 +3925,7 @@ var save_blob_to_file = function (blob, filename) {
 
 //# sourceMappingURL=utils.map
 // CONCATENATED MODULE: ./python/__target__/dialogs.js
-// Transcrypt'ed from Python, 2020-10-01 11:15:44
+// Transcrypt'ed from Python, 2020-11-02 11:17:11
 var paged_list = {};
 var utils = {};
 
@@ -4119,7 +4120,7 @@ var DialogSelect =  __class__ ('DialogSelect', [Dialog], {
 
 //# sourceMappingURL=dialogs.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_overview.js
-// Transcrypt'ed from Python, 2020-10-01 11:15:45
+// Transcrypt'ed from Python, 2020-11-02 11:17:13
 var pages_page_overview_utils = {};
 
 
@@ -4286,7 +4287,7 @@ var Page =  __class__ ('Page', [ElementWrapper], {
 
 //# sourceMappingURL=pages.page_overview.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_admin.js
-// Transcrypt'ed from Python, 2020-10-01 11:15:45
+// Transcrypt'ed from Python, 2020-11-02 11:17:12
 var pages_page_admin_utils = {};
 
 
@@ -4646,8 +4647,40 @@ var pages_page_admin_Page =  __class__ ('Page', [ElementWrapper], {
 });
 
 //# sourceMappingURL=pages.page_admin.map
+// CONCATENATED MODULE: ./python/__target__/pages.page_iframe.js
+// Transcrypt'ed from Python, 2020-11-02 11:17:13
+var pages_page_iframe_utils = {};
+
+
+
+
+
+
+
+
+__nest__ (pages_page_iframe_utils, '', utils_namespaceObject);
+var pages_page_iframe_name_ = 'pages.page_iframe';
+var pages_page_iframe_E = Element;
+var pages_page_iframe_Page =  __class__ ('Page', [ElementWrapper], {
+	__module__: pages_page_iframe_name_,
+	get __init__ () {return __get__ (this, function (self, url) {
+		__super__ (pages_page_iframe_Page, '__init__') (self, elements_element ('div'));
+		self.attr ('style', 'width: 100%; height: 100%;');
+		self.append (pages_page_iframe_E ('iframe').attr ('src', url).attr ('style', 'width: 100%; height: 500px;'));
+	});},
+	get refresh () {return __get__ (this, function (self) {
+		// pass;
+	});},
+	get show () {return __get__ (this, function (self) {
+		main.remove_childs ();
+		main.append (self);
+		self.refresh ();
+	});}
+});
+
+//# sourceMappingURL=pages.page_iframe.map
 // CONCATENATED MODULE: ./python/__target__/math.js
-// Transcrypt'ed from Python, 2020-10-01 11:15:45
+// Transcrypt'ed from Python, 2020-11-02 11:17:13
 
 var math_name_ = 'math';
 var pi = Math.PI;
@@ -4706,7 +4739,7 @@ var modf = function (n) {
 
 //# sourceMappingURL=math.map
 // CONCATENATED MODULE: ./python/__target__/random.js
-// Transcrypt'ed from Python, 2020-10-01 11:15:45
+// Transcrypt'ed from Python, 2020-11-02 11:17:13
 var math = {};
 
 
@@ -4774,13 +4807,14 @@ seed ();
 
 //# sourceMappingURL=random.map
 // CONCATENATED MODULE: ./python/__target__/layout.js
-// Transcrypt'ed from Python, 2020-10-01 11:15:43
+// Transcrypt'ed from Python, 2020-11-02 11:17:11
 var dialogs = {};
 var layout_random = {};
 var layout_utils = {};
 
 
 __nest__ (dialogs, '', dialogs_namespaceObject);
+
 
 
 
@@ -4857,6 +4891,10 @@ var MenuItem =  __class__ ('MenuItem', [ElementWrapper], {
 	});}
 });
 main_menu.append (MenuItem ().set_title ('Bediening').set_page (Page ()), MenuItem ().set_title ('Instellingen').set_page (pages_page_admin_Page ()));
+var iframes = [];
+for (var iframe of iframes) {
+	main_menu.append (MenuItem ().set_title (iframe ['title']).set_page (pages_page_iframe_Page (iframe ['url'])));
+}
 var logged_in = false;
 var setup_websocket = function () {
 	var loc = window.location;
@@ -4950,7 +4988,7 @@ main_menu.append (logout_button ());
 
 //# sourceMappingURL=layout.map
 // CONCATENATED MODULE: ./python/__target__/main.js
-// Transcrypt'ed from Python, 2020-10-01 11:15:43
+// Transcrypt'ed from Python, 2020-11-02 11:17:11
 var main_elements = {};
 var layout = {};
 var main_utils = {};

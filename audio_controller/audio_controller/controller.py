@@ -138,6 +138,7 @@ def set_routes():
 
 def get_routes():
     """ Return the routes of the enabled IN ports as text """
+    # TODO maybe it is better to return all ITEC IN ports, not only the enabled sources.
     result = f"Looking at usb port {itec_module.get_usb_port()}\n"
     if itec.serial is None:
         result += f"ITEC is not connected.\n"

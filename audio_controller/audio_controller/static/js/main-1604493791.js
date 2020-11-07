@@ -219,9 +219,9 @@ __webpack_require__.d(layout_namespaceObject, "main_menu", function() { return m
 __webpack_require__.d(layout_namespaceObject, "main", function() { return main; });
 __webpack_require__.d(layout_namespaceObject, "menu_items", function() { return menu_items; });
 __webpack_require__.d(layout_namespaceObject, "MenuItem", function() { return MenuItem; });
-__webpack_require__.d(layout_namespaceObject, "iframes", function() { return iframes; });
-__webpack_require__.d(layout_namespaceObject, "logged_in", function() { return logged_in; });
+__webpack_require__.d(layout_namespaceObject, "get_external_sites", function() { return get_external_sites; });
 __webpack_require__.d(layout_namespaceObject, "setup_websocket", function() { return setup_websocket; });
+__webpack_require__.d(layout_namespaceObject, "logged_in", function() { return logged_in; });
 __webpack_require__.d(layout_namespaceObject, "login_and_view", function() { return login_and_view; });
 __webpack_require__.d(layout_namespaceObject, "check_logged_in", function() { return check_logged_in; });
 __webpack_require__.d(layout_namespaceObject, "login", function() { return login; });
@@ -229,7 +229,7 @@ __webpack_require__.d(layout_namespaceObject, "logout", function() { return logo
 __webpack_require__.d(layout_namespaceObject, "logout_button", function() { return logout_button; });
 
 // CONCATENATED MODULE: ./python/__target__/org.transcrypt.__runtime__.js
-// Transcrypt'ed from Python, 2020-11-02 11:17:11
+// Transcrypt'ed from Python, 2020-11-03 20:39:56
 var __name__ = 'org.transcrypt.__runtime__';
 var __envir__ = {};
 __envir__.interpreter_name = 'python';
@@ -2352,7 +2352,7 @@ var input = __terminal__.input;
 
 //# sourceMappingURL=org.transcrypt.__runtime__.map
 // CONCATENATED MODULE: ./python/__target__/elements.js
-// Transcrypt'ed from Python, 2020-11-02 11:17:12
+// Transcrypt'ed from Python, 2020-11-03 20:39:57
 
 var elements_name_ = 'elements';
 var get_element = function (css_selectors) {
@@ -2442,7 +2442,7 @@ var ElementWrapper =  __class__ ('ElementWrapper', [object], {
 
 //# sourceMappingURL=elements.map
 // CONCATENATED MODULE: ./python/__target__/delayer.js
-// Transcrypt'ed from Python, 2020-11-02 11:17:12
+// Transcrypt'ed from Python, 2020-11-03 20:39:57
 
 var delayer_name_ = 'delayer';
 var Delayer =  __class__ ('Delayer', [object], {
@@ -2555,7 +2555,7 @@ var Delayer2 =  __class__ ('Delayer2', [object], {
 
 //# sourceMappingURL=delayer.map
 // CONCATENATED MODULE: ./python/__target__/paged_list.js
-// Transcrypt'ed from Python, 2020-11-02 11:17:11
+// Transcrypt'ed from Python, 2020-11-03 20:39:56
 
 
 
@@ -3780,7 +3780,7 @@ var FakeServer =  __class__ ('FakeServer', [DataServer], {
 
 //# sourceMappingURL=paged_list.map
 // CONCATENATED MODULE: ./python/__target__/utils.js
-// Transcrypt'ed from Python, 2020-11-02 11:17:12
+// Transcrypt'ed from Python, 2020-11-03 20:39:57
 
 var utils_name_ = 'utils';
 var sleep = async function (time) {
@@ -3925,7 +3925,7 @@ var save_blob_to_file = function (blob, filename) {
 
 //# sourceMappingURL=utils.map
 // CONCATENATED MODULE: ./python/__target__/dialogs.js
-// Transcrypt'ed from Python, 2020-11-02 11:17:11
+// Transcrypt'ed from Python, 2020-11-03 20:39:56
 var paged_list = {};
 var utils = {};
 
@@ -4120,7 +4120,7 @@ var DialogSelect =  __class__ ('DialogSelect', [Dialog], {
 
 //# sourceMappingURL=dialogs.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_overview.js
-// Transcrypt'ed from Python, 2020-11-02 11:17:13
+// Transcrypt'ed from Python, 2020-11-03 20:39:58
 var pages_page_overview_utils = {};
 
 
@@ -4287,7 +4287,7 @@ var Page =  __class__ ('Page', [ElementWrapper], {
 
 //# sourceMappingURL=pages.page_overview.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_admin.js
-// Transcrypt'ed from Python, 2020-11-02 11:17:12
+// Transcrypt'ed from Python, 2020-11-03 20:39:57
 var pages_page_admin_utils = {};
 
 
@@ -4533,6 +4533,86 @@ var Destinations =  __class__ ('Destinations', [AccordionItem], {
 		self.refresh = initialize;
 	});}
 });
+var pages_page_admin_external_site = function (title, url) {
+	return dict ([['title', title], ['url', url]]);
+};
+var ExternalSites =  __class__ ('ExternalSites', [AccordionItem], {
+	__module__: pages_page_admin_name_,
+	get __init__ () {return __get__ (this, function (self) {
+		__super__ (ExternalSites, '__init__') (self, 'Externe sites');
+		var plist = PagedList (self.body.element, '').hide_count ().disable_pagination ();
+		plist.get_styling ().table_class ('table borderless');
+		var text_element = function (attr, item) {
+			var r = pages_page_admin_E ('input').attr ('type', 'text');
+			r.element.value = item [attr];
+			var onchange = function (evt) {
+				item [attr] = r.element.value;
+				save_changes ();
+			};
+			r.element.onchange = onchange;
+			return r.element;
+		};
+		var checkbox_element = function (attr, item) {
+			var r = pages_page_admin_E ('input').attr ('type', 'checkbox');
+			r.element.checked = item [attr];
+			var onchange = function (evt) {
+				item [attr] = r.element.checked;
+				save_changes ();
+			};
+			r.element.onchange = onchange;
+			return r.element;
+		};
+		plist.add_column ('title', 'Titel').item_to_element (text_element.bind (null, 'title'));
+		plist.add_column ('url', 'Url').item_to_element (text_element.bind (null, 'url'));
+		var delete_item = async function (item) {
+			self.external_sites.remove (item);
+			self.external_sites = await pages_page_admin_utils.post (pages_page_admin_utils.get_url ('general/setExternalSites'), dict ([['external_sites', self.external_sites]]));
+			plist.get_server ().data = self.external_sites;
+			plist.refresh ();
+		};
+		var save_changes = async function () {
+			self.external_sites = await pages_page_admin_utils.post (pages_page_admin_utils.get_url ('general/setExternalSites'), dict ([['external_sites', self.external_sites]]));
+			plist.get_server ().data = self.external_sites;
+			plist.refresh ();
+		};
+		plist.add_button ('delete', '', 'btn btn-danger btn-sm').use_element ((function __lambda__ (item) {
+			return pages_page_admin_E ('i').attr ('class', 'fas fa-trash-alt');
+		})).onclick (delete_item);
+		var change_order = async function (up, item) {
+			var i = self.external_sites.index (item);
+			if (!((-(1) < i && i < len (self.external_sites)))) {
+				return ;
+			}
+			var j = (up ? i - 1 : i + 1);
+			var j = max (0, min (j, len (self.external_sites) - 1));
+			self.external_sites.remove (item);
+			self.external_sites.insert (j, item);
+			self.external_sites = await pages_page_admin_utils.post (pages_page_admin_utils.get_url ('general/setExternalSites'), dict ([['external_sites', self.external_sites]]));
+			plist.get_server ().data = self.external_sites;
+			plist.refresh ();
+		};
+		plist.add_button ('up', '', 'btn btn-primary btn-sm').use_element ((function __lambda__ (item) {
+			return pages_page_admin_E ('i').attr ('class', 'fas fa-sort-up').attr ('style', 'font-size: 20px; vertical-align: bottom;');
+		})).onclick (change_order.bind (null, true));
+		plist.add_button ('down', '', 'btn btn-primary btn-sm').use_element ((function __lambda__ (item) {
+			return pages_page_admin_E ('i').attr ('class', 'fas fa-sort-down').attr ('style', 'font-size: 20px; vertical-align: bottom;');
+		})).onclick (change_order.bind (null, false));
+		var add_item = function (evt) {
+			self.external_sites.append (pages_page_admin_external_site ('Website', 'www.gergemrijssen.nl'));
+			plist.get_server ().data = self.external_sites;
+			plist.refresh ();
+		};
+		var button_add = pages_page_admin_E ('button').attr ('class', 'btn btn-primary btn-sm').inner_html ('Toevoegen');
+		button_add.element.onclick = add_item;
+		self.body.append (button_add);
+		var initialize = async function () {
+			self.external_sites = await pages_page_admin_utils.post (pages_page_admin_utils.get_url ('general/getExternalSites'), dict ({}));
+			plist.get_server ().data = self.external_sites;
+			plist.refresh ();
+		};
+		self.refresh = initialize;
+	});}
+});
 var TestDebug =  __class__ ('TestDebug', [AccordionItem], {
 	__module__: pages_page_admin_name_,
 	get __init__ () {return __get__ (this, function (self) {
@@ -4648,7 +4728,7 @@ var pages_page_admin_Page =  __class__ ('Page', [ElementWrapper], {
 
 //# sourceMappingURL=pages.page_admin.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_iframe.js
-// Transcrypt'ed from Python, 2020-11-02 11:17:13
+// Transcrypt'ed from Python, 2020-11-03 20:39:58
 var pages_page_iframe_utils = {};
 
 
@@ -4666,7 +4746,7 @@ var pages_page_iframe_Page =  __class__ ('Page', [ElementWrapper], {
 	get __init__ () {return __get__ (this, function (self, url) {
 		__super__ (pages_page_iframe_Page, '__init__') (self, elements_element ('div'));
 		self.attr ('style', 'width: 100%; height: 100%;');
-		self.append (pages_page_iframe_E ('iframe').attr ('src', url).attr ('style', 'width: 100%; height: 500px;'));
+		self.append (pages_page_iframe_E ('iframe').attr ('src', url).attr ('style', 'width: 100%; height: 500px;').attr ('sandbox', 'allow-scripts allow-same-origin'));
 	});},
 	get refresh () {return __get__ (this, function (self) {
 		// pass;
@@ -4680,7 +4760,7 @@ var pages_page_iframe_Page =  __class__ ('Page', [ElementWrapper], {
 
 //# sourceMappingURL=pages.page_iframe.map
 // CONCATENATED MODULE: ./python/__target__/math.js
-// Transcrypt'ed from Python, 2020-11-02 11:17:13
+// Transcrypt'ed from Python, 2020-11-03 20:39:58
 
 var math_name_ = 'math';
 var pi = Math.PI;
@@ -4739,7 +4819,7 @@ var modf = function (n) {
 
 //# sourceMappingURL=math.map
 // CONCATENATED MODULE: ./python/__target__/random.js
-// Transcrypt'ed from Python, 2020-11-02 11:17:13
+// Transcrypt'ed from Python, 2020-11-03 20:39:58
 var math = {};
 
 
@@ -4807,7 +4887,7 @@ seed ();
 
 //# sourceMappingURL=random.map
 // CONCATENATED MODULE: ./python/__target__/layout.js
-// Transcrypt'ed from Python, 2020-11-02 11:17:11
+// Transcrypt'ed from Python, 2020-11-03 20:39:56
 var dialogs = {};
 var layout_random = {};
 var layout_utils = {};
@@ -4891,11 +4971,12 @@ var MenuItem =  __class__ ('MenuItem', [ElementWrapper], {
 	});}
 });
 main_menu.append (MenuItem ().set_title ('Bediening').set_page (Page ()), MenuItem ().set_title ('Instellingen').set_page (pages_page_admin_Page ()));
-var iframes = [];
-for (var iframe of iframes) {
-	main_menu.append (MenuItem ().set_title (iframe ['title']).set_page (pages_page_iframe_Page (iframe ['url'])));
-}
-var logged_in = false;
+var get_external_sites = async function () {
+	var external_sites = await layout_utils.post (layout_utils.get_url ('general/getExternalSites'), dict ({}));
+	for (var external_site of external_sites) {
+		main_menu.append (MenuItem ().set_title (external_site ['title']).set_page (pages_page_iframe_Page (external_site ['url'])));
+	}
+};
 var setup_websocket = function () {
 	var loc = window.location;
 	var url = 'ws://{}/websocket'.format (loc.host);
@@ -4931,6 +5012,7 @@ var setup_websocket = function () {
 	};
 	ws.onclose = on_close;
 };
+var logged_in = false;
 var login_and_view = async function () {
 	var login_required = await layout_utils.post (layout_utils.get_url ('login/login_required'));
 	var login_required = login_required ['login_required'];
@@ -4988,7 +5070,7 @@ main_menu.append (logout_button ());
 
 //# sourceMappingURL=layout.map
 // CONCATENATED MODULE: ./python/__target__/main.js
-// Transcrypt'ed from Python, 2020-11-02 11:17:11
+// Transcrypt'ed from Python, 2020-11-03 20:39:56
 var main_elements = {};
 var layout = {};
 var main_utils = {};

@@ -152,14 +152,17 @@ class General(BaseHandler):
             self.write(dumps({'success': True}))
             return
 
+        def write_settings():
+            self.write(dumps(asdict(settings.settings)))
+
         def write_sources():
             self.write(dumps([asdict(obj) for obj in settings.sources]))
 
         def write_destinations():
             self.write(dumps([asdict(obj) for obj in settings.destinations]))
 
-        def write_settings():
-            self.write(dumps(asdict(settings.settings)))
+        def write_external_sites():
+            self.write(dumps([asdict(obj) for obj in settings.external_sites]))
 
         if action == 'restoreSettings':
             settings.restore()
@@ -201,6 +204,18 @@ class General(BaseHandler):
             settings.update_destinations(destinations)
             controller.set_routes()
             write_destinations()
+            notify_change()
+            return
+
+        elif action == 'getExternalSites':
+            write_external_sites()
+            return
+
+        elif action == 'setExternalSites':
+            args = json.loads(self.request.body)
+            external_sites = args['external_sites']
+            settings.update_external_sites(external_sites)
+            write_external_sites()
             notify_change()
             return
 
@@ -261,6 +276,7 @@ class WebSocket(tornado.websocket.WebSocketHandler, BaseHandler):
 
 
 def notify_change():
+    """ Notify clients that there has been changed something, like a setting """
     for con in list(websocket_connections):
         try:
             #print("write change")

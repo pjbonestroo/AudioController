@@ -88,7 +88,7 @@ def play_process(url):
 
 def send_process(urls: List[str]):
     """ Create and return process to read audio from analog input and send to (icecast?) urls """
-    # input = "-f alsa -i hw:0" # default input
+    # input = "-f alsa -i hw:0"  # default input
     input = "-f alsa -i hw:CARD=CODEC,DEV=0"  # usb-sound-card input: run command 'arecord -L' to see a full list of possibilities
     outputs = []
     for url in urls:
@@ -97,7 +97,7 @@ def send_process(urls: List[str]):
         if len(url_splitted) > 1 and len(url_splitted[1]) > 0:
             bitrate = url_splitted[1]
         else:
-            bitrate = '128K'
+            bitrate = '64K'
         content_type = "-content_type audio/mpeg -f mp3"
         bitrate_ = f"-b:a {bitrate} -minrate {bitrate} -maxrate {bitrate} -bufsize {bitrate}"
         outputs.append(f'{content_type} {bitrate_} "{url}"')

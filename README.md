@@ -28,6 +28,12 @@ sudo apt update
 sudo apt upgrade
 ```
 
+Change default password
+
+```
+sudo raspi-config
+```
+
 ## 2. Install Python and dependencies
 
 ### 2.1 Install python 3.7
@@ -122,7 +128,7 @@ For example the full file content becomes:
 @xset s off
 @xset -dpms
 @xset s noblank
-@chromium --kiosk http://localhost:5000/
+@chromium-browser --kiosk http://localhost:5000/
 ```
 
 ## 5. Use external USB sound card
@@ -143,25 +149,15 @@ speaker-test -c2
 
 ## 6. Enable remote login
 
-### 6.1 Create file with usernames and passwords
-
-From directory audio_controller/audio_controller:
 ```
+ssh pi@${PI_IP}
+cd ~/AudioController/audio_controller/audio_controller/
+sudo -s
 python3
 import utils
 utils.add_user("<username>", "<password>")
 assert utils.check_user("<username>", "<password>"), "Configuration failed"
 exit()
-```
-
-### 6.2 Copy file to root home directory
-
-```
-scp ~/.audio_controller_users.txt pi@${PI_IP}:~/
-```
-And then on the raspberry pi:
-```
-sudo mv /home/pi/.audio_controller_users.txt /root/
 ```
 
 ## Extras

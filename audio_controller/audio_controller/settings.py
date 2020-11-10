@@ -22,7 +22,7 @@ class Settings:
     enable_option_auto_switch: bool = False  # to be set by administrator, to enable/disable the option to enable auto scan and switch
     enable_auto_switch: bool = False  # when True, the IN ports belonging to all enabled sources are scanned, and when there is a signal, the source is automatically selected
     timeout_auto_switch: int = 15  # minutes to wait after signal is away, before switching to other
-    version: int = 3  # version of settings, used for upgrades
+    version: int = 4  # version of settings, used for upgrades
 
 
 @dataclass
@@ -42,13 +42,6 @@ class Destination:
     enabled: bool
     port_url_file: str
     selected: bool
-    id: int = 0
-
-
-@dataclass
-class ExternalSite:
-    title: str
-    url: str
     id: int = 0
 
 
@@ -84,15 +77,6 @@ def default_destinations():
     return result
 
 
-def default_external_sites():
-    """ Default external sites, used as initial and factory defaults """
-    result = [
-        # ExternalSite("Website", "http://www.gergemrijssen.nl:8080")
-    ]
-    for i, obj in enumerate(result):
-        obj.id = i
-    return result
-
 #
 # Stores / databases
 #
@@ -104,7 +88,6 @@ file = Path.home() / ".audio_controller_settings.pickle"
 settings = Settings()
 sources: List[Source] = []
 destinations: List[Destination] = []
-external_sites: List[ExternalSite] = []
 
 #
 # Save and load
@@ -122,7 +105,12 @@ def upgrade(store: dict):
 
     if store['settings']['version'] == 2:
         store['settings']['version'] = 3
-        store['external_sites'] = [asdict(obj) for obj in default_external_sites()]
+        store['external_sites'] = []  # [asdict(obj) for obj in default_external_sites()]
+
+    if store['settings']['version'] == 3:
+        store['settings']['version'] = 4
+        del store['external_sites']
+
     #
     # future upgrades will be placed here
     #
@@ -135,10 +123,8 @@ def use_from_store(store: dict):
     settings.__init__(**store['settings'])
     sources.clear()
     destinations.clear()
-    external_sites.clear()
     for obj in store['sources']: sources.append(Source(**obj))
     for obj in store['destinations']: destinations.append(Destination(**obj))
-    for obj in store['external_sites']: external_sites.append(ExternalSite(**obj))
 
 
 def load():
@@ -162,7 +148,6 @@ def save():
             'settings': asdict(settings),
             'sources': [asdict(obj) for obj in sources],
             'destinations': [asdict(obj) for obj in destinations],
-            'external_sites': [asdict(obj) for obj in external_sites],
         }
         f.write(pickle.dumps(store))
 
@@ -173,7 +158,6 @@ def restore():
         'settings': asdict(Settings()),
         'sources': [asdict(obj) for obj in default_sources()],
         'destinations': [asdict(obj) for obj in default_destinations()],
-        'external_sites': [asdict(obj) for obj in default_external_sites()],
     }
     use_from_store(store)
     save()
@@ -309,18 +293,6 @@ def validate_destination_attribute(name: str, value):
         return None
 
 
-def validate_external_site_attribute(name: str, value):
-    """ Validate value for attribute with name of a ExternalSite object.
-    Return value, or adjusted value, or None if it is not valid. """
-    try:
-        if name == 'title':
-            return value[0:50]  # max 50 characters
-        elif name == 'url':  # must be IN port
-            return value
-        return None  # only accept attributes as above
-    except:
-        return None
-
 #
 # Updates
 #
@@ -396,34 +368,6 @@ def update_destinations(new_destinations: List[dict]):
             new_list.append(new_obj)
         destinations.clear()
         for obj in new_list: destinations.append(obj)
-        save()
-    except:
-        pass
-
-
-def update_external_sites(new_external_sites: List[dict]):
-    """ Compare external_sites with current external_sites, and update the current.
-    Each object must contain at least all attributes required to create ExternalSite.
-    It may contain more, which will be ignored. """
-    try:
-        # convert all sources to the correct type, let it raise an Exception if its not possible
-        fields = ExternalSite.__annotations__.copy()
-        del fields['id']  # do not copy id
-        # create a temporary list, to first validate everything, and then copy
-        new_list: List[ExternalSite] = []
-        for i, obj in enumerate(new_external_sites):
-            new_obj = {}
-            # copy attributes
-            for attr, value_type in fields.items():
-                # cast and validate value
-                value = validate_external_site_attribute(attr, value_type(obj[attr]))
-                if value is not None:
-                    new_obj[attr] = value
-            new_obj = ExternalSite(**new_obj)
-            new_obj.id = i
-            new_list.append(new_obj)
-        external_sites.clear()
-        for obj in new_list: external_sites.append(obj)
         save()
     except:
         pass

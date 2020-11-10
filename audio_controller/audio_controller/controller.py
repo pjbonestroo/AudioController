@@ -197,10 +197,6 @@ async def auto_switch():
     while True:
         try:
             if settings.settings.enable_option_auto_switch and settings.settings.enable_auto_switch:
-                # difficulty: one port is available to test input of all url-based-sources.
-                # solution: switch between url-based-sources and measure level on same IN-port for each
-                # drawback: not possible to auto-switch from one url to another
-
                 # determine source_id which should be selected
                 source_id = None
                 prio = 0

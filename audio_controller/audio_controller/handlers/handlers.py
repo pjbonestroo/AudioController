@@ -161,9 +161,6 @@ class General(BaseHandler):
         def write_destinations():
             self.write(dumps([asdict(obj) for obj in settings.destinations]))
 
-        def write_external_sites():
-            self.write(dumps([asdict(obj) for obj in settings.external_sites]))
-
         if action == 'restoreSettings':
             settings.restore()
             write_settings()
@@ -204,18 +201,6 @@ class General(BaseHandler):
             settings.update_destinations(destinations)
             controller.set_routes()
             write_destinations()
-            notify_change()
-            return
-
-        elif action == 'getExternalSites':
-            write_external_sites()
-            return
-
-        elif action == 'setExternalSites':
-            args = json.loads(self.request.body)
-            external_sites = args['external_sites']
-            settings.update_external_sites(external_sites)
-            write_external_sites()
             notify_change()
             return
 

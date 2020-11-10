@@ -95,6 +95,7 @@ ssh pi@${PI_IP}
 cd /home/pi/
 sudo cp ./AudioController/audio_controller.service /etc/systemd/system/audio_controller.service
 sudo chmod 777 ./AudioController/run_audio_controller.sh
+sudo systemctl enable audio_controller.service
 ```
 
 Some commands to start and stop service:

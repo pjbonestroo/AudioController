@@ -52,7 +52,7 @@ def schedule_tasks(loop: asyncio.BaseEventLoop):
 def init_system(args):
     """ initialize system  """
     import getpass
-    volume = "80%"
+    volume = "100%"
     try:
         if '--volume' in args:
             v = args[args.index('--volume') + 1]

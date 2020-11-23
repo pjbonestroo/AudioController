@@ -58,6 +58,7 @@ source ./pyenv/bin/activate
 python -m pip install --upgrade pip
 python -m pip install pyserial
 python -m pip install tornado
+python -m pip install python-socketio
 ```
 
 Optionally, only on Raspberry Pi (and still to be tested in virtual environment):

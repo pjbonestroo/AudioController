@@ -13,9 +13,10 @@ import traceback
 from dataclasses import asdict
 
 # external libs
+import socketio
 import tornado
 import tornado.web
-import tornado.websocket
+#import tornado.websocket
 
 # internals
 from .. import settings
@@ -28,6 +29,9 @@ main_logger = logging.getLogger("main")
 
 
 class BaseHandler(tornado.web.RequestHandler):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
     def set_default_headers(self):
         self.set_header("Access-Control-Allow-Origin", "*")
@@ -141,7 +145,7 @@ class Login(BaseHandler):
 
 class General(BaseHandler):
 
-    def post(self):
+    async def post(self):
         action = get_action(self.request.path)
 
         if self.login_required() and not self.logged_in():
@@ -175,7 +179,7 @@ class General(BaseHandler):
             settings.update_settings(args)
             controller.set_routes()
             write_settings()
-            notify_change()
+            await notify_change()
             return
 
         elif action == 'getSources':
@@ -188,7 +192,7 @@ class General(BaseHandler):
             settings.update_sources(sources)
             controller.set_routes()
             write_sources()
-            notify_change()
+            await notify_change()
             return
 
         elif action == 'getDestinations':
@@ -201,7 +205,7 @@ class General(BaseHandler):
             settings.update_destinations(destinations)
             controller.set_routes()
             write_destinations()
-            notify_change()
+            await notify_change()
             return
 
         elif action == 'getInputLevels':
@@ -240,31 +244,40 @@ class General(BaseHandler):
             return
 
 
-websocket_connections = []
+async def notify_change():
+    """ Notify clients that there has been changed something, like a setting """
+    for server in websocket_servers:
+        await server.emit("event", "change")
 
 
-class WebSocket(tornado.websocket.WebSocketHandler, BaseHandler):
+websocket_servers: socketio.Server = []
 
-    def open(self):
-        if self.login_required() and not self.logged_in():
-            print("Unauthorized websocket usage, websocket closed.")
-            self.close()
-            return
-        websocket_connections.append(self)
 
-    def on_message(self, message):
-        # messages from client are not handled
+def websocket_handlers(sio: socketio.Server):
+    if sio in websocket_servers:
         return
 
-    def on_close(self):
-        websocket_connections.remove(self)
+    # multiple (tornado) applications run on different ports, so for each a server exists
+    websocket_servers.append(sio)
 
+    @sio.event
+    async def connect(sid, environ):
+        handler = environ['tornado.handler']
+        handler = BaseHandler(handler.application, handler.request)
+        if handler.login_required() and not handler.logged_in():
+            print("Unauthorized websocket usage, websocket closed.")
+            return False
+        print('connect ', sid)
 
-def notify_change():
-    """ Notify clients that there has been changed something, like a setting """
-    for con in list(websocket_connections):
-        try:
-            #print("write change")
-            con.write_message("change")
-        except:
-            websocket_connections.remove(con)
+    @sio.event
+    def disconnect(sid):
+        print('disconnect ', sid)
+
+    @sio.event
+    def event(sid, data):
+        print("event catched")
+        print(data)
+
+    # @sio.on('my custom event')
+    # def another_event(sid, data):
+    #     print("custom event catched")

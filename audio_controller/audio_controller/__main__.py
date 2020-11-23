@@ -10,6 +10,7 @@ import logging
 # externals
 import tornado.ioloop
 import tornado.web
+import socketio
 # internals
 from . import loggers
 from . import settings
@@ -32,14 +33,20 @@ def make_app():
         cookie_secret=utils.get_cookie_secret(),
         template_path=str(template_dir),
     )
+
+    sio = socketio.AsyncServer(async_mode='tornado')
+    handlers.websocket_handlers(sio)
+
     _handlers = [
         ("/", handlers.Main),
         ("/login/.*", handlers.Login),
-        ("/websocket", handlers.WebSocket),
+        #("/websocket", handlers.WebSocket),
         ("/general/.*", handlers.General),
         ("/(favicon.ico)", tornado.web.StaticFileHandler, {'path': str(static_dir)}),
         ("/static/(.*)", tornado.web.StaticFileHandler, {'path': str(static_dir)}),
+        ("/websocket/", socketio.get_tornado_handler(sio)),
     ]
+
     return tornado.web.Application(handlers=_handlers, **settings)
 
 

@@ -219,6 +219,7 @@ __webpack_require__.d(layout_namespaceObject, "main_menu", function() { return m
 __webpack_require__.d(layout_namespaceObject, "main", function() { return main; });
 __webpack_require__.d(layout_namespaceObject, "menu_items", function() { return menu_items; });
 __webpack_require__.d(layout_namespaceObject, "MenuItem", function() { return MenuItem; });
+__webpack_require__.d(layout_namespaceObject, "refresh_after_disconnect", function() { return refresh_after_disconnect; });
 __webpack_require__.d(layout_namespaceObject, "setup_websocket", function() { return setup_websocket; });
 __webpack_require__.d(layout_namespaceObject, "logged_in", function() { return logged_in; });
 __webpack_require__.d(layout_namespaceObject, "login_and_view", function() { return login_and_view; });
@@ -228,7 +229,7 @@ __webpack_require__.d(layout_namespaceObject, "logout", function() { return logo
 __webpack_require__.d(layout_namespaceObject, "logout_button", function() { return logout_button; });
 
 // CONCATENATED MODULE: ./python/__target__/org.transcrypt.__runtime__.js
-// Transcrypt'ed from Python, 2020-11-10 15:27:01
+// Transcrypt'ed from Python, 2020-11-23 14:22:27
 var __name__ = 'org.transcrypt.__runtime__';
 var __envir__ = {};
 __envir__.interpreter_name = 'python';
@@ -2351,7 +2352,7 @@ var input = __terminal__.input;
 
 //# sourceMappingURL=org.transcrypt.__runtime__.map
 // CONCATENATED MODULE: ./python/__target__/elements.js
-// Transcrypt'ed from Python, 2020-11-10 15:27:02
+// Transcrypt'ed from Python, 2020-11-23 14:22:28
 
 var elements_name_ = 'elements';
 var get_element = function (css_selectors) {
@@ -2441,7 +2442,7 @@ var ElementWrapper =  __class__ ('ElementWrapper', [object], {
 
 //# sourceMappingURL=elements.map
 // CONCATENATED MODULE: ./python/__target__/delayer.js
-// Transcrypt'ed from Python, 2020-11-10 15:27:02
+// Transcrypt'ed from Python, 2020-11-23 14:22:28
 
 var delayer_name_ = 'delayer';
 var Delayer =  __class__ ('Delayer', [object], {
@@ -2554,7 +2555,7 @@ var Delayer2 =  __class__ ('Delayer2', [object], {
 
 //# sourceMappingURL=delayer.map
 // CONCATENATED MODULE: ./python/__target__/paged_list.js
-// Transcrypt'ed from Python, 2020-11-10 15:27:01
+// Transcrypt'ed from Python, 2020-11-23 14:22:28
 
 
 
@@ -3779,7 +3780,7 @@ var FakeServer =  __class__ ('FakeServer', [DataServer], {
 
 //# sourceMappingURL=paged_list.map
 // CONCATENATED MODULE: ./python/__target__/utils.js
-// Transcrypt'ed from Python, 2020-11-10 15:27:02
+// Transcrypt'ed from Python, 2020-11-23 14:22:29
 
 var utils_name_ = 'utils';
 var sleep = async function (time) {
@@ -3924,7 +3925,7 @@ var save_blob_to_file = function (blob, filename) {
 
 //# sourceMappingURL=utils.map
 // CONCATENATED MODULE: ./python/__target__/dialogs.js
-// Transcrypt'ed from Python, 2020-11-10 15:27:01
+// Transcrypt'ed from Python, 2020-11-23 14:22:28
 var paged_list = {};
 var utils = {};
 
@@ -4119,7 +4120,7 @@ var DialogSelect =  __class__ ('DialogSelect', [Dialog], {
 
 //# sourceMappingURL=dialogs.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_overview.js
-// Transcrypt'ed from Python, 2020-11-10 15:27:02
+// Transcrypt'ed from Python, 2020-11-23 14:22:29
 var pages_page_overview_utils = {};
 
 
@@ -4286,7 +4287,7 @@ var Page =  __class__ ('Page', [ElementWrapper], {
 
 //# sourceMappingURL=pages.page_overview.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_admin.js
-// Transcrypt'ed from Python, 2020-11-10 15:27:02
+// Transcrypt'ed from Python, 2020-11-23 14:22:29
 var pages_page_admin_utils = {};
 
 
@@ -4647,7 +4648,7 @@ var pages_page_admin_Page =  __class__ ('Page', [ElementWrapper], {
 
 //# sourceMappingURL=pages.page_admin.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_iframe.js
-// Transcrypt'ed from Python, 2020-11-10 15:27:03
+// Transcrypt'ed from Python, 2020-11-23 14:22:29
 var pages_page_iframe_utils = {};
 
 
@@ -4679,7 +4680,7 @@ var pages_page_iframe_Page =  __class__ ('Page', [ElementWrapper], {
 
 //# sourceMappingURL=pages.page_iframe.map
 // CONCATENATED MODULE: ./python/__target__/math.js
-// Transcrypt'ed from Python, 2020-11-10 15:27:03
+// Transcrypt'ed from Python, 2020-11-23 14:22:29
 
 var math_name_ = 'math';
 var pi = Math.PI;
@@ -4738,7 +4739,7 @@ var modf = function (n) {
 
 //# sourceMappingURL=math.map
 // CONCATENATED MODULE: ./python/__target__/random.js
-// Transcrypt'ed from Python, 2020-11-10 15:27:03
+// Transcrypt'ed from Python, 2020-11-23 14:22:29
 var math = {};
 
 
@@ -4806,7 +4807,7 @@ seed ();
 
 //# sourceMappingURL=random.map
 // CONCATENATED MODULE: ./python/__target__/layout.js
-// Transcrypt'ed from Python, 2020-11-10 15:27:01
+// Transcrypt'ed from Python, 2020-11-23 14:22:27
 var dialogs = {};
 var layout_random = {};
 var layout_utils = {};
@@ -4890,40 +4891,51 @@ var MenuItem =  __class__ ('MenuItem', [ElementWrapper], {
 	});}
 });
 main_menu.append (MenuItem ().set_title ('Bediening').set_page (Page ()), MenuItem ().set_title ('Instellingen').set_page (pages_page_admin_Page ()));
+var refresh_after_disconnect = async function () {
+	var disconnected = false;
+	while (true) {
+		await layout_utils.sleep (5);
+		try {
+			await layout_utils.post (layout_utils.get_url ('general/ping'), dict ({}));
+			if (disconnected) {
+				console.log ('ping success, now refresh');
+				layout_utils.redirect_relative ('');
+			}
+		}
+		catch (__except0__) {
+			var disconnected = true;
+			console.log ('ping failed');
+		}
+	}
+};
 var setup_websocket = function () {
-	var loc = window.location;
-	var url = 'ws://{}/websocket'.format (loc.host);
-	var ws = new WebSocket (url);
-	var on_open = function () {
-		console.log ('websocket open');
+	var socket = io (dict ([['path', '/websocket']]));
+	var disconnected = false;
+	var on_connect = function () {
+		console.log ('websocket connect');
+		if (disconnected) {
+			layout_utils.redirect_relative ('');
+		}
 	};
-	ws.onopen = on_open;
-	var on_message = function (evt) {
-		if (evt.data == 'change') {
+	socket.on ('connect', on_connect);
+	var on_disconnect = async function () {
+		disconnected = true;
+	};
+	socket.on ('disconnect', on_disconnect);
+	var on_event = function (data) {
+		if (data == 'change') {
 			for (var mi of menu_items) {
 				if (mi.active) {
 					mi.page.refresh ();
 				}
 			}
 		}
-	};
-	ws.onmessage = on_message;
-	var on_close = async function (evt) {
-		console.log ('websocket close');
-		get_element ('#warning_connection_lost').style.display = '';
-		while (true) {
-			await layout_utils.sleep (10);
-			try {
-				await layout_utils.post (layout_utils.get_url ('general/ping'), dict ({}));
-				console.log ('ping success, now refresh');
-				layout_utils.redirect_relative ('');
-			}
-			catch (__except0__) {
-				console.log ('ping failed');
-			}
+		else {
+			console.log ('unrecognised websocket event:');
+			console.log (data);
 		}
 	};
-	ws.onclose = on_close;
+	socket.on ('event', on_event);
 };
 var logged_in = false;
 var login_and_view = async function () {
@@ -4983,7 +4995,7 @@ main_menu.append (logout_button ());
 
 //# sourceMappingURL=layout.map
 // CONCATENATED MODULE: ./python/__target__/main.js
-// Transcrypt'ed from Python, 2020-11-10 15:27:01
+// Transcrypt'ed from Python, 2020-11-23 14:22:27
 var main_elements = {};
 var layout = {};
 var main_utils = {};

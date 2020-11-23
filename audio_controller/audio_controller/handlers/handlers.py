@@ -33,6 +33,11 @@ class BaseHandler(tornado.web.RequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+    def body_to_json(self):
+        body = self.request.body
+        if not body: body = b'{}'
+        return json.loads(body)
+
     def set_default_headers(self):
         self.set_header("Access-Control-Allow-Origin", "*")
         self.set_header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, HEAD, PUT')
@@ -118,7 +123,8 @@ class Login(BaseHandler):
                 return self.write(dumps({'success': True}))
             else:
                 # try login if arguments are provided
-                args = json.loads(self.request.body)
+                args = self.body_to_json()
+                # self.get_arguments
                 # if 'username' in args and 'password' in args:
                 username = str(args.get('username'))
                 password = str(args.get('password'))
@@ -175,7 +181,7 @@ class General(BaseHandler):
             return
 
         elif action == 'setSettings':
-            args = json.loads(self.request.body)
+            args = self.body_to_json()
             settings.update_settings(args)
             controller.set_routes()
             write_settings()
@@ -187,7 +193,7 @@ class General(BaseHandler):
             return
 
         elif action == 'setSources':
-            args = json.loads(self.request.body)
+            args = self.body_to_json()
             sources = args['sources']
             settings.update_sources(sources)
             controller.set_routes()
@@ -200,7 +206,7 @@ class General(BaseHandler):
             return
 
         elif action == 'setDestinations':
-            args = json.loads(self.request.body)
+            args = self.body_to_json()
             destinations = args['destinations']
             settings.update_destinations(destinations)
             controller.set_routes()

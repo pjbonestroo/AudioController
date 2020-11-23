@@ -229,7 +229,7 @@ __webpack_require__.d(layout_namespaceObject, "logout", function() { return logo
 __webpack_require__.d(layout_namespaceObject, "logout_button", function() { return logout_button; });
 
 // CONCATENATED MODULE: ./python/__target__/org.transcrypt.__runtime__.js
-// Transcrypt'ed from Python, 2020-11-23 15:03:42
+// Transcrypt'ed from Python, 2020-11-23 21:33:19
 var __name__ = 'org.transcrypt.__runtime__';
 var __envir__ = {};
 __envir__.interpreter_name = 'python';
@@ -2352,7 +2352,7 @@ var input = __terminal__.input;
 
 //# sourceMappingURL=org.transcrypt.__runtime__.map
 // CONCATENATED MODULE: ./python/__target__/elements.js
-// Transcrypt'ed from Python, 2020-11-23 15:03:43
+// Transcrypt'ed from Python, 2020-11-23 21:33:20
 
 var elements_name_ = 'elements';
 var get_element = function (css_selectors) {
@@ -2442,7 +2442,7 @@ var ElementWrapper =  __class__ ('ElementWrapper', [object], {
 
 //# sourceMappingURL=elements.map
 // CONCATENATED MODULE: ./python/__target__/delayer.js
-// Transcrypt'ed from Python, 2020-11-23 15:03:43
+// Transcrypt'ed from Python, 2020-11-23 21:33:20
 
 var delayer_name_ = 'delayer';
 var Delayer =  __class__ ('Delayer', [object], {
@@ -2555,7 +2555,7 @@ var Delayer2 =  __class__ ('Delayer2', [object], {
 
 //# sourceMappingURL=delayer.map
 // CONCATENATED MODULE: ./python/__target__/paged_list.js
-// Transcrypt'ed from Python, 2020-11-23 15:03:43
+// Transcrypt'ed from Python, 2020-11-23 21:33:19
 
 
 
@@ -3780,7 +3780,7 @@ var FakeServer =  __class__ ('FakeServer', [DataServer], {
 
 //# sourceMappingURL=paged_list.map
 // CONCATENATED MODULE: ./python/__target__/utils.js
-// Transcrypt'ed from Python, 2020-11-23 15:03:44
+// Transcrypt'ed from Python, 2020-11-23 21:33:20
 
 var utils_name_ = 'utils';
 var sleep = async function (time) {
@@ -3821,6 +3821,8 @@ var post = async function (url, data, json_parse, content_type) {
 	if (typeof content_type == 'undefined' || (content_type != null && content_type.hasOwnProperty ("__kwargtrans__"))) {;
 		var content_type = null;
 	};
+	var _data = data;
+	var _content_type = content_type;
 	var deferred = $.Deferred ();
 	var success = function (result) {
 		if (json_parse) {
@@ -3838,12 +3840,12 @@ var post = async function (url, data, json_parse, content_type) {
 		deferred.reject (result);
 	};
 	if (json_parse) {
-		var data = JSON.stringify (data);
+		var _data = JSON.stringify (_data);
 	}
-	if (content_type === null) {
-		var content_type = 'application/json; charset=utf-8';
+	if (_content_type === null) {
+		var _content_type = 'application/json; charset=utf-8';
 	}
-	$.ajax (dict ([['type', 'POST'], ['url', url], ['data', data], ['success', success], ['error', error], ['contentType', content_type]]));
+	$.ajax (dict ([['type', 'POST'], ['url', url], ['data', _data], ['success', success], ['error', error], ['contentType', _content_type]]));
 	return deferred.promise ();
 };
 var example_handle_progress = function (event) {
@@ -3925,7 +3927,7 @@ var save_blob_to_file = function (blob, filename) {
 
 //# sourceMappingURL=utils.map
 // CONCATENATED MODULE: ./python/__target__/dialogs.js
-// Transcrypt'ed from Python, 2020-11-23 15:03:42
+// Transcrypt'ed from Python, 2020-11-23 21:33:19
 var paged_list = {};
 var utils = {};
 
@@ -4120,7 +4122,7 @@ var DialogSelect =  __class__ ('DialogSelect', [Dialog], {
 
 //# sourceMappingURL=dialogs.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_overview.js
-// Transcrypt'ed from Python, 2020-11-23 15:03:44
+// Transcrypt'ed from Python, 2020-11-23 21:33:21
 var pages_page_overview_utils = {};
 
 
@@ -4287,7 +4289,7 @@ var Page =  __class__ ('Page', [ElementWrapper], {
 
 //# sourceMappingURL=pages.page_overview.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_admin.js
-// Transcrypt'ed from Python, 2020-11-23 15:03:44
+// Transcrypt'ed from Python, 2020-11-23 21:33:20
 var pages_page_admin_utils = {};
 
 
@@ -4648,7 +4650,7 @@ var pages_page_admin_Page =  __class__ ('Page', [ElementWrapper], {
 
 //# sourceMappingURL=pages.page_admin.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_iframe.js
-// Transcrypt'ed from Python, 2020-11-23 15:03:44
+// Transcrypt'ed from Python, 2020-11-23 21:33:21
 var pages_page_iframe_utils = {};
 
 
@@ -4680,7 +4682,7 @@ var pages_page_iframe_Page =  __class__ ('Page', [ElementWrapper], {
 
 //# sourceMappingURL=pages.page_iframe.map
 // CONCATENATED MODULE: ./python/__target__/math.js
-// Transcrypt'ed from Python, 2020-11-23 15:03:44
+// Transcrypt'ed from Python, 2020-11-23 21:33:21
 
 var math_name_ = 'math';
 var pi = Math.PI;
@@ -4739,7 +4741,7 @@ var modf = function (n) {
 
 //# sourceMappingURL=math.map
 // CONCATENATED MODULE: ./python/__target__/random.js
-// Transcrypt'ed from Python, 2020-11-23 15:03:44
+// Transcrypt'ed from Python, 2020-11-23 21:33:21
 var math = {};
 
 
@@ -4807,7 +4809,7 @@ seed ();
 
 //# sourceMappingURL=random.map
 // CONCATENATED MODULE: ./python/__target__/layout.js
-// Transcrypt'ed from Python, 2020-11-23 15:03:42
+// Transcrypt'ed from Python, 2020-11-23 21:33:19
 var dialogs = {};
 var layout_random = {};
 var layout_utils = {};
@@ -4996,7 +4998,7 @@ main_menu.append (logout_button ());
 
 //# sourceMappingURL=layout.map
 // CONCATENATED MODULE: ./python/__target__/main.js
-// Transcrypt'ed from Python, 2020-11-23 15:03:42
+// Transcrypt'ed from Python, 2020-11-23 21:33:19
 var main_elements = {};
 var layout = {};
 var main_utils = {};

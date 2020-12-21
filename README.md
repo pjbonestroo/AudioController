@@ -21,26 +21,37 @@ OS: Raspberry Pi OS version 2020-08-20.
 
 ## 1. Update OS and packages
 
+### 1.1 Enable ssh
+Option 1: Before inserting the sd card to the Pi, add a file named 'ssh' to the boot partition.
+Option 2: Use Desktop environment to enable ssh
+
+Add ssh key
 ```
-PI_IP=192.168.1.110
+PI_IP=192.168.1.96
+ssh-copy-id -i ~/.ssh/id_ecdsa pi@${PI_IP}
+```
+
+Update
+```
 ssh pi@${PI_IP}
 sudo apt update
 sudo apt upgrade
 ```
 
 Change default password
-
 ```
 sudo raspi-config
 ```
+
 
 ## 2. Install Python and dependencies
 
 ### 2.1 Install python 3.7
 
-Python 3.7+ is preinstalled on the OS. Check this by running:
+Python 3.7+ is preinstalled on the OS. Also ffmpeg is preinstalled. Check this by running:
 ```
 python3 --version
+ffmpeg -version
 ```
 
 ### 2.2 Create a virtual environment
@@ -58,7 +69,7 @@ source ./pyenv/bin/activate
 python -m pip install --upgrade pip
 python -m pip install pyserial
 python -m pip install tornado
-python -m pip install python-socketio
+python -m pip install "python-socketio<5.0"
 ```
 
 Optionally, only on Raspberry Pi (and still to be tested in virtual environment):
@@ -68,12 +79,6 @@ python -m pip install gpiozero
 ```
 
 ## 3. Copy audio_controller project/package to pi
-
-### 3.1 Enable ssh
-Option 1: Before inserting the sd card to the Pi, add a file named 'ssh' to the boot partition.
-Option 2: Use Desktop environment to enable ssh
-
-### 3.2 Copy from local to pi
 
 Copy from local to pi (use correct ip-address):
 

@@ -280,16 +280,16 @@ def websocket_handlers(sio: socketio.Server):
         if handler.login_required() and not handler.logged_in():
             print("Unauthorized websocket usage, websocket closed.")
             return False
-        print('connect ', sid)
+        # print('connect ', sid)
 
     @sio.event
     def disconnect(sid):
-        print('disconnect ', sid)
+        pass  # print('disconnect ', sid)
 
     @sio.event
     def event(sid, data):
-        print("event catched")
-        print(data)
+        pass  # print("event catched")
+        # print(data)
 
     # @sio.on('my custom event')
     # def another_event(sid, data):

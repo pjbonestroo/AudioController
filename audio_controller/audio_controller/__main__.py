@@ -85,7 +85,6 @@ def init_system(args):
 def init_gpio(loop: asyncio.BaseEventLoop):
     # TODO loop can be used to activate leds on warnings / errors occuring inside loop
     if gpio.is_enabled:
-        gpio.power_button.green()
         gpio.power_button.handle_reboot = lambda: os.system("shutdown -r now")
 
 

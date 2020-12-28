@@ -30,6 +30,7 @@ def if_enabled(func):
     def wrapper(*args, **kwargs):
         if is_enabled:
             return func(*args, **kwargs)
+        return None
     return wrapper
 
 
@@ -40,8 +41,10 @@ class PowerButton():
         self.led_red = LED(pin_led_red)
         self.button.when_pressed = self.on_button_pressed
         self.handle_reboot = lambda: None  # to be used by client
+        self.green()
 
     def on_button_pressed(self):
+        self.red()
         start = time.time()
         minimum_time_reboot = 3  # seconds
         elapsed = 0  # seconds
@@ -55,10 +58,12 @@ class PowerButton():
         if elapsed > minimum_time_reboot:
             log_info("Init reboot by power button")
             self.handle_reboot()
+        else:
+            self.green()
 
     def red(self):
-        self.led_red.on()
         self.led_green.off()
+        self.led_red.on()
 
     def green(self):
         self.led_red.off()
@@ -98,11 +103,31 @@ class USB_Button():
 
 if is_enabled:
     power_button = PowerButton("GPIO17", "GPIO22", "GPIO27")  # Pin 11, 15, 13 (button, green, red)
-    usb1_button = USB_Button("usb1", "GPIO25", "GPIO16")  # Pin 22, 36 (button, led)
-    usb2_button = USB_Button("usb2", "GPIO23", "GPIO24")  # Pin 16, 18 (button, led)
+    usb1_button = USB_Button("usb1", "GPIO23", "GPIO24")  # Pin 16, 18 (button, led) (left)
+    usb2_button = USB_Button("usb2", "GPIO25", "GPIO16")  # Pin 22, 36 (button, led) (right)
     led_green = LED("GPIO5")  # pin 29
     led_yellow = LED("GPIO6")  # pin 31
     led_red = LED("GPIO26")  # pin 37
+
+
+@if_enabled
+def source_and_destination_connected(connected: bool):
+    """ Update warning LED's to show if source and destination are connected """
+    if connected:
+        led_green.on()
+        led_yellow.off()
+    else:
+        led_green.off()
+        led_yellow.on()
+
+
+@if_enabled
+def itec_and_internet_connected(connected: bool):
+    """ Update warning LED's to show if ITEC and internet are connected """
+    if connected:
+        led_red.off()
+    else:
+        led_red.on()
 
 
 def test():

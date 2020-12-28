@@ -11,6 +11,7 @@ from json import dumps
 from pathlib import Path
 import traceback
 from dataclasses import asdict
+import asyncio
 
 # external libs
 import socketio
@@ -23,6 +24,7 @@ from .. import settings
 from .. import controller
 from .. import utils
 from .. import loggers
+from .. import gpio
 
 here = Path(os.path.dirname(__file__)).resolve()
 main_logger = logging.getLogger("main")
@@ -247,6 +249,11 @@ class General(BaseHandler):
             file_content = self.request.files['file'][0]['body']
             settings.set_binary(file_content)
             self.write(dumps({'success': True}))
+            return
+
+        elif action == 'test_gpio':
+            if gpio.is_enabled:
+                await gpio.test_async()
             return
 
 

@@ -72,10 +72,13 @@ python -m pip install tornado
 python -m pip install "python-socketio<5.0"
 ```
 
-Optionally, only on Raspberry Pi (and still to be tested in virtual environment):
+Optional:
 
 ```
+sudo apt update
+sudo apt install python3-gpiozero
 python -m pip install gpiozero
+python -m pip install rpi.gpio
 ```
 
 ## 3. Copy audio_controller project/package to pi

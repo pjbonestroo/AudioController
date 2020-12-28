@@ -19,6 +19,7 @@ from . import stream
 from . import itec
 from . import controller
 from . import utils
+from . import gpio
 
 here = Path(os.path.dirname(__file__)).resolve()
 main_logger = logging.getLogger("main")
@@ -81,6 +82,13 @@ def init_system(args):
     main_logger.info(msg)
 
 
+def init_gpio(loop: asyncio.BaseEventLoop):
+    # TODO loop can be used to activate leds on warnings / errors occuring inside loop
+    if gpio.is_enabled:
+        gpio.power_button.green()
+        gpio.power_button.handle_reboot = lambda: os.system("shutdown -r now")
+
+
 def main():
     args = sys.argv[1:]
     try:
@@ -94,6 +102,7 @@ def main():
 
         ioloop = tornado.ioloop.IOLoop.current()
         schedule_tasks(ioloop.asyncio_loop)
+        init_gpio(ioloop.asyncio_loop)
         controller.set_routes()
         ioloop.start()
     except Exception:

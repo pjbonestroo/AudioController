@@ -22,7 +22,8 @@ class Settings:
     enable_option_auto_switch: bool = False  # to be set by administrator, to enable/disable the option to enable auto scan and switch
     enable_auto_switch: bool = False  # when True, the IN ports belonging to all enabled sources are scanned, and when there is a signal, the source is automatically selected
     timeout_auto_switch: int = 15  # minutes to wait after signal is away, before switching to other
-    version: int = 4  # version of settings, used for upgrades
+    enable_logging: bool = True
+    version: int = 5  # version of settings, used for upgrades
 
 
 @dataclass
@@ -110,6 +111,10 @@ def upgrade(store: dict):
     if store['settings']['version'] == 3:
         store['settings']['version'] = 4
         del store['external_sites']
+
+    if store['settings']['version'] == 4:
+        store['settings']['version'] = 5
+        store['settings']['enable_logging'] = True
 
     #
     # future upgrades will be placed here

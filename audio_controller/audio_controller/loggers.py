@@ -53,4 +53,11 @@ def setup_logging():
         logger.addHandler(handler)
 
 
+def enable(enable: bool):
+    """ Enable or disable all loggers """
+    for name in loggers:
+        logger = logging.getLogger(name)
+        logger.disabled = not enable
+
+
 setup_logging()

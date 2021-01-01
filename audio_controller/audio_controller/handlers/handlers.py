@@ -186,6 +186,7 @@ class General(BaseHandler):
             args = self.body_to_json()
             settings.update_settings(args)
             controller.set_routes()
+            loggers.enable(settings.settings.enable_logging)
             write_settings()
             await notify_change()
             return

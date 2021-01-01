@@ -12,7 +12,7 @@ import tornado.ioloop
 import tornado.web
 import socketio
 # internals
-from . import loggers
+from . import loggers  # load logging first, before other modules
 from . import settings
 from .handlers import handlers
 from . import stream
@@ -97,12 +97,17 @@ def main():
         for (port, address) in port_address:
             app = make_app()
             app.listen(port=port, address=address)
-            print(f"Listening on {address}:{port}...")
+            msg = f"Listening on {address}:{port}"
+            print(msg)
+            main_logger.info(msg)
 
         ioloop = tornado.ioloop.IOLoop.current()
         schedule_tasks(ioloop.asyncio_loop)
         init_gpio(ioloop.asyncio_loop)
         controller.set_routes()
+        if not settings.settings.enable_logging:
+            main_logger.info("Logging is disabled")
+            loggers.enable(False)
         ioloop.start()
     except Exception:
         msg = f"Application stopped with exception: \n{traceback.format_exc()}"

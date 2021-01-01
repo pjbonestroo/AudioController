@@ -229,7 +229,7 @@ __webpack_require__.d(layout_namespaceObject, "logout", function() { return logo
 __webpack_require__.d(layout_namespaceObject, "logout_button", function() { return logout_button; });
 
 // CONCATENATED MODULE: ./python/__target__/org.transcrypt.__runtime__.js
-// Transcrypt'ed from Python, 2020-12-28 10:42:44
+// Transcrypt'ed from Python, 2021-01-01 15:49:27
 var __name__ = 'org.transcrypt.__runtime__';
 var __envir__ = {};
 __envir__.interpreter_name = 'python';
@@ -2352,7 +2352,7 @@ var input = __terminal__.input;
 
 //# sourceMappingURL=org.transcrypt.__runtime__.map
 // CONCATENATED MODULE: ./python/__target__/elements.js
-// Transcrypt'ed from Python, 2020-12-28 10:42:46
+// Transcrypt'ed from Python, 2021-01-01 15:49:28
 
 var elements_name_ = 'elements';
 var get_element = function (css_selectors) {
@@ -2442,7 +2442,7 @@ var ElementWrapper =  __class__ ('ElementWrapper', [object], {
 
 //# sourceMappingURL=elements.map
 // CONCATENATED MODULE: ./python/__target__/delayer.js
-// Transcrypt'ed from Python, 2020-12-28 10:42:46
+// Transcrypt'ed from Python, 2021-01-01 15:49:28
 
 var delayer_name_ = 'delayer';
 var Delayer =  __class__ ('Delayer', [object], {
@@ -2555,7 +2555,7 @@ var Delayer2 =  __class__ ('Delayer2', [object], {
 
 //# sourceMappingURL=delayer.map
 // CONCATENATED MODULE: ./python/__target__/paged_list.js
-// Transcrypt'ed from Python, 2020-12-28 10:42:45
+// Transcrypt'ed from Python, 2021-01-01 15:49:28
 
 
 
@@ -3780,7 +3780,7 @@ var FakeServer =  __class__ ('FakeServer', [DataServer], {
 
 //# sourceMappingURL=paged_list.map
 // CONCATENATED MODULE: ./python/__target__/utils.js
-// Transcrypt'ed from Python, 2020-12-28 10:42:46
+// Transcrypt'ed from Python, 2021-01-01 15:49:29
 
 var utils_name_ = 'utils';
 var sleep = async function (time) {
@@ -3927,7 +3927,7 @@ var save_blob_to_file = function (blob, filename) {
 
 //# sourceMappingURL=utils.map
 // CONCATENATED MODULE: ./python/__target__/dialogs.js
-// Transcrypt'ed from Python, 2020-12-28 10:42:45
+// Transcrypt'ed from Python, 2021-01-01 15:49:27
 var paged_list = {};
 var utils = {};
 
@@ -4122,7 +4122,7 @@ var DialogSelect =  __class__ ('DialogSelect', [Dialog], {
 
 //# sourceMappingURL=dialogs.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_overview.js
-// Transcrypt'ed from Python, 2020-12-28 10:42:46
+// Transcrypt'ed from Python, 2021-01-01 15:49:29
 var pages_page_overview_utils = {};
 
 
@@ -4289,7 +4289,7 @@ var Page =  __class__ ('Page', [ElementWrapper], {
 
 //# sourceMappingURL=pages.page_overview.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_admin.js
-// Transcrypt'ed from Python, 2020-12-28 10:42:46
+// Transcrypt'ed from Python, 2021-01-01 15:49:29
 var pages_page_admin_utils = {};
 
 
@@ -4335,11 +4335,12 @@ var Settings =  __class__ ('Settings', [AccordionItem], {
 		var input_port_out_stream = pages_page_admin_E ('input').attr ('class', 'form-control').attr ('type', 'text');
 		var input_auto_switch = pages_page_admin_E ('input').attr ('class', 'form-control').attr ('type', 'checkbox');
 		var input_timeout = pages_page_admin_E ('input').attr ('class', 'form-control').attr ('type', 'number');
+		var input_enable_logging = pages_page_admin_E ('input').attr ('class', 'form-control').attr ('type', 'checkbox');
 		var width_1 = 'col-sm-5';
 		var width_2 = 'col-sm-3';
-		self.body.append (pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('Titel'), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_title)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('Aantal IN poorten'), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_nr_in_ports)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('Aantal OUT poorten'), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_nr_out_ports)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('IN poort voor URL streams'), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_port_in_stream)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('OUT poort voor URL stream'), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_port_out_stream)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ("Inschakelen optie 'Automatisch schakelen'"), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_auto_switch)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ("Wachttijd (minuten) voor 'Automatisch schakelen'"), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_timeout)));
+		self.body.append (pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('Titel'), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_title)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('Aantal IN poorten'), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_nr_in_ports)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('Aantal OUT poorten'), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_nr_out_ports)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('IN poort voor URL streams'), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_port_in_stream)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('OUT poort voor URL stream'), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_port_out_stream)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ("Inschakelen optie 'Automatisch schakelen'"), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_auto_switch)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ("Wachttijd (minuten) voor 'Automatisch schakelen'"), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_timeout)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('Logging inschakelen'), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_enable_logging)));
 		var get_inputs = function () {
-			return dict ([['title', input_title.element.value], ['nr_IN_ports', input_nr_in_ports.element.value], ['nr_OUT_ports', input_nr_out_ports.element.value], ['port_IN_for_streams', input_port_in_stream.element.value], ['port_OUT_to_stream', input_port_out_stream.element.value], ['enable_option_auto_switch', input_auto_switch.element.checked], ['timeout_auto_switch', input_timeout.element.value]]);
+			return dict ([['title', input_title.element.value], ['nr_IN_ports', input_nr_in_ports.element.value], ['nr_OUT_ports', input_nr_out_ports.element.value], ['port_IN_for_streams', input_port_in_stream.element.value], ['port_OUT_to_stream', input_port_out_stream.element.value], ['enable_option_auto_switch', input_auto_switch.element.checked], ['timeout_auto_switch', input_timeout.element.value], ['enable_logging', input_enable_logging.element.checked]]);
 		};
 		var set_inputs = function (settings) {
 			input_title.element.value = settings ['title'];
@@ -4349,6 +4350,7 @@ var Settings =  __class__ ('Settings', [AccordionItem], {
 			input_port_out_stream.element.value = settings ['port_OUT_to_stream'];
 			input_auto_switch.element.checked = settings ['enable_option_auto_switch'];
 			input_timeout.element.value = settings ['timeout_auto_switch'];
+			input_enable_logging.element.checked = settings ['enable_logging'];
 		};
 		var initialize = async function () {
 			self.settings = await pages_page_admin_utils.post (pages_page_admin_utils.get_url ('general/getSettings'), dict ({}));
@@ -4367,6 +4369,7 @@ var Settings =  __class__ ('Settings', [AccordionItem], {
 		input_port_out_stream.element.onchange = onchange;
 		input_auto_switch.element.onchange = onchange;
 		input_timeout.element.onchange = onchange;
+		input_enable_logging.element.onchange = onchange;
 		self.refresh = initialize;
 	});}
 });
@@ -4657,7 +4660,7 @@ var pages_page_admin_Page =  __class__ ('Page', [ElementWrapper], {
 
 //# sourceMappingURL=pages.page_admin.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_iframe.js
-// Transcrypt'ed from Python, 2020-12-28 10:42:46
+// Transcrypt'ed from Python, 2021-01-01 15:49:29
 var pages_page_iframe_utils = {};
 
 
@@ -4689,7 +4692,7 @@ var pages_page_iframe_Page =  __class__ ('Page', [ElementWrapper], {
 
 //# sourceMappingURL=pages.page_iframe.map
 // CONCATENATED MODULE: ./python/__target__/math.js
-// Transcrypt'ed from Python, 2020-12-28 10:42:46
+// Transcrypt'ed from Python, 2021-01-01 15:49:29
 
 var math_name_ = 'math';
 var pi = Math.PI;
@@ -4748,7 +4751,7 @@ var modf = function (n) {
 
 //# sourceMappingURL=math.map
 // CONCATENATED MODULE: ./python/__target__/random.js
-// Transcrypt'ed from Python, 2020-12-28 10:42:46
+// Transcrypt'ed from Python, 2021-01-01 15:49:29
 var math = {};
 
 
@@ -4816,7 +4819,7 @@ seed ();
 
 //# sourceMappingURL=random.map
 // CONCATENATED MODULE: ./python/__target__/layout.js
-// Transcrypt'ed from Python, 2020-12-28 10:42:45
+// Transcrypt'ed from Python, 2021-01-01 15:49:27
 var dialogs = {};
 var layout_random = {};
 var layout_utils = {};
@@ -5005,7 +5008,7 @@ main_menu.append (logout_button ());
 
 //# sourceMappingURL=layout.map
 // CONCATENATED MODULE: ./python/__target__/main.js
-// Transcrypt'ed from Python, 2020-12-28 10:42:45
+// Transcrypt'ed from Python, 2021-01-01 15:49:27
 var main_elements = {};
 var layout = {};
 var main_utils = {};

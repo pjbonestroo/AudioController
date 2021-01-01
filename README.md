@@ -188,11 +188,10 @@ Make sure to place user file and settings file in home of root, not in home or p
 # How to contribute
 
 User Linux as host. Windows is also possible, but not covered by this manual.
-Install vlc 
 
-- development from Linux
-- install vlc, vscode, python3.7
-- etc
+To read or write audio from/to an url, install ffmpeg.
+
+...
 
 
 

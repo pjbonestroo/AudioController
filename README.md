@@ -119,6 +119,13 @@ sudo systemctl enable audio_controller.service
 sudo systemctl disable audio_controller.service
 ```
 
+For a automatic daily restart of the service (at 4 o'clock):
+
+```
+sudo crontab -e
+0 4 * * * systemctl restart audio_controller.service
+```
+
 To start the browser in kiosk mode, add the following lines to `/etc/xdg/lxsession/LXDE-pi/autostart`:
 ```
 @xset s off

@@ -60,7 +60,7 @@ class BaseHandler(tornado.web.RequestHandler):
         return bool(self.current_user)
 
     def login_required(self):
-        """ Check if login is required, which is always accept when request comes from localhost """
+        """ Check if login is required, which is always except when request comes from localhost """
         return not self.is_localhost()
 
     def is_localhost(self):
@@ -156,12 +156,14 @@ class General(BaseHandler):
     async def post(self):
         action = get_action(self.request.path)
 
-        if self.login_required() and not self.logged_in():
-            self.write(dumps({'success': False}))
+        if action == 'connected':
+            if controller.itec.serial is None:
+                raise tornado.web.HTTPError(503)  # 503 = Dienst niet beschikbaar
+            self.write(dumps({'success': True}))
             return
 
-        if action == 'ping':
-            self.write(dumps({'success': True}))
+        if self.login_required() and not self.logged_in():
+            self.write(dumps({'success': False}))
             return
 
         def write_settings():

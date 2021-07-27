@@ -229,13 +229,13 @@ __webpack_require__.d(layout_namespaceObject, "logout", function() { return logo
 __webpack_require__.d(layout_namespaceObject, "logout_button", function() { return logout_button; });
 
 // CONCATENATED MODULE: ./python/__target__/org.transcrypt.__runtime__.js
-// Transcrypt'ed from Python, 2021-01-01 15:49:27
+// Transcrypt'ed from Python, 2021-07-27 20:26:14
 var __name__ = 'org.transcrypt.__runtime__';
 var __envir__ = {};
 __envir__.interpreter_name = 'python';
 __envir__.transpiler_name = 'transcrypt';
 __envir__.executor_name = __envir__.transpiler_name;
-__envir__.transpiler_version = '3.7.16';
+__envir__.transpiler_version = '3.9.0';
 
 function __nest__ (headObject, tailNames, value) {
     var current = headObject;
@@ -269,15 +269,14 @@ function __init__ (module) {
     }
     return module.__all__;
 };
-var __proxy__ = false;
-function __get__ (self, func, quotedFuncName) {
-    if (self) {
-        if (self.hasOwnProperty ('__class__') || typeof self == 'string' || self instanceof String) {
+function __get__ (aThis, func, quotedFuncName) {
+    if (aThis) {
+        if (aThis.hasOwnProperty ('__class__') || typeof aThis == 'string' || aThis instanceof String) {
             if (quotedFuncName) {
-                Object.defineProperty (self, quotedFuncName, {
+                Object.defineProperty (aThis, quotedFuncName, {
                     value: function () {
                         var args = [] .slice.apply (arguments);
-                        return func.apply (null, [self] .concat (args));
+                        return func.apply (null, [aThis] .concat (args));
                     },
                     writable: true,
                     enumerable: true,
@@ -286,7 +285,7 @@ function __get__ (self, func, quotedFuncName) {
             }
             return function () {
                 var args = [] .slice.apply (arguments);
-                return func.apply (null, [self] .concat (args));
+                return func.apply (null, [aThis.__proxy__ ? aThis.__proxy__ : aThis] .concat (args));
             };
         }
         else {
@@ -297,21 +296,21 @@ function __get__ (self, func, quotedFuncName) {
         return func;
     }
 };
-function __getcm__ (self, func, quotedFuncName) {
-    if (self.hasOwnProperty ('__class__')) {
+function __getcm__ (aThis, func, quotedFuncName) {
+    if (aThis.hasOwnProperty ('__class__')) {
         return function () {
             var args = [] .slice.apply (arguments);
-            return func.apply (null, [self.__class__] .concat (args));
+            return func.apply (null, [aThis.__class__] .concat (args));
         };
     }
     else {
         return function () {
             var args = [] .slice.apply (arguments);
-            return func.apply (null, [self] .concat (args));
+            return func.apply (null, [aThis] .concat (args));
         };
     }
 };
-function __getsm__ (self, func, quotedFuncName) {
+function __getsm__ (aThis, func, quotedFuncName) {
     return func;
 };
 var py_metatype = {
@@ -326,6 +325,9 @@ var py_metatype = {
             var base = bases [index];
             for (var attrib in base) {
                 var descrip = Object.getOwnPropertyDescriptor (base, attrib);
+                if (descrip == null) {
+                    continue;
+                }
                 Object.defineProperty (cls, attrib, descrip);
             }
             for (let symbol of Object.getOwnPropertySymbols (base)) {
@@ -356,7 +358,7 @@ var object = {
     __new__: function (args) {
         var instance = Object.create (this, {__class__: {value: this, enumerable: true}});
         if ('__getattr__' in this || '__setattr__' in this) {
-            instance = new Proxy (instance, {
+            instance.__proxy__ = new Proxy (instance, {
                 get: function (target, name) {
                     let result = target [name];
                     if (result == undefined) {
@@ -376,6 +378,7 @@ var object = {
                     return true;
                 }
             })
+			instance = instance.__proxy__
         }
         this.__init__.apply (null, [instance] .concat (args));
         return instance;
@@ -2061,10 +2064,13 @@ var Exception =  __class__ ('Exception', [BaseException], {
 			var args = tuple ();
 		}
 		self.__args__ = args;
-		try {
+		if (kwargs.error != null) {
 			self.stack = kwargs.error.stack;
 		}
-		catch (__except0__) {
+		else if (Error) {
+			self.stack = new Error ().stack;
+		}
+		else {
 			self.stack = 'No stack trace available';
 		}
 	});},
@@ -2352,7 +2358,7 @@ var input = __terminal__.input;
 
 //# sourceMappingURL=org.transcrypt.__runtime__.map
 // CONCATENATED MODULE: ./python/__target__/elements.js
-// Transcrypt'ed from Python, 2021-01-01 15:49:28
+// Transcrypt'ed from Python, 2021-07-27 20:26:15
 
 var elements_name_ = 'elements';
 var get_element = function (css_selectors) {
@@ -2442,7 +2448,7 @@ var ElementWrapper =  __class__ ('ElementWrapper', [object], {
 
 //# sourceMappingURL=elements.map
 // CONCATENATED MODULE: ./python/__target__/delayer.js
-// Transcrypt'ed from Python, 2021-01-01 15:49:28
+// Transcrypt'ed from Python, 2021-07-27 20:26:15
 
 var delayer_name_ = 'delayer';
 var Delayer =  __class__ ('Delayer', [object], {
@@ -2555,7 +2561,7 @@ var Delayer2 =  __class__ ('Delayer2', [object], {
 
 //# sourceMappingURL=delayer.map
 // CONCATENATED MODULE: ./python/__target__/paged_list.js
-// Transcrypt'ed from Python, 2021-01-01 15:49:28
+// Transcrypt'ed from Python, 2021-07-27 20:26:14
 
 
 
@@ -2571,7 +2577,7 @@ var findIndex = function (array, func) {
 		if (func (array [i])) {
 			return i;
 		}
-		i += 1;
+		i++;
 	}
 	return -(1);
 };
@@ -2637,7 +2643,7 @@ var add_default_button = function (id, py_name, style_class) {
 	_default_buttons.append (result);
 	return result;
 };
-var _default_text = dict ([['text_total', 'Total'], ['text_filter', 'Filter']]);
+var _default_text = dict ({'text_total': 'Total', 'text_filter': 'Filter'});
 var PagedList =  __class__ ('PagedList', [ElementWrapper], {
 	__module__: paged_list_name_,
 	_send_data: new set (['page', 'pageSize', 'filterColumns', 'filterValues', 'sortOn', 'sortAsc']),
@@ -2674,7 +2680,7 @@ var PagedList =  __class__ ('PagedList', [ElementWrapper], {
 		self.receive_data = null;
 		self.buttons = [];
 		self.columns = [];
-		self.sorting = dict ([['columnIndex', -(1)], ['ascending', true]]);
+		self.sorting = dict ({'columnIndex': -(1), 'ascending': true});
 		self.page_size = 20;
 		self.merge_button_columns = true;
 		self._on_page_refreshed = null;
@@ -2891,7 +2897,7 @@ var PagedList =  __class__ ('PagedList', [ElementWrapper], {
 					row.remove ();
 				}
 				else {
-					i += 1;
+					i++;
 				}
 			}
 		}
@@ -3592,7 +3598,7 @@ var Pager =  __class__ ('Pager', [ElementWrapper], {
 					if (i == currentPage) {
 						li.element.classList.add (self.active_class);
 					}
-					i += 1;
+					i++;
 				}
 				if (startPage + maxPages <= pageCount) {
 					self.add_number (startPage + maxPages, '>');
@@ -3635,7 +3641,7 @@ var AjaxServer =  __class__ ('AjaxServer', [DataServer], {
 		self.url = url;
 	});},
 	get get_page_data () {return __get__ (this, function (self, data, onSucces, onFailure) {
-		var ajaxCall = dict ([['type', 'POST'], ['url', self.url], ['data', JSON.stringify (data)], ['success', onSucces], ['error', onFailure], ['contentType', 'application/json; charset=utf-8']]);
+		var ajaxCall = dict ({'type': 'POST', 'url': self.url, 'data': JSON.stringify (data), 'success': onSucces, 'error': onFailure, 'contentType': 'application/json; charset=utf-8'});
 		$.ajax (ajaxCall);
 	});}
 });
@@ -3681,7 +3687,7 @@ var FakeServer =  __class__ ('FakeServer', [DataServer], {
 				self.data.splice (i, 1);
 				break;
 			}
-			i += 1;
+			i++;
 		}
 	});},
 	get get_nested_value () {return function (obj, fields) {
@@ -3780,7 +3786,7 @@ var FakeServer =  __class__ ('FakeServer', [DataServer], {
 
 //# sourceMappingURL=paged_list.map
 // CONCATENATED MODULE: ./python/__target__/utils.js
-// Transcrypt'ed from Python, 2021-01-01 15:49:29
+// Transcrypt'ed from Python, 2021-07-27 20:26:15
 
 var utils_name_ = 'utils';
 var sleep = async function (time) {
@@ -3845,7 +3851,7 @@ var post = async function (url, data, json_parse, content_type) {
 	if (_content_type === null) {
 		var _content_type = 'application/json; charset=utf-8';
 	}
-	$.ajax (dict ([['type', 'POST'], ['url', url], ['data', _data], ['success', success], ['error', error], ['contentType', _content_type]]));
+	$.ajax (dict ({'type': 'POST', 'url': url, 'data': _data, 'success': success, 'error': error, 'contentType': _content_type}));
 	return deferred.promise ();
 };
 var example_handle_progress = function (event) {
@@ -3887,7 +3893,7 @@ var post_upload_file = async function (url, file, handle_progress) {
 		}
 		return r;
 	};
-	$.ajax (dict ([['type', 'POST'], ['url', url], ['xhr', xhr], ['success', success], ['error', error], ['async', true], ['data', form_data], ['cache', false], ['contentType', false], ['processData', false], ['timeout', 60000]]));
+	$.ajax (dict ({'type': 'POST', 'url': url, 'xhr': xhr, 'success': success, 'error': error, 'async': true, 'data': form_data, 'cache': false, 'contentType': false, 'processData': false, 'timeout': 60000}));
 	return deferred.promise ();
 };
 var post_download_file = async function (url, data, filename, handle_progress) {
@@ -3912,7 +3918,7 @@ var post_download_file = async function (url, data, filename, handle_progress) {
 	return deferred.promise ();
 };
 var save_file = function (txt, filename) {
-	saveAs (new Blob ([txt], dict ([['type', 'text/plain;charset=utf-8']])), filename);
+	saveAs (new Blob ([txt], dict ({'type': 'text/plain;charset=utf-8'})), filename);
 };
 var save_blob_to_file = function (blob, filename) {
 	var a = document.createElement ('a');
@@ -3927,7 +3933,7 @@ var save_blob_to_file = function (blob, filename) {
 
 //# sourceMappingURL=utils.map
 // CONCATENATED MODULE: ./python/__target__/dialogs.js
-// Transcrypt'ed from Python, 2021-01-01 15:49:27
+// Transcrypt'ed from Python, 2021-07-27 20:26:14
 var paged_list = {};
 var utils = {};
 
@@ -4037,7 +4043,7 @@ var DialogLogin =  __class__ ('DialogLogin', [Dialog], {
 	});},
 	get on_login () {return __get__ (this, function (self) {
 		if (self.deferred !== null) {
-			self.deferred.resolve (dict ([['username', self.input_username.element.value], ['password', self.input_password.element.value]]));
+			self.deferred.resolve (dict ({'username': self.input_username.element.value, 'password': self.input_password.element.value}));
 			self.deferred = null;
 		}
 	});},
@@ -4122,7 +4128,7 @@ var DialogSelect =  __class__ ('DialogSelect', [Dialog], {
 
 //# sourceMappingURL=dialogs.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_overview.js
-// Transcrypt'ed from Python, 2021-01-01 15:49:29
+// Transcrypt'ed from Python, 2021-07-27 20:26:16
 var pages_page_overview_utils = {};
 
 
@@ -4153,7 +4159,7 @@ var ButtonsSettings =  __class__ ('ButtonsSettings', [ElementWrapper], {
 			self.sources_destinations.refresh ();
 		};
 		var onchange = async function (evt) {
-			var settings = dict ([['connect_source_destination', checkbox_connect.element.checked], ['enable_auto_switch', checkbox_auto_switch.element.checked]]);
+			var settings = dict ({'connect_source_destination': checkbox_connect.element.checked, 'enable_auto_switch': checkbox_auto_switch.element.checked});
 			var r = await pages_page_overview_utils.post (pages_page_overview_utils.get_url ('general/setSettings'), settings);
 			set_inputs (r);
 		};
@@ -4185,7 +4191,7 @@ var SourcesDestinations =  __class__ ('SourcesDestinations', [ElementWrapper], {
 					s ['selected'] = false;
 				}
 				source ['selected'] = true;
-				self.sources = await pages_page_overview_utils.post (pages_page_overview_utils.get_url ('general/setSources'), dict ([['sources', self.sources]]));
+				self.sources = await pages_page_overview_utils.post (pages_page_overview_utils.get_url ('general/setSources'), dict ({'sources': self.sources}));
 				show_sources ();
 			}
 		};
@@ -4194,7 +4200,7 @@ var SourcesDestinations =  __class__ ('SourcesDestinations', [ElementWrapper], {
 		};
 		var select_destination = async function (checkbox, destination, evt) {
 			destination ['selected'] = checkbox.element.checked;
-			self.destinations = await pages_page_overview_utils.post (pages_page_overview_utils.get_url ('general/setDestinations'), dict ([['destinations', self.destinations]]));
+			self.destinations = await pages_page_overview_utils.post (pages_page_overview_utils.get_url ('general/setDestinations'), dict ({'destinations': self.destinations}));
 			show_destinations ();
 		};
 		var volume_spans = dict ({});
@@ -4289,7 +4295,7 @@ var Page =  __class__ ('Page', [ElementWrapper], {
 
 //# sourceMappingURL=pages.page_overview.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_admin.js
-// Transcrypt'ed from Python, 2021-01-01 15:49:29
+// Transcrypt'ed from Python, 2021-07-27 20:26:16
 var pages_page_admin_utils = {};
 
 
@@ -4340,7 +4346,7 @@ var Settings =  __class__ ('Settings', [AccordionItem], {
 		var width_2 = 'col-sm-3';
 		self.body.append (pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('Titel'), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_title)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('Aantal IN poorten'), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_nr_in_ports)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('Aantal OUT poorten'), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_nr_out_ports)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('IN poort voor URL streams'), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_port_in_stream)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('OUT poort voor URL stream'), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_port_out_stream)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ("Inschakelen optie 'Automatisch schakelen'"), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_auto_switch)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ("Wachttijd (minuten) voor 'Automatisch schakelen'"), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_timeout)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('Logging inschakelen'), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_enable_logging)));
 		var get_inputs = function () {
-			return dict ([['title', input_title.element.value], ['nr_IN_ports', input_nr_in_ports.element.value], ['nr_OUT_ports', input_nr_out_ports.element.value], ['port_IN_for_streams', input_port_in_stream.element.value], ['port_OUT_to_stream', input_port_out_stream.element.value], ['enable_option_auto_switch', input_auto_switch.element.checked], ['timeout_auto_switch', input_timeout.element.value], ['enable_logging', input_enable_logging.element.checked]]);
+			return dict ({'title': input_title.element.value, 'nr_IN_ports': input_nr_in_ports.element.value, 'nr_OUT_ports': input_nr_out_ports.element.value, 'port_IN_for_streams': input_port_in_stream.element.value, 'port_OUT_to_stream': input_port_out_stream.element.value, 'enable_option_auto_switch': input_auto_switch.element.checked, 'timeout_auto_switch': input_timeout.element.value, 'enable_logging': input_enable_logging.element.checked});
 		};
 		var set_inputs = function (settings) {
 			input_title.element.value = settings ['title'];
@@ -4374,7 +4380,7 @@ var Settings =  __class__ ('Settings', [AccordionItem], {
 	});}
 });
 var pages_page_admin_source = function (py_name, enabled, port_url, scan_prio, db_level, selected) {
-	return dict ([['name', py_name], ['enabled', enabled], ['port_url', port_url], ['scan_prio', scan_prio], ['db_level', db_level], ['selected', selected]]);
+	return dict ({'name': py_name, 'enabled': enabled, 'port_url': port_url, 'scan_prio': scan_prio, 'db_level': db_level, 'selected': selected});
 };
 var Sources =  __class__ ('Sources', [AccordionItem], {
 	__module__: pages_page_admin_name_,
@@ -4409,12 +4415,12 @@ var Sources =  __class__ ('Sources', [AccordionItem], {
 		plist.add_column ('db_level', 'dB level threshold').item_to_element (text_element.bind (null, 'db_level'));
 		var delete_item = async function (item) {
 			self.sources.remove (item);
-			self.sources = await pages_page_admin_utils.post (pages_page_admin_utils.get_url ('general/setSources'), dict ([['sources', self.sources]]));
+			self.sources = await pages_page_admin_utils.post (pages_page_admin_utils.get_url ('general/setSources'), dict ({'sources': self.sources}));
 			plist.get_server ().data = self.sources;
 			plist.refresh ();
 		};
 		var save_changes = async function () {
-			self.sources = await pages_page_admin_utils.post (pages_page_admin_utils.get_url ('general/setSources'), dict ([['sources', self.sources]]));
+			self.sources = await pages_page_admin_utils.post (pages_page_admin_utils.get_url ('general/setSources'), dict ({'sources': self.sources}));
 			plist.get_server ().data = self.sources;
 			plist.refresh ();
 		};
@@ -4430,7 +4436,7 @@ var Sources =  __class__ ('Sources', [AccordionItem], {
 			var j = max (0, min (j, len (self.sources) - 1));
 			self.sources.remove (item);
 			self.sources.insert (j, item);
-			self.sources = await pages_page_admin_utils.post (pages_page_admin_utils.get_url ('general/setSources'), dict ([['sources', self.sources]]));
+			self.sources = await pages_page_admin_utils.post (pages_page_admin_utils.get_url ('general/setSources'), dict ({'sources': self.sources}));
 			plist.get_server ().data = self.sources;
 			plist.refresh ();
 		};
@@ -4458,7 +4464,7 @@ var Sources =  __class__ ('Sources', [AccordionItem], {
 	});}
 });
 var pages_page_admin_destination = function (py_name, enabled, port_url_file, selected) {
-	return dict ([['name', py_name], ['enabled', enabled], ['port_url_file', port_url_file], ['selected', selected]]);
+	return dict ({'name': py_name, 'enabled': enabled, 'port_url_file': port_url_file, 'selected': selected});
 };
 var Destinations =  __class__ ('Destinations', [AccordionItem], {
 	__module__: pages_page_admin_name_,
@@ -4491,12 +4497,12 @@ var Destinations =  __class__ ('Destinations', [AccordionItem], {
 		plist.add_column ('port_url_file', 'Poort / Url / File').item_to_element (text_element.bind (null, 'port_url_file'));
 		var delete_item = async function (item) {
 			self.destinations.remove (item);
-			self.destinations = await pages_page_admin_utils.post (pages_page_admin_utils.get_url ('general/setDestinations'), dict ([['destinations', self.destinations]]));
+			self.destinations = await pages_page_admin_utils.post (pages_page_admin_utils.get_url ('general/setDestinations'), dict ({'destinations': self.destinations}));
 			plist.get_server ().data = self.destinations;
 			plist.refresh ();
 		};
 		var save_changes = async function () {
-			self.destinations = await pages_page_admin_utils.post (pages_page_admin_utils.get_url ('general/setDestinations'), dict ([['destinations', self.destinations]]));
+			self.destinations = await pages_page_admin_utils.post (pages_page_admin_utils.get_url ('general/setDestinations'), dict ({'destinations': self.destinations}));
 			plist.get_server ().data = self.destinations;
 			plist.refresh ();
 		};
@@ -4512,7 +4518,7 @@ var Destinations =  __class__ ('Destinations', [AccordionItem], {
 			var j = max (0, min (j, len (self.destinations) - 1));
 			self.destinations.remove (item);
 			self.destinations.insert (j, item);
-			self.destinations = await pages_page_admin_utils.post (pages_page_admin_utils.get_url ('general/setDestinations'), dict ([['destinations', self.destinations]]));
+			self.destinations = await pages_page_admin_utils.post (pages_page_admin_utils.get_url ('general/setDestinations'), dict ({'destinations': self.destinations}));
 			plist.get_server ().data = self.destinations;
 			plist.refresh ();
 		};
@@ -4660,7 +4666,7 @@ var pages_page_admin_Page =  __class__ ('Page', [ElementWrapper], {
 
 //# sourceMappingURL=pages.page_admin.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_iframe.js
-// Transcrypt'ed from Python, 2021-01-01 15:49:29
+// Transcrypt'ed from Python, 2021-07-27 20:26:17
 var pages_page_iframe_utils = {};
 
 
@@ -4692,7 +4698,7 @@ var pages_page_iframe_Page =  __class__ ('Page', [ElementWrapper], {
 
 //# sourceMappingURL=pages.page_iframe.map
 // CONCATENATED MODULE: ./python/__target__/math.js
-// Transcrypt'ed from Python, 2021-01-01 15:49:29
+// Transcrypt'ed from Python, 2021-07-27 20:26:17
 
 var math_name_ = 'math';
 var pi = Math.PI;
@@ -4751,7 +4757,7 @@ var modf = function (n) {
 
 //# sourceMappingURL=math.map
 // CONCATENATED MODULE: ./python/__target__/random.js
-// Transcrypt'ed from Python, 2021-01-01 15:49:29
+// Transcrypt'ed from Python, 2021-07-27 20:26:17
 var math = {};
 
 
@@ -4808,7 +4814,7 @@ var random = function () {
 	return _random_integer () / _bitmask3;
 };
 var shuffle = function (x) {
-	for (var i of range (len (x) - 1, 0, -(1))) {
+	for (var i = len (x) - 1; i > 0; i--) {
 		var j = math.floor (random () * (i + 1));
 		var temp = x [i];
 		x [i] = x [j];
@@ -4819,7 +4825,7 @@ seed ();
 
 //# sourceMappingURL=random.map
 // CONCATENATED MODULE: ./python/__target__/layout.js
-// Transcrypt'ed from Python, 2021-01-01 15:49:27
+// Transcrypt'ed from Python, 2021-07-27 20:26:14
 var dialogs = {};
 var layout_random = {};
 var layout_utils = {};
@@ -4921,7 +4927,7 @@ var refresh_after_disconnect = async function () {
 	}
 };
 var setup_websocket = function () {
-	var socket = io (dict ([['path', '/websocket']]));
+	var socket = io (dict ({'path': '/websocket'}));
 	var disconnected = false;
 	var on_connect = function () {
 		console.log ('websocket connect');
@@ -5008,7 +5014,7 @@ main_menu.append (logout_button ());
 
 //# sourceMappingURL=layout.map
 // CONCATENATED MODULE: ./python/__target__/main.js
-// Transcrypt'ed from Python, 2021-01-01 15:49:27
+// Transcrypt'ed from Python, 2021-07-27 20:26:14
 var main_elements = {};
 var layout = {};
 var main_utils = {};

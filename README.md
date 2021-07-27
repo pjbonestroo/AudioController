@@ -70,7 +70,7 @@ source ./pyenv/bin/activate
 python -m pip install --upgrade pip
 python -m pip install pyserial
 python -m pip install tornado
-python -m pip install "python-socketio<5.0"
+python -m pip install python-socketio
 ```
 
 Optional:

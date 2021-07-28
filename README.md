@@ -36,7 +36,7 @@ Update
 ```
 ssh pi@${PI_IP}
 sudo apt update
-sudo apt upgrade
+sudo apt full-upgrade
 ```
 
 Change default password

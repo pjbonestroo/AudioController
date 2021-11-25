@@ -55,6 +55,7 @@ def schedule_tasks(loop: asyncio.BaseEventLoop):
     """ Add additional async tasks to the same event-loop as the running webserver. """
     loop.create_task(controller.scan_ports())
     loop.create_task(controller.auto_switch())
+    loop.create_task(set_gpio())
 
 
 def init_system(args):
@@ -82,10 +83,24 @@ def init_system(args):
     main_logger.info(msg)
 
 
-def init_gpio(loop: asyncio.BaseEventLoop):
-    # TODO loop can be used to activate leds on warnings / errors occuring inside loop
+async def set_gpio():
+    # activate leds on warnings / errors
     if gpio.is_enabled:
         gpio.power_button.handle_reboot = lambda: os.system("shutdown -r now")
+        interval_seconds = 4
+        while True:
+            try:
+                connected = False
+                # if there is at least 1 destination selected, connected becomes True
+                if settings.settings.connect_source_destination:
+                    for dest in settings.destinations:
+                        if dest.enabled and dest.selected:
+                            connected = True
+                            break
+                gpio.source_and_destination_connected(connected)
+            except:
+                pass
+            await asyncio.sleep(interval_seconds)
 
 
 def main():
@@ -103,7 +118,6 @@ def main():
 
         ioloop = tornado.ioloop.IOLoop.current()
         schedule_tasks(ioloop.asyncio_loop)
-        init_gpio(ioloop.asyncio_loop)
         controller.set_routes()
         if not settings.settings.enable_logging:
             main_logger.info("Logging is disabled")

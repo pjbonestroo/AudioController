@@ -222,6 +222,7 @@ __webpack_require__.d(layout_namespaceObject, "MenuItem", function() { return Me
 __webpack_require__.d(layout_namespaceObject, "refresh_after_disconnect", function() { return refresh_after_disconnect; });
 __webpack_require__.d(layout_namespaceObject, "setup_websocket", function() { return setup_websocket; });
 __webpack_require__.d(layout_namespaceObject, "logged_in", function() { return logged_in; });
+__webpack_require__.d(layout_namespaceObject, "create_main_menu", function() { return create_main_menu; });
 __webpack_require__.d(layout_namespaceObject, "login_and_view", function() { return login_and_view; });
 __webpack_require__.d(layout_namespaceObject, "check_logged_in", function() { return check_logged_in; });
 __webpack_require__.d(layout_namespaceObject, "login", function() { return login; });
@@ -229,7 +230,7 @@ __webpack_require__.d(layout_namespaceObject, "logout", function() { return logo
 __webpack_require__.d(layout_namespaceObject, "logout_button", function() { return logout_button; });
 
 // CONCATENATED MODULE: ./python/__target__/org.transcrypt.__runtime__.js
-// Transcrypt'ed from Python, 2021-07-27 20:26:14
+// Transcrypt'ed from Python, 2022-05-23 21:20:44
 var __name__ = 'org.transcrypt.__runtime__';
 var __envir__ = {};
 __envir__.interpreter_name = 'python';
@@ -2358,7 +2359,7 @@ var input = __terminal__.input;
 
 //# sourceMappingURL=org.transcrypt.__runtime__.map
 // CONCATENATED MODULE: ./python/__target__/elements.js
-// Transcrypt'ed from Python, 2021-07-27 20:26:15
+// Transcrypt'ed from Python, 2022-05-23 21:20:46
 
 var elements_name_ = 'elements';
 var get_element = function (css_selectors) {
@@ -2448,7 +2449,7 @@ var ElementWrapper =  __class__ ('ElementWrapper', [object], {
 
 //# sourceMappingURL=elements.map
 // CONCATENATED MODULE: ./python/__target__/delayer.js
-// Transcrypt'ed from Python, 2021-07-27 20:26:15
+// Transcrypt'ed from Python, 2022-05-23 21:20:46
 
 var delayer_name_ = 'delayer';
 var Delayer =  __class__ ('Delayer', [object], {
@@ -2561,7 +2562,7 @@ var Delayer2 =  __class__ ('Delayer2', [object], {
 
 //# sourceMappingURL=delayer.map
 // CONCATENATED MODULE: ./python/__target__/paged_list.js
-// Transcrypt'ed from Python, 2021-07-27 20:26:14
+// Transcrypt'ed from Python, 2022-05-23 21:20:45
 
 
 
@@ -3786,7 +3787,7 @@ var FakeServer =  __class__ ('FakeServer', [DataServer], {
 
 //# sourceMappingURL=paged_list.map
 // CONCATENATED MODULE: ./python/__target__/utils.js
-// Transcrypt'ed from Python, 2021-07-27 20:26:15
+// Transcrypt'ed from Python, 2022-05-23 21:20:46
 
 var utils_name_ = 'utils';
 var sleep = async function (time) {
@@ -3933,7 +3934,7 @@ var save_blob_to_file = function (blob, filename) {
 
 //# sourceMappingURL=utils.map
 // CONCATENATED MODULE: ./python/__target__/dialogs.js
-// Transcrypt'ed from Python, 2021-07-27 20:26:14
+// Transcrypt'ed from Python, 2022-05-23 21:20:45
 var paged_list = {};
 var utils = {};
 
@@ -4128,7 +4129,7 @@ var DialogSelect =  __class__ ('DialogSelect', [Dialog], {
 
 //# sourceMappingURL=dialogs.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_overview.js
-// Transcrypt'ed from Python, 2021-07-27 20:26:16
+// Transcrypt'ed from Python, 2022-05-23 21:20:47
 var pages_page_overview_utils = {};
 
 
@@ -4295,7 +4296,7 @@ var Page =  __class__ ('Page', [ElementWrapper], {
 
 //# sourceMappingURL=pages.page_overview.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_admin.js
-// Transcrypt'ed from Python, 2021-07-27 20:26:16
+// Transcrypt'ed from Python, 2022-05-23 21:20:46
 var pages_page_admin_utils = {};
 
 
@@ -4341,12 +4342,13 @@ var Settings =  __class__ ('Settings', [AccordionItem], {
 		var input_port_out_stream = pages_page_admin_E ('input').attr ('class', 'form-control').attr ('type', 'text');
 		var input_auto_switch = pages_page_admin_E ('input').attr ('class', 'form-control').attr ('type', 'checkbox');
 		var input_timeout = pages_page_admin_E ('input').attr ('class', 'form-control').attr ('type', 'number');
+		var input_enable_psalmbord = pages_page_admin_E ('input').attr ('class', 'form-control').attr ('type', 'checkbox');
 		var input_enable_logging = pages_page_admin_E ('input').attr ('class', 'form-control').attr ('type', 'checkbox');
 		var width_1 = 'col-sm-5';
 		var width_2 = 'col-sm-3';
-		self.body.append (pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('Titel'), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_title)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('Aantal IN poorten'), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_nr_in_ports)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('Aantal OUT poorten'), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_nr_out_ports)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('IN poort voor URL streams'), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_port_in_stream)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('OUT poort voor URL stream'), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_port_out_stream)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ("Inschakelen optie 'Automatisch schakelen'"), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_auto_switch)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ("Wachttijd (minuten) voor 'Automatisch schakelen'"), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_timeout)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('Logging inschakelen'), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_enable_logging)));
+		self.body.append (pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('Titel'), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_title)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('Aantal IN poorten'), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_nr_in_ports)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('Aantal OUT poorten'), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_nr_out_ports)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('IN poort voor URL streams'), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_port_in_stream)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('OUT poort voor URL stream'), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_port_out_stream)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ("Inschakelen optie 'Automatisch schakelen'"), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_auto_switch)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ("Wachttijd (minuten) voor 'Automatisch schakelen'"), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_timeout)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('Psalmbord functie inschakelen'), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_enable_psalmbord)), pages_page_admin_E ('div').attr ('class', 'form-group row').append (pages_page_admin_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('Logging inschakelen'), pages_page_admin_E ('div').attr ('class', '{}'.format (width_2)).append (input_enable_logging)));
 		var get_inputs = function () {
-			return dict ({'title': input_title.element.value, 'nr_IN_ports': input_nr_in_ports.element.value, 'nr_OUT_ports': input_nr_out_ports.element.value, 'port_IN_for_streams': input_port_in_stream.element.value, 'port_OUT_to_stream': input_port_out_stream.element.value, 'enable_option_auto_switch': input_auto_switch.element.checked, 'timeout_auto_switch': input_timeout.element.value, 'enable_logging': input_enable_logging.element.checked});
+			return dict ({'title': input_title.element.value, 'nr_IN_ports': input_nr_in_ports.element.value, 'nr_OUT_ports': input_nr_out_ports.element.value, 'port_IN_for_streams': input_port_in_stream.element.value, 'port_OUT_to_stream': input_port_out_stream.element.value, 'enable_option_auto_switch': input_auto_switch.element.checked, 'timeout_auto_switch': input_timeout.element.value, 'enable_psalmbord': input_enable_psalmbord.element.checked, 'enable_logging': input_enable_logging.element.checked});
 		};
 		var set_inputs = function (settings) {
 			input_title.element.value = settings ['title'];
@@ -4356,6 +4358,7 @@ var Settings =  __class__ ('Settings', [AccordionItem], {
 			input_port_out_stream.element.value = settings ['port_OUT_to_stream'];
 			input_auto_switch.element.checked = settings ['enable_option_auto_switch'];
 			input_timeout.element.value = settings ['timeout_auto_switch'];
+			input_enable_psalmbord.element.checked = settings ['enable_psalmbord'];
 			input_enable_logging.element.checked = settings ['enable_logging'];
 		};
 		var initialize = async function () {
@@ -4375,6 +4378,7 @@ var Settings =  __class__ ('Settings', [AccordionItem], {
 		input_port_out_stream.element.onchange = onchange;
 		input_auto_switch.element.onchange = onchange;
 		input_timeout.element.onchange = onchange;
+		input_enable_psalmbord.element.onchange = onchange;
 		input_enable_logging.element.onchange = onchange;
 		self.refresh = initialize;
 	});}
@@ -4665,29 +4669,87 @@ var pages_page_admin_Page =  __class__ ('Page', [ElementWrapper], {
 });
 
 //# sourceMappingURL=pages.page_admin.map
-// CONCATENATED MODULE: ./python/__target__/pages.page_iframe.js
-// Transcrypt'ed from Python, 2021-07-27 20:26:17
-var pages_page_iframe_utils = {};
+// CONCATENATED MODULE: ./python/__target__/pages.page_psalmbord.js
+// Transcrypt'ed from Python, 2022-05-23 21:20:47
+var pages_page_psalmbord_utils = {};
 
 
 
 
 
 
-
-
-__nest__ (pages_page_iframe_utils, '', utils_namespaceObject);
-var pages_page_iframe_name_ = 'pages.page_iframe';
-var pages_page_iframe_E = Element;
-var pages_page_iframe_Page =  __class__ ('Page', [ElementWrapper], {
-	__module__: pages_page_iframe_name_,
-	get __init__ () {return __get__ (this, function (self, url) {
-		__super__ (pages_page_iframe_Page, '__init__') (self, elements_element ('div'));
-		self.attr ('style', 'width: 100%; height: 100%;');
-		self.append (pages_page_iframe_E ('iframe').attr ('src', url).attr ('style', 'width: 100%; height: 500px;').attr ('sandbox', 'allow-scripts allow-same-origin'));
-	});},
-	get refresh () {return __get__ (this, function (self) {
-		// pass;
+__nest__ (pages_page_psalmbord_utils, '', utils_namespaceObject);
+var pages_page_psalmbord_name_ = 'pages.page_psalmbord';
+var pages_page_psalmbord_E = Element;
+var regel = function (text) {
+	return dict ({'text': text});
+};
+var pages_page_psalmbord_Page =  __class__ ('Page', [ElementWrapper], {
+	__module__: pages_page_psalmbord_name_,
+	get __init__ () {return __get__ (this, function (self) {
+		__super__ (pages_page_psalmbord_Page, '__init__') (self, elements_element ('div'));
+		self.psalmbord = null;
+		var plist = PagedList (self.element, '').hide_count ().disable_pagination ();
+		plist.get_styling ().table_class ('table borderless');
+		var text_element = function (attr, item) {
+			var r = pages_page_psalmbord_E ('input').attr ('type', 'text').attr ('style', 'width: 100%;');
+			r.element.value = item [attr];
+			var onchange = function (evt) {
+				item [attr] = r.element.value;
+				save_changes ();
+			};
+			r.element.onchange = onchange;
+			return r.element;
+		};
+		plist.add_column ('text', 'Tekst').item_to_element (text_element.bind (null, 'text'));
+		var delete_item = async function (item) {
+			self.psalmbord ['regels'].remove (item);
+			self.psalmbord = await pages_page_psalmbord_utils.post (pages_page_psalmbord_utils.get_url ('general/setPsalmbord'), self.psalmbord);
+			plist.get_server ().data = self.psalmbord ['regels'];
+			plist.refresh ();
+		};
+		var save_changes = async function () {
+			self.psalmbord = await pages_page_psalmbord_utils.post (pages_page_psalmbord_utils.get_url ('general/setPsalmbord'), self.psalmbord);
+			plist.get_server ().data = self.psalmbord ['regels'];
+			plist.refresh ();
+		};
+		plist.add_button ('delete', '', 'btn btn-danger btn-sm').use_element ((function __lambda__ (item) {
+			return pages_page_psalmbord_E ('i').attr ('class', 'fas fa-trash-alt');
+		})).onclick (delete_item);
+		var change_order = async function (up, item) {
+			var regels = self.psalmbord ['regels'];
+			var i = regels.index (item);
+			if (!((-(1) < i && i < len (regels)))) {
+				return ;
+			}
+			var j = (up ? i - 1 : i + 1);
+			var j = max (0, min (j, len (regels) - 1));
+			regels.remove (item);
+			regels.insert (j, item);
+			self.psalmbord = await pages_page_psalmbord_utils.post (pages_page_psalmbord_utils.get_url ('general/setPsalmbord'), self.psalmbord);
+			plist.get_server ().data = self.psalmbord ['regels'];
+			plist.refresh ();
+		};
+		plist.add_button ('up', '', 'btn btn-primary btn-sm').use_element ((function __lambda__ (item) {
+			return pages_page_psalmbord_E ('i').attr ('class', 'fas fa-sort-up').attr ('style', 'font-size: 20px; vertical-align: bottom;');
+		})).onclick (change_order.bind (null, true));
+		plist.add_button ('down', '', 'btn btn-primary btn-sm').use_element ((function __lambda__ (item) {
+			return pages_page_psalmbord_E ('i').attr ('class', 'fas fa-sort-down').attr ('style', 'font-size: 20px; vertical-align: bottom;');
+		})).onclick (change_order.bind (null, false));
+		var add_item = function (evt) {
+			self.psalmbord ['regels'].append (regel (''));
+			plist.get_server ().data = self.psalmbord ['regels'];
+			plist.refresh ();
+		};
+		var button_add = pages_page_psalmbord_E ('button').attr ('class', 'btn btn-primary btn-sm').inner_html ('Toevoegen');
+		button_add.element.onclick = add_item;
+		self.append (button_add);
+		var initialize = async function () {
+			self.psalmbord = await pages_page_psalmbord_utils.post (pages_page_psalmbord_utils.get_url ('general/getPsalmbord'), dict ({}));
+			plist.get_server ().data = self.psalmbord ['regels'];
+			plist.refresh ();
+		};
+		self.refresh = initialize;
 	});},
 	get show () {return __get__ (this, function (self) {
 		main.remove_childs ();
@@ -4696,9 +4758,9 @@ var pages_page_iframe_Page =  __class__ ('Page', [ElementWrapper], {
 	});}
 });
 
-//# sourceMappingURL=pages.page_iframe.map
+//# sourceMappingURL=pages.page_psalmbord.map
 // CONCATENATED MODULE: ./python/__target__/math.js
-// Transcrypt'ed from Python, 2021-07-27 20:26:17
+// Transcrypt'ed from Python, 2022-05-23 21:20:47
 
 var math_name_ = 'math';
 var pi = Math.PI;
@@ -4757,7 +4819,7 @@ var modf = function (n) {
 
 //# sourceMappingURL=math.map
 // CONCATENATED MODULE: ./python/__target__/random.js
-// Transcrypt'ed from Python, 2021-07-27 20:26:17
+// Transcrypt'ed from Python, 2022-05-23 21:20:47
 var math = {};
 
 
@@ -4825,7 +4887,7 @@ seed ();
 
 //# sourceMappingURL=random.map
 // CONCATENATED MODULE: ./python/__target__/layout.js
-// Transcrypt'ed from Python, 2021-07-27 20:26:14
+// Transcrypt'ed from Python, 2022-05-23 21:20:45
 var dialogs = {};
 var layout_random = {};
 var layout_utils = {};
@@ -4908,7 +4970,6 @@ var MenuItem =  __class__ ('MenuItem', [ElementWrapper], {
 		return self;
 	});}
 });
-main_menu.append (MenuItem ().set_title ('Bediening').set_page (Page ()), MenuItem ().set_title ('Instellingen').set_page (pages_page_admin_Page ()));
 var refresh_after_disconnect = async function () {
 	var disconnected = false;
 	while (true) {
@@ -4957,6 +5018,15 @@ var setup_websocket = function () {
 	socket.on ('event', on_event);
 };
 var logged_in = false;
+var create_main_menu = async function () {
+	main_menu.append (MenuItem ().set_title ('Geluid').set_page (Page ()));
+	var settings = await layout_utils.post (layout_utils.get_url ('general/getSettings'), dict ({}));
+	if (settings ['enable_psalmbord']) {
+		main_menu.append (MenuItem ().set_title ('Psalmbord').set_page (pages_page_psalmbord_Page ()));
+	}
+	main_menu.append (MenuItem ().set_title ('Instellingen').set_page (pages_page_admin_Page ()));
+	main_menu.append (logout_button ());
+};
 var login_and_view = async function () {
 	var login_required = await layout_utils.post (layout_utils.get_url ('login/login_required'));
 	var login_required = login_required ['login_required'];
@@ -4964,6 +5034,7 @@ var login_and_view = async function () {
 		await login ();
 	}
 	setup_websocket ();
+	await create_main_menu ();
 	menu_items [0].onclick ();
 };
 login_and_view ();
@@ -5010,11 +5081,10 @@ var logout_button = function () {
 	});
 	return r;
 };
-main_menu.append (logout_button ());
 
 //# sourceMappingURL=layout.map
 // CONCATENATED MODULE: ./python/__target__/main.js
-// Transcrypt'ed from Python, 2021-07-27 20:26:14
+// Transcrypt'ed from Python, 2022-05-23 21:20:45
 var main_elements = {};
 var layout = {};
 var main_utils = {};

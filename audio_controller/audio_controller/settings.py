@@ -22,8 +22,9 @@ class Settings:
     enable_option_auto_switch: bool = False  # to be set by administrator, to enable/disable the option to enable auto scan and switch
     enable_auto_switch: bool = False  # when True, the IN ports belonging to all enabled sources are scanned, and when there is a signal, the source is automatically selected
     timeout_auto_switch: int = 15  # minutes to wait after signal is away, before switching to other
+    enable_psalmbord: bool = False  # enable Psalmbord functionaliteit
     enable_logging: bool = True
-    version: int = 5  # version of settings, used for upgrades
+    version: int = 6  # version of settings, used for upgrades
 
 
 @dataclass
@@ -44,6 +45,12 @@ class Destination:
     port_url_file: str
     selected: bool
     id: int = 0
+
+
+@dataclass
+class Psalmbord:
+    title: str = ""
+    regels: List[dict] = field(default_factory=lambda: [])
 
 
 def default_sources():
@@ -78,10 +85,26 @@ def default_destinations():
     return result
 
 
+def default_psalmbord():
+    """ Default Psalmbord, used as initial and factory defaults """
+    result = Psalmbord()
+    result.title = "Liturgie"
+    result.regels = [{'text': txt} for txt in [
+        "Psalm 11 : 1, 3",
+        "Psalm 22 : 2, 3",
+        "Exodus 20 : 1-17",
+        "Psalm 33 : 1, 2",
+        "Psalm 44 : 2, 3",
+        "Psalm 55 : 1, 2",
+        "Psalm 66 : 2, 3",
+        "Zondag 34",
+    ]]
+    return result
+
+
 #
 # Stores / databases
 #
-
 
 # file to save settings (including sources and destinations)
 file = Path.home() / ".audio_controller_settings.pickle"
@@ -89,6 +112,7 @@ file = Path.home() / ".audio_controller_settings.pickle"
 settings = Settings()
 sources: List[Source] = []
 destinations: List[Destination] = []
+psalmbord = Psalmbord()
 
 #
 # Save and load
@@ -96,7 +120,7 @@ destinations: List[Destination] = []
 
 
 def upgrade(store: dict):
-    """ upgrade settings, for example after software is updated on a running application/device """
+    """ upgrade store, for example after software is updated on a running application/device """
     if not 'version' in store['settings']:
         store['settings']['version'] = 1
 
@@ -116,6 +140,11 @@ def upgrade(store: dict):
         store['settings']['version'] = 5
         store['settings']['enable_logging'] = True
 
+    if store['settings']['version'] == 5:
+        store['settings']['version'] = 6
+        store['settings']['enable_psalmbord'] = False
+        store['psalmbord'] = default_psalmbord()
+
     #
     # future upgrades will be placed here
     #
@@ -130,6 +159,7 @@ def use_from_store(store: dict):
     destinations.clear()
     for obj in store['sources']: sources.append(Source(**obj))
     for obj in store['destinations']: destinations.append(Destination(**obj))
+    psalmbord.__init__(**store['psalmbord'])
 
 
 def load():
@@ -153,6 +183,7 @@ def save():
             'settings': asdict(settings),
             'sources': [asdict(obj) for obj in sources],
             'destinations': [asdict(obj) for obj in destinations],
+            'psalmbord': asdict(psalmbord),
         }
         f.write(pickle.dumps(store))
 
@@ -163,6 +194,7 @@ def restore():
         'settings': asdict(Settings()),
         'sources': [asdict(obj) for obj in default_sources()],
         'destinations': [asdict(obj) for obj in default_destinations()],
+        'psalmbord': asdict(default_psalmbord()),
     }
     use_from_store(store)
     save()
@@ -376,6 +408,13 @@ def update_destinations(new_destinations: List[dict]):
         save()
     except:
         pass
+
+
+def update_psalmbord(title: str, regels: List[dict]):
+    # TODO validate and restore
+    psalmbord.title = title
+    psalmbord.regels = regels
+    save()
 
 
 def test():

@@ -95,10 +95,29 @@ def get_js_filename():
         return sorted(names)[-1]
 
 
+class StaticFileHandler(tornado.web.StaticFileHandler):
+
+    def set_extra_headers(self, path):
+        self.set_header("Cache-control", "no-cache")
+
+
 class Main(BaseHandler):
 
     def get(self):
         self.render("index.html", title="Title", page="home", js_filename=get_js_filename())
+
+    def post(self):
+        self.write("")
+
+
+class Psalmbord(tornado.web.RequestHandler):
+
+    def get(self):
+        if settings.settings.enable_psalmbord:
+            self.render("psalmbord.html", psalmbord=asdict(settings.psalmbord))
+        else:
+            html = """<!DOCTYPE html><html><body style="background-color: black;"></body></html>"""
+            self.write(html)
 
     def post(self):
         self.write("")
@@ -217,6 +236,16 @@ class General(BaseHandler):
             controller.set_routes()
             write_destinations()
             await notify_change()
+            return
+
+        elif action == 'getPsalmbord':
+            self.write(dumps(asdict(settings.psalmbord)))
+            return
+
+        elif action == 'setPsalmbord':
+            args = self.body_to_json()
+            settings.update_psalmbord(args['title'], args['regels'])
+            self.write(dumps(asdict(settings.psalmbord)))
             return
 
         elif action == 'getInputLevels':

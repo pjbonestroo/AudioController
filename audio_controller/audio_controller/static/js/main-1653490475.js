@@ -230,7 +230,7 @@ __webpack_require__.d(layout_namespaceObject, "logout", function() { return logo
 __webpack_require__.d(layout_namespaceObject, "logout_button", function() { return logout_button; });
 
 // CONCATENATED MODULE: ./python/__target__/org.transcrypt.__runtime__.js
-// Transcrypt'ed from Python, 2022-05-23 21:20:44
+// Transcrypt'ed from Python, 2022-05-25 16:54:26
 var __name__ = 'org.transcrypt.__runtime__';
 var __envir__ = {};
 __envir__.interpreter_name = 'python';
@@ -2359,7 +2359,7 @@ var input = __terminal__.input;
 
 //# sourceMappingURL=org.transcrypt.__runtime__.map
 // CONCATENATED MODULE: ./python/__target__/elements.js
-// Transcrypt'ed from Python, 2022-05-23 21:20:46
+// Transcrypt'ed from Python, 2022-05-25 16:54:28
 
 var elements_name_ = 'elements';
 var get_element = function (css_selectors) {
@@ -2449,7 +2449,7 @@ var ElementWrapper =  __class__ ('ElementWrapper', [object], {
 
 //# sourceMappingURL=elements.map
 // CONCATENATED MODULE: ./python/__target__/delayer.js
-// Transcrypt'ed from Python, 2022-05-23 21:20:46
+// Transcrypt'ed from Python, 2022-05-25 16:54:28
 
 var delayer_name_ = 'delayer';
 var Delayer =  __class__ ('Delayer', [object], {
@@ -2562,7 +2562,7 @@ var Delayer2 =  __class__ ('Delayer2', [object], {
 
 //# sourceMappingURL=delayer.map
 // CONCATENATED MODULE: ./python/__target__/paged_list.js
-// Transcrypt'ed from Python, 2022-05-23 21:20:45
+// Transcrypt'ed from Python, 2022-05-25 16:54:27
 
 
 
@@ -3787,7 +3787,7 @@ var FakeServer =  __class__ ('FakeServer', [DataServer], {
 
 //# sourceMappingURL=paged_list.map
 // CONCATENATED MODULE: ./python/__target__/utils.js
-// Transcrypt'ed from Python, 2022-05-23 21:20:46
+// Transcrypt'ed from Python, 2022-05-25 16:54:28
 
 var utils_name_ = 'utils';
 var sleep = async function (time) {
@@ -3934,7 +3934,7 @@ var save_blob_to_file = function (blob, filename) {
 
 //# sourceMappingURL=utils.map
 // CONCATENATED MODULE: ./python/__target__/dialogs.js
-// Transcrypt'ed from Python, 2022-05-23 21:20:45
+// Transcrypt'ed from Python, 2022-05-25 16:54:27
 var paged_list = {};
 var utils = {};
 
@@ -4129,7 +4129,7 @@ var DialogSelect =  __class__ ('DialogSelect', [Dialog], {
 
 //# sourceMappingURL=dialogs.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_overview.js
-// Transcrypt'ed from Python, 2022-05-23 21:20:47
+// Transcrypt'ed from Python, 2022-05-25 16:54:28
 var pages_page_overview_utils = {};
 
 
@@ -4296,7 +4296,7 @@ var Page =  __class__ ('Page', [ElementWrapper], {
 
 //# sourceMappingURL=pages.page_overview.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_admin.js
-// Transcrypt'ed from Python, 2022-05-23 21:20:46
+// Transcrypt'ed from Python, 2022-05-25 16:54:28
 var pages_page_admin_utils = {};
 
 
@@ -4670,7 +4670,7 @@ var pages_page_admin_Page =  __class__ ('Page', [ElementWrapper], {
 
 //# sourceMappingURL=pages.page_admin.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_psalmbord.js
-// Transcrypt'ed from Python, 2022-05-23 21:20:47
+// Transcrypt'ed from Python, 2022-05-25 16:54:28
 var pages_page_psalmbord_utils = {};
 
 
@@ -4689,7 +4689,13 @@ var pages_page_psalmbord_Page =  __class__ ('Page', [ElementWrapper], {
 	get __init__ () {return __get__ (this, function (self) {
 		__super__ (pages_page_psalmbord_Page, '__init__') (self, elements_element ('div'));
 		self.psalmbord = null;
-		var plist = PagedList (self.element, '').hide_count ().disable_pagination ();
+		var input_title = pages_page_psalmbord_E ('input').attr ('class', 'form-control').attr ('type', 'text');
+		var width_1 = 'col-sm-2';
+		var width_2 = 'col-sm-3';
+		self.append (pages_page_psalmbord_E ('div').attr ('class', 'form-group row').append (pages_page_psalmbord_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('Titel'), pages_page_psalmbord_E ('div').attr ('class', '{}'.format (width_2)).append (input_title)));
+		var div_list = pages_page_psalmbord_E ('div');
+		self.append (div_list);
+		var plist = PagedList (div_list.element, '').hide_count ().disable_pagination ();
 		plist.get_styling ().table_class ('table borderless');
 		var text_element = function (attr, item) {
 			var r = pages_page_psalmbord_E ('input').attr ('type', 'text').attr ('style', 'width: 100%;');
@@ -4702,16 +4708,18 @@ var pages_page_psalmbord_Page =  __class__ ('Page', [ElementWrapper], {
 			return r.element;
 		};
 		plist.add_column ('text', 'Tekst').item_to_element (text_element.bind (null, 'text'));
-		var delete_item = async function (item) {
-			self.psalmbord ['regels'].remove (item);
-			self.psalmbord = await pages_page_psalmbord_utils.post (pages_page_psalmbord_utils.get_url ('general/setPsalmbord'), self.psalmbord);
+		var set_inputs = function () {
+			input_title.element.value = self.psalmbord ['title'];
 			plist.get_server ().data = self.psalmbord ['regels'];
 			plist.refresh ();
 		};
+		var delete_item = async function (item) {
+			self.psalmbord ['regels'].remove (item);
+			await save_changes ();
+		};
 		var save_changes = async function () {
 			self.psalmbord = await pages_page_psalmbord_utils.post (pages_page_psalmbord_utils.get_url ('general/setPsalmbord'), self.psalmbord);
-			plist.get_server ().data = self.psalmbord ['regels'];
-			plist.refresh ();
+			set_inputs ();
 		};
 		plist.add_button ('delete', '', 'btn btn-danger btn-sm').use_element ((function __lambda__ (item) {
 			return pages_page_psalmbord_E ('i').attr ('class', 'fas fa-trash-alt');
@@ -4746,10 +4754,14 @@ var pages_page_psalmbord_Page =  __class__ ('Page', [ElementWrapper], {
 		self.append (button_add);
 		var initialize = async function () {
 			self.psalmbord = await pages_page_psalmbord_utils.post (pages_page_psalmbord_utils.get_url ('general/getPsalmbord'), dict ({}));
-			plist.get_server ().data = self.psalmbord ['regels'];
-			plist.refresh ();
+			set_inputs ();
 		};
 		self.refresh = initialize;
+		var onchange = async function (evt) {
+			self.psalmbord ['title'] = input_title.element.value;
+			save_changes ();
+		};
+		input_title.element.onchange = onchange;
 	});},
 	get show () {return __get__ (this, function (self) {
 		main.remove_childs ();
@@ -4760,7 +4772,7 @@ var pages_page_psalmbord_Page =  __class__ ('Page', [ElementWrapper], {
 
 //# sourceMappingURL=pages.page_psalmbord.map
 // CONCATENATED MODULE: ./python/__target__/math.js
-// Transcrypt'ed from Python, 2022-05-23 21:20:47
+// Transcrypt'ed from Python, 2022-05-25 16:54:28
 
 var math_name_ = 'math';
 var pi = Math.PI;
@@ -4819,7 +4831,7 @@ var modf = function (n) {
 
 //# sourceMappingURL=math.map
 // CONCATENATED MODULE: ./python/__target__/random.js
-// Transcrypt'ed from Python, 2022-05-23 21:20:47
+// Transcrypt'ed from Python, 2022-05-25 16:54:28
 var math = {};
 
 
@@ -4887,7 +4899,7 @@ seed ();
 
 //# sourceMappingURL=random.map
 // CONCATENATED MODULE: ./python/__target__/layout.js
-// Transcrypt'ed from Python, 2022-05-23 21:20:45
+// Transcrypt'ed from Python, 2022-05-25 16:54:26
 var dialogs = {};
 var layout_random = {};
 var layout_utils = {};
@@ -5084,7 +5096,7 @@ var logout_button = function () {
 
 //# sourceMappingURL=layout.map
 // CONCATENATED MODULE: ./python/__target__/main.js
-// Transcrypt'ed from Python, 2022-05-23 21:20:45
+// Transcrypt'ed from Python, 2022-05-25 16:54:26
 var main_elements = {};
 var layout = {};
 var main_utils = {};

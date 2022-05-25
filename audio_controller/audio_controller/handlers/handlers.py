@@ -120,7 +120,10 @@ class Psalmbord(tornado.web.RequestHandler):
             self.write(html)
 
     def post(self):
-        self.write("")
+        if settings.settings.enable_psalmbord:
+            self.write(dumps(asdict(settings.psalmbord)))
+        else:
+            self.write(dumps(asdict(settings.Psalmbord())))
 
 
 class Login(BaseHandler):

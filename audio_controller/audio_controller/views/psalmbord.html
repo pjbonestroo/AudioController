@@ -18,12 +18,48 @@
 
 <body>
     <div class="container">
-        <div class="title">{{psalmbord['title']}}</div>
-
-        {% for regel in psalmbord['regels'] %}
-        <div>{{regel['text']}}</div>
-        {% end %}
     </div>
 </body>
+
+<script>
+
+    let url = window.location.origin + "/" + "psalmbord"
+    let container = $(".container")
+    let interval = 10000 // milliseconds
+
+    function success(psalmbord) {
+        psalmbord = JSON.parse(psalmbord)
+        container.empty()
+        let title = $("<div>", { class: "title" })
+        title.html(psalmbord["title"])
+        container.append(title)
+        for (let key in psalmbord["regels"]) {
+            let regel = psalmbord["regels"][key]
+            let div = $("<div>", { class: "regel" })
+            div.html(regel['text'])
+            container.append(div)
+        }
+        setTimeout(update, interval)
+    }
+
+    function error() {
+        setTimeout(update, interval)
+    }
+
+    function update() {
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: {},
+            success: success,
+            error: error,
+            contentType: "application/json; charset=utf-8",
+        })
+    }
+
+    update()
+
+
+</script>
 
 </html>

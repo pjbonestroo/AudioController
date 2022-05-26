@@ -26,23 +26,24 @@
     let url = window.location.origin + "/" + "psalmbord"
     let container = $(".container")
     let interval = 10000 // milliseconds
+    let hasFailed = false
 
-    function success(psalmbord) {
-        psalmbord = JSON.parse(psalmbord)
-        container.empty()
-        let title = $("<div>", { class: "title" })
-        title.html(psalmbord["title"])
-        container.append(title)
-        for (let key in psalmbord["regels"]) {
-            let regel = psalmbord["regels"][key]
-            let div = $("<div>", { class: "regel" })
-            div.html(regel['text'])
-            container.append(div)
+    function success(psalmbord_html) {
+        // If update has failed once, but now seems to succeed,
+        // refresh complete page since server might be updated.
+        // This can possibly be disabled after development
+        if (hasFailed) {
+            location.reload()
         }
+        console.log(psalmbord_html)
+        container.empty()
+        container.append($(psalmbord_html))
+
         setTimeout(update, interval)
     }
 
     function error() {
+        hasFailed = true
         setTimeout(update, interval)
     }
 
@@ -50,7 +51,7 @@
         $.ajax({
             type: "POST",
             url: url,
-            data: {},
+            data: JSON.stringify({ html: true }),
             success: success,
             error: error,
             contentType: "application/json; charset=utf-8",

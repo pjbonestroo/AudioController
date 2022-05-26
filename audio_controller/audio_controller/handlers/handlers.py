@@ -98,7 +98,8 @@ def get_js_filename():
 class StaticFileHandler(tornado.web.StaticFileHandler):
 
     def set_extra_headers(self, path):
-        self.set_header("Cache-control", "no-cache")
+        # Disable cache
+        self.set_header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0')
 
 
 class Main(BaseHandler):
@@ -112,6 +113,11 @@ class Main(BaseHandler):
 
 class Psalmbord(tornado.web.RequestHandler):
 
+    def body_to_json(self):
+        body = self.request.body
+        if not body: body = b'{}'
+        return json.loads(body)
+
     def get(self):
         if settings.settings.enable_psalmbord:
             self.render("psalmbord.html", psalmbord=asdict(settings.psalmbord))
@@ -121,7 +127,11 @@ class Psalmbord(tornado.web.RequestHandler):
 
     def post(self):
         if settings.settings.enable_psalmbord:
-            self.write(dumps(asdict(settings.psalmbord)))
+            kwargs = self.body_to_json()
+            if kwargs.get('html'):
+                self.write(settings.psalmbord_as_html())
+            else:
+                self.write(dumps(asdict(settings.psalmbord)))
         else:
             self.write(dumps(asdict(settings.Psalmbord())))
 

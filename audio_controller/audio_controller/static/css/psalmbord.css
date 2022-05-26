@@ -1,12 +1,12 @@
 body {
     background-color: black;
     color: white;
-    font-size: 6vh;
+    font-size: 7vh;
     font-family: ui-rounded;
 }
 
 .container {
-    padding: 1vmin;
+    padding: 2vmin;
     max-width: 100%;
     max-height: 100%;
 }
@@ -16,4 +16,26 @@ body {
     text-align: center;
 }
 
-.regel {}
+.regel {
+    display: inline-block;
+    width: 100%;
+}
+
+.regel div {
+    padding-right: 1vw;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.col1 {
+    min-width: 50%;
+}
+
+.col2 {}
+
+.col3 {
+    /* width: 40%; */
+    /* padding-left: 5vw; */
+    /* text-align: right; */
+    float: right;
+}

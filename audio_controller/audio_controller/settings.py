@@ -53,6 +53,20 @@ class Psalmbord:
     regels: List[dict] = field(default_factory=lambda: [])
 
 
+def psalmbord_as_html() -> str:
+    """ Create a html string to display the psalmbord in the browser """
+    r = f"<div class='title'>{psalmbord.title}</div>"
+    for regel in psalmbord.regels:
+        txt = regel['text']
+        i = txt.find(":")
+        if i > -1 and len(txt) > i + 1:
+            span = f"<div class='col1'>{txt[:i].strip()}</div><div class='col2'>:</div><div class='col3'>{txt[i+1:].strip()}</div>"
+        else:
+            span = f"<span>{txt}</span>"
+        r += f"<div class='regel'>{span}</div>"
+    return r
+
+
 def default_sources():
     """ Default sources, used as initial and factory defaults """
     result = [
@@ -90,14 +104,14 @@ def default_psalmbord():
     result = Psalmbord()
     result.title = "Liturgie"
     result.regels = [{'text': txt} for txt in [
-        "Psalm 11 : 1, 3",
-        "Psalm 22 : 2, 3",
+        "Ps 11 : 1, 3",
+        "Ps 22 : 2, 3",
         "Exodus 20 : 1-17",
-        "Psalm 33 : 1, 2",
-        "Psalm 44 : 2, 3",
-        "Psalm 55 : 1, 2",
-        "Psalm 66 : 2, 3",
-        "Zondag 34",
+        "Ps 33 : 1, 2",
+        "Ps 44 : 2, 3",
+        "Ps 55 : 1, 2",
+        "Ps 66 : 2, 3",
+        "H.C. Zondag 34",
     ]]
     return result
 

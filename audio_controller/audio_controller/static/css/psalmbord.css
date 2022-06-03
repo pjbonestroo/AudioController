@@ -1,8 +1,8 @@
 body {
     background-color: black;
     color: white;
-    font-size: 7vh;
-    font-family: ui-rounded;
+    font-size: 6.5vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .container {
@@ -24,7 +24,7 @@ body {
 .regel div {
     padding-right: 1vw;
     display: inline-block;
-    white-space: nowrap;
+    white-space: pre;
 }
 
 .col1 {

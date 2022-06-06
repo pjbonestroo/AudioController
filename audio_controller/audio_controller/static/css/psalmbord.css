@@ -1,8 +1,20 @@
+/* courier-prime-regular - latin */
+@font-face {
+    font-family: 'Courier Prime';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+        url('../fonts/courier-prime-v7-latin-regular.woff2') format('woff2'),
+        url('../fonts/courier-prime-v7-latin-regular.woff') format('woff');
+}
+
+
 body {
     background-color: black;
     color: white;
     font-size: 6.5vh;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+    font-family: 'Courier Prime', monospace;
 }
 
 .container {

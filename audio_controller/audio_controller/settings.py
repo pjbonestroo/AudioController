@@ -62,7 +62,7 @@ def psalmbord_as_html() -> str:
         if i > -1 and len(txt) > i + 1:
             span = f"<div class='col1'>{txt[:i].strip()}</div><div class='col2'>:</div><div class='col3'>{txt[i+1:].strip()}</div>"
         else:
-            span = f"<span>{txt}</span>"
+            span = f"<div>{txt}</div>"
         r += f"<div class='regel'>{span}</div>"
     return r
 

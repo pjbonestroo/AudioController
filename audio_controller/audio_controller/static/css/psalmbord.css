@@ -1,20 +1,48 @@
 /* courier-prime-regular - latin */
 @font-face {
     font-family: 'Courier Prime';
-    font-style: normal;
-    font-weight: 400;
     src: local(''),
         url('../fonts/courier-prime-v7-latin-regular.woff2') format('woff2'),
         url('../fonts/courier-prime-v7-latin-regular.woff') format('woff');
 }
 
+@font-face {
+    font-family: 'Courier Prime Bold';
+    src: local(''),
+        url('../fonts/courier-prime-v7-latin-700.woff2') format('woff2'),
+        url('../fonts/courier-prime-v7-latin-700.woff') format('woff');
+}
+
+.font_courier_prime {
+    font-family: 'Courier Prime', monospace;
+    font-size: 7vh;
+}
+
+.font_courier_prime_bold {
+    font-family: 'Courier Prime Bold', monospace;
+    font-size: 7vh;
+}
+
+.font_courier_new {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 7vh;
+}
+
+.font_verdana {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 700;
+    font-size: 7vh;
+}
+
+.font_arial {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 7vh;
+}
 
 body {
     background-color: black;
     color: white;
-    font-size: 6.5vh;
-    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
-    font-family: 'Courier Prime', monospace;
 }
 
 .container {

@@ -54,16 +54,17 @@ class Psalmbord:
 
 
 def psalmbord_as_html() -> str:
+    font = "font_courier_prime"  # TODO make the font a setting to choose by user
     """ Create a html string to display the psalmbord in the browser """
-    r = f"<div class='title'>{psalmbord.title}</div>"
+    r = f"<div class='title {font}'>{psalmbord.title}</div>"
     for regel in psalmbord.regels:
         txt = regel['text']
         i = txt.find(":")
         if i > -1 and len(txt) > i + 1:
             span = f"<div class='col1'>{txt[:i].strip()}</div><div class='col2'>:</div><div class='col3'>{txt[i+1:].strip()}</div>"
         else:
-            span = f"<div>{txt}</div>"
-        r += f"<div class='regel'>{span}</div>"
+            span = f"<div >{txt}</div>"
+        r += f"<div class='regel {font}'>{span}</div>"
     return r
 
 

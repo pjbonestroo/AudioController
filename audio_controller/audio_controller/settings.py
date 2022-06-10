@@ -5,6 +5,8 @@ from pathlib import Path
 import pickle
 from dataclasses import dataclass, field, asdict
 
+from . import fonts
+
 #
 # Classes and default settings
 #
@@ -47,16 +49,24 @@ class Destination:
     id: int = 0
 
 
+default_fontfamily = fonts.validate_font_name("Verdana", True)
+default_fontsize = fonts.validate_font_size(7, True)
+
+
 @dataclass
 class Psalmbord:
     title: str = ""
     regels: List[dict] = field(default_factory=lambda: [])
+    fontfamily: str = default_fontfamily
+    fontsize: float = default_fontsize
 
 
 def psalmbord_as_html() -> str:
-    font = "font_courier_prime"  # TODO make the font a setting to choose by user
+    font_class = fonts.fonts[psalmbord.fontfamily]
+    font_class += f" {fonts.fontsizes[psalmbord.fontsize]}"
+
     """ Create a html string to display the psalmbord in the browser """
-    r = f"<div class='title {font}'>{psalmbord.title}</div>"
+    r = f"<div class='title {font_class}'>{psalmbord.title}</div>"
     for regel in psalmbord.regels:
         txt = regel['text']
         i = txt.find(":")
@@ -64,7 +74,7 @@ def psalmbord_as_html() -> str:
             span = f"<div class='col1'>{txt[:i].strip()}</div><div class='col2'>:</div><div class='col3'>{txt[i+1:].strip()}</div>"
         else:
             span = f"<div >{txt}</div>"
-        r += f"<div class='regel {font}'>{span}</div>"
+        r += f"<div class='regel {font_class}'>{span}</div>"
     return r
 
 
@@ -114,6 +124,8 @@ def default_psalmbord():
         "Ps 66 : 2, 3",
         "H.C. Zondag 34",
     ]]
+    result.fontfamily = default_fontfamily
+    result.fontsize = default_fontsize
     return result
 
 
@@ -159,6 +171,11 @@ def upgrade(store: dict):
         store['settings']['version'] = 6
         store['settings']['enable_psalmbord'] = False
         store['psalmbord'] = default_psalmbord()
+
+    if store['settings']['version'] == 6:
+        store['settings']['version'] = 7
+        store['psalmbord']['fontfamily'] = default_fontfamily
+        store['psalmbord']['fontsize'] = default_fontsize
 
     #
     # future upgrades will be placed here
@@ -345,6 +362,33 @@ def validate_destination_attribute(name: str, value):
         return None
 
 
+def validate_psalmbord(obj: Psalmbord):
+    """ Return psalmbord if it is correct, None otherwise. Possibly correct values. """
+    try:
+        obj.title = obj.title[:100]  # max 100 characters
+        if len(obj.regels) > 50:  # max 50 regels
+            return None
+        default_regel_keys = sorted(list(default_psalmbord().regels[0].keys()))
+
+        for regel in obj.regels:
+            if not sorted(list(regel.keys())) == default_regel_keys:
+                return None
+            regel['text'] = regel['text'][0:100]  # max 100 characters
+
+        obj.fontfamily = str(obj.fontfamily)
+        if not fonts.validate_font_name(obj.fontfamily):
+            return None
+        obj.fontsize = float(obj.fontsize)
+        if not fonts.validate_font_size(obj.fontsize):
+            return None
+
+        return obj
+    except:
+        return None
+
+
+assert validate_psalmbord(default_psalmbord()), "Default psalmbord is not valid"
+
 #
 # Updates
 #
@@ -425,11 +469,15 @@ def update_destinations(new_destinations: List[dict]):
         pass
 
 
-def update_psalmbord(title: str, regels: List[dict]):
-    # TODO validate and restore
-    psalmbord.title = title
-    psalmbord.regels = regels
-    save()
+def update_psalmbord(title: str, regels: List[dict], fontfamily, fontsize):
+    temp = Psalmbord(title, regels, fontfamily, fontsize)
+    temp = validate_psalmbord(temp)
+    if temp:
+        psalmbord.title = temp.title
+        psalmbord.regels = temp.regels
+        psalmbord.fontfamily = temp.fontfamily
+        psalmbord.fontsize = temp.fontsize
+        save()
 
 
 def test():

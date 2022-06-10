@@ -230,7 +230,7 @@ __webpack_require__.d(layout_namespaceObject, "logout", function() { return logo
 __webpack_require__.d(layout_namespaceObject, "logout_button", function() { return logout_button; });
 
 // CONCATENATED MODULE: ./python/__target__/org.transcrypt.__runtime__.js
-// Transcrypt'ed from Python, 2022-06-10 14:55:27
+// Transcrypt'ed from Python, 2022-06-10 22:33:16
 var __name__ = 'org.transcrypt.__runtime__';
 var __envir__ = {};
 __envir__.interpreter_name = 'python';
@@ -2359,7 +2359,7 @@ var input = __terminal__.input;
 
 //# sourceMappingURL=org.transcrypt.__runtime__.map
 // CONCATENATED MODULE: ./python/__target__/elements.js
-// Transcrypt'ed from Python, 2022-06-10 14:55:28
+// Transcrypt'ed from Python, 2022-06-10 22:33:18
 
 var elements_name_ = 'elements';
 var get_element = function (css_selectors) {
@@ -2449,7 +2449,7 @@ var ElementWrapper =  __class__ ('ElementWrapper', [object], {
 
 //# sourceMappingURL=elements.map
 // CONCATENATED MODULE: ./python/__target__/delayer.js
-// Transcrypt'ed from Python, 2022-06-10 14:55:29
+// Transcrypt'ed from Python, 2022-06-10 22:33:18
 
 var delayer_name_ = 'delayer';
 var Delayer =  __class__ ('Delayer', [object], {
@@ -2562,7 +2562,7 @@ var Delayer2 =  __class__ ('Delayer2', [object], {
 
 //# sourceMappingURL=delayer.map
 // CONCATENATED MODULE: ./python/__target__/paged_list.js
-// Transcrypt'ed from Python, 2022-06-10 14:55:28
+// Transcrypt'ed from Python, 2022-06-10 22:33:17
 
 
 
@@ -3787,7 +3787,7 @@ var FakeServer =  __class__ ('FakeServer', [DataServer], {
 
 //# sourceMappingURL=paged_list.map
 // CONCATENATED MODULE: ./python/__target__/utils.js
-// Transcrypt'ed from Python, 2022-06-10 14:55:29
+// Transcrypt'ed from Python, 2022-06-10 22:33:18
 
 var utils_name_ = 'utils';
 var sleep = async function (time) {
@@ -3934,7 +3934,7 @@ var save_blob_to_file = function (blob, filename) {
 
 //# sourceMappingURL=utils.map
 // CONCATENATED MODULE: ./python/__target__/dialogs.js
-// Transcrypt'ed from Python, 2022-06-10 14:55:28
+// Transcrypt'ed from Python, 2022-06-10 22:33:17
 var paged_list = {};
 var utils = {};
 
@@ -4129,7 +4129,7 @@ var DialogSelect =  __class__ ('DialogSelect', [Dialog], {
 
 //# sourceMappingURL=dialogs.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_overview.js
-// Transcrypt'ed from Python, 2022-06-10 14:55:29
+// Transcrypt'ed from Python, 2022-06-10 22:33:18
 var pages_page_overview_utils = {};
 
 
@@ -4296,7 +4296,7 @@ var Page =  __class__ ('Page', [ElementWrapper], {
 
 //# sourceMappingURL=pages.page_overview.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_admin.js
-// Transcrypt'ed from Python, 2022-06-10 14:55:29
+// Transcrypt'ed from Python, 2022-06-10 22:33:18
 var pages_page_admin_utils = {};
 
 
@@ -4670,7 +4670,7 @@ var pages_page_admin_Page =  __class__ ('Page', [ElementWrapper], {
 
 //# sourceMappingURL=pages.page_admin.map
 // CONCATENATED MODULE: ./python/__target__/pages.page_psalmbord.js
-// Transcrypt'ed from Python, 2022-06-10 14:55:29
+// Transcrypt'ed from Python, 2022-06-10 22:33:18
 var pages_page_psalmbord_utils = {};
 
 
@@ -4681,9 +4681,58 @@ var pages_page_psalmbord_utils = {};
 __nest__ (pages_page_psalmbord_utils, '', utils_namespaceObject);
 var pages_page_psalmbord_name_ = 'pages.page_psalmbord';
 var pages_page_psalmbord_E = Element;
+var fonts = dict ({'Arial': 'font_arial', 'Courier New': 'font_courier_new', 'Courier Prime': 'font_courier_prime', 'Courier Prime Bold': 'font_courier_prime_bold', 'Verdana': 'font_verdana'});
+var frange = function* (start, stop, step) {
+	var positive = step > 0;
+	var result = start;
+	if (positive) {
+		var running = function () {
+			return result < stop;
+		};
+	}
+	else {
+		var running = function () {
+			return result > stop;
+		};
+	}
+	while (running ()) {
+		yield result;
+		result += step;
+	}
+	};
+var fontsize_floats = org_transcrypt_runtime_list (frange (4, 9, 0.5));
+var fontsizes = (function () {
+	var __accu0__ = [];
+	for (var f of fontsize_floats) {
+		__accu0__.append ([str (f), f]);
+	}
+	return dict (__accu0__);
+}) ();
 var regel = function (text) {
 	return dict ({'text': text});
 };
+var Select =  __class__ ('Select', [ElementWrapper], {
+	__module__: pages_page_psalmbord_name_,
+	get __init__ () {return __get__ (this, function (self, py_name, py_values) {
+		__super__ (Select, '__init__') (self, elements_element ('select'));
+		self.attr ('name', py_name);
+		self.options = [];
+		for (var [k, _] of py_values.py_items ()) {
+			self.options.append (pages_page_psalmbord_E ('option').attr ('value', k).inner_html (k));
+		}
+		self.append (...self.options);
+	});},
+	get select () {return __get__ (this, function (self, value) {
+		for (var option of self.options) {
+			if (str (option.element.value) == str (value)) {
+				option.attr ('selected', 'selected');
+			}
+			else {
+				option.remove_attr ('selected');
+			}
+		}
+	});}
+});
 var pages_page_psalmbord_Page =  __class__ ('Page', [ElementWrapper], {
 	__module__: pages_page_psalmbord_name_,
 	get __init__ () {return __get__ (this, function (self) {
@@ -4711,6 +4760,8 @@ var pages_page_psalmbord_Page =  __class__ ('Page', [ElementWrapper], {
 		var set_inputs = function () {
 			input_title.element.value = self.psalmbord ['title'];
 			plist.get_server ().data = self.psalmbord ['regels'];
+			select_fontfamily.select (self.psalmbord ['fontfamily']);
+			select_fontsize.select (self.psalmbord ['fontsize']);
 			plist.refresh ();
 		};
 		var delete_item = async function (item) {
@@ -4752,6 +4803,10 @@ var pages_page_psalmbord_Page =  __class__ ('Page', [ElementWrapper], {
 		var button_add = pages_page_psalmbord_E ('button').attr ('class', 'btn btn-primary btn-sm').inner_html ('Toevoegen');
 		button_add.element.onclick = add_item;
 		self.append (button_add);
+		var select_fontfamily = Select ('fontfamily', fonts);
+		var select_fontsize = Select ('fontsize', fontsizes);
+		self.append (pages_page_psalmbord_E ('div').attr ('class', 'form-group row').append (pages_page_psalmbord_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('Font'), pages_page_psalmbord_E ('div').attr ('class', '{}'.format (width_2)).append (select_fontfamily)));
+		self.append (pages_page_psalmbord_E ('div').attr ('class', 'form-group row').append (pages_page_psalmbord_E ('label').attr ('class', '{} col-form-label'.format (width_1)).inner_html ('Font size'), pages_page_psalmbord_E ('div').attr ('class', '{}'.format (width_2)).append (select_fontsize)));
 		var initialize = async function () {
 			self.psalmbord = await pages_page_psalmbord_utils.post (pages_page_psalmbord_utils.get_url ('general/getPsalmbord'), dict ({}));
 			set_inputs ();
@@ -4759,9 +4814,13 @@ var pages_page_psalmbord_Page =  __class__ ('Page', [ElementWrapper], {
 		self.refresh = initialize;
 		var onchange = async function (evt) {
 			self.psalmbord ['title'] = input_title.element.value;
+			self.psalmbord ['fontfamily'] = select_fontfamily.element.value;
+			self.psalmbord ['fontsize'] = select_fontsize.element.value;
 			save_changes ();
 		};
 		input_title.element.onchange = onchange;
+		select_fontfamily.element.onchange = onchange;
+		select_fontsize.element.onchange = onchange;
 	});},
 	get show () {return __get__ (this, function (self) {
 		main.remove_childs ();
@@ -4772,7 +4831,7 @@ var pages_page_psalmbord_Page =  __class__ ('Page', [ElementWrapper], {
 
 //# sourceMappingURL=pages.page_psalmbord.map
 // CONCATENATED MODULE: ./python/__target__/math.js
-// Transcrypt'ed from Python, 2022-06-10 14:55:29
+// Transcrypt'ed from Python, 2022-06-10 22:33:19
 
 var math_name_ = 'math';
 var pi = Math.PI;
@@ -4831,7 +4890,7 @@ var modf = function (n) {
 
 //# sourceMappingURL=math.map
 // CONCATENATED MODULE: ./python/__target__/random.js
-// Transcrypt'ed from Python, 2022-06-10 14:55:29
+// Transcrypt'ed from Python, 2022-06-10 22:33:18
 var math = {};
 
 
@@ -4899,7 +4958,7 @@ seed ();
 
 //# sourceMappingURL=random.map
 // CONCATENATED MODULE: ./python/__target__/layout.js
-// Transcrypt'ed from Python, 2022-06-10 14:55:28
+// Transcrypt'ed from Python, 2022-06-10 22:33:16
 var dialogs = {};
 var layout_random = {};
 var layout_utils = {};
@@ -5096,7 +5155,7 @@ var logout_button = function () {
 
 //# sourceMappingURL=layout.map
 // CONCATENATED MODULE: ./python/__target__/main.js
-// Transcrypt'ed from Python, 2022-06-10 14:55:28
+// Transcrypt'ed from Python, 2022-06-10 22:33:16
 var main_elements = {};
 var layout = {};
 var main_utils = {};

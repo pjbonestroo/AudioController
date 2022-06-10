@@ -51,6 +51,7 @@ class Destination:
 
 default_fontfamily = fonts.validate_font_name("Verdana", True)
 default_fontsize = fonts.validate_font_size(7, True)
+default_fontweight = fonts.validate_font_weight(400, True)
 
 
 @dataclass
@@ -59,11 +60,13 @@ class Psalmbord:
     regels: List[dict] = field(default_factory=lambda: [])
     fontfamily: str = default_fontfamily
     fontsize: float = default_fontsize
+    fontweight: int = default_fontweight
 
 
 def psalmbord_as_html() -> str:
     font_class = fonts.fonts[psalmbord.fontfamily]
     font_class += f" {fonts.fontsizes[psalmbord.fontsize]}"
+    font_class += f" {fonts.fontweights[psalmbord.fontweight]}"
 
     """ Create a html string to display the psalmbord in the browser """
     r = f"<div class='title {font_class}'>{psalmbord.title}</div>"
@@ -126,6 +129,7 @@ def default_psalmbord():
     ]]
     result.fontfamily = default_fontfamily
     result.fontsize = default_fontsize
+    result.fontweight = default_fontweight
     return result
 
 
@@ -176,6 +180,7 @@ def upgrade(store: dict):
         store['settings']['version'] = 7
         store['psalmbord']['fontfamily'] = default_fontfamily
         store['psalmbord']['fontsize'] = default_fontsize
+        store['psalmbord']['fontweight'] = default_fontweight
 
     #
     # future upgrades will be placed here
@@ -381,6 +386,9 @@ def validate_psalmbord(obj: Psalmbord):
         obj.fontsize = float(obj.fontsize)
         if not fonts.validate_font_size(obj.fontsize):
             return None
+        obj.fontweight = int(obj.fontweight)
+        if not fonts.validate_font_weight(obj.fontweight):
+            return None
 
         return obj
     except:
@@ -469,14 +477,15 @@ def update_destinations(new_destinations: List[dict]):
         pass
 
 
-def update_psalmbord(title: str, regels: List[dict], fontfamily, fontsize):
-    temp = Psalmbord(title, regels, fontfamily, fontsize)
+def update_psalmbord(title: str, regels: List[dict], fontfamily, fontsize, fontweight):
+    temp = Psalmbord(title, regels, fontfamily, fontsize, fontweight)
     temp = validate_psalmbord(temp)
     if temp:
         psalmbord.title = temp.title
         psalmbord.regels = temp.regels
         psalmbord.fontfamily = temp.fontfamily
         psalmbord.fontsize = temp.fontsize
+        psalmbord.fontweight = temp.fontweight
         save()
 
 

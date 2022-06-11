@@ -4,9 +4,10 @@ deploy
 /docs/pictures/*
 !/docs/pictures/screenshot_1.png
 !/docs/pictures/screenshot_2.png
-/node_modules
+node_modules
+transcrypt/python/__target__
+transcrypt/**/*.json
 /pyenv
-/transcrypt
 /manage_env
 audio_controller/audio_controller/static/js/fontawesome-free-5.13.1-web
 audio_controller/audio_controller/static/js/bootstrap-4.1.3-dist

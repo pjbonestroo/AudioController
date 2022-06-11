@@ -15,7 +15,7 @@
         "--ignore",
         "E401, E402, E501, E701"
     ],
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
     "workbench.tree.indent": 14,
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,

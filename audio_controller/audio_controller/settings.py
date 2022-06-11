@@ -65,8 +65,7 @@ class Psalmbord:
 
 def psalmbord_as_html() -> str:
     font_class = fonts.fonts[psalmbord.fontfamily]
-    font_class += f" {fonts.fontsizes[psalmbord.fontsize]}"
-    font_class += f" {fonts.fontweights[psalmbord.fontweight]}"
+    font_class += f" font_size font_weight"
 
     """ Create a html string to display the psalmbord in the browser """
     r = f"<div class='title {font_class}'>{psalmbord.title}</div>"

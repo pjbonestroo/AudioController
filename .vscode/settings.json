@@ -1,5 +1,4 @@
 {
-    "python.pythonPath": "./pyenv/bin/python",
     "workbench.editor.enablePreview": false,
     "explorer.autoReveal": false,
     "python.linting.pylintEnabled": true,
@@ -17,11 +16,8 @@
     ],
     "editor.formatOnSave": false,
     "workbench.tree.indent": 14,
-    "telemetry.enableTelemetry": false,
-    "telemetry.enableCrashReporter": false,
     "files.exclude": {
         "**/__pycache__/**": true,
-        "**/pyenv/**": true,
         "**/.git/objects/**": true,
         "**/.git/subtree-cache/**": true,
         "**/node_modules/**": true,
@@ -55,5 +51,4 @@
         "audio_controller/audio_controller/static/js/bootstrap-4.3.1-dist": true,
         "audio_controller/audio_controller/static/js/fontawesome-free-5.10.1-web": true,
     },
-    "restructuredtext.confPath": "",
 }

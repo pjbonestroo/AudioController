@@ -151,7 +151,7 @@ For example the full file content becomes:
 
 ## 5. Use external USB sound card
 
-Change number of default card from 0 to 1 in also.conf:
+Change number of default card from 0 to 1 in alsa.conf:
 ```
 sudo nano /usr/share/alsa/alsa.conf
 ```

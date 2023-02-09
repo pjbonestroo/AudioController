@@ -20,7 +20,10 @@ class Settings:
     nr_OUT_ports: int = 4  # nr of OUT ports on ITEC
     port_IN_for_streams: str = 'IN4'  # IN port of ITEC, connected to output of this device (raspberry pi) to put audio from stream on
     port_OUT_to_stream: str = ''  # OUT port of ITEC, connected to input of this device (raspberry pi) to forward audio to url
-    connect_source_destination: bool = False  # on/off switch: when False, no IN port is routed to OUT port
+    connect_source_destination: bool = True  # on/off switch: when False, no IN port is routed to OUT port, and streams are disconnected
+    show_button_connect: bool = False # to show the button to connect source and destinations. If False, connect_source_destination must be True
+    mute_sound: bool = False # on/off switch: when True, all sound is muted by disabling all OUT ports (but keeping streams connected)
+    show_button_mute_sound: bool = True # to show the button to mute the sound. If False, mute_sound must be False
     enable_option_auto_switch: bool = False  # to be set by administrator, to enable/disable the option to enable auto scan and switch
     enable_auto_switch: bool = False  # when True, the IN ports belonging to all enabled sources are scanned, and when there is a signal, the source is automatically selected
     timeout_auto_switch: int = 15  # minutes to wait after signal is away, before switching to other
@@ -181,6 +184,13 @@ def upgrade(store: dict):
         store['psalmbord']['fontsize'] = default_fontsize
         store['psalmbord']['fontweight'] = default_fontweight
 
+    if store['settings']['version'] == 7:
+        store['settings']['version'] = 8
+        # same behaviour as before
+        store['settings']["show_button_connect"] = True
+        store['settings']["mute_sound"] = False
+        store['settings']["show_button_mute_sound"] = False
+
     #
     # future upgrades will be placed here
     #
@@ -322,6 +332,14 @@ def validate_settings(obj: Settings):
     if not is_OUT_port(obj.port_OUT_to_stream) and not obj.port_OUT_to_stream == "":
         # OUT port is NOT mandatory, but the Pi will not send audio to external url (e.g. icecast) in this case
         return False
+    if not obj.show_button_connect and not obj.show_button_mute_sound:
+        # cannot disable both buttons
+        return False
+    # correct underlying values if buttons are hidden
+    if not obj.show_button_connect:
+        obj.connect_source_destination = True
+    if not obj.show_button_mute_sound:
+        obj.mute_sound = False
     # turn auto-switch off, if option is disabled
     if obj.enable_auto_switch and not obj.enable_option_auto_switch:
         obj.enable_auto_switch = False

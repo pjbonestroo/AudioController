@@ -42,7 +42,7 @@ class Config:
         """
 
         def route_all_to_null():
-            #print("route all to null")
+            """ route all IN ports of itec to null, meaning no sound will go through """
             ports = [get_IN_port(s) for s in sources]
             for p in ports:
                 itec.set_route(p, [])
@@ -89,10 +89,11 @@ class Config:
             stop_all()
             return
 
-        # determine which IN-port must be routed
+        # determine all ports and urls for in and out
         port_in: int = None
         url_in: str = None
         urls_out: List[str] = []
+        ports_out: List[int] = []
 
         port_in = settings.get_IN_port(selected_source.port_url)
         if port_in is None:
@@ -107,7 +108,6 @@ class Config:
                 itec.set_route(p, [])
 
         # select all OUT ports which must get route, and select urls to which audio must be send
-        ports_out = []
         for d in destinations:
             if d.selected:
                 port_out = settings.get_OUT_port(d.port_url_file)
@@ -119,7 +119,12 @@ class Config:
                     ports_out.append(port_out)
 
         # route all ITEC ports
-        itec.set_route(port_in, ports_out)
+        if settings.settings.mute_sound:
+            # Muting only affects the itec ports.
+            # The url streams will be kept intact, see below
+            route_all_to_null()
+        else:
+            itec.set_route(port_in, ports_out)
         # start or stop playing url stream
         stop_start_play(url_in)
         stop_start_send(urls_out)

@@ -84,6 +84,9 @@ python -m pip install rpi.gpio
 
 ## 3. Copy audio_controller project/package to pi
 
+Check if ./audio_controller/audio_controller/static/js/main.js exists.
+If not, first compile python code from ./transcrypt/python to generate main.js
+
 Copy from local to pi (use correct ip-address):
 
 ```

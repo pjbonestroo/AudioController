@@ -9,6 +9,7 @@ python -m pip install tornado
 python -m pip install python-socketio
 python -m pip install transcrypt
 python -m pip install watchdog
+python -m pip install python-decouple
 cd audio_controller
 python -m pip install --editable .
 cd ..

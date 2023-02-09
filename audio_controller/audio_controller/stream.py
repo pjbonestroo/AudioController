@@ -118,20 +118,22 @@ class TestUrl():
 
 def test_ffmpeg():
     """ stream to icecast """
+    from decouple import config
     input_url = TestUrl.ro1
-    password = input("Icecast password: ")
+    password = config("icecast_password")
     icecast_url = f"icecast://source:{password}@173.249.6.236:8000/babyfoon"
     content_type = "-content_type audio/mpeg -f mp3"
     bitrate = "-b:a 64K -minrate 64K -maxrate 64K -bufsize 64K"
     # play on standard out:
-    cmd = f'ffmpeg -i {input_url} -f alsa default'
+    #cmd = f'ffmpeg -i {input_url} -f alsa default'
     # send input url to icecast:
-    cmd = f'ffmpeg -i {input_url} {content_type} {bitrate} "{icecast_url}"'
+    #cmd = f'ffmpeg -i {input_url} {content_type} {bitrate} "{icecast_url}"'
     # send recording to icecast:
     cmd = f'ffmpeg -f alsa -i hw:0 {content_type} {bitrate} "{icecast_url}"'
-    with FfmpegProcess(cmd):
-        while True:
-            time.sleep(30)
+    print(cmd)
+    #with FfmpegProcess(cmd):
+    #    while True:
+    #        time.sleep(30)
 
 
 def test():

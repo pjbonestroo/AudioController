@@ -19,6 +19,16 @@ class ButtonsSettings(ElementWrapper):
         checkbox_mute = E('input').attr('type', 'checkbox')
         checkbox_auto_switch = E('input').attr('type', 'checkbox')
 
+        tr_connect = E('tr').append(
+            E('td').append(E('span').inner_html("Bron en bestemming(en) verbinden")),
+            E('td').attr('style', 'padding: 10px 0px 0px 10px;').append(
+                E('label').attr('class', 'switch').append(
+                    checkbox_connect,
+                    E('span').attr('class', 'slider round')
+                )
+            )
+        )
+
         tr_mute_sound = E('tr').append(
             E('td').append(E('span').inner_html("Geluid dempen")),
             E('td').attr('style', 'padding: 10px 0px 0px 10px;').append(
@@ -40,21 +50,16 @@ class ButtonsSettings(ElementWrapper):
         )
 
         self.append(E('tbody').append(
-            E('tr').append(
-                E('td').append(E('span').inner_html("Bron en bestemming(en) verbinden")),
-                E('td').attr('style', 'padding: 10px 0px 0px 10px;').append(
-                    E('label').attr('class', 'switch').append(
-                        checkbox_connect,
-                        E('span').attr('class', 'slider round')
-                    )
-                )
-            ),
+            tr_connect,
             tr_mute_sound,
             tr_auto_switch
         ))
 
         def set_inputs(settings):
             checkbox_connect.element.checked = settings['connect_source_destination']
+            tr_connect.element.style.display = 'none'
+            if settings['show_button_connect']:
+                tr_connect.element.style.display = ''
             # checkbox mute
             checkbox_mute.element.checked = settings['mute_sound']
             tr_mute_sound.element.style.display = 'none'

@@ -97,6 +97,15 @@ scp ./audio_controller.html pi@${PI_IP}:~/Desktop
 ```
 
 To install an update of the software it is usually enough to run the first command from above.
+Tip: instead of using the scp command, use rsync, and manually exclude files which were not updated.
+
+First test with dry-run and check rsync-result.txt:
+
+```
+rsync --dry-run -r -v --exclude="fontawesome*" --exclude="bootstrap*" ./audio_controller pi-west:~/AudioController > rsync-result.txt
+```
+
+And then for real by removing `--dry-run`
 
 
 ## 4. Create auto startup

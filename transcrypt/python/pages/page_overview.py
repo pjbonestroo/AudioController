@@ -16,7 +16,18 @@ class ButtonsSettings(ElementWrapper):
 
         checkbox_connect = E('input').attr('type', 'checkbox')
         self.checkbox_connect = checkbox_connect
+        checkbox_mute = E('input').attr('type', 'checkbox')
         checkbox_auto_switch = E('input').attr('type', 'checkbox')
+
+        tr_mute_sound = E('tr').append(
+            E('td').append(E('span').inner_html("Geluid dempen")),
+            E('td').attr('style', 'padding: 10px 0px 0px 10px;').append(
+                E('label').attr('class', 'switch').append(
+                    checkbox_mute,
+                    E('span').attr('class', 'slider round')
+                )
+            )
+        )
 
         tr_auto_switch = E('tr').append(
             E('td').append(E('span').inner_html("Automatisch bron kiezen")),
@@ -38,26 +49,36 @@ class ButtonsSettings(ElementWrapper):
                     )
                 )
             ),
+            tr_mute_sound,
             tr_auto_switch
         ))
 
         def set_inputs(settings):
             checkbox_connect.element.checked = settings['connect_source_destination']
+            # checkbox mute
+            checkbox_mute.element.checked = settings['mute_sound']
+            tr_mute_sound.element.style.display = 'none'
+            if settings['show_button_mute_sound']:
+                tr_mute_sound.element.style.display = ''
+            # checkbox auto switch
             checkbox_auto_switch.element.checked = settings['enable_auto_switch']
             tr_auto_switch.element.style.display = 'none'
             if settings['enable_option_auto_switch']:
                 tr_auto_switch.element.style.display = ''
+            
             self.sources_destinations.refresh()
 
         async def onchange(evt):
             settings = {
                 'connect_source_destination': checkbox_connect.element.checked,
+                'mute_sound': checkbox_mute.element.checked,
                 'enable_auto_switch': checkbox_auto_switch.element.checked,
             }
             r = await utils.post(utils.get_url('general/setSettings'), settings)
             set_inputs(r)
 
         checkbox_connect.element.onchange = onchange
+        checkbox_mute.element.onchange = onchange
         checkbox_auto_switch.element.onchange = onchange
 
         async def initialize():

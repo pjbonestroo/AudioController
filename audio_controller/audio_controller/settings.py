@@ -186,10 +186,12 @@ def upgrade(store: dict):
 
     if store['settings']['version'] == 7:
         store['settings']['version'] = 8
-        # same behaviour as before
-        store['settings']["show_button_connect"] = True
-        store['settings']["mute_sound"] = False
-        store['settings']["show_button_mute_sound"] = False
+        # use button mute_sound instead of enable/disable streams
+        store['settings']["show_button_mute_sound"] = True
+        store['settings']["show_button_connect"] = False
+        connected = store['settings']['connect_source_destination']
+        store['settings']["mute_sound"] = not connected
+        store['settings']['connect_source_destination'] = True
 
     #
     # future upgrades will be placed here

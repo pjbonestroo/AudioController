@@ -41,6 +41,8 @@ class Settings(AccordionItem):
         input_nr_out_ports = E('input').attr('class', 'form-control').attr('type', 'number')
         input_port_in_stream = E('input').attr('class', 'form-control').attr('type', 'text')
         input_port_out_stream = E('input').attr('class', 'form-control').attr('type', 'text')
+        show_button_connect = E('input').attr('class', 'form-control').attr('type', 'checkbox')
+        show_button_mute_sound = E('input').attr('class', 'form-control').attr('type', 'checkbox')
         input_auto_switch = E('input').attr('class', 'form-control').attr('type', 'checkbox')
         input_timeout = E('input').attr('class', 'form-control').attr('type', 'number')
         input_enable_psalmbord = E('input').attr('class', 'form-control').attr('type', 'checkbox')
@@ -70,6 +72,14 @@ class Settings(AccordionItem):
                 E('div').attr('class', '{}'.format(width_2)).append(input_port_out_stream)
             ),
             E('div').attr('class', 'form-group row').append(
+                E('label').attr('class', '{} col-form-label'.format(width_1)).inner_html("Toon knop 'Bron en bestemmingen verbinden'"),
+                E('div').attr('class', '{}'.format(width_2)).append(show_button_connect)
+            ),
+            E('div').attr('class', 'form-group row').append(
+                E('label').attr('class', '{} col-form-label'.format(width_1)).inner_html("Toon knop 'Geluid dempen'"),
+                E('div').attr('class', '{}'.format(width_2)).append(show_button_mute_sound)
+            ),
+            E('div').attr('class', 'form-group row').append(
                 E('label').attr('class', '{} col-form-label'.format(width_1)).inner_html("Inschakelen optie 'Automatisch schakelen'"),
                 E('div').attr('class', '{}'.format(width_2)).append(input_auto_switch)
             ),
@@ -94,8 +104,9 @@ class Settings(AccordionItem):
                 'nr_OUT_ports': input_nr_out_ports.element.value,
                 'port_IN_for_streams': input_port_in_stream.element.value,
                 'port_OUT_to_stream': input_port_out_stream.element.value,
+                'show_button_connect': show_button_connect.element.checked,
+                'show_button_mute_sound': show_button_mute_sound.element.checked,
                 'enable_option_auto_switch': input_auto_switch.element.checked,
-                # 'enable_auto_switch': False,
                 'timeout_auto_switch': input_timeout.element.value,
                 'enable_psalmbord': input_enable_psalmbord.element.checked,
                 'enable_logging': input_enable_logging.element.checked,
@@ -107,6 +118,8 @@ class Settings(AccordionItem):
             input_nr_out_ports.element.value = settings['nr_OUT_ports']
             input_port_in_stream.element.value = settings['port_IN_for_streams']
             input_port_out_stream.element.value = settings['port_OUT_to_stream']
+            show_button_connect.element.checked = settings['show_button_connect']
+            show_button_mute_sound.element.checked = settings['show_button_mute_sound']
             input_auto_switch.element.checked = settings['enable_option_auto_switch']
             input_timeout.element.value = settings['timeout_auto_switch']
             input_enable_psalmbord.element.checked = settings['enable_psalmbord']
@@ -129,6 +142,8 @@ class Settings(AccordionItem):
         input_nr_out_ports.element.onchange = onchange
         input_port_in_stream.element.onchange = onchange
         input_port_out_stream.element.onchange = onchange
+        show_button_connect.element.onchange = onchange
+        show_button_mute_sound.element.onchange = onchange
         input_auto_switch.element.onchange = onchange
         input_timeout.element.onchange = onchange
         input_enable_psalmbord.element.onchange = onchange

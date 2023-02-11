@@ -102,7 +102,7 @@ Tip: instead of using the scp command, use rsync, and manually exclude files whi
 First test with dry-run and check rsync-result.txt:
 
 ```
-rsync --dry-run -r -v --exclude="fontawesome*" --exclude="bootstrap*" ./audio_controller pi-west:~/AudioController > rsync-result.txt
+rsync --dry-run -r -v --exclude="fontawesome*" --exclude="bootstrap*" ./audio_controller pi-test:~/AudioController > rsync-result.txt
 ```
 
 And then for real by removing `--dry-run`

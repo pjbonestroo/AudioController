@@ -29,6 +29,10 @@ class ButtonsSettings(ElementWrapper):
             )
         )
 
+        class_mute = "fas fa-volume-mute"
+        class_loud = "fas fa-volume-up"
+        span_volume = E("span").attr("class", class_loud).attr("style", "padding: 10px; font-size: 30px;")
+
         tr_mute_sound = E('tr').append(
             E('td').append(E('span').inner_html("Geluid dempen")),
             E('td').attr('style', 'padding: 10px 0px 0px 10px;').append(
@@ -36,7 +40,8 @@ class ButtonsSettings(ElementWrapper):
                     checkbox_mute,
                     E('span').attr('class', 'slider round')
                 )
-            )
+            ),
+            E("td").append(span_volume)
         )
 
         tr_auto_switch = E('tr').append(
@@ -65,6 +70,10 @@ class ButtonsSettings(ElementWrapper):
             tr_mute_sound.element.style.display = 'none'
             if settings['show_button_mute_sound']:
                 tr_mute_sound.element.style.display = ''
+                if settings['mute_sound']:
+                    span_volume.attr("class", class_mute)
+                else:
+                    span_volume.attr("class", class_loud)
             # checkbox auto switch
             checkbox_auto_switch.element.checked = settings['enable_auto_switch']
             tr_auto_switch.element.style.display = 'none'

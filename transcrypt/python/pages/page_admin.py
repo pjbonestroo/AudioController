@@ -76,7 +76,7 @@ class Settings(AccordionItem):
                 E('div').attr('class', '{}'.format(width_2)).append(show_button_connect)
             ),
             E('div').attr('class', 'form-group row').append(
-                E('label').attr('class', '{} col-form-label'.format(width_1)).inner_html("Toon knop 'Geluid dempen'"),
+                E('label').attr('class', '{} col-form-label'.format(width_1)).inner_html("Toon knop 'Geluid aan'"),
                 E('div').attr('class', '{}'.format(width_2)).append(show_button_mute_sound)
             ),
             E('div').attr('class', 'form-group row').append(

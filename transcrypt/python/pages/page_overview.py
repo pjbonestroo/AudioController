@@ -16,7 +16,7 @@ class ButtonsSettings(ElementWrapper):
 
         checkbox_connect = E('input').attr('type', 'checkbox')
         self.checkbox_connect = checkbox_connect
-        checkbox_mute = E('input').attr('type', 'checkbox')
+        checkbox_sound_on = E('input').attr('type', 'checkbox')
         checkbox_auto_switch = E('input').attr('type', 'checkbox')
 
         tr_connect = E('tr').append(
@@ -33,11 +33,11 @@ class ButtonsSettings(ElementWrapper):
         class_loud = "fas fa-volume-up"
         span_volume = E("span").attr("class", class_loud).attr("style", "padding: 10px; font-size: 30px;")
 
-        tr_mute_sound = E('tr').append(
-            E('td').append(E('span').inner_html("Geluid dempen")),
+        tr_sound_on = E('tr').append(
+            E('td').append(E('span').inner_html("Geluid aan")),
             E('td').attr('style', 'padding: 10px 0px 0px 10px;').append(
                 E('label').attr('class', 'switch').append(
-                    checkbox_mute,
+                    checkbox_sound_on,
                     E('span').attr('class', 'slider round')
                 )
             ),
@@ -56,7 +56,7 @@ class ButtonsSettings(ElementWrapper):
 
         self.append(E('tbody').append(
             tr_connect,
-            tr_mute_sound,
+            tr_sound_on,
             tr_auto_switch
         ))
 
@@ -65,11 +65,11 @@ class ButtonsSettings(ElementWrapper):
             tr_connect.element.style.display = 'none'
             if settings['show_button_connect']:
                 tr_connect.element.style.display = ''
-            # checkbox mute
-            checkbox_mute.element.checked = settings['mute_sound']
-            tr_mute_sound.element.style.display = 'none'
+            # checkbox sound on
+            checkbox_sound_on.element.checked = not settings['mute_sound']
+            tr_sound_on.element.style.display = 'none'
             if settings['show_button_mute_sound']:
-                tr_mute_sound.element.style.display = ''
+                tr_sound_on.element.style.display = ''
                 if settings['mute_sound']:
                     span_volume.attr("class", class_mute)
                 else:
@@ -85,14 +85,14 @@ class ButtonsSettings(ElementWrapper):
         async def onchange(evt):
             settings = {
                 'connect_source_destination': checkbox_connect.element.checked,
-                'mute_sound': checkbox_mute.element.checked,
+                'mute_sound': not checkbox_sound_on.element.checked,
                 'enable_auto_switch': checkbox_auto_switch.element.checked,
             }
             r = await utils.post(utils.get_url('general/setSettings'), settings)
             set_inputs(r)
 
         checkbox_connect.element.onchange = onchange
-        checkbox_mute.element.onchange = onchange
+        checkbox_sound_on.element.onchange = onchange
         checkbox_auto_switch.element.onchange = onchange
 
         async def initialize():

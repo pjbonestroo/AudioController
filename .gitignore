@@ -16,3 +16,4 @@ __pycache__
 *.egg-info
 .env
 .git.tar
+rsync-result.txt

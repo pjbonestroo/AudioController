@@ -31,7 +31,7 @@ class ButtonsSettings(ElementWrapper):
 
         class_mute = "fas fa-volume-mute"
         class_loud = "fas fa-volume-up"
-        span_volume = E("span").attr("class", class_loud).attr("style", "padding: 10px; font-size: 30px;")
+        span_volume = E("span").attr("class", class_loud).attr("style", "padding: 10px; font-size: 24px;")
 
         tr_sound_on = E('tr').append(
             E('td').append(E('span').inner_html("Geluid aan")),

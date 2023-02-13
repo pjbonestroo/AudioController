@@ -176,7 +176,7 @@ def upgrade(store: dict):
     if store['settings']['version'] == 5:
         store['settings']['version'] = 6
         store['settings']['enable_psalmbord'] = False
-        store['psalmbord'] = default_psalmbord()
+        store['psalmbord'] = asdict(default_psalmbord())
 
     if store['settings']['version'] == 6:
         store['settings']['version'] = 7

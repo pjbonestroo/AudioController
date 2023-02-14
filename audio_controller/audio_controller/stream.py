@@ -1,5 +1,4 @@
 """ Read audio stream, and play it, using installed vlc player (libvlc) """
-# python standard lib
 import sys
 import os
 import time
@@ -9,7 +8,8 @@ from subprocess import Popen, PIPE
 from multiprocessing import Process, Queue
 import logging
 
-# externals
+from audio_controller import envvars
+from audio_controller import soundcard
 
 main_logger = logging.getLogger("main")
 
@@ -18,26 +18,31 @@ def print_info(msg):
     print(msg)
     main_logger.info(msg)
 
+
 #
 # Using ffmpeg to play url stream
 #
 
 
-def execute_ffmpeg(command: str, queue: Queue):
-    """ Execute ffmpeg command, until queue gets message. Retry when command exits. """
+def execute_ffmpeg(command: str, queue: Queue, testing=False):
+    """Execute ffmpeg command, until queue gets message. Retry when command exits."""
     # 'exec' is needed to be able to easily stop/terminate the process
-    cmd = f'exec {command} >/dev/null 2>&1'
+    cmd = f"exec {command} >/dev/null 2>&1"
+    sleeptime = 3
+    if testing:  # for testing, give full output:
+        cmd = f"exec {command}"
+        sleeptime = 10
     proc = None
 
     def create_process():
         nonlocal proc
-        print_info(f"execute_ffmpeg create_process {command}")
+        print_info(f"execute_ffmpeg create_process: {command}")
         proc = Popen(args=cmd, stdin=None, stdout=None, stderr=None, cwd=None, bufsize=0, shell=True)
 
     create_process()
 
     def stop():
-        print_info(f"execute_ffmpeg stop {command}")
+        print_info(f"execute_ffmpeg stop: {command}")
         proc.terminate()
         proc.wait()
 
@@ -55,16 +60,23 @@ def execute_ffmpeg(command: str, queue: Queue):
             # check if process is stopped (by accident)
             is_running = proc.poll() is None
             if not is_running:
-                print_info(f"execute_ffmpeg stopped unexpectedly {command}")
+                print_info(f"execute_ffmpeg stopped unexpectedly: {command}")
                 create_process()
-                time.sleep(3)  # do not try to create process too many times
+                time.sleep(sleeptime)  # do not try to create process too many times
 
 
-class FfmpegProcess():
-
-    def __init__(self, cmd):
+class FfmpegProcess:
+    def __init__(self, cmd, testing=False):
         self.queue = Queue()
-        self.process = Process(target=execute_ffmpeg, args=(cmd, self.queue,), daemon=True)
+        self.process = Process(
+            target=execute_ffmpeg,
+            args=(
+                cmd,
+                self.queue,
+                testing,
+            ),
+            daemon=True,
+        )
         self.process.start()
         self.stopped = False
 
@@ -81,32 +93,169 @@ class FfmpegProcess():
         self.stop()
 
 
-def play_process(url):
-    """ Create and return process to read audio from url and send to analog output"""
-    return FfmpegProcess(f'ffmpeg -i {url} -f alsa default')
+class ReadFromUrl:
+    """
+    Read from external url and send to soundcard
+    """
+
+    def __init__(self) -> None:
+        self.process_play = ()  # tuple (url, FfmpegProcess)
+
+    def update_url(self, url):
+        # stop
+        if self.process_play and self.process_play[0] != url:
+            self.process_play[1].stop()
+            self.process_play = ()
+
+        # start
+        if not self.process_play and url is not None:
+            self.process_play = (url, self._run(url))
+
+    def _run(self, url):
+        """Create and return process to read audio from url and send to default soundcard"""
+        format_ = "-f alsa"
+        output = soundcard.get_real_play_device()
+        return FfmpegProcess(f"ffmpeg -i {url} {format_} {output}", testing=False)
 
 
-def send_process(urls: List[str]):
-    """ Create and return process to read audio from analog input and send to (icecast?) urls """
-    # input = "-f alsa -i hw:0"  # default input
-    input = "-f alsa -i hw:CARD=CODEC,DEV=0"  # usb-sound-card input: run command 'arecord -L' to see a full list of possibilities
-    outputs = []
-    for url in urls:
+class SendToUrlsSimple:
+    """
+    Read from soundcard and send to external urls, using one FfmpegProcess
+    """
+
+    def __init__(self) -> None:
+        self.process_send = ()  # tuple (urls, FfmpegProcess)
+
+    def update_urls(self, urls):
+        # stop
+        urls = sorted(urls)
+        if self.process_send and self.process_send[0] != urls:
+            self.process_send[1].stop()
+            self.process_send = ()
+
+        # start
+        if not self.process_send and len(urls) > 0:
+            self.process_send = (urls, self.get_send_process(urls))
+
+    def get_send_process(self, urls: "list[str]"):
+        format_ = "-f alsa"
+        input_device = soundcard.get_real_record_device()
+        input = f"{format_} -i {input_device}"
+        outputs = []
+        for url in urls:
+            url_splitted = url.split(";")
+            url = url_splitted[0]
+            if len(url_splitted) > 1 and len(url_splitted[1]) > 0:
+                bitrate = url_splitted[1]
+            else:
+                bitrate = "64K"
+            content_type = "-content_type audio/mpeg -f mp3"
+            bitrate_ = f"-b:a {bitrate} -minrate {bitrate} -maxrate {bitrate} -bufsize {bitrate}"
+            output = f'{content_type} {bitrate_} "{url}"'
+            outputs.append(output)
+        outputs = " ".join(outputs)
+        cmd = f"ffmpeg {input} {outputs}"
+        return FfmpegProcess(cmd)
+
+
+class SendToUrls:
+    """
+    Read with one process from soundcard,
+    duplicate this to multiple virtual soundcards,
+    and send to external urls with separate Ffmpeg processes.
+    """
+
+    def __init__(self) -> None:
+        self.process_read: FfmpegProcess = None
+        self.process_send = {}  # {url: (input_device, FfmpegProcess)}
+        # WARNING if user applies same url to multiple destinations,
+        # only one process will start, user sees 2 activated,
+        # and process is stopped if user deactivates only 1
+        self.urls = []
+
+    def update_urls(self, urls):
+        # stop
+        self.urls = sorted(urls)
+        self.start_stop_read()
+        self.start_stop_send()
+
+    def start_stop_read(self):
+        if self.process_read is None and self.urls:
+            self.process_read = self.create_process_read()
+        elif self.process_read is not None and not self.urls:
+            self.process_read.stop()
+            self.process_read = None
+
+    def create_process_read(self):
+        """
+        Read from real soundcard and play on multiple virtual soundcard subdevices
+        """
+        input_device = soundcard.get_real_record_device()
+        format_ = "-f alsa"
+        input = f"{format_} -i {input_device}"
+        output_devices = soundcard.get_virtual_play_devices()
+        outputs = [f"-f alsa {output}" for output in output_devices]
+        outputs = " ".join(outputs)
+        cmd = f"ffmpeg {input} {outputs}"
+        return FfmpegProcess(cmd)
+
+    def start_stop_send(self):
+        """
+        Read from virtual soundcards and send to external url
+        """
+        input_devices = soundcard.get_virtual_record_devices()
+
+        # stop processes for urls which are not in self.urls
+        for url in list(self.process_send.keys()):
+            if url not in self.urls:
+                self.process_send[url][1].stop()
+                del self.process_send[url]
+
+        available_devices = []
+        for device in input_devices:
+            for input_device, process in self.process_send.values():
+                if device == input_device:
+                    break  # not available
+            else:
+                available_devices.append(device)
+
+        # start processes for urls which are not started yet
+        for url in self.urls:
+            if url not in self.process_send:
+                if available_devices:
+                    input_device = available_devices.pop(0)
+                    self.process_send[url] = (input_device, self.get_send_process(input_device, url))
+                else:
+                    pass  # TODO log warning: too many url destinations specified, max = ...
+
+    def get_send_process(self, input_device, url):
+        format_ = "-f alsa"
+        input = f"{format_} -i {input_device}"
         url_splitted = url.split(";")
         url = url_splitted[0]
         if len(url_splitted) > 1 and len(url_splitted[1]) > 0:
             bitrate = url_splitted[1]
         else:
-            bitrate = '64K'
+            bitrate = "64K"
         content_type = "-content_type audio/mpeg -f mp3"
         bitrate_ = f"-b:a {bitrate} -minrate {bitrate} -maxrate {bitrate} -bufsize {bitrate}"
-        outputs.append(f'{content_type} {bitrate_} "{url}"')
-    outputs = " ".join(outputs)
-    cmd = f'ffmpeg {input} {outputs}'
-    return FfmpegProcess(cmd)
+        output = f'{content_type} {bitrate_} "{url}"'
+        cmd = f"ffmpeg {input} {output}"
+        return FfmpegProcess(cmd)
 
 
-class TestUrl():
+def get_url_reader() -> ReadFromUrl:
+    return ReadFromUrl()
+
+
+def get_url_sender() -> SendToUrls:
+    if "virtual_card" in soundcard.get_soundcard_info():
+        return SendToUrls()
+    else:
+        return SendToUrlsSimple()
+
+
+class TestUrl:
     ro1 = "http://ro1.reformatorischeomroep.nl:8003/live"
     ro1_s = "https://radio1.reformatorischeomroep.nl/live.m3u"  # werkt niet
     ro2 = "http://ro2.reformatorischeomroep.nl:8020/live"
@@ -117,21 +266,22 @@ class TestUrl():
 
 
 def test_ffmpeg():
-    """ stream to icecast """
+    """stream to icecast"""
     from decouple import config
+
     input_url = TestUrl.ro1
     password = config("icecast_password")
     icecast_url = f"icecast://source:{password}@173.249.6.236:8000/babyfoon"
     content_type = "-content_type audio/mpeg -f mp3"
     bitrate = "-b:a 64K -minrate 64K -maxrate 64K -bufsize 64K"
     # play on standard out:
-    #cmd = f'ffmpeg -i {input_url} -f alsa default'
+    # cmd = f'ffmpeg -i {input_url} -f alsa default'
     # send input url to icecast:
-    #cmd = f'ffmpeg -i {input_url} {content_type} {bitrate} "{icecast_url}"'
+    # cmd = f'ffmpeg -i {input_url} {content_type} {bitrate} "{icecast_url}"'
     # send recording to icecast:
     cmd = f'ffmpeg -f alsa -i hw:0 {content_type} {bitrate} "{icecast_url}"'
     print(cmd)
-    #with FfmpegProcess(cmd):
+    # with FfmpegProcess(cmd):
     #    while True:
     #        time.sleep(30)
 
@@ -144,7 +294,7 @@ def test():
     sys.exit(0)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test_ffmpeg()
 
 

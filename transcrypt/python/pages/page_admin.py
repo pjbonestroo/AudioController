@@ -337,10 +337,14 @@ class TestDebug(AccordionItem):
         self.button_reboot = E('button').attr('class', 'btn btn-primary btn-sm').inner_html("Herstarten")
         self.button_shutdown = E('button').attr('class', 'btn btn-primary btn-sm').inner_html("Afsluiten")
         self.button_show_ip = E('button').attr('class', 'btn btn-primary btn-sm').inner_html("Toon IP adres")
+        self.button_show_soundcards = E('button').attr('class', 'btn btn-primary btn-sm').inner_html("Toon geluidskaarten")
         self.button_show_routes = E('button').attr('class', 'btn btn-primary btn-sm').inner_html("Toon ITEC routes")
         self.button_download_log = E('button').attr('class', 'btn btn-primary btn-sm').inner_html("Download log")
         self.button_test_gpio = E('button').attr('class', 'btn btn-primary btn-sm').inner_html("Test GPIO")
-        buttons = [self.button_reboot, self.button_shutdown, self.button_show_ip, self.button_show_routes, self.button_download_log, self.button_test_gpio]
+        buttons = [
+            self.button_reboot, self.button_shutdown, self.button_show_ip, 
+            self.button_show_soundcards, self.button_show_routes, self.button_download_log, 
+            self.button_test_gpio]
 
         for b in buttons:
             b.attr('style', 'margin-right: 5px;')
@@ -348,6 +352,7 @@ class TestDebug(AccordionItem):
         self.button_reboot.element.onclick = self.reboot
         self.button_shutdown.element.onclick = self.shutdown
         self.button_show_ip.element.onclick = self.show_ip
+        self.button_show_soundcards.element.onclick = self.show_soundcards
         self.button_show_routes.element.onclick = self.show_routes
         self.button_download_log.element.onclick = self.download_log
         self.button_test_gpio.element.onclick = self.test_gpio
@@ -379,6 +384,13 @@ class TestDebug(AccordionItem):
         console.log(txt)
         self.div_info.inner_html(txt)
         self.button_show_ip.enable()
+
+    async def show_soundcards(self, evt):
+        self.button_show_soundcards.disable()
+        txt = await utils.post(utils.get_url('general/soundcards'), {}, False)
+        console.log(txt)
+        self.div_info.inner_html(txt)
+        self.button_show_soundcards.enable()
 
     async def show_routes(self, evt):
         self.button_show_routes.disable()

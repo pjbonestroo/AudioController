@@ -277,6 +277,10 @@ class General(BaseHandler):
             self.write(os.popen('ifconfig').read())
             return
 
+        elif action == 'soundcards':
+            self.write(os.popen('arecord -l').read())
+            return
+
         elif action == 'reboot':
             os.system("shutdown -r now")
             return

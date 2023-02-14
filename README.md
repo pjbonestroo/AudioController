@@ -71,6 +71,7 @@ python -m pip install --upgrade pip
 python -m pip install pyserial
 python -m pip install tornado
 python -m pip install python-socketio
+python -m pip install python-decouple
 ```
 
 Optional:
@@ -102,7 +103,7 @@ Tip: instead of using the scp command, use rsync, and manually exclude files whi
 First test with dry-run and check rsync-result.txt:
 
 ```
-rsync --dry-run -r -v --exclude="fontawesome*" --exclude="bootstrap*" ./audio_controller pi-test:~/AudioController > rsync-result.txt
+rsync --dry-run -r -v --exclude="fontawesome*" --exclude="bootstrap*" --exclude="*.pyc" ./audio_controller pi-test:~/AudioController > rsync-result.txt
 ```
 
 And then for real by removing `--dry-run`
@@ -163,6 +164,12 @@ For example the full file content becomes:
 
 ## 5. Use external USB sound card
 
+Check if card 1 is indeed installed and can play and record:
+```
+aplay -l
+arecord -l 
+```
+
 Change number of default card from 0 to 1 in alsa.conf:
 ```
 sudo nano /usr/share/alsa/alsa.conf
@@ -177,7 +184,46 @@ And play test sound (connect headphone to external device):
 speaker-test -c2
 ```
 
-## 6. Enable remote login
+## 6. Create virtual soundcards
+
+SKIP THIS CHAPTER. IT IS USED FOR REFERENCY ONLY.
+THE NEWEST SOFTWARE DOES THIS AUTOMATICALLY.
+
+First make sure that card 1 is installed: `arecord -l`
+This is the real soundcard.
+
+To manually load virtual soundcards, for testing purpose,
+you can do this:
+
+Load snd-aloop module to create virtual soundcards.
+```
+sudo modprobe snd-aloop
+```
+
+Check that extra card is added: `arecord -l` (or `aplay -l`)
+At restart, this card will be removed, again.
+
+To add the soundcards permantently at startup, do the following.
+WARNING: DON'T TO THIS, CARD NR 1 WILL NOT REFER TO USB SOUND CARD ANYMORE.
+THIS WILL DISABLE CORRECT FUNCTIONING.
+
+Create file `/etc/modprobe.d/alsa-loopback.conf` and add line:
+```
+sudo nano /etc/modprobe.d/alsa-loopback.conf
+# option snd-aloop enable=1,1,1,1 index=0,1,2,3
+option snd-aloop enable=1 index=0
+```
+
+Create file and add line:
+```
+sudo nano /etc/modules-load.d/snd-aloop.conf
+snd_aloop
+```
+
+Restart pi and check that an extra card is installed: `aplay -l`
+
+
+## 7. Enable remote login
 
 ```
 ssh pi@${PI_IP}

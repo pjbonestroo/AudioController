@@ -281,7 +281,7 @@ def set_binary(obj):
 #
 
 
-def get_port_nr(port: str, prefix="IN"):
+def get_port_nr(port: str, prefix="IN") -> int:
     """ Get number of IN or OUT port, or None if 'port' is not a valid value. """
     # compare with maximum port nr according current settings
     max_nr = settings.nr_IN_ports if prefix == "IN" else settings.nr_OUT_ports

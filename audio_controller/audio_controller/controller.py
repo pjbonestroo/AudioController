@@ -27,88 +27,62 @@ def get_IN_port(source: Source) -> int:
 
 
 class Config:
-    """ Holds configuration, which consists of connections from input to output ports.
+    """ 
+    Holds configuration, which consists of connections from input to output ports.
     """
 
     def __init__(self):
         self.current_levels = {}  # key = source-id, value = dict (keys: 'level', 'threshold', and 'prio')
-        self.process_play = ()  # tuple (url, FfmpegProcess)
-        self.process_send = ()  # tuple (urls, FfmpegProcess)
+        self.send_to_urls = stream.get_url_sender()
+        self.read_from_url = stream.get_url_reader()
+        self.sources = None
+        self.destinations = None
 
-    def set_routes(self, sources: List[Source], destinations: List[Destination]):
-        """ 
-        Set routes on ITEC to route audio from selected sources to selected destinations.
-        Sources and destinations must all be enabled.
-        """
+    def route_all_to_null(self):
+        """ route all IN ports of itec to null, meaning no sound will go through """
+        ports = [get_IN_port(s) for s in self.sources]
+        for p in ports:
+            itec.set_route(p, [])
 
-        def route_all_to_null():
-            """ route all IN ports of itec to null, meaning no sound will go through """
-            ports = [get_IN_port(s) for s in sources]
-            for p in ports:
+    def stop_all(self):
+        """ route all IN ports of itect to null, and stop reading from and sending to urls """
+        self.route_all_to_null()
+        self.read_from_url.update_url(None)
+        self.send_to_urls.update_urls([])
+
+    def get_selected_source(self):
+        for source in self.sources:
+            if source.selected:
+                return source
+        return None
+
+    def disable_unselected_sources(self, selected_port):
+        # disable all IN ports which are not selected
+        ports = [get_IN_port(s) for s in self.sources if not s.selected]
+        for p in ports:
+            if p != selected_port:
                 itec.set_route(p, [])
 
-        def stop_start_play(url: str):
-            """ Stop and start playing url on analog output, if needed, based on the given url (which can be None) """
-            # stop
-            if self.process_play and self.process_play[0] != url:
-                self.process_play[1].stop()
-                self.process_play = ()
-
-            # start
-            if not self.process_play and url is not None:
-                self.process_play = (url, stream.play_process(url))
-
-        def stop_start_send(urls: List[str]):
-            """ Stop and start process sending analog output to urls, if needed, based on the given urls """
-            # stop
-            urls = sorted(urls)
-            if self.process_send and self.process_send[0] != urls:
-                self.process_send[1].stop()
-                self.process_send = ()
-
-            # start
-            if not self.process_send and len(urls) > 0:
-                self.process_send = (urls, stream.send_process(urls))
-
-        def stop_all():
-            route_all_to_null()
-            stop_start_play(None)
-            stop_start_send([])
-
-        if not settings.settings.connect_source_destination or not destinations:
-            stop_all()
-            return
-
-        selected_source = None
-        for source in sources:
-            if source.selected:
-                selected_source = source
-                break
-
-        if selected_source is None:  # nothing selected
-            stop_all()
-            return
-
+    def get_input(self, selected_source):
         # determine all ports and urls for in and out
         port_in: int = None
         url_in: str = None
-        urls_out: List[str] = []
-        ports_out: List[int] = []
-
+        
         port_in = settings.get_IN_port(selected_source.port_url)
         if port_in is None:
             # selected source is not a port, but an url
             port_in = settings.get_IN_port(settings.settings.port_IN_for_streams)
             url_in = selected_source.port_url
+        
+        return port_in, url_in
 
-        # disable all IN ports which are not selected
-        ports = [get_IN_port(s) for s in sources if not s.selected]
-        for p in ports:
-            if p != port_in:
-                itec.set_route(p, [])
-
-        # select all OUT ports which must get route, and select urls to which audio must be send
-        for d in destinations:
+    def get_outputs(self):
+        """
+        Select all OUT ports which must get route (from input), and select urls to which audio must be send.
+        """
+        ports_out: List[int] = []
+        urls_out: List[str] = []
+        for d in self.destinations:
             if d.selected:
                 port_out = settings.get_OUT_port(d.port_url_file)
                 if port_out is None:
@@ -117,17 +91,41 @@ class Config:
                         urls_out.append(d.port_url_file)
                 if port_out is not None and port_out not in ports_out:
                     ports_out.append(port_out)
+        return ports_out, urls_out
 
-        # route all ITEC ports
+    def update_sources_destinations(self, sources: List[Source], destinations: List[Destination]):
+        """ 
+        Set routes on ITEC to route audio from selected sources to selected destinations.
+        Sources and destinations must all be enabled.
+        """
+        self.sources = sources
+        self.destinations = destinations
+
+        if not settings.settings.connect_source_destination or not destinations:
+            self.stop_all()
+            return
+
+        selected_source = self.get_selected_source()
+
+        if selected_source is None:  # nothing selected
+            self.stop_all()
+            return None
+
+        port_in, url_in = self.get_input(selected_source)
+
+        self.disable_unselected_sources(port_in)
+
+        ports_out, urls_out = self.get_outputs()
+
         if settings.settings.mute_sound:
             # Muting only affects the itec ports.
-            # The url streams will be kept intact, see below
-            route_all_to_null()
+            # The url streams will be kept intact
+            self.route_all_to_null()
         else:
             itec.set_route(port_in, ports_out)
         # start or stop playing url stream
-        stop_start_play(url_in)
-        stop_start_send(urls_out)
+        self.read_from_url.update_url(url_in)
+        self.send_to_urls.update_urls(urls_out)
 
 
 config = Config()
@@ -137,7 +135,7 @@ def set_routes():
     """ Setup routes according settings (not taking into account setting auto_switch) """
     enabled_sources = [s for s in settings.sources if s.enabled]
     enabled_destinations = [d for d in settings.destinations if d.enabled]
-    config.set_routes(enabled_sources, enabled_destinations)
+    config.update_sources_destinations(enabled_sources, enabled_destinations)
     config.current_levels.clear()
 
 

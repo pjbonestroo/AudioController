@@ -1,26 +1,31 @@
-__pragma__('alias', 'S', '$')  # to use jQuery library with 'S' instead of '$'
+__pragma__("alias", "S", "$")  # to use jQuery library with 'S' instead of '$'
 import utils
 from elements import Element, element, ElementWrapper, get_Element, get_elements, get_element
 from pages import page_admin, page_overview
 from layout import home, main, set_title
 from paged_list import PagedList
 from dialogs import dialog_confirm
+
 E = Element
 
 
 class AccordionItem(ElementWrapper):
-
     def __init__(self, heading_title):
-        super().__init__(element('div'))
-        self.arrow_down = E('span').attr('class', 'fas fa-chevron-down')
-        self.arrow_up = E('span').attr('class', 'fas fa-chevron-up')
+        super().__init__(element("div"))
+        self.arrow_down = E("span").attr("class", "fas fa-chevron-down")
+        self.arrow_up = E("span").attr("class", "fas fa-chevron-up")
         self.arrow_up.element.style.display = "none"
-        self.heading = E('div').attr('class', 'accordion_head bg-dark text-white').append(
-            self.arrow_down, self.arrow_up,
-            E('span').inner_html(" "),
-            E('span').inner_html(heading_title),
+        self.heading = (
+            E("div")
+            .attr("class", "accordion_head bg-dark text-white")
+            .append(
+                self.arrow_down,
+                self.arrow_up,
+                E("span").inner_html(" "),
+                E("span").inner_html(heading_title),
+            )
         )
-        self.body = E('div').attr('class', 'accordion_body')
+        self.body = E("div").attr("class", "accordion_body")
         self.body.element.style.display = "none"
         self.append(self.heading, self.body)
         self.heading.element.onclick = self.show_hide
@@ -33,108 +38,137 @@ class AccordionItem(ElementWrapper):
 
 
 class Settings(AccordionItem):
-
     def __init__(self):
-        super().__init__('Instellingen')
-        input_title = E('input').attr('class', 'form-control').attr('type', 'text')
-        input_nr_in_ports = E('input').attr('class', 'form-control').attr('type', 'number')
-        input_nr_out_ports = E('input').attr('class', 'form-control').attr('type', 'number')
-        input_port_in_stream = E('input').attr('class', 'form-control').attr('type', 'text')
-        input_port_out_stream = E('input').attr('class', 'form-control').attr('type', 'text')
-        show_button_connect = E('input').attr('class', 'form-control').attr('type', 'checkbox')
-        show_button_mute_sound = E('input').attr('class', 'form-control').attr('type', 'checkbox')
-        input_auto_switch = E('input').attr('class', 'form-control').attr('type', 'checkbox')
-        input_timeout = E('input').attr('class', 'form-control').attr('type', 'number')
-        input_enable_psalmbord = E('input').attr('class', 'form-control').attr('type', 'checkbox')
-        input_enable_logging = E('input').attr('class', 'form-control').attr('type', 'checkbox')
+        super().__init__("Instellingen")
+        input_title = E("input").attr("class", "form-control").attr("type", "text")
+        input_nr_in_ports = E("input").attr("class", "form-control").attr("type", "number")
+        input_nr_out_ports = E("input").attr("class", "form-control").attr("type", "number")
+        input_port_in_stream = E("input").attr("class", "form-control").attr("type", "text")
+        input_port_out_stream = E("input").attr("class", "form-control").attr("type", "text")
+        show_button_connect = E("input").attr("class", "form-control").attr("type", "checkbox")
+        show_button_mute_sound = E("input").attr("class", "form-control").attr("type", "checkbox")
+        input_auto_switch = E("input").attr("class", "form-control").attr("type", "checkbox")
+        input_timeout = E("input").attr("class", "form-control").attr("type", "number")
+        input_enable_psalmbord = E("input").attr("class", "form-control").attr("type", "checkbox")
+        input_enable_logging = E("input").attr("class", "form-control").attr("type", "checkbox")
 
-        width_1 = 'col-sm-5'
-        width_2 = 'col-sm-3'
+        width_1 = "col-sm-5"
+        width_2 = "col-sm-3"
         self.body.append(
-            E('div').attr('class', 'form-group row').append(
-                E('label').attr('class', '{} col-form-label'.format(width_1)).inner_html("Titel"),
-                E('div').attr('class', '{}'.format(width_2)).append(input_title)
+            E("div")
+            .attr("class", "form-group row")
+            .append(
+                E("label").attr("class", "{} col-form-label".format(width_1)).inner_html("Titel"),
+                E("div").attr("class", "{}".format(width_2)).append(input_title),
             ),
-            E('div').attr('class', 'form-group row').append(
-                E('label').attr('class', '{} col-form-label'.format(width_1)).inner_html("Aantal IN poorten"),
-                E('div').attr('class', '{}'.format(width_2)).append(input_nr_in_ports)
+            E("div")
+            .attr("class", "form-group row")
+            .append(
+                E("label").attr("class", "{} col-form-label".format(width_1)).inner_html("Aantal IN poorten"),
+                E("div").attr("class", "{}".format(width_2)).append(input_nr_in_ports),
             ),
-            E('div').attr('class', 'form-group row').append(
-                E('label').attr('class', '{} col-form-label'.format(width_1)).inner_html("Aantal OUT poorten"),
-                E('div').attr('class', '{}'.format(width_2)).append(input_nr_out_ports)
+            E("div")
+            .attr("class", "form-group row")
+            .append(
+                E("label").attr("class", "{} col-form-label".format(width_1)).inner_html("Aantal OUT poorten"),
+                E("div").attr("class", "{}".format(width_2)).append(input_nr_out_ports),
             ),
-            E('div').attr('class', 'form-group row').append(
-                E('label').attr('class', '{} col-form-label'.format(width_1)).inner_html("IN poort voor URL streams"),
-                E('div').attr('class', '{}'.format(width_2)).append(input_port_in_stream)
+            E("div")
+            .attr("class", "form-group row")
+            .append(
+                E("label").attr("class", "{} col-form-label".format(width_1)).inner_html("IN poort voor URL streams"),
+                E("div").attr("class", "{}".format(width_2)).append(input_port_in_stream),
             ),
-            E('div').attr('class', 'form-group row').append(
-                E('label').attr('class', '{} col-form-label'.format(width_1)).inner_html("OUT poort voor URL stream"),
-                E('div').attr('class', '{}'.format(width_2)).append(input_port_out_stream)
+            E("div")
+            .attr("class", "form-group row")
+            .append(
+                E("label").attr("class", "{} col-form-label".format(width_1)).inner_html("OUT poort voor URL stream"),
+                E("div").attr("class", "{}".format(width_2)).append(input_port_out_stream),
             ),
-            E('div').attr('class', 'form-group row').append(
-                E('label').attr('class', '{} col-form-label'.format(width_1)).inner_html("Toon knop 'Bron en bestemmingen verbinden'"),
-                E('div').attr('class', '{}'.format(width_2)).append(show_button_connect)
+            E("div")
+            .attr("class", "form-group row")
+            .append(
+                E("label")
+                .attr("class", "{} col-form-label".format(width_1))
+                .inner_html("Toon knop 'Bron en bestemmingen verbinden'"),
+                E("div").attr("class", "{}".format(width_2)).append(show_button_connect),
             ),
-            E('div').attr('class', 'form-group row').append(
-                E('label').attr('class', '{} col-form-label'.format(width_1)).inner_html("Toon knop 'Geluid aan'"),
-                E('div').attr('class', '{}'.format(width_2)).append(show_button_mute_sound)
+            E("div")
+            .attr("class", "form-group row")
+            .append(
+                E("label").attr("class", "{} col-form-label".format(width_1)).inner_html("Toon knop 'Geluid aan'"),
+                E("div").attr("class", "{}".format(width_2)).append(show_button_mute_sound),
             ),
-            E('div').attr('class', 'form-group row').append(
-                E('label').attr('class', '{} col-form-label'.format(width_1)).inner_html("Inschakelen optie 'Automatisch schakelen'"),
-                E('div').attr('class', '{}'.format(width_2)).append(input_auto_switch)
+            E("div")
+            .attr("class", "form-group row")
+            .append(
+                E("label")
+                .attr("class", "{} col-form-label".format(width_1))
+                .inner_html("Inschakelen optie 'Automatisch schakelen'"),
+                E("div").attr("class", "{}".format(width_2)).append(input_auto_switch),
             ),
-            E('div').attr('class', 'form-group row').append(
-                E('label').attr('class', '{} col-form-label'.format(width_1)).inner_html("Wachttijd (minuten) voor 'Automatisch schakelen'"),
-                E('div').attr('class', '{}'.format(width_2)).append(input_timeout)
+            E("div")
+            .attr("class", "form-group row")
+            .append(
+                E("label")
+                .attr("class", "{} col-form-label".format(width_1))
+                .inner_html("Wachttijd (minuten) voor 'Automatisch schakelen'"),
+                E("div").attr("class", "{}".format(width_2)).append(input_timeout),
             ),
-            E('div').attr('class', 'form-group row').append(
-                E('label').attr('class', '{} col-form-label'.format(width_1)).inner_html("Psalmbord functie inschakelen"),
-                E('div').attr('class', '{}'.format(width_2)).append(input_enable_psalmbord)
+            E("div")
+            .attr("class", "form-group row")
+            .append(
+                E("label")
+                .attr("class", "{} col-form-label".format(width_1))
+                .inner_html("Psalmbord functie inschakelen"),
+                E("div").attr("class", "{}".format(width_2)).append(input_enable_psalmbord),
             ),
-            E('div').attr('class', 'form-group row').append(
-                E('label').attr('class', '{} col-form-label'.format(width_1)).inner_html("Logging inschakelen"),
-                E('div').attr('class', '{}'.format(width_2)).append(input_enable_logging)
+            E("div")
+            .attr("class", "form-group row")
+            .append(
+                E("label").attr("class", "{} col-form-label".format(width_1)).inner_html("Logging inschakelen"),
+                E("div").attr("class", "{}".format(width_2)).append(input_enable_logging),
             ),
         )
 
         def get_inputs() -> dict:
             return {
-                'title': input_title.element.value,
-                'nr_IN_ports': input_nr_in_ports.element.value,
-                'nr_OUT_ports': input_nr_out_ports.element.value,
-                'port_IN_for_streams': input_port_in_stream.element.value,
-                'port_OUT_to_stream': input_port_out_stream.element.value,
-                'show_button_connect': show_button_connect.element.checked,
-                'show_button_mute_sound': show_button_mute_sound.element.checked,
-                'enable_option_auto_switch': input_auto_switch.element.checked,
-                'timeout_auto_switch': input_timeout.element.value,
-                'enable_psalmbord': input_enable_psalmbord.element.checked,
-                'enable_logging': input_enable_logging.element.checked,
+                "title": input_title.element.value,
+                "nr_IN_ports": input_nr_in_ports.element.value,
+                "nr_OUT_ports": input_nr_out_ports.element.value,
+                "port_IN_for_streams": input_port_in_stream.element.value,
+                "port_OUT_to_stream": input_port_out_stream.element.value,
+                "show_button_connect": show_button_connect.element.checked,
+                "show_button_mute_sound": show_button_mute_sound.element.checked,
+                "enable_option_auto_switch": input_auto_switch.element.checked,
+                "timeout_auto_switch": input_timeout.element.value,
+                "enable_psalmbord": input_enable_psalmbord.element.checked,
+                "enable_logging": input_enable_logging.element.checked,
             }
 
         def set_inputs(settings: dict):
-            input_title.element.value = settings['title']
-            input_nr_in_ports.element.value = settings['nr_IN_ports']
-            input_nr_out_ports.element.value = settings['nr_OUT_ports']
-            input_port_in_stream.element.value = settings['port_IN_for_streams']
-            input_port_out_stream.element.value = settings['port_OUT_to_stream']
-            show_button_connect.element.checked = settings['show_button_connect']
-            show_button_mute_sound.element.checked = settings['show_button_mute_sound']
-            input_auto_switch.element.checked = settings['enable_option_auto_switch']
-            input_timeout.element.value = settings['timeout_auto_switch']
-            input_enable_psalmbord.element.checked = settings['enable_psalmbord']
-            input_enable_logging.element.checked = settings['enable_logging']
+            input_title.element.value = settings["title"]
+            input_nr_in_ports.element.value = settings["nr_IN_ports"]
+            input_nr_out_ports.element.value = settings["nr_OUT_ports"]
+            input_port_in_stream.element.value = settings["port_IN_for_streams"]
+            input_port_out_stream.element.value = settings["port_OUT_to_stream"]
+            show_button_connect.element.checked = settings["show_button_connect"]
+            show_button_mute_sound.element.checked = settings["show_button_mute_sound"]
+            input_auto_switch.element.checked = settings["enable_option_auto_switch"]
+            input_timeout.element.value = settings["timeout_auto_switch"]
+            input_enable_psalmbord.element.checked = settings["enable_psalmbord"]
+            input_enable_logging.element.checked = settings["enable_logging"]
 
         async def initialize():
-            self.settings = await utils.post(utils.get_url('general/getSettings'), {})
+            self.settings = await utils.post(utils.get_url("general/getSettings"), {})
             set_inputs(self.settings)
-            set_title(self.settings['title'])
+            set_title(self.settings["title"])
 
         # initialize()
 
         async def onchange(evt):
             settings = get_inputs()
-            self.settings = await utils.post(utils.get_url('general/setSettings'), settings)
+            self.settings = await utils.post(utils.get_url("general/setSettings"), settings)
             set_inputs(self.settings)
 
         input_title.element.onchange = onchange
@@ -153,56 +187,66 @@ class Settings(AccordionItem):
 
 
 def source(name, enabled, port_url, scan_prio, db_level, selected):
-    return {'name': name, 'enabled': enabled, 'port_url': port_url, 'scan_prio': scan_prio, 'db_level': db_level, 'selected': selected}
+    return {
+        "name": name,
+        "enabled": enabled,
+        "port_url": port_url,
+        "scan_prio": scan_prio,
+        "db_level": db_level,
+        "selected": selected,
+    }
 
 
 class Sources(AccordionItem):
-
     def __init__(self):
-        super().__init__('Bronnen')
+        super().__init__("Bronnen")
         plist = PagedList(self.body.element, "").hide_count().disable_pagination()
-        plist.get_styling().table_class('table borderless')
+        plist.get_styling().table_class("table borderless")
 
         def text_element(attr, item):
-            r = E('input').attr('type', 'text')
+            r = E("input").attr("type", "text")
             r.element.value = item[attr]
 
             def onchange(evt):
                 item[attr] = r.element.value
                 save_changes()
+
             r.element.onchange = onchange
             return r.element
 
         def checkbox_element(attr, item):
-            r = E('input').attr('type', 'checkbox')
+            r = E("input").attr("type", "checkbox")
             r.element.checked = item[attr]
 
             def onchange(evt):
                 item[attr] = r.element.checked
                 save_changes()
+
             r.element.onchange = onchange
             return r.element
 
-        plist.add_column('name', 'Naam').item_to_element(text_element.bind(None, 'name'))
-        plist.add_column('enabled', 'Actief').item_to_element(checkbox_element.bind(None, 'enabled'))
-        plist.add_column('port_url', 'Poort / Url').item_to_element(text_element.bind(None, 'port_url'))
-        plist.add_column('scan_prio', 'Prio').item_to_element(text_element.bind(None, 'scan_prio'))  # .add_style('width: 100px; max-width:100px;')
-        plist.add_column('db_level', 'dB level threshold').item_to_element(text_element.bind(None, 'db_level'))
+        plist.add_column("name", "Naam").item_to_element(text_element.bind(None, "name"))
+        plist.add_column("enabled", "Actief").item_to_element(checkbox_element.bind(None, "enabled"))
+        plist.add_column("port_url", "Poort / Url").item_to_element(text_element.bind(None, "port_url"))
+        plist.add_column("scan_prio", "Prio").item_to_element(
+            text_element.bind(None, "scan_prio")
+        )  # .add_style('width: 100px; max-width:100px;')
+        plist.add_column("db_level", "dB level threshold").item_to_element(text_element.bind(None, "db_level"))
 
         async def delete_item(item):
             self.sources.remove(item)
-            self.sources = await utils.post(utils.get_url('general/setSources'), {'sources': self.sources})
+            self.sources = await utils.post(utils.get_url("general/setSources"), {"sources": self.sources})
             plist.get_server().data = self.sources
             plist.refresh()
 
         async def save_changes():
-            self.sources = await utils.post(utils.get_url('general/setSources'), {'sources': self.sources})
+            self.sources = await utils.post(utils.get_url("general/setSources"), {"sources": self.sources})
             plist.get_server().data = self.sources
             plist.refresh()
 
-        plist.add_button('delete', '', 'btn btn-danger btn-sm') \
-            .use_element(lambda item: E('i').attr("class", 'fas fa-trash-alt')) \
-            .onclick(delete_item)
+        plist.add_button("delete", "", "btn btn-danger btn-sm").use_element(
+            lambda item: E("i").attr("class", "fas fa-trash-alt")
+        ).onclick(delete_item)
 
         async def change_order(up: bool, item):
             i = self.sources.index(item)
@@ -212,30 +256,34 @@ class Sources(AccordionItem):
             j = max(0, min(j, len(self.sources) - 1))
             self.sources.remove(item)
             self.sources.insert(j, item)
-            self.sources = await utils.post(utils.get_url('general/setSources'), {'sources': self.sources})
+            self.sources = await utils.post(utils.get_url("general/setSources"), {"sources": self.sources})
             plist.get_server().data = self.sources
             plist.refresh()
 
-        plist.add_button('up', '', 'btn btn-primary btn-sm') \
-            .use_element(lambda item: E('i').attr("class", 'fas fa-sort-up').attr('style', 'font-size: 20px; vertical-align: bottom;')) \
-            .onclick(change_order.bind(None, True))
+        plist.add_button("up", "", "btn btn-primary btn-sm").use_element(
+            lambda item: E("i")
+            .attr("class", "fas fa-sort-up")
+            .attr("style", "font-size: 20px; vertical-align: bottom;")
+        ).onclick(change_order.bind(None, True))
 
-        plist.add_button('down', '', 'btn btn-primary btn-sm') \
-            .use_element(lambda item: E('i').attr("class", 'fas fa-sort-down').attr('style', 'font-size: 20px; vertical-align: bottom;')) \
-            .onclick(change_order.bind(None, False))
+        plist.add_button("down", "", "btn btn-primary btn-sm").use_element(
+            lambda item: E("i")
+            .attr("class", "fas fa-sort-down")
+            .attr("style", "font-size: 20px; vertical-align: bottom;")
+        ).onclick(change_order.bind(None, False))
 
         def add_item(evt):
             self.sources.append(source("Naam", False, "IN1", 0, -60, False))
             plist.get_server().data = self.sources
             plist.refresh()
 
-        button_add = E('button').attr('class', 'btn btn-primary btn-sm').inner_html("Toevoegen")
+        button_add = E("button").attr("class", "btn btn-primary btn-sm").inner_html("Toevoegen")
         button_add.element.onclick = add_item
 
         self.body.append(button_add)
 
         async def initialize():
-            self.sources = await utils.post(utils.get_url('general/getSources'), {})
+            self.sources = await utils.post(utils.get_url("general/getSources"), {})
             self.sources = list(self.sources)
             plist.get_server().data = self.sources
             plist.refresh()
@@ -244,53 +292,61 @@ class Sources(AccordionItem):
 
 
 def destination(name, enabled, port_url_file, selected):
-    return {'name': name, 'enabled': enabled, 'port_url_file': port_url_file, 'selected': selected}
+    return {"name": name, "enabled": enabled, "port_url_file": port_url_file, "selected": selected}
 
 
 class Destinations(AccordionItem):
     def __init__(self):
-        super().__init__('Bestemmingen')
+        super().__init__("Bestemmingen")
         plist = PagedList(self.body.element, "").hide_count().disable_pagination()
-        plist.get_styling().table_class('table borderless')
+        plist.get_styling().table_class("table borderless")
 
         def text_element(attr, item):
-            r = E('input').attr('type', 'text')
+            r = E("input").attr("type", "text")
             r.element.value = item[attr]
 
             def onchange(evt):
                 item[attr] = r.element.value
                 save_changes()
+
             r.element.onchange = onchange
             return r.element
 
         def checkbox_element(attr, item):
-            r = E('input').attr('type', 'checkbox')
+            r = E("input").attr("type", "checkbox")
             r.element.checked = item[attr]
 
             def onchange(evt):
                 item[attr] = r.element.checked
                 save_changes()
+
             r.element.onchange = onchange
             return r.element
 
-        plist.add_column('name', 'Naam').item_to_element(text_element.bind(None, 'name'))
-        plist.add_column('enabled', 'Actief').item_to_element(checkbox_element.bind(None, 'enabled'))
-        plist.add_column('port_url_file', 'Poort / Url / File').item_to_element(text_element.bind(None, 'port_url_file'))
+        plist.add_column("name", "Naam").item_to_element(text_element.bind(None, "name"))
+        plist.add_column("enabled", "Actief").item_to_element(checkbox_element.bind(None, "enabled"))
+        plist.add_column("port_url_file", "Poort / Url / File").item_to_element(
+            text_element.bind(None, "port_url_file")
+        )
 
         async def delete_item(item):
             self.destinations.remove(item)
-            self.destinations = await utils.post(utils.get_url('general/setDestinations'), {'destinations': self.destinations})
+            self.destinations = await utils.post(
+                utils.get_url("general/setDestinations"), {"destinations": self.destinations}
+            )
             plist.get_server().data = self.destinations
             plist.refresh()
 
         async def save_changes():
-            self.destinations = await utils.post(utils.get_url('general/setDestinations'), {'destinations': self.destinations})
+            self.destinations = await utils.post(
+                utils.get_url("general/setDestinations"), {"destinations": self.destinations}
+            )
             plist.get_server().data = self.destinations
             plist.refresh()
 
-        plist.add_button('delete', '', 'btn btn-danger btn-sm') \
-            .use_element(lambda item: E('i').attr("class", 'fas fa-trash-alt')) \
-            .onclick(delete_item)
+        plist.add_button("delete", "", "btn btn-danger btn-sm").use_element(
+            lambda item: E("i").attr("class", "fas fa-trash-alt")
+        ).onclick(delete_item)
 
         async def change_order(up: bool, item):
             i = self.destinations.index(item)
@@ -300,30 +356,36 @@ class Destinations(AccordionItem):
             j = max(0, min(j, len(self.destinations) - 1))
             self.destinations.remove(item)
             self.destinations.insert(j, item)
-            self.destinations = await utils.post(utils.get_url('general/setDestinations'), {'destinations': self.destinations})
+            self.destinations = await utils.post(
+                utils.get_url("general/setDestinations"), {"destinations": self.destinations}
+            )
             plist.get_server().data = self.destinations
             plist.refresh()
 
-        plist.add_button('up', '', 'btn btn-primary btn-sm') \
-            .use_element(lambda item: E('i').attr("class", 'fas fa-sort-up').attr('style', 'font-size: 20px; vertical-align: bottom;')) \
-            .onclick(change_order.bind(None, True))
+        plist.add_button("up", "", "btn btn-primary btn-sm").use_element(
+            lambda item: E("i")
+            .attr("class", "fas fa-sort-up")
+            .attr("style", "font-size: 20px; vertical-align: bottom;")
+        ).onclick(change_order.bind(None, True))
 
-        plist.add_button('down', '', 'btn btn-primary btn-sm') \
-            .use_element(lambda item: E('i').attr("class", 'fas fa-sort-down').attr('style', 'font-size: 20px; vertical-align: bottom;')) \
-            .onclick(change_order.bind(None, False))
+        plist.add_button("down", "", "btn btn-primary btn-sm").use_element(
+            lambda item: E("i")
+            .attr("class", "fas fa-sort-down")
+            .attr("style", "font-size: 20px; vertical-align: bottom;")
+        ).onclick(change_order.bind(None, False))
 
         def add_item(evt):
             self.destinations.append(destination("Naam", False, "OUT1", False))
             plist.get_server().data = self.destinations
             plist.refresh()
 
-        button_add = E('button').attr('class', 'btn btn-primary btn-sm').inner_html("Toevoegen")
+        button_add = E("button").attr("class", "btn btn-primary btn-sm").inner_html("Toevoegen")
         button_add.element.onclick = add_item
 
         self.body.append(button_add)
 
         async def initialize():
-            self.destinations = await utils.post(utils.get_url('general/getDestinations'), {})
+            self.destinations = await utils.post(utils.get_url("general/getDestinations"), {})
             plist.get_server().data = self.destinations
             plist.refresh()
 
@@ -332,22 +394,29 @@ class Destinations(AccordionItem):
 
 class TestDebug(AccordionItem):
     def __init__(self):
-        super().__init__('Test and debug')
+        super().__init__("Test and debug")
 
-        self.button_reboot = E('button').attr('class', 'btn btn-primary btn-sm').inner_html("Herstarten")
-        self.button_shutdown = E('button').attr('class', 'btn btn-primary btn-sm').inner_html("Afsluiten")
-        self.button_show_ip = E('button').attr('class', 'btn btn-primary btn-sm').inner_html("Toon IP adres")
-        self.button_show_soundcards = E('button').attr('class', 'btn btn-primary btn-sm').inner_html("Toon geluidskaarten")
-        self.button_show_routes = E('button').attr('class', 'btn btn-primary btn-sm').inner_html("Toon ITEC routes")
-        self.button_download_log = E('button').attr('class', 'btn btn-primary btn-sm').inner_html("Download log")
-        self.button_test_gpio = E('button').attr('class', 'btn btn-primary btn-sm').inner_html("Test GPIO")
+        self.button_reboot = E("button").attr("class", "btn btn-primary btn-sm").inner_html("Herstarten")
+        self.button_shutdown = E("button").attr("class", "btn btn-primary btn-sm").inner_html("Afsluiten")
+        self.button_show_ip = E("button").attr("class", "btn btn-primary btn-sm").inner_html("Toon IP adres")
+        self.button_show_soundcards = (
+            E("button").attr("class", "btn btn-primary btn-sm").inner_html("Toon geluidskaarten")
+        )
+        self.button_show_routes = E("button").attr("class", "btn btn-primary btn-sm").inner_html("Toon ITEC routes")
+        self.button_download_log = E("button").attr("class", "btn btn-primary btn-sm").inner_html("Download log")
+        self.button_test_gpio = E("button").attr("class", "btn btn-primary btn-sm").inner_html("Test GPIO")
         buttons = [
-            self.button_reboot, self.button_shutdown, self.button_show_ip, 
-            self.button_show_soundcards, self.button_show_routes, self.button_download_log, 
-            self.button_test_gpio]
+            self.button_reboot,
+            self.button_shutdown,
+            self.button_show_ip,
+            self.button_show_soundcards,
+            self.button_show_routes,
+            self.button_download_log,
+            self.button_test_gpio,
+        ]
 
         for b in buttons:
-            b.attr('style', 'margin-right: 5px;')
+            b.attr("style", "margin-right: 5px;")
 
         self.button_reboot.element.onclick = self.reboot
         self.button_shutdown.element.onclick = self.shutdown
@@ -357,77 +426,86 @@ class TestDebug(AccordionItem):
         self.button_download_log.element.onclick = self.download_log
         self.button_test_gpio.element.onclick = self.test_gpio
 
-        self.body.append(E('div').append(*buttons))
-        self.div_info = E('div').attr('style', 'white-space: pre-wrap;')
+        self.body.append(
+            E("div")
+            .attr("style", "padding: 5px;")
+            .append(E("span").inner_html("Audiocontroller version: {}".format(window.audiocontroller_version)))
+        )
+        self.body.append(E("div").append(*buttons))
+        self.div_info = E("div").attr("style", "white-space: pre-wrap;")
         self.body.append(self.div_info)
 
     async def reboot(self, evt):
         sure = await dialog_confirm.get_confirm("Systeem zal worden herstart. Weet u het zeker?")
         if sure:
-            await utils.post(utils.get_url('general/reboot'), {})
+            await utils.post(utils.get_url("general/reboot"), {})
 
     async def shutdown(self, evt):
         sure = await dialog_confirm.get_confirm("Systeem zal worden uitgeschakeld. Weet u het zeker?")
         if sure:
-            await utils.post(utils.get_url('general/shutdown'), {})
+            await utils.post(utils.get_url("general/shutdown"), {})
 
     async def download_log(self, evt):
         self.button_download_log.disable()
-        datetime = luxon.DateTime.local().toFormat('yyyyMMdd_HHmm')
-        filename = '{}_logs.tar'.format(datetime)
-        await utils.post_download_file(utils.get_url('general/downloadLog'), {}, filename)
+        datetime = luxon.DateTime.local().toFormat("yyyyMMdd_HHmm")
+        filename = "{}_logs.tar".format(datetime)
+        await utils.post_download_file(utils.get_url("general/downloadLog"), {}, filename)
         self.button_download_log.enable()
 
     async def show_ip(self, evt):
         self.button_show_ip.disable()
-        txt = await utils.post(utils.get_url('general/ifconfig'), {}, False)
+        txt = await utils.post(utils.get_url("general/ifconfig"), {}, False)
         console.log(txt)
         self.div_info.inner_html(txt)
         self.button_show_ip.enable()
 
     async def show_soundcards(self, evt):
         self.button_show_soundcards.disable()
-        txt = await utils.post(utils.get_url('general/soundcards'), {}, False)
+        txt = await utils.post(utils.get_url("general/soundcards"), {}, False)
         console.log(txt)
         self.div_info.inner_html(txt)
         self.button_show_soundcards.enable()
 
     async def show_routes(self, evt):
         self.button_show_routes.disable()
-        txt = await utils.post(utils.get_url('general/getRoutes'), {}, False)
+        txt = await utils.post(utils.get_url("general/getRoutes"), {}, False)
         console.log(txt)
         self.div_info.inner_html(txt)
         self.button_show_routes.enable()
 
     async def test_gpio(self, evt):
         self.button_test_gpio.disable()
-        txt = await utils.post(utils.get_url('general/test_gpio'), {}, False)
+        txt = await utils.post(utils.get_url("general/test_gpio"), {}, False)
         self.button_test_gpio.enable()
 
 
 class Page(ElementWrapper):
-
     def __init__(self):
-        super().__init__(element('div'))
-        self.attr('style', 'max-width: 1000px;')
+        super().__init__(element("div"))
+        self.attr("style", "max-width: 1000px;")
         self.items = [Settings(), Sources(), Destinations(), TestDebug()]
         for i in self.items:
             self.append(i)
 
-        self.button_download = E('button').attr('class', 'btn btn-primary btn-sm').inner_html("Download")
+        self.button_download = E("button").attr("class", "btn btn-primary btn-sm").inner_html("Download")
         self.button_download.element.onclick = self.download_settings
 
-        self.file_input = E('input').attr('type', 'file').attr('style', 'display: none;')
+        self.file_input = E("input").attr("type", "file").attr("style", "display: none;")
         self.file_input.element.onchange = self.upload_settings
-        self.button_upload = E('button').attr('class', 'btn btn-primary btn-sm').inner_html("Upload")
+        self.button_upload = E("button").attr("class", "btn btn-primary btn-sm").inner_html("Upload")
         self.button_upload.element.onclick = self.click_upload
-        button_restore = E('button').attr('class', 'btn btn-secondary btn-sm').inner_html("Terug naar fabrieksinstellingen")
+        button_restore = (
+            E("button").attr("class", "btn btn-secondary btn-sm").inner_html("Terug naar fabrieksinstellingen")
+        )
         button_restore.element.onclick = self.restore_settings
 
         def space():
-            return E('span').inner_html(" ")
-        self.append(E('div').attr('style', 'margin-top: 15px;').append(
-            self.button_download, space(), self.file_input, self.button_upload, space(), button_restore)
+            return E("span").inner_html(" ")
+
+        self.append(
+            E("div")
+            .attr("style", "margin-top: 15px;")
+            .append(self.button_download, space(), self.file_input, self.button_upload, space(), button_restore)
         )
 
     async def restore_settings(self, evt):
@@ -438,15 +516,15 @@ class Page(ElementWrapper):
 
     async def download_settings(self, evt):
         self.button_download.disable()
-        datetime = luxon.DateTime.local().toFormat('yyyyMMdd_HHmm')
-        filename = '{}_audio_controller_settings.pickle'.format(datetime)
-        await utils.post_download_file(utils.get_url('general/downloadSettings'), {}, filename)
+        datetime = luxon.DateTime.local().toFormat("yyyyMMdd_HHmm")
+        filename = "{}_audio_controller_settings.pickle".format(datetime)
+        await utils.post_download_file(utils.get_url("general/downloadSettings"), {}, filename)
         self.button_download.enable()
 
     async def upload_settings(self, evt):
         file = self.file_input.element.files[0]
         self.file_input.element.value = None
-        await utils.post_upload_file(utils.get_url('general/uploadSettings'), file)
+        await utils.post_upload_file(utils.get_url("general/uploadSettings"), file)
         utils.redirect_relative("")
 
     def click_upload(self, evt):

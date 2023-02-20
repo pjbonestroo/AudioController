@@ -21,11 +21,7 @@ import tornado.web
 # import tornado.websocket
 
 # internals
-from .. import settings
-from .. import controller
-from .. import utils
-from .. import loggers
-from .. import gpio
+from audio_controller import settings, controller, utils, loggers, gpio, __version__
 
 here = Path(os.path.dirname(__file__)).resolve()
 main_logger = logging.getLogger("main")
@@ -107,7 +103,7 @@ class StaticFileHandler(tornado.web.StaticFileHandler):
 
 class Main(BaseHandler):
     def get(self):
-        self.render("index.html", title="Title", page="home", js_filename=get_js_filename())
+        self.render("index.html", title="Title", page="home", js_filename=get_js_filename(), version=__version__)
 
     def post(self):
         self.write("")

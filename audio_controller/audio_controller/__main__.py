@@ -7,10 +7,12 @@ import traceback
 import argparse
 import asyncio
 import logging
+
 # externals
 import tornado.ioloop
 import tornado.web
 import socketio
+
 # internals
 from . import loggers  # load logging first, before other modules
 from . import settings
@@ -26,8 +28,8 @@ main_logger = logging.getLogger("main")
 
 
 def make_app():
-    template_dir = here / 'views'
-    static_dir = here / 'static'
+    template_dir = here / "views"
+    static_dir = here / "static"
     settings = dict(
         debug=False,
         autoreload=False,
@@ -35,7 +37,7 @@ def make_app():
         template_path=str(template_dir),
     )
 
-    sio = socketio.AsyncServer(async_mode='tornado')
+    sio = socketio.AsyncServer(async_mode="tornado")
     handlers.websocket_handlers(sio)
 
     _handlers = [
@@ -43,8 +45,8 @@ def make_app():
         ("/login/.*", handlers.Login),
         ("/general/.*", handlers.General),
         ("/psalmbord", handlers.Psalmbord),
-        ("/(favicon.ico)", handlers.StaticFileHandler, {'path': str(static_dir)}),
-        ("/static/(.*)", handlers.StaticFileHandler, {'path': str(static_dir)}),
+        ("/(favicon.ico)", handlers.StaticFileHandler, {"path": str(static_dir)}),
+        ("/static/(.*)", handlers.StaticFileHandler, {"path": str(static_dir)}),
         ("/websocket/", socketio.get_tornado_handler(sio)),
     ]
 
@@ -52,24 +54,26 @@ def make_app():
 
 
 def schedule_tasks(loop: asyncio.BaseEventLoop):
-    """ Add additional async tasks to the same event-loop as the running webserver. """
+    """Add additional async tasks to the same event-loop as the running webserver."""
     loop.create_task(controller.scan_ports())
     loop.create_task(controller.auto_switch())
     loop.create_task(set_gpio())
 
 
 def init_system(args):
-    """ initialize system  """
+    """initialize system"""
     import getpass
+
     volume = "100%"
     try:
-        if '--volume' in args:
-            v = args[args.index('--volume') + 1]
+        if "--volume" in args:
+            v = args[args.index("--volume") + 1]
             if "%" in v:
                 volume = v
     except:
         pass
     # set the output volume level to a fixed percentage
+    # TODO use module soundcard here, to identify the device
     # cmd = f"amixer -M sset 'Master' {volume}" # without external sound card
     cmd = f"amixer -M sset 'PCM' {volume}"  # with external sound card
     print(cmd)
@@ -108,8 +112,8 @@ def main():
     try:
         init_system(args)
         # listen on 2 ports, 5000 for localhost and 8080 for external usage (external usage requires login)
-        port_address = [(5000, '127.0.0.1'), (8080, '0.0.0.0')]
-        for (port, address) in port_address:
+        port_address = [(5000, "127.0.0.1"), (8080, "0.0.0.0")]
+        for port, address in port_address:
             app = make_app()
             app.listen(port=port, address=address)
             msg = f"Listening on {address}:{port}"
@@ -133,7 +137,7 @@ def main():
         main_logger.info(msg)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     stream.test()
     itec.test()
     settings.test()

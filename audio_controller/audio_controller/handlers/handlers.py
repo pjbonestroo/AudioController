@@ -109,6 +109,12 @@ class Main(BaseHandler):
         self.write("")
 
 
+psalmbord_changed = dt.datetime.now()
+
+def notify_psalmbord():
+    global psalmbord_changed
+    psalmbord_changed = dt.datetime.now()
+
 class Psalmbord(tornado.web.RequestHandler):
     def body_to_json(self):
         body = self.request.body
@@ -130,7 +136,11 @@ class Psalmbord(tornado.web.RequestHandler):
         if settings.settings.enable_psalmbord:
             kwargs = self.body_to_json()
             if kwargs.get("html"):
-                self.write(settings.psalmbord_as_html())
+                result = {
+                    "html": settings.psalmbord_as_html(),
+                    "datetime_changed": psalmbord_changed.isoformat(),
+                }
+                self.write(dumps(result))
             else:
                 self.write(dumps(asdict(settings.psalmbord)))
         else:
@@ -260,6 +270,7 @@ class General(BaseHandler):
                 args["title"], args["regels"], args["fontfamily"], args["fontsize"], args["fontweight"]
             )
             self.write(dumps(asdict(settings.psalmbord)))
+            notify_psalmbord()
             return
 
         elif action == "getInputLevels":

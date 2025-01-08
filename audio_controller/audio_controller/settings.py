@@ -67,40 +67,20 @@ class Psalmbord:
 
 
 def psalmbord_as_html() -> str:
+    font_class = fonts.fonts[psalmbord.fontfamily]
+    font_class += f" font_size font_weight"
+
     """ Create a html string to display the psalmbord in the browser """
-    # title
-    if psalmbord.title.strip() != "":
-        content = f"<div class='title font_weight {fonts.fonts[psalmbord.fontfamily]}'>{psalmbord.title}</div>\n"
-    else:
-        content = ""
-    
-    # regels
+    r = f"<div class='title {font_class}'>{psalmbord.title}</div>"
     for regel in psalmbord.regels:
-        content += f"<div class='regel font_weight {fonts.fonts[psalmbord.fontfamily]}'>"
-
-        col = regel['text'].strip().split(":")
-        if len(col) > 1:
-            # regel with three columns
-            content += "\n\t<span class='col1'>"
-            for col1 in col[0].split(" "):
-                if col1.strip() != "":
-                    content += f"<span>{col1}</span>"
-            content += "</span>"
-
-            content += "\n\t<span class='col2'>:</span>"
-
-            content += "\n\t<span class='col3'>"
-            for col3 in col[1].split(" "):
-                if col3.strip() != "":
-                    content += f"<span>{col3}</span>"
-            content += "</span>\n"
+        txt = regel['text']
+        i = txt.find(":")
+        if i > -1 and len(txt) > i + 1:
+            span = f"<div class='col1'>{txt[:i].strip()}</div><div class='col2'>:</div><div class='col3'>{txt[i+1:].strip()}</div>"
         else:
-            # regel without columns
-            """ replace optional ";" with ":" to prevent splitting and alignment """
-            content += regel['text'].strip().replace(";",":")
-        
-        content += "</div>\n"
-    return content
+            span = f"<div >{txt}</div>"
+        r += f"<div class='regel {font_class}'>{span}</div>"
+    return r
 
 
 def default_sources():

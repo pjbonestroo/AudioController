@@ -41,6 +41,7 @@
         } else {
             container.empty()
             container.append($(result["html"]))
+            alignment()
             setTimeout(update, interval)
         }
     }
@@ -58,6 +59,28 @@
             success: success,
             error: error,
             contentType: "application/json; charset=utf-8",
+        })
+    }
+
+    function alignment(){
+        // bereken per regel de resterende breedte van kolom 3
+        container.find(".regel").each(function(){
+            var regel = $(this).innerWidth()
+            var col2 = $(this).find(".col2").outerWidth()
+            
+            // breedte van col1 en col3 instellen, mits er een col2 bestaat
+            if( col2 !== null ){
+                var col1 = $(this).find(".col1").outerWidth()
+                var half = (regel / 2) - (col2 / 2) - 0.2
+
+                if( col1 < half ){
+                    // beide kolommen even breed
+                    $(this).find(".col1, .col3").css("width", half)
+                } else {
+                    // kolom 1 is breder, dus kolom 3 smaller
+                    $(this).find(".col3").css("width", regel - col1 - col2 - 1)
+                }
+            }
         })
     }
 

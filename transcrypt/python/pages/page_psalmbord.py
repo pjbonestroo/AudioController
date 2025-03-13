@@ -7,7 +7,7 @@ from dialogs import dialog_confirm
 E = Element
 
 # copied from fonts.py
-fonts = ["Arial", "Cambria", "Courier New", "Courier Prime", "Georgia", "Gill Sans", "Verdana"]
+fonts = ["Arial", "Cambria", "Courier New", "Courier Prime", "Georgia", "Gill Sans", "Verdana", "Samsung"]
 
 
 def frange(start: float, stop: float, step: float):
@@ -138,7 +138,7 @@ class Page(ElementWrapper):
                 E('div').attr('class', '{}'.format(width_2)).append(select_fontfamily)
             ),
             E('div').attr('class', 'form-group row').append(
-                E('label').attr('class', '{} col-form-label'.format(width_1)).inner_html("Letter grootte"),
+                E('label').attr('class', '{} col-form-label'.format(width_1)).inner_html("Aantal regels"),
                 E('div').attr('class', '{}'.format(width_2)).append(select_fontsize)
             ),
             E('div').attr('class', 'form-group row').append(

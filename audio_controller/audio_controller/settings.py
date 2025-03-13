@@ -52,8 +52,8 @@ class Destination:
     id: int = 0
 
 
-default_fontfamily = fonts.validate_font_name("Verdana", True)
-default_fontsize = fonts.validate_font_size(7, True)
+default_fontfamily = fonts.validate_font_name("Samsung", True)
+default_fontsize = fonts.validate_font_size(8, True)
 default_fontweight = fonts.validate_font_weight(400, True)
 
 
@@ -67,20 +67,41 @@ class Psalmbord:
 
 
 def psalmbord_as_html() -> str:
-    font_class = fonts.fonts[psalmbord.fontfamily]
-    font_class += f" font_size font_weight"
-
     """ Create a html string to display the psalmbord in the browser """
-    r = f"<div class='title {font_class}'>{psalmbord.title}</div>"
+    # title
+    if psalmbord.title.strip() != "":
+        content = f"<div class='title font_weight {fonts.fonts[psalmbord.fontfamily]}'>{psalmbord.title}</div>"
+    else:
+        content = ""
+    
+    # regels
     for regel in psalmbord.regels:
-        txt = regel['text']
-        i = txt.find(":")
-        if i > -1 and len(txt) > i + 1:
-            span = f"<div class='col1'>{txt[:i].strip()}</div><div class='col2'>:</div><div class='col3'>{txt[i+1:].strip()}</div>"
+        content += f"<div class='regel font_weight {fonts.fonts[psalmbord.fontfamily]}'>"
+
+        col = regel['text'].strip().split(":")
+        if len(col) > 1:
+            # regel with three columns
+            content += "<span class='col1'>"
+            for col1 in col[0].split(" "):
+                if col1.strip() != "":
+                    content += f"<span>{col1}</span>"
+            content += "</span>"
+
+            content += "<span class='col2'>:</span>"
+
+            content += "<span class='col3'>"
+            for col3 in col[1].split(" "):
+                if col3.strip() != "":
+                    content += f"<span>{col3}</span>"
+            content += "</span>"
         else:
-            span = f"<div >{txt}</div>"
-        r += f"<div class='regel {font_class}'>{span}</div>"
-    return r
+            # regel without columns
+            """ replace optional ";" with ":" to prevent splitting and alignment """
+            regel_text = regel['text'].replace(";",":")
+            content += f"<span class='no-col'>{regel_text}</span>"
+        
+        content += "</div>\n"
+    return content
 
 
 def default_sources():

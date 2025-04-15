@@ -26,24 +26,25 @@
 <script>
 
     let url = window.location.origin + "/" + "psalmbord"
+    let css = $('style')
     let container = $(".container")
     let interval = 10000 // milliseconds
     let hasFailed = false
-    let time_started = new Date()
+    let firstAlignment = true
 
     function success(response) {
         let result = JSON.parse(response)
-        let time_changed = new Date(result["datetime_changed"])
-        let current_time = new Date()
-        let reload_after_change = (current_time - time_changed) < interval && (current_time - time_started) > interval
-        if (hasFailed || reload_after_change) {
-            location.reload()
+
+        css.html($(result["css"]))
+        container.html($(result["html"]))
+
+        if( firstAlignment ){
+            setTimeout(alignment, 100 )
         } else {
-            container.empty()
-            container.append($(result["html"]))
             alignment()
-            setTimeout(update, interval)
         }
+
+        setTimeout(update, interval)
     }
 
     function error() {
@@ -69,7 +70,7 @@
             var col2 = $(this).find(".col2").outerWidth()
             
             // breedte van col1 en col3 instellen, mits er een col2 bestaat
-            if( col2 !== null ){
+            if( col2 !== undefined ){
                 var col1 = $(this).find(".col1").outerWidth()
                 var half = (regel / 2) - (col2 / 2) - 0.2
 
@@ -82,6 +83,8 @@
                 }
             }
         })
+
+        firstAlignment = false;
     }
 
     update()

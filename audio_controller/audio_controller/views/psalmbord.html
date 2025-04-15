@@ -30,6 +30,7 @@
     let interval = 10000 // milliseconds
     let hasFailed = false
     let time_started = new Date()
+    let firstAlignment = true
 
     function success(response) {
         let result = JSON.parse(response)
@@ -41,7 +42,11 @@
         } else {
             container.empty()
             container.append($(result["html"]))
-            alignment()
+            if(firstAlignment){
+                setTimeout(alignment, 100 )
+            } else {
+                alignment()
+            }
             setTimeout(update, interval)
         }
     }
@@ -69,7 +74,7 @@
             var col2 = $(this).find(".col2").outerWidth()
             
             // breedte van col1 en col3 instellen, mits er een col2 bestaat
-            if( col2 !== null ){
+            if( col2 !== undefined ){
                 var col1 = $(this).find(".col1").outerWidth()
                 var half = (regel / 2) - (col2 / 2) - 0.2
 
@@ -82,6 +87,7 @@
                 }
             }
         })
+        firstAlignment = false;
     }
 
     update()

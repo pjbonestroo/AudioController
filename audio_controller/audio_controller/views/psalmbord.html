@@ -34,10 +34,10 @@
 
     function success(response) {
         let result = JSON.parse(response)
-        let time_changed = new Date(result["datetime_changed"])
-        let current_time = new Date()
-        let reload_after_change = (current_time - time_changed) < interval && (current_time - time_started) > interval
-        if (hasFailed || reload_after_change) {
+        //let time_changed = new Date(result["datetime_changed"])
+        //let current_time = new Date()
+        //let reload_after_change = (current_time - time_changed) < interval && (current_time - time_started) > interval
+        if (hasFailed) {
             location.reload()
         } else {
             container.empty()

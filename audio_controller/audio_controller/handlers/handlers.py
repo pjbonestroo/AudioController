@@ -109,25 +109,22 @@ class Main(BaseHandler):
         self.write("")
 
 
-psalmbord_changed = dt.datetime.now()
-
-def notify_psalmbord():
-    global psalmbord_changed
-    psalmbord_changed = dt.datetime.now()
-
 class Psalmbord(tornado.web.RequestHandler):
+
     def body_to_json(self):
         body = self.request.body
         if not body:
             body = b"{}"
         return json.loads(body)
+    
+    def get_css(self):
+        fs = settings.psalmbord.fontsize
+        fw = settings.psalmbord.fontweight
+        return f"html {{ --regels: {fs}; }} \n .font_weight {{ font-weight: {fw}; }}"
 
     def get(self):
         if settings.settings.enable_psalmbord:
-            fs = settings.psalmbord.fontsize
-            fw = settings.psalmbord.fontweight
-            css = f"html {{ --regels: {fs}; }} \n .font_weight {{ font-weight: {fw}; }}"
-            self.render("psalmbord.html", css=css)
+            self.render("psalmbord.html", css=self.get_css())
         else:
             html = """<!DOCTYPE html><html><body style="background-color: black;"></body></html>"""
             self.write(html)
@@ -138,7 +135,7 @@ class Psalmbord(tornado.web.RequestHandler):
             if kwargs.get("html"):
                 result = {
                     "html": settings.psalmbord_as_html(),
-                    "datetime_changed": psalmbord_changed.isoformat(),
+                    "css": self.get_css(),
                 }
                 self.write(dumps(result))
             else:
@@ -270,7 +267,6 @@ class General(BaseHandler):
                 args["title"], args["regels"], args["fontfamily"], args["fontsize"], args["fontweight"]
             )
             self.write(dumps(asdict(settings.psalmbord)))
-            notify_psalmbord()
             return
 
         elif action == "getInputLevels":

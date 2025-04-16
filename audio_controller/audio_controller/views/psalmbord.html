@@ -38,7 +38,11 @@
             location.reload()
         } else {
             css.html(result["css"])
-            container.html(result["html"])
+            if (result["active"]){
+                container.html(result["html"])
+            } else {
+                container.empty()
+            }
             if(firstAlignment){
                 setTimeout(alignment, 100 )
             } else {

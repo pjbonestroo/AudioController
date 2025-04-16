@@ -64,6 +64,7 @@ class Psalmbord:
     fontfamily: str = default_fontfamily
     fontsize: float = default_fontsize
     fontweight: int = default_fontweight
+    active: bool = True # if False, show empty screen (not to confuse with enable_psalmbord)
 
 
 def psalmbord_as_html() -> str:
@@ -153,6 +154,7 @@ def default_psalmbord():
     result.fontfamily = default_fontfamily
     result.fontsize = default_fontsize
     result.fontweight = default_fontweight
+    result.active = True
     return result
 
 
@@ -213,6 +215,10 @@ def upgrade(store: dict):
         connected = store['settings']['connect_source_destination']
         store['settings']["mute_sound"] = not connected
         store['settings']['connect_source_destination'] = True
+
+    if store['settings']['version'] == 8:
+        store['settings']['version'] = 9
+        store['psalmbord']['active'] = True
 
     #
     # future upgrades will be placed here
@@ -517,8 +523,8 @@ def update_destinations(new_destinations: List[dict]):
         pass
 
 
-def update_psalmbord(title: str, regels: List[dict], fontfamily, fontsize, fontweight):
-    temp = Psalmbord(title, regels, fontfamily, fontsize, fontweight)
+def update_psalmbord(title: str, regels: List[dict], fontfamily, fontsize, fontweight, active: bool):
+    temp = Psalmbord(title, regels, fontfamily, fontsize, fontweight, active)
     temp = validate_psalmbord(temp)
     if temp:
         psalmbord.title = temp.title
@@ -526,6 +532,7 @@ def update_psalmbord(title: str, regels: List[dict], fontfamily, fontsize, fontw
         psalmbord.fontfamily = temp.fontfamily
         psalmbord.fontsize = temp.fontsize
         psalmbord.fontweight = temp.fontweight
+        psalmbord.active = temp.active
         save()
 
 

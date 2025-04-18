@@ -50,12 +50,13 @@ class Page(ElementWrapper):
         self.psalmbord: dict = None
 
         input_title = E('input').attr('class', 'form-control').attr('type', 'text')
-        width_1 = 'col-sm-2'
-        width_2 = 'col-sm-3'
+        width_1 = 'col-sm-1'
+        width_2 = 'col-sm-2'
+        width_3 = 'col-sm-3'
         self.append(
             E('div').attr('class', 'form-group row').append(
-                E('label').attr('class', '{} col-form-label'.format(width_1)).inner_html("Titel"),
-                E('div').attr('class', '{}'.format(width_2)).append(input_title)
+                E('label').attr('class', '{} col-form-label'.format(width_2)).inner_html("Titel"),
+                E('div').attr('class', '{}'.format(width_3)).append(input_title)
             ),
         )
         div_list = E('div')
@@ -81,6 +82,7 @@ class Page(ElementWrapper):
             select_fontfamily.element.value = self.psalmbord['fontfamily']
             select_fontsize.element.value = self.psalmbord['fontsize']
             select_fontweight.element.value = self.psalmbord['fontweight']
+            input_active.element.checked = self.psalmbord['active']
             plist.refresh()
 
         async def delete_item(item):
@@ -131,19 +133,25 @@ class Page(ElementWrapper):
         select_fontfamily = Select("fontfamily", fonts)
         select_fontsize = Select("fontsize", fontsizes)
         select_fontweight = Select("fontsize", fontweights)
+        input_active = E("input").attr("class", "form-control").attr("type", "checkbox").attr("style", "width: 20px;")
+
 
         self.append(
             E('div').attr('class', 'form-group row').append(
-                E('label').attr('class', '{} col-form-label'.format(width_1)).inner_html("Letter type"),
-                E('div').attr('class', '{}'.format(width_2)).append(select_fontfamily)
+                E('label').attr('class', '{} col-form-label'.format(width_2)).inner_html("Letter type"),
+                E('div').attr('class', '{}'.format(width_3)).append(select_fontfamily)
             ),
             E('div').attr('class', 'form-group row').append(
-                E('label').attr('class', '{} col-form-label'.format(width_1)).inner_html("Aantal regels"),
-                E('div').attr('class', '{}'.format(width_2)).append(select_fontsize)
+                E('label').attr('class', '{} col-form-label'.format(width_2)).inner_html("Aantal regels"),
+                E('div').attr('class', '{}'.format(width_3)).append(select_fontsize)
             ),
             E('div').attr('class', 'form-group row').append(
-                E('label').attr('class', '{} col-form-label'.format(width_1)).inner_html("Letter dikte"),
-                E('div').attr('class', '{}'.format(width_2)).append(select_fontweight)
+                E('label').attr('class', '{} col-form-label'.format(width_2)).inner_html("Letter dikte"),
+                E('div').attr('class', '{}'.format(width_3)).append(select_fontweight)
+            ),
+            E("div").attr("class", "form-group row").append(
+                E("label").attr("class", "{} col-form-label".format(width_2)).inner_html("Toon inhoud op scherm"),
+                E("div").attr("class", "{}".format(width_1)).append(input_active),
             ),
         )
 
@@ -158,12 +166,14 @@ class Page(ElementWrapper):
             self.psalmbord['fontfamily'] = select_fontfamily.element.value
             self.psalmbord['fontsize'] = select_fontsize.element.value
             self.psalmbord['fontweight'] = select_fontweight.element.value
+            self.psalmbord['active'] = input_active.element.checked
             save_changes()
 
         input_title.element.onchange = onchange
         select_fontfamily.element.onchange = onchange
         select_fontsize.element.onchange = onchange
         select_fontweight.element.onchange = onchange
+        input_active.element.onchange = onchange
 
     def show(self):
         main.remove_childs()

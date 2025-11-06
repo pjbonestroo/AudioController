@@ -53,14 +53,21 @@ class Page(ElementWrapper):
         width_1 = 'col-sm-1'
         width_2 = 'col-sm-2'
         width_3 = 'col-sm-3'
-        self.append(
+
+        # col_1 = left column with config forms
+        col_1 = E('div').attr('style', 'float: left; width: 75%')
+
+        # config item: titel regel
+        col_1.append(
             E('div').attr('class', 'form-group row').append(
                 E('label').attr('class', '{} col-form-label'.format(width_2)).inner_html("Titel"),
                 E('div').attr('class', '{}'.format(width_3)).append(input_title)
             ),
         )
+
+        #config item: tekst regels
         div_list = E('div')
-        self.append(div_list)
+        col_1.append(div_list)
         plist = PagedList(div_list.element, "").hide_count().disable_pagination()
         plist.get_styling().table_class('table borderless')
 
@@ -123,20 +130,22 @@ class Page(ElementWrapper):
             plist.get_server().data = self.psalmbord['regels']
             plist.refresh()
 
+        # tekst regel toevoegen
         button_add = E('button').attr('class', 'btn btn-primary btn-sm').inner_html("Toevoegen")
         button_add.element.onclick = add_item
 
-        self.append(button_add)
+        col_1.append(button_add)
 
-        self.append(E('div').attr('style', 'min-height: 2vh;'))
+        # spacer
+        col_1.append(E('div').attr('style', 'min-height: 2vh;'))
 
+        # config settings
         select_fontfamily = Select("fontfamily", fonts)
         select_fontsize = Select("fontsize", fontsizes)
         select_fontweight = Select("fontsize", fontweights)
         input_active = E("input").attr("class", "form-control").attr("type", "checkbox").attr("style", "width: 20px;")
 
-
-        self.append(
+        col_1.append(
             E('div').attr('class', 'form-group row').append(
                 E('label').attr('class', '{} col-form-label'.format(width_2)).inner_html("Letter type"),
                 E('div').attr('class', '{}'.format(width_3)).append(select_fontfamily)
@@ -154,6 +163,13 @@ class Page(ElementWrapper):
                 E("div").attr("class", "{}".format(width_1)).append(input_active),
             ),
         )
+        self.append(col_1)
+
+        # col_2 = right column with output frame
+        col_2 = E('div').attr('style', 'float: left; width: 25%').append(
+            E('iframe').attr('src', '/psalmbord').attr('style', 'width: 360px; height: 640px;')
+        )
+        self.append(col_2)
 
         async def initialize():
             self.psalmbord = await utils.post(utils.get_url('general/getPsalmbord'), {})

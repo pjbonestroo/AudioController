@@ -106,9 +106,19 @@ body {
 
 .title,
 .regel {
-    font-size: calc(100vh / (var(--regels) * 1.1 + 3.5));
     line-height: calc(100vh / var(--regels));
-    /*min-height: calc(100vh / var(--regels));*/
+}
+.container.s9_16 .title,
+.container.s9_16 .regel {
+    font-size: calc(100vh / (var(--regels) * 1.1 + 3.5));
+}
+.container.s9_195 .title,
+.container.s9_195 .regel {
+    font-size: calc(100vh / (var(--regels) * 1.4 + 3.5));
+}
+.container.s10_16 .title,
+.container.s10_16 .regel {
+    font-size: calc(100vh / (var(--regels) * 1.2 + 3.5));
 }
 .regel span {
     display: inline-block;

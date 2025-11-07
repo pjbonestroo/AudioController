@@ -91,6 +91,19 @@
         firstAlignment = false;
     }
 
+	function resolution(){
+		if( screen.width/screen.height == 9/19.5 ){
+            // samsung s23, 1080/2340
+			$('.container').addClass('s9_195')
+		} else if( screen.width/screen.height == 10/16 ){
+			$('.container').addClass('s10_16')
+		} else {
+            // fullhd, zoals 1080/1920
+			$('.container').addClass('s9_16')
+        }
+	}
+
+	resolution()
     update()
 
 </script>

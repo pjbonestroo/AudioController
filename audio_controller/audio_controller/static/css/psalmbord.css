@@ -2,20 +2,19 @@
     font-family: 'Arial';
     font-style: normal;
     font-weight: normal;
-    src: local('Arial'), url('../fonts/arial.ttf');
+    src: url('../fonts/arial.ttf');
 }
 
 @font-face {
     font-family: 'Cambria';
     font-style: normal;
     font-weight: normal;
-    src: local('Cambria'), url('../fonts/cambria-font-for-android.ttf');
+    src: url('../fonts/cambria-font-for-android.ttf');
 }
 
 @font-face {
     font-family: 'Courier Prime';
-    src: local('Courier Prime'),
-        url('../fonts/courier-prime-v7-latin-regular.woff2') format('woff2'),
+    src: url('../fonts/courier-prime-v7-latin-regular.woff2') format('woff2'),
         url('../fonts/courier-prime-v7-latin-regular.woff') format('woff');
 }
 
@@ -23,7 +22,7 @@
     font-family: 'Courier New';
     font-style: normal;
     font-weight: normal;
-    src: local('Courier New'), url('../fonts/courier-new.ttf');
+    src: url('../fonts/courier-new.ttf');
 }
 
 
@@ -31,28 +30,28 @@
     font-family: 'Georgia';
     font-style: normal;
     font-weight: normal;
-    src: local('Georgia'), url('../fonts/georgia.ttf');
+    src: url('../fonts/georgia.ttf');
 }
 
 @font-face {
     font-family: 'Gill Sans';
     font-style: normal;
     font-weight: normal;
-    src: local('Gill Sans'), url('../fonts/gill-sans.otf');
+    src: url('../fonts/gill-sans.otf');
 }
 
 @font-face {
     font-family: 'Verdana';
     font-style: normal;
     font-weight: normal;
-    src: local('Verdana'), url('../fonts/verdana.ttf');
+    src: url('../fonts/verdana.ttf');
 }
 
 @font-face {
     font-family: 'SamsungOne 700';
     font-style: normal;
     font-weight: normal;
-    src: local('SamsungOne 700'), url('../fonts/SamsungOne-700.woff') format('woff');
+    src: url('../fonts/SamsungOne-700.woff') format('woff');
 }
 
 .font_arial {

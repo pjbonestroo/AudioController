@@ -55,6 +55,15 @@ class Destination:
 default_fontfamily = fonts.validate_font_name("Samsung", True)
 default_fontsize = fonts.validate_font_size(8, True)
 default_fontweight = fonts.validate_font_weight(400, True)
+default_screens = ['leeg', 'regels']
+refreshrates = [1,2,3,4,5,10,15,30,60]
+
+
+@dataclass
+class PsalmbordScreen:
+    index: int
+    text: str
+    size: int
 
 
 @dataclass
@@ -62,46 +71,58 @@ class Psalmbord:
     title: str = ""
     regels: List[dict] = field(default_factory=lambda: [])
     fontfamily: str = default_fontfamily
-    fontsize: float = default_fontsize
+    fontsize: int = default_fontsize
     fontweight: int = default_fontweight
-    active: bool = True # if False, show empty screen (not to confuse with enable_psalmbord)
-
+    active: int = 1 # if 0, show empty screen (not to confuse with enable_psalmbord)
+    screens: List[PsalmbordScreen] = field(default_factory=lambda: [])
+    refreshrate: int = 10
 
 def psalmbord_as_html() -> str:
     """ Create a html string to display the psalmbord in the browser """
-    # title
-    if psalmbord.title.strip() != "":
-        content = f"<div class='title font_weight {fonts.fonts[psalmbord.fontfamily]}'>{psalmbord.title}</div>"
-    else:
+    if psalmbord.active == 0:
         content = ""
-    
-    # regels
-    for regel in psalmbord.regels:
-        content += f"<div class='regel font_weight {fonts.fonts[psalmbord.fontfamily]}'>"
-
-        col = regel['text'].strip().split(":")
-        if len(col) > 1:
-            # regel with three columns
-            content += "<span class='col1'>"
-            for col1 in col[0].split(" "):
-                if col1.strip() != "":
-                    content += f"<span>{col1}</span>"
-            content += "</span>"
-
-            content += "<span class='col2'>:</span>"
-
-            content += "<span class='col3'>"
-            for col3 in col[1].split(" "):
-                if col3.strip() != "":
-                    content += f"<span>{col3}</span>"
-            content += "</span>"
+    elif psalmbord.active == 1:
+        # title
+        if psalmbord.title.strip() != "":
+            content = f"<div class='title font_weight {fonts.fonts[psalmbord.fontfamily]}'>{psalmbord.title}</div>"
         else:
-            # regel without columns
-            """ replace optional ";" with ":" to prevent splitting and alignment """
-            regel_text = regel['text'].replace(";",":")
-            content += f"<span class='no-col'>{regel_text}</span>"
+            content = ""
         
-        content += "</div>\n"
+        # regels
+        for regel in psalmbord.regels:
+            content += f"<div class='regel font_weight {fonts.fonts[psalmbord.fontfamily]}'>"
+
+            col = regel['text'].strip().split(":")
+            if len(col) > 1:
+                # regel with three columns
+                content += "<span class='col1'>"
+                for col1 in col[0].split(" "):
+                    if col1.strip() != "":
+                        content += f"<span>{col1}</span>"
+                content += "</span>"
+
+                content += "<span class='col2'>:</span>"
+
+                content += "<span class='col3'>"
+                for col3 in col[1].split(" "):
+                    if col3.strip() != "":
+                        content += f"<span>{col3}</span>"
+                content += "</span>"
+            else:
+                # regel without columns
+                """ replace optional ";" with ":" to prevent splitting and alignment """
+                regel_text = regel['text'].replace(";",":")
+                content += f"<span class='no-col'>{regel_text}</span>"
+            
+            content += "</div>\n"
+    else:
+        screen = PsalmbordScreen(**psalmbord.screens[psalmbord.active])
+        regels = screen.text.splitlines()
+
+        content = ""
+        for r in regels:
+            content += f"<div class='regel font_weight {fonts.fonts[psalmbord.fontfamily]}'>{r}</div>"
+
     return content
 
 
@@ -142,19 +163,25 @@ def default_psalmbord():
     result = Psalmbord()
     result.title = "Liturgie"
     result.regels = [{'text': txt} for txt in [
-        "Ps 11 : 1, 3",
-        "Ps 22 : 2, 3",
-        "Exodus 20 : 1-17",
-        "Ps 33 : 1, 2",
-        "Ps 44 : 2, 3",
-        "Ps 55 : 1, 2",
-        "Ps 66 : 2, 3",
-        "H.C. Zondag 34",
+        "Ps 11:1 3",
+        "Ps 22:2 3",
+        "Exodus 20:1-17",
+        "Ps 33:1 2",
+        "Ps 44:2 3",
+        "Ps 55:1 2",
+        "Ps 66:2 3",
+        "HC Zondag 34",
     ]]
     result.fontfamily = default_fontfamily
     result.fontsize = default_fontsize
     result.fontweight = default_fontweight
-    result.active = True
+    result.active = 1
+    result.screens = [
+        PsalmbordScreen(index=i, text=text, size=8) 
+        for i, text in enumerate(default_screens)
+    ]
+    result.refreshrate = 10
+
     return result
 
 
@@ -220,6 +247,12 @@ def upgrade(store: dict):
         store['settings']['version'] = 9
         store['psalmbord']['active'] = True
 
+    if store['settings']['version'] == 9:
+        store['settings']['version'] = 10
+        store['psalmbord']['active'] = 1
+        store['psalmbord']['screens'] = []
+        store['psalmbord']['refreshrate'] = 10
+    
     #
     # future upgrades will be placed here
     #
@@ -523,16 +556,18 @@ def update_destinations(new_destinations: List[dict]):
         pass
 
 
-def update_psalmbord(title: str, regels: List[dict], fontfamily, fontsize, fontweight, active: bool):
-    temp = Psalmbord(title, regels, fontfamily, fontsize, fontweight, active)
+def update_psalmbord(title: str, regels: List[dict], fontfamily, fontsize: List[int], fontweight, active: int, screens: List[PsalmbordScreen], refreshrate: int):
+    temp = Psalmbord(title, regels, fontfamily, fontsize, fontweight, active, screens, refreshrate)
     temp = validate_psalmbord(temp)
     if temp:
         psalmbord.title = temp.title
         psalmbord.regels = temp.regels
         psalmbord.fontfamily = temp.fontfamily
-        psalmbord.fontsize = temp.fontsize
-        psalmbord.fontweight = temp.fontweight
-        psalmbord.active = temp.active
+        psalmbord.fontsize = int(temp.fontsize)
+        psalmbord.fontweight = int(temp.fontweight)
+        psalmbord.active = int(temp.active)
+        psalmbord.screens = temp.screens
+        psalmbord.refreshrate = int(temp.refreshrate)
         save()
 
 
